@@ -12,3 +12,5 @@ title: Ruming Liu
 logo: WechatIMG20615.jpeg
 description: Machine learning to address fundamental questions in evolution and health. Postdoc in the Marks lab, Harvard.
 theme: jekyll-theme-minimal
+github:
+  is_project_page: false
