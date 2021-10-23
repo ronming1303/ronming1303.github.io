@@ -14,7 +14,7 @@ _The dissertation of my Bachelor's Degree. It compares the development of RMB wi
 - [A Possible Way to Search Pairs Trading Arbitrage(EN)]()
 _Directed Research of my Master's program. It finds a new possible way to search stock pairs which exist arbitrage opportunity and uses dynamic programming method to make trading strategy._
 - [Cointegration Method of Statistical Arbitrage(EN)]()
-_Time Series and Econometrics course project. It applies cointegration method and ARMA-GARCH model to analyze spread in stock market, and forecasts the convergence situation of the spread. 
+_Time Series and Econometrics course project. It applies cointegration method and ARMA-GARCH model to analyze spread in stock market, and forecasts the convergence situation of the spread._
 
 ### Articles
 1. Financial Mathematics
