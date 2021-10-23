@@ -2,6 +2,8 @@ theme: jekyll-theme-minimal
 title: Ruming Liu
 email: rumingliu1303@gmail.com
 linkedin: https://www.linkedin.com/
+github:
+  is_project_page: false
 # title: 你的名字
 # affiliation: 你的单位
 # email: yourname (at) example.edu
