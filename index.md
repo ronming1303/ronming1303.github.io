@@ -1,8 +1,9 @@
-## Welcome to GitHub Pages
+## About Me
 
-You can use the [editor on GitHub](https://github.com/ronming1303/ronming1303.github.io/edit/main/index.md) to maintain and preview the content for your website in Markdown files.
+My name is Ruming Liu, I am currently working on Financial Engineering Client Service Specialist at Moody's Analytics.
 
-Whenever you commit to this repository, GitHub Pages will run [Jekyll](https://jekyllrb.com/) to rebuild the pages in your site, from the content in your Markdown files.
+Before Moody's Analytics, I got my Master's degree of Mathematical Finance at University of Southern California in the United States and got my Bachelor's degree of Finance at Jiangxi University of Finance and Economics in China. (Here is my latest [resume](www.baidu.com))
+
 
 ### Markdown
 
