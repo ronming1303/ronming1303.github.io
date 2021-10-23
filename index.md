@@ -54,9 +54,8 @@ _Time Series and Econometrics course project. It applies cointegration method an
 
 4. Miscellaneous
 - [Maximum Likelihood Estimation for ARMA-GARCH(EN)](https://zhuanlan.zhihu.com/p/266329597)
+- [Referee Report for th Paper A Bias of Screen(EN)]()
 - [Some Ideas on Cryptocurrency Market(CN)](https://zhuanlan.zhihu.com/p/383499265)
 - [Brief History of Fannie Mae, Freddie Mac and Ginnie Mae(CN)](https://zhuanlan.zhihu.com/p/80399531) 
 
 
-
-For more details see [GitHub Flavored Markdown](https://guides.github.com/features/mastering-markdown/).
