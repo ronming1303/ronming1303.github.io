@@ -1,19 +1,20 @@
 ## About Me
 
-My name is Ruming Liu, I am currently working on Financial Engineering Client Service Specialist at Moody's Analytics.
+My name is Ruming Liu, I am currently working on Financial Engineering Client Service Specialist at Moody's Analytics. (Here is my latest [resume](www.baidu.com))
 
-Before Moody's Analytics, I got my Master's degree of Mathematical Finance at University of Southern California in the United States and got my Bachelor's degree of Finance at Jiangxi University of Finance and Economics in China. (Here is my latest [resume](www.baidu.com))
+Before Moody's Analytics, I got my Master's degree of Mathematical Finance at University of Southern California in the United States and got my Bachelor's degree of Finance at Jiangxi University of Finance and Economics in China. 
 
+During my undergraduate study, I attent some internship programs at China International Capital Corporation(CICC) as Derivative Analyst, China Merchant Bank(CMB) as Financial Data Analyst, China International Trust and Investment Corporation(CITIC) as Stock Trading Assistant. 
  
 ## Projects and Articles
-I am quited interested in quantitaive investment and quantitative risk management topics. I wrote some articles (Including Financial Mathematics, Statistics, Probability, Simulation, etc) during the past few years, some of them are wrote in Chinese and published on [Zhihu](), the rest are wrote in English and can be found in my [Github repository](). I also did some academic projects during my University study. These projects and articles can also be found below. 
+I am quited interested in quantitaive investment and quantitative risk management topics. I wrote some articles (Including Financial Mathematics, Statistics, Probability, Simulation, etc) during the past few years, some of them are wrote in Chinese and published on [Zhihu](https://www.zhihu.com/people/liu-ru-ming-8/posts), the rest are wrote in English and can be found in my [Github repository](). I also did some academic projects during my University study. These projects and articles can also be found below. 
 
 ### Projetcs and Dissertation
 - [The Thoughts on the Internatinalization of Chinies RMB(EN)](): 
 _The dissertation of my Bachelor's Degree. It compares the development of RMB with other international currencies and forecasts the future of RMB from macro-economics and politics point of view._
-- [A Possible Way to Search Pairs Trading Arbitrage(EN)]()
+- [A Possible Way to Search Pairs Trading Arbitrage(EN)]():
 _Directed Research of my Master's program. It finds a new possible way to search stock pairs which exist arbitrage opportunity and uses dynamic programming method to make trading strategy._
-- [Cointegration Method of Statistical Arbitrage(EN)]()
+- [Cointegration Method of Statistical Arbitrage(EN)]():
 _Time Series and Econometrics course project. It applies cointegration method and ARMA-GARCH model to analyze spread in stock market, and forecasts the convergence situation of the spread._
 
 ### Articles
