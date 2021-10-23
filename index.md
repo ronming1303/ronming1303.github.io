@@ -68,4 +68,4 @@ Statistical Softwares: [R](https://www.r-project.org), [SPSS](https://www.ibm.co
 
 Database: [MySQL](https://www.mysql.com)
 
-Typesetting Softwares: [Latex](https://www.latex-project.org), [HTML](https://developer.mozilla.org/en-US/docs/Web/HTML)
+Typesetting Softwares: [LaTeX](https://www.latex-project.org), [HTML](https://developer.mozilla.org/en-US/docs/Web/HTML)
