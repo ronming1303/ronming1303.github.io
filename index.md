@@ -64,12 +64,15 @@ Here are some practical tools I use in my life.
 ### Programming Languages
 - [Python](https://www.python.org)
 - [Matlab](https://www.mathworks.com/products/matlab.html)
+
 ### Statistical Softwares
 - [R](https://www.r-project.org)
 - [SPSS](https://www.ibm.com/products/spss-statistics)
 - [SAS](https://www.sas.com/en_us/home.html)
+
 ### Database
 - [MySQL](https://www.mysql.com)
+
 ### Typesetting Softwares
 - [Latex](https://www.latex-project.org)
 - [HTML](https://developer.mozilla.org/en-US/docs/Web/HTML)
