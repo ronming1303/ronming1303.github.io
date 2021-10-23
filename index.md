@@ -17,6 +17,21 @@ The dissertation of my Bachelor's Degree.
 ### Articles
 1. Financial Mathematics
 - [Interest Rate Term Structure Notes(EN)]()
+- [Short Rate Model(EN)](https://zhuanlan.zhihu.com/p/110055526)
+- [Heath-Jarrow-Morton Framework(CN)](https://zhuanlan.zhihu.com/p/112844939)
+- [Option Pricing of Stock with Dividend(CN)](https://zhuanlan.zhihu.com/p/107332780)
+- [Fundamental Theorems of Asset Pricing(CN)](https://zhuanlan.zhihu.com/p/106374643)
+- [Risk Neutral and PDE method of American Option(CN)](https://zhuanlan.zhihu.com/p/105325456)
+- [Risk Neutral and PDE method of Black-Scholes model(CN)](https://zhuanlan.zhihu.com/p/96875039)
+- [Stochastic Calculus(CN)](https://zhuanlan.zhihu.com/p/96729991)
+- [Fundamental Arbitrage Theorems of Mathematica Finance(CN)](https://zhuanlan.zhihu.com/p/86038736)
+- [Hedging Strategy of American Option(CN)](https://zhuanlan.zhihu.com/p/85319326)
+- [American Option and Stopping Process(CN)](https://zhuanlan.zhihu.com/p/82860673)
+- [Optimal Stopping Time and Doob Meyer Decomposition(CN)](https://zhuanlan.zhihu.com/p/84907455)
+- [Martingale, Conditionnal Expectation and Binomial Tree(CN)](https://zhuanlan.zhihu.com/p/83833362)
+- [Filtration, Martingale and Conditionnal Expectation(CN)](https://zhuanlan.zhihu.com/p/83314877)
+- [Binomial Tree Model[2](CN)](https://zhuanlan.zhihu.com/p/81267253)
+- [Binomial Tree Model[1](CN)](https://zhuanlan.zhihu.com/p/81228344)
 
 
 2. Probablity and Statistics
@@ -24,6 +39,7 @@ The dissertation of my Bachelor's Degree.
 - [Lebesugue Measure(CN)](https://zhuanlan.zhihu.com/p/338600430)
 - [Abstract Measure(CN)](https://zhuanlan.zhihu.com/p/340521567)
 - [Convergence Theorem(CN)](https://zhuanlan.zhihu.com/p/345848527)
+- [Random Variables and Random Process(CN)](https://zhuanlan.zhihu.com/p/89399400)
 - [Sufficient Statistics(CN)](https://zhuanlan.zhihu.com/p/407004295)
 - [Point Estimation(CN)](https://zhuanlan.zhihu.com/p/407004295)
 - [Asymptotic Theory(CN)](https://zhuanlan.zhihu.com/p/408169919)
@@ -36,7 +52,7 @@ The dissertation of my Bachelor's Degree.
 4. Miscellaneous
 - [Maximum Likelihood Estimation for ARMA-GARCH(EN)](https://zhuanlan.zhihu.com/p/266329597)
 - [Some Ideas on Cryptocurrency Market(CN)](https://zhuanlan.zhihu.com/p/383499265)
-
+- [Brief History of Fannie Mae, Freddie Mac and Ginnie Mae(CN)](https://zhuanlan.zhihu.com/p/80399531) 
 
 
 
