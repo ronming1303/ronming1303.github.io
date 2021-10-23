@@ -10,7 +10,6 @@ I am quited interested in quantitaive investment and quantitative risk managemen
 
 ### Projetcs and Dissertation
 - [The Thoughts on the Internatinalization of Chinies RMB](): 
-
 The dissertation of my Bachelor's Degree.
 - [A Possible Way to Search Pairs Trading Arbitrage]()
 - [Cointegration Method of Statistical Arbitrage]()
