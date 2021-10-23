@@ -1,9 +1,14 @@
 # theme: jekyll-theme-minimal
 
-remote_theme: pages-themes/minimal@v0.2.0
-plugins:
-- jekyll-remote-theme # add this line to the plugins list if you already have one
+# remote_theme: pages-themes/minimal@v0.2.0
+# plugins:
+# - jekyll-remote-theme # add this line to the plugins list if you already have one
 
-gem "github-pages", group: :jekyll_plugins
-title: [Ruming Liu]
-description: [email: rumingli@usc.edu]
+# gem "github-pages", group: :jekyll_plugins
+# title: [Ruming Liu]
+# description: [email: rumingli@usc.edu]
+
+title: Ruming Liu
+logo: /assets/img/me.jpg
+description: Machine learning to address fundamental questions in evolution and health. Postdoc in the Marks lab, Harvard.
+theme: WechatIMG20615.jpeg
