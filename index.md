@@ -2,15 +2,15 @@
 
 My name is Ruming Liu (刘入铭), I am currently working on Financial Engineering Client Service Specialist at Moody's Analytics(MA) in San Francisco. ([Resume](https://github.com/ronming1303/Ruming-Liu-PDF-Document/blob/main/Ruming%20Liu%20Resume_202110.pdf))
 
-Before Moody's Analytics, I got my Master's degree of Mathematical Finance at University of Southern California in 2021 in the United States and got my Bachelor's degree of Finance at Jiangxi University of Finance and Economics in 2019 in China. I also attent the Extension Program of Statistics at University of California, San Diego in 2018 in the United States.
+Before Moody's Analytics, I got my Master's degree of Mathematical Finance at University of Southern California in 2021 in the United States and got my Bachelor's degree of Finance at Jiangxi University of Finance and Economics in 2019 in China. I also attended the Extension Program of Statistics at University of California, San Diego in 2018 in the United States.
 
-During my undergraduate study, I attent some internship programs at China International Capital Corporation(CICC) as Derivative Analyst, China Merchant Bank(CMB) as Financial Data Analyst, China International Trust and Investment Corporation(CITIC) as Stock Trading Assistant. 
+During my undergraduate study, I attended some internship programs at China International Capital Corporation(CICC) as Derivative Analyst, China Merchant Bank(CMB) as Financial Data Analyst, China International Trust and Investment Corporation(CITIC) as Stock Trading Assistant. 
  
 ## Projects and Articles
 I am quited interested in quantitaive investment and quantitative risk management topics. I wrote some articles (Including Financial Mathematics, Statistics, Probability, Simulation, etc) during the past few years, some of them are wrote in Chinese and published on [Zhihu](https://www.zhihu.com/people/liu-ru-ming-8/posts), the rest are wrote in English and can be found in my [Github repository](https://github.com/ronming1303/Ruming-Liu-PDF-Document). I also did some academic projects during my University study. These projects and articles can also be found below. 
 
 ### Projetcs and Dissertation
-- [The Thoughts on the Internatinalization of Chinies RMB(EN)](https://github.com/ronming1303/Ruming-Liu-PDF-Document/blob/main/Toughts%20on%20the%20Internationalization%20of%20Chinese%20RMB%20%7C%20Ruming%20Liu.pdf): 
+- [The Thoughts on the Internationalization of Chinese RMB(EN)](https://github.com/ronming1303/Ruming-Liu-PDF-Document/blob/main/Toughts%20on%20the%20Internationalization%20of%20Chinese%20RMB%20%7C%20Ruming%20Liu.pdf): 
 _The dissertation of my Bachelor's Degree. It compares the development of RMB with other international currencies and forecasts the future of RMB from macro-economics and politics point of view._
 - [A Possible Way to Search Pairs Trading Arbitrage(EN)](https://github.com/ronming1303/Ruming-Liu-PDF-Document/blob/main/A%20Possible%20Way%20to%20Search%20Pairs%20Trading%20Arbitrage.pdf):
 _Directed Research of my Master's program. It finds a new possible way to search stock pairs which exist arbitrage opportunity and uses dynamic programming method to make trading strategy._
