@@ -8,8 +8,8 @@ Before Moody's Analytics, I got my Master's degree of Mathematical Finance at Un
 ## Projects and Articles
 I am quited interested in quantitaive investment and quantitative risk management topics. I wrote some articles (Including Financial Mathematics, Statistics, Probability, Simulation, etc) during the past few years, some of them are wrote in Chinese and published on [Zhihu](), the rest are wrote in English and can be found in my [Github repository](). I also did some academic projects during my University study, they can be found below. 
 
-### Projetcs
-
+### Projetcs and Dissertation
+- [The Thoughts on the Internatinalization of Chinies RMB](): The dissertation of my Bachelor's Degree
 ### Articles
 
 ```markdown
