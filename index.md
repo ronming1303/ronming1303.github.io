@@ -4,10 +4,13 @@ My name is Ruming Liu, I am currently working on Financial Engineering Client Se
 
 Before Moody's Analytics, I got my Master's degree of Mathematical Finance at University of Southern California in the United States and got my Bachelor's degree of Finance at Jiangxi University of Finance and Economics in China. (Here is my latest [resume](www.baidu.com))
 
+ 
+## Projects and Articles
+I am quited interested in quantitaive investment and quantitative risk management topics. I wrote some articles (Including Financial Mathematics, Statistics, Probability, Simulation, etc) during the past few years, some of them are wrote in Chinese and published on [Zhihu](), the rest are wrote in English and can be found in my [Github repository](). I also did some academic projects during my University study, they can be found below. 
 
-### Markdown
+### Projetcs
 
-Markdown is a lightweight and easy-to-use syntax for styling your writing. It includes conventions for
+### Articles
 
 ```markdown
 Syntax highlighted code block
