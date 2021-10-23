@@ -16,40 +16,28 @@ The dissertation of my Bachelor's Degree.
 
 ### Articles
 1. Financial Mathematics
-- Interest Rate Term Structure Notes
-- 
+- [Interest Rate Term Structure Notes(EN)]()
+
+
 2. Probablity and Statistics
+- [Probability Convergence Concepts(EN)](https://zhuanlan.zhihu.com/p/164667409)
+- [Lebesugue Measure(CN)](https://zhuanlan.zhihu.com/p/338600430)
+- [Abstract Measure(CN)](https://zhuanlan.zhihu.com/p/340521567)
+- [Convergence Theorem(CN)](https://zhuanlan.zhihu.com/p/345848527)
 - [Sufficient Statistics(CN)](https://zhuanlan.zhihu.com/p/407004295)
 - [Point Estimation(CN)](https://zhuanlan.zhihu.com/p/407004295)
 - [Asymptotic Theory(CN)](https://zhuanlan.zhihu.com/p/408169919)
+
 3. Financial Simulation
+- [Variance Reducation Techniques(EN)]()
+- [Simulation of Short Rate Model and Forward Rate under H-J-M framework(CN)]()
+
+
+4. Miscellaneous
+- [Maximum Likelihood Estimation for ARMA-GARCH(EN)](https://zhuanlan.zhihu.com/p/266329597)
+- [Some Ideas on Cryptocurrency Market(CN)](https://zhuanlan.zhihu.com/p/383499265)
 
 
 
-```markdown
-Syntax highlighted code block
-
-# Header 1
-## Header 2
-### Header 3
-
-- Bulleted
-- List
-
-1. Numbered
-2. List
-
-**Bold** and _Italic_ and `Code` text
-
-[Link](url) and ![Image](src)
-```
 
 For more details see [GitHub Flavored Markdown](https://guides.github.com/features/mastering-markdown/).
-
-### Jekyll Themes
-
-Your Pages site will use the layout and styles from the Jekyll theme you have selected in your [repository settings](https://github.com/ronming1303/ronming1303.github.io/settings/pages). The name of this theme is saved in the Jekyll `_config.yml` configuration file.
-
-### Support or Contact
-
-Having trouble with Pages? Check out our [documentation](https://docs.github.com/categories/github-pages-basics/) or [contact support](https://support.github.com/contact) and we’ll help you sort it out.
