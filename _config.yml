@@ -6,4 +6,4 @@ plugins:
 
 gem "github-pages", group: :jekyll_plugins
 title: [The title of your site]
-description: [email:          rumingli@usc.edu]
+description: [email: rumingli@usc.edu]
