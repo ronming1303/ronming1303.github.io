@@ -1,19 +1,11 @@
 theme: jekyll-theme-minimal
 
-sidebar:
-  - title: "Title"
-    image: "/assets/images/your-image.jpg"
-    image_alt: "image"
-    text: "Some text here."
-  - title: "Another Title"
-    text: "More text here."
-    nav: sidebar-sample
-# title: 你的名字
-# affiliation: 你的单位
-# email: yourname (at) example.edu
-# google_scholar: https://scholar.google.com/
-# github_link: https://github.com/yaoyao-liu/minimal-light
-# linkedin: https://www.linkedin.com/
+title: 你的名字
+affiliation: 你的单位
+email: yourname (at) example.edu
+google_scholar: https://scholar.google.com/
+github_link: https://github.com/yaoyao-liu/minimal-light
+linkedin: https://www.linkedin.com/
 # avatar: ./assets/img/avatar.png
 # google_analytics: UA-111540567-4
 # favicon: ./assets/img/favicon.png
