@@ -1,6 +1,6 @@
 ## About Me
 
-My name is Ruming Liu, I am currently working on Financial Engineering Client Service Specialist at Moody's Analytics. (Here is my latest [resume](www.baidu.com))
+My name is Ruming Liu, I am currently working on Financial Engineering Client Service Specialist at Moody's Analytics in San Francisco. (Here is my latest [resume](www.baidu.com))
 
 Before Moody's Analytics, I got my Master's degree of Mathematical Finance at University of Southern California in the United States and got my Bachelor's degree of Finance at Jiangxi University of Finance and Economics in China. 
 
