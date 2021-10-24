@@ -7,9 +7,9 @@ Before Moody's Analytics, I got my Master's degree of Mathematical Finance at Un
 During my undergraduate study, I attended some internship programs at China International Capital Corporation(CICC) as Derivative Analyst, China Merchant Bank(CMB) as Financial Data Analyst, China International Trust and Investment Corporation(CITIC) as Stock Trading Assistant. 
  
 ## Projects and Articles
-I am quited interested in quantitaive investment and quantitative risk management topics. I wrote some articles (Including Financial Mathematics, Statistics, Probability, Simulation, etc) during the past few years, some of them are wrote in Chinese and published on [Zhihu](https://www.zhihu.com/people/liu-ru-ming-8/posts), the rest are wrote in English and can be found in my [Github repository](https://github.com/ronming1303/Ruming-Liu-PDF-Document). I also did some academic projects during my University study. These projects and articles can also be found below. 
+I am quite interested in quantitaive investment and quantitative risk management topics. I wrote some articles (Including Financial Mathematics, Statistics, Probability, Simulation, etc) during the past few years, some of them are wrote in Chinese and published on [Zhihu](https://www.zhihu.com/people/liu-ru-ming-8/posts), the rest are wrote in English and can be found in my [Github repository](https://github.com/ronming1303/Ruming-Liu-PDF-Document). I also did some academic projects during my University study. These projects and articles can also be found below. 
 
-### Projetcs and Dissertation
+### Projects and Dissertation
 - [The Thoughts on the Internationalization of Chinese RMB(EN)](https://github.com/ronming1303/Ruming-Liu-PDF-Document/blob/main/Toughts%20on%20the%20Internationalization%20of%20Chinese%20RMB%20%7C%20Ruming%20Liu.pdf): 
 _The dissertation of my Bachelor's Degree. It compares the development of RMB with other international currencies and forecasts the future of RMB from macro-economics and politics point of view._
 - [A Possible Way to Search Pairs Trading Arbitrage(EN)](https://github.com/ronming1303/Ruming-Liu-PDF-Document/blob/main/A%20Possible%20Way%20to%20Search%20Pairs%20Trading%20Arbitrage.pdf):
@@ -38,7 +38,7 @@ _Time Series and Econometrics course project. It applies cointegration method an
 - [Binomial Tree Model[1](CN)](https://zhuanlan.zhihu.com/p/81228344)
 
 
-2. Probablity and Statistics
+2. Probab9lity and Statistics
 - [Probability Convergence Concepts(EN)](https://zhuanlan.zhihu.com/p/164667409)
 - [Lebesugue Measure(CN)](https://zhuanlan.zhihu.com/p/338600430)
 - [Abstract Measure(CN)](https://zhuanlan.zhihu.com/p/340521567)
