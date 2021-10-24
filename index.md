@@ -60,7 +60,7 @@ _Time Series and Econometrics course project. It applies cointegration method an
 - [Brief History of Fannie Mae, Freddie Mac and Ginnie Mae(CN)](https://zhuanlan.zhihu.com/p/80399531) 
 
 ## Professional Skills
-Here are some practical tools I use in my life.
+Here are some practical tools I use in my work and study life.
 
 Programming Languages: [Python](https://www.python.org), [Matlab](https://www.mathworks.com/products/matlab.html)
 
