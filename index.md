@@ -38,7 +38,7 @@ _Time Series and Econometrics course project. It applies cointegration method an
 - [Binomial Tree Model[1](CN)](https://zhuanlan.zhihu.com/p/81228344)
 
 
-2. Probab9lity and Statistics
+2. Probability and Statistics
 - [Probability Convergence Concepts(EN)](https://zhuanlan.zhihu.com/p/164667409)
 - [Lebesugue Measure(CN)](https://zhuanlan.zhihu.com/p/338600430)
 - [Abstract Measure(CN)](https://zhuanlan.zhihu.com/p/340521567)
