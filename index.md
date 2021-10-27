@@ -16,7 +16,7 @@ _The dissertation of my Bachelor's Degree. It compares the development of RMB wi
 _Directed Research of my Master's program. It finds a new possible way to search stock pairs which exist arbitrage opportunity and uses dynamic programming method to make trading strategy._
 - [Cointegration Method of Statistical Arbitrage(EN)](https://github.com/ronming1303/Ruming-Liu-PDF-Document/blob/main/Cointegration%20Method%20of%20Pairs%20Trading.pdf):
 _Time Series and Econometrics course project. It applies cointegration method and ARMA-GARCH model to analyze spread in stock market, and forecasts the convergence situation of the spread._
-- [Portfolio Demo](https://github.com/ronming1303/Ruming-crypotocurrency-demo): _Still building the algorithm and system, only have demo now._
+- [Portfolio Demo](https://github.com/ronming1303/Ruming-crypotocurrency-demo): _Still developing the algorithm and system, only have demo now._
 
 ### Articles
 1. Financial Mathematics
