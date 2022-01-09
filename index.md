@@ -48,16 +48,19 @@ _Time Series and Econometrics course project. It applies cointegration method an
 - [Point Estimation(CN)](https://zhuanlan.zhihu.com/p/407004295)
 - [Asymptotic Theory(CN)](https://zhuanlan.zhihu.com/p/408169919)
 
-3. Financial Simulation
+3. Dencentralized Finance / Financial Technology
+- [The Mechanics of Balancer Index Fund AMM(CN)](https://zhuanlan.zhihu.com/p/165444323)
+- [The Mechanics of Uniswap-V3 AMM(CN)](https://zhuanlan.zhihu.com/p/87243177)
+- [Some Ideas on Cryptocurrency Market(CN)](https://zhuanlan.zhihu.com/p/383499265)
+
+4. Financial Simulation
 - [Variance Reducation Techniques(EN)](https://github.com/ronming1303/Ruming-Liu-PDF-Document/blob/main/Variance_Reduction_Techniques.pdf)
 - [Simulation of Short Rate Model and Forward Rate under H-J-M framework(CN)](https://github.com/ronming1303/Ruming-Liu-PDF-Document/blob/main/MonteCarlo1.pdf)
 
 
-4. Miscellaneous
+5. Miscellaneous
 - [Maximum Likelihood Estimation for ARMA-GARCH(EN)](https://zhuanlan.zhihu.com/p/266329597)
 - [Referee Report for th Paper A Bias of Screen(EN)](https://github.com/ronming1303/Ruming-Liu-PDF-Document/blob/main/Referee%20of%20Econ504%20Paper%20Ruming%20Liu_2848262948.pdf)
-- [The Mechanics of Uniswap-V3 AMM(CN)](https://zhuanlan.zhihu.com/p/87243177)
-- [Some Ideas on Cryptocurrency Market(CN)](https://zhuanlan.zhihu.com/p/383499265)
 - [Brief History of Fannie Mae, Freddie Mac and Ginnie Mae(CN)](https://zhuanlan.zhihu.com/p/80399531) 
 
 ## Professional Skills
