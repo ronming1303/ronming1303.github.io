@@ -17,6 +17,7 @@ _Directed Research of my Master's program. It finds a new possible way to search
 - [Cointegration Method of Statistical Arbitrage(EN)](https://github.com/ronming1303/Ruming-Liu-PDF-Document/blob/main/Cointegration%20Method%20of%20Pairs%20Trading.pdf):
 _Time Series and Econometrics course project. It applies cointegration method and ARMA-GARCH model to analyze spread in stock market, and forecasts the convergence situation of the spread._
 - [Portfolio Demo](https://github.com/ronming1303/Ruming-crypotocurrency-demo): _Still developing the algorithm and system, only have demo now._
+- [Predator Project](https://github.com/ronming1303/Predator): _Decentralized Exchange Flah Loan Arbitrage Project._
 
 ### Articles
 1. Financial Mathematics
