@@ -7,7 +7,7 @@ Before Moody's Analytics, I got my Master's degree of Mathematical Finance at Un
 During my undergraduate study, I attended some internship programs at China International Capital Corporation(CICC) as Derivative Analyst, China Merchant Bank(CMB) as Financial Data Analyst, China International Trust and Investment Corporation(CITIC) as Stock Trading Assistant. 
  
 ## Projects and Articles
-I am quite interested in quantitaive investment and quantitative risk management topics. I wrote some articles (Including Financial Mathematics, Statistics, Probability, Simulation, etc) during the past few years, some of them are wrote in Chinese and published on [Zhihu](https://www.zhihu.com/people/liu-ru-ming-8/posts), the rest are wrote in English and can be found in my [Github repository](https://github.com/ronming1303/Ruming-Liu-PDF-Document). I also did some academic projects during my University study. These projects and articles can also be found below. 
+I am quite interested in quantitaive investment, quantitative risk management and decentralized finance topics. I wrote some articles (Including Financial Mathematics, Statistics, Probability, Defi, Simulation, etc) during the past few years, some of them are wrote in Chinese and published on [Zhihu](https://www.zhihu.com/people/liu-ru-ming-8/posts), the rest are wrote in English and can be found in my [Github repository](https://github.com/ronming1303/Ruming-Liu-PDF-Document). I also did some academic projects during my University study. These projects and articles can also be found below. 
 
 ### Projects and Dissertation
 - [The Thoughts on the Internationalization of Chinese RMB(EN)](https://github.com/ronming1303/Ruming-Liu-PDF-Document/blob/main/Toughts%20on%20the%20Internationalization%20of%20Chinese%20RMB%20%7C%20Ruming%20Liu.pdf): 
@@ -68,7 +68,7 @@ _Time Series and Econometrics course project. It applies cointegration method an
 ## Professional Skills
 Here are some practical tools I use in my work and study life.
 
-Programming Languages: [Python](https://www.python.org), [Matlab](https://www.mathworks.com/products/matlab.html), [Solidity](https://docs.soliditylang.org/en/v0.8.11/)
+Programming Languages: [Python](https://www.python.org), [Matlab](https://www.mathworks.com/products/matlab.html), [JavaScript](), [Solidity](https://docs.soliditylang.org/en/v0.8.11/)
 
 Statistical Softwares: [R](https://www.r-project.org), [SPSS](https://www.ibm.com/products/spss-statistics), [SAS](https://www.sas.com/en_us/home.html)
 
