@@ -70,7 +70,7 @@ _Time Series and Econometrics course project. It applies cointegration method an
 ## Professional Skills
 Here are some practical tools I use in my work and study life.
 
-Programming Languages: [Python](https://www.python.org), [Matlab](https://www.mathworks.com/products/matlab.html), [JavaScript](), [Solidity](https://docs.soliditylang.org/en/v0.8.11/)
+Programming Languages: [Python](https://www.python.org), [Matlab](https://www.mathworks.com/products/matlab.html), [JavaScript](), [Solidity](https://docs.soliditylang.org/en/v0.8.11/), [Broniew Framework](https://eth-brownie.readthedocs.io/en/stable/)
 
 Statistical Softwares: [R](https://www.r-project.org), [SPSS](https://www.ibm.com/products/spss-statistics), [SAS](https://www.sas.com/en_us/home.html)
 
