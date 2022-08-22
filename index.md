@@ -1,8 +1,10 @@
 ## About Me
 
-My name is Ruming Liu (刘入铭), I am currently working on Financial Engineering Client Service Specialist at Moody's Analytics(MA) in San Francisco. I support some Credit Risk Products and rating data of Moody's: CreditEdge, RiskCalc, RiskFrontier and Moody's Investor Service(MIS) rating data. And I will join Stevens Institute of Technology Finance Ph.D. program in 2022 Fall. ([Resume](https://github.com/ronming1303/Ruming-Liu-PDF-Document/blob/main/Ruming%20Liu%20Resume_202110.pdf))
+My name is Ruming Liu (刘入铭), I am currently a Finance Ph.D. student at [Stevens Institute of Technology](https://www.stevens.edu), my research intrests are Blockchain and Fintech.([Resume](https://github.com/ronming1303/Ruming-Liu-PDF-Document/blob/main/Ruming%20Liu%20Resume_202110.pdf))
 
-Before Moody's Analytics, I got my Master's degree of Mathematical Finance at University of Southern California in 2021 in the United States and got my Bachelor's degree of Finance at Jiangxi University of Finance and Economics in 2019 in China. I also attended the Extension Program of Statistics at University of California, San Diego in 2018 in the United States.
+Before SIT, I was a Financial Engineering Client Service Specialist at Moody's Analytics(MA) in San Francisco. I supported some Credit Risk Products and rating data of Moody's: CreditEdge, RiskCalc, RiskFrontier and Moody's Investor Service(MIS) rating data. 
+
+I got my Master's degree of Mathematical Finance at University of Southern California in 2021 in the United States and got my Bachelor's degree of Finance at Jiangxi University of Finance and Economics in 2019 in China. I also attended the Extension Program of Statistics at University of California, San Diego in 2018 in the United States.
 
 During my undergraduate study, I attended some internship programs at China International Capital Corporation(CICC) as Derivative Analyst, China Merchant Bank(CMB) as Financial Data Analyst, China International Trust and Investment Corporation(CITIC) as Stock Trading Assistant. 
  
