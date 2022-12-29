@@ -55,6 +55,7 @@ _Time Series and Econometrics course project. It applies cointegration method an
 - [Asymptotic Theory(CN)](https://zhuanlan.zhihu.com/p/408169919)
 
 4. Dencentralized Finance / Financial Technology
+- [Blockchain Literature Review(EN)](https://github.com/ronming1303/Ruming-Liu-PDF-Document/blob/main/blockchain_review.pdf)
 - [The Mechanics of Curve Leverage AMM(CN)](https://zhuanlan.zhihu.com/p/407655879)
 - [The Mechanics of Balancer Index Fund AMM(CN)](https://zhuanlan.zhihu.com/p/165444323)
 - [The Mechanics of Uniswap-V3 AMM(CN)](https://zhuanlan.zhihu.com/p/87243177)
