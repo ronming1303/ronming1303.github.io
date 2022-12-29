@@ -20,6 +20,7 @@ _Directed Research of my Master's program. It finds a new possible way to search
 _Time Series and Econometrics course project. It applies cointegration method and ARMA-GARCH model to analyze spread in stock market, and forecasts the convergence situation of the spread._
 - [Portfolio Demo](https://github.com/ronming1303/Ruming-crypotocurrency-demo): _Still developing the algorithm and system, only have demo now._
 - [Predator Project](https://github.com/ronming1303/Predator): _Decentralized Exchange Flash Loan Arbitrage Project._
+- [Tesla Sentiment Analysis](https://github.com/ronming1303/Ruming-Liu-PDF-Document/blob/main/tsla_sentiment_research.pdf):_On working._
 
 ### Articles
 1. Financial Mathematics
