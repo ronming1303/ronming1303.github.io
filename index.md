@@ -21,6 +21,8 @@ _Time Series and Econometrics course project. It applies cointegration method an
 - [Portfolio Demo](https://github.com/ronming1303/Ruming-crypotocurrency-demo): _Still developing the algorithm and system, only have demo now._
 - [Predator Project](https://github.com/ronming1303/Predator): _Decentralized Exchange Flash Loan Arbitrage Project._
 - [Tesla Sentiment Analysis](https://github.com/ronming1303/Ruming-Liu-PDF-Document/blob/main/tsla_sentiment_research.pdf):_On working._
+- [Cryptocurrency Market 4 Factors model](https://github.com/ronming1303/Crypto_Factors_Project): _Cryptocurrency market excess return can be extradinarily explianed by 4 main factors: CMKT, CMOM, CSMB & CSENT._ 
+- [S&P 500 Diversification](https://github.com/ronming1303/S-P500-diversification-project): _S&P 500 index is known as a good indicator of the whole market performance and usually are regarded as a well diversified portfolio. We use network approach to refine the portfolio so that we can use less components to achieve diversification._
 
 ### Articles
 1. Financial Mathematics
