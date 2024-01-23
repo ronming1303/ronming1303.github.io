@@ -1,6 +1,6 @@
 ## About Me
 
-My name is Ruming Liu (刘入铭), I am currently a Finance Ph.D. student at Stevens Institute of Technology([SIT](https://www.stevens.edu)), my research intrests are Blockchain and Fintech.([Resume](https://github.com/ronming1303/Ruming-Liu-PDF-Document/blob/main/Ruming%20Liu%20Resume_202206.pdf))
+My name is Ruming Liu (刘入铭), I am currently a Finance Ph.D. student at Stevens Institute of Technology([SIT](https://www.stevens.edu)), my research intrests are Blockchain, Cryptocurrency and Fintech.([Resume](https://github.com/ronming1303/Ruming-Liu-PDF-Document/blob/main/Ruming%20Liu%20Resume_202206.pdf))
 
 Before SIT, I was a Financial Engineering Client Service Specialist at Moody's Analytics([MA](https://www.moodysanalytics.com)) in San Francisco. I supported some Credit Risk Products and Credit Rating data of Moody's: CreditEdge, RiskCalc, RiskFrontier and Moody's Investor Service(MIS) rating data. 
 
@@ -12,6 +12,8 @@ During my undergraduate study, I attended some internship programs at China Inte
 I am quite interested in quantitaive investment, quantitative risk management and decentralized finance topics. I wrote some articles (Including Financial Mathematics, Statistics, Probability, Defi, Simulation, etc) during the past few years, some of them are wrote in Chinese and published on [Zhihu](https://www.zhihu.com/people/liu-ru-ming-8/posts), the rest are wrote in English and can be found in my [Github repository](https://github.com/ronming1303/Ruming-Liu-PDF-Document). I also did some academic projects during my University study. These projects and articles can also be found below. 
 
 ### Projects and Dissertation
+- [Sentiment in the Cross Section of Cryptocurrency Returns](https://github.com/ronming1303/Ruming-Liu-PDF-Document/blob/main/121523%20Sentiment%20in%20the%20Cross%20Section%20of%20%20Cryptocurrency%20Returns.pdf): _We find an anomoly associated with the cryptocurrency market sentiment. Our findings indicate that cryptos with high sensitivities to sentiment tend to yield lower returns in the following period. We introduce a sentiment factor to explain the sentiment-related anomoly._ 
+- [Front-running Game Between Miners and Traders in Blockchain](https://github.com/ronming1303/Ruming-Liu-PDF-Document/blob/main/Front_running_Game_in_Blockchain.pdf): _We discussed the equlibrium model of a game in DPoS. We form a signalling game between the miners (validators) and traders (voters). We analyze some situations in which the DPoS blockchain may fail. We discuss in some situations, blockchain can work under the collaboration._
 - [The Thoughts on the Internationalization of Chinese RMB(EN)](https://github.com/ronming1303/Ruming-Liu-PDF-Document/blob/main/Toughts%20on%20the%20Internationalization%20of%20Chinese%20RMB%20%7C%20Ruming%20Liu.pdf): 
 _The dissertation of my Bachelor's Degree. It compares the development of RMB with other international currencies and forecasts the future of RMB from macro-economics and politics point of view._
 - [A Possible Way to Search Pairs Trading Arbitrage(EN)](https://github.com/ronming1303/Ruming-Liu-PDF-Document/blob/main/A%20Possible%20Way%20to%20Search%20Pairs%20Trading%20Arbitrage.pdf):
@@ -21,7 +23,6 @@ _Time Series and Econometrics course project. It applies cointegration method an
 - [Portfolio Demo](https://github.com/ronming1303/Ruming-crypotocurrency-demo): _Still developing the algorithm and system, only have demo now._
 - [Predator Project](https://github.com/ronming1303/Predator): _Decentralized Exchange Flash Loan Arbitrage Project._
 - [Tesla Sentiment Analysis](https://github.com/ronming1303/Ruming-Liu-PDF-Document/blob/main/tsla_sentiment_research.pdf):_On working._
-- [Cryptocurrency Market 4 Factors model](https://github.com/ronming1303/Crypto_Factors_Project): _Cryptocurrency market excess return can be extradinarily explianed by 4 main factors: CMKT, CMOM, CSMB & CSENT._ 
 - [S&P 500 Diversification](https://github.com/ronming1303/S-P500-diversification-project): _S&P 500 index is known as a good indicator of the whole market performance and usually are regarded as a well diversified portfolio. We use network approach to refine the portfolio so that we can use less components to achieve diversification._
 
 ### Articles
@@ -76,9 +77,9 @@ _Time Series and Econometrics course project. It applies cointegration method an
 - [Brief History of Fannie Mae, Freddie Mac and Ginnie Mae(CN)](https://zhuanlan.zhihu.com/p/80399531) 
 
 ## Professional Skills
-Here are some practical tools I use in my work and study life.
+Here are some practical tools I use in my work.
 
-Programming Languages: [Python](https://www.python.org), [Matlab](https://www.mathworks.com/products/matlab.html), [JavaScript](), [Solidity](https://docs.soliditylang.org/en/v0.8.11/), [Broniew Framework](https://eth-brownie.readthedocs.io/en/stable/)
+Programming Languages: [Python](https://www.python.org), [Matlab](https://www.mathworks.com/products/matlab.html), [Rust](https://www.rust-lang.org), [JavaScript](), [Solidity](https://docs.soliditylang.org/en/v0.8.11/), [Broniew Framework](https://eth-brownie.readthedocs.io/en/stable/)
 
 Statistical Softwares: [R](https://www.r-project.org), [SPSS](https://www.ibm.com/products/spss-statistics), [SAS](https://www.sas.com/en_us/home.html)
 
