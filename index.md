@@ -1,6 +1,6 @@
 ## About Me
 
-My name is Ruming Liu (刘入铭), I am currently a Finance Ph.D. student at Stevens Institute of Technology([SIT](https://www.stevens.edu)), my research intrests are Blockchain, Cryptocurrency and Fintech.([Resume](https://github.com/ronming1303/Ruming-Liu-PDF-Document/blob/main/Ruming%20Liu%20Resume_202401.pdf))
+My name is Ruming Liu (刘入铭), I am currently a Finance Ph.D. student at Stevens Institute of Technology([SIT](https://www.stevens.edu)), my research intrests are Blockchain, Cryptocurrency and Fintech.([Resume](https://github.com/ronming1303/Ruming-Liu-PDF-Document/blob/main/021924Ruming_Liu_Resume.pdf))
 
 Before SIT, I was a Financial Engineering Client Service Specialist at Moody's Analytics([MA](https://www.moodysanalytics.com)) in San Francisco. I supported some Credit Risk Products and Credit Rating data of Moody's: CreditEdge, RiskCalc, RiskFrontier and Moody's Investor Service(MIS) rating data. 
 
