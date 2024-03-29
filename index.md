@@ -45,7 +45,7 @@ _Time Series and Econometrics course project. It applies cointegration method an
 - [Binomial Tree Model[2](CN)](https://zhuanlan.zhihu.com/p/81267253)
 - [Binomial Tree Model[1](CN)](https://zhuanlan.zhihu.com/p/81228344)
 
-2. Corporate Finance Seminar Slides
+2. Corporate Finance Seminar Slides (EN)
 - [For Better or Worse? The Economic Implications of Paid Sick Leave Mandates](https://github.com/ronming1303/Ruming-Liu-PDF-Document/blob/main/Paid_Sick_Leave_Mandates_Review.pdf)
 - [Buy, Invent or Both?](https://github.com/ronming1303/Ruming-Liu-PDF-Document/blob/main/Buy__Invent_or_Both_.pdf)
 - [Does Social Media Reduce Corporate Misconduct?](https://github.com/ronming1303/Ruming-Liu-PDF-Document/blob/main/Does_Social_Media_Reduce_Misconduct_.pdf)
@@ -56,6 +56,7 @@ _Time Series and Econometrics course project. It applies cointegration method an
 - [Equilibrium Refinements in Game Theory(EN)](https://github.com/ronming1303/Ruming-Liu-PDF-Document/blob/main/GameTheoryNote.pdf)
 - [Repeated Game(EN)](https://github.com/ronming1303/Ruming-Liu-PDF-Document/blob/main/GameTheoryNote2.pdf)
 - [Front Running Game in blockchain(EN)](https://github.com/ronming1303/Ruming-Liu-PDF-Document/blob/main/Front_running_Game_in_Blockchain.pdf)
+- [A Sequential Signalling Model of Convertible Debt Call Policy(EN)](https://github.com/ronming1303/Ruming-Liu-PDF-Document/blob/main/A_Sequential_Signaling_Model_of_Convertible_Debt_Call_Policy.pdf)
 
 4. Probability and Statistics
 - [Probability Convergence Concepts(EN)](https://zhuanlan.zhihu.com/p/164667409)
@@ -69,6 +70,8 @@ _Time Series and Econometrics course project. It applies cointegration method an
 
 5. Dencentralized Finance / Financial Technology
 - [Blockchain Literature Review(EN)](https://github.com/ronming1303/Ruming-Liu-PDF-Document/blob/main/blockchain_review.pdf)
+- [Blockchain Litereture Review Slide(EN)](https://github.com/ronming1303/Ruming-Liu-PDF-Document/blob/main/critical_research.pdf)
+- [Sex Drugs and Bitcoin How Much Illegal Activity Is Financed through Cryptocurrencies(EN)](https://github.com/ronming1303/Ruming-Liu-PDF-Document/blob/main/Sex__Drugs__and_Bitcoin__How_Much_Illegal_Activity_Is_Financed_through_Cryptocurrencies.pdf)
 - [The Mechanics of Curve Leverage AMM(CN)](https://zhuanlan.zhihu.com/p/407655879)
 - [The Mechanics of Balancer Index Fund AMM(CN)](https://zhuanlan.zhihu.com/p/165444323)
 - [The Mechanics of Uniswap-V3 AMM(CN)](https://zhuanlan.zhihu.com/p/87243177)
