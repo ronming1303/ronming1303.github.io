@@ -12,8 +12,8 @@ During my undergraduate study, I attended some internship programs at China Inte
 I am quite interested in quantitaive investment, quantitative risk management and decentralized finance topics. I wrote some articles (Including Financial Mathematics, Statistics, Probability, Defi, Simulation, etc) during the past few years, some of them are wrote in Chinese and published on [Zhihu](https://www.zhihu.com/people/liu-ru-ming-8/posts), the rest are wrote in English and can be found in my [Github repository](https://github.com/ronming1303/Ruming-Liu-PDF-Document). I also did some academic projects during my University study. These projects and articles can also be found below. 
 
 ### Researches and Projects
-- [Sentiment in the Cross Section of Cryptocurrency Returns](https://github.com/ronming1303/Ruming-Liu-PDF-Document/blob/main/Sentiment_in_the_Cross_Section_of_Cryptocurrency_Returns.pdf): _We find an anomoly associated with the cryptocurrency market sentiment. Our findings indicate that cryptos with high sensitivities to sentiment tend to yield lower returns in the following period. We introduce a sentiment factor to explain the sentiment-related anomoly._ 
-- [Pricing and Arbitrage Across 80 Cryptocurrency Exchanges](https://github.com/ronming1303/Ruming-Liu-PDF-Document/blob/main/Pricing_and_Arbitrage_Across_80_Cryptocurrency_Exchanges.pdf): _We explore variations in cryptocurrency pricing across 80 cryptocurrency exchanges worldwide. Arbitrage spreads are higher in non-US domiciled exchanges, decentralized exchanges, non-trustworthy, and relatively illiquid exchanges. Stablecoins exhibit smaller arbitrage spreads than other tokens._
+- [Sentiment in the Cross Section of Cryptocurrency Returns(EN)](https://github.com/ronming1303/Ruming-Liu-PDF-Document/blob/main/Sentiment_in_the_Cross_Section_of_Cryptocurrency_Returns.pdf): _We find an anomoly associated with the cryptocurrency market sentiment. Our findings indicate that cryptos with high sensitivities to sentiment tend to yield lower returns in the following period. We introduce a sentiment factor to explain the sentiment-related anomoly._ 
+- [Pricing and Arbitrage Across 80 Cryptocurrency Exchanges(EN)](https://github.com/ronming1303/Ruming-Liu-PDF-Document/blob/main/Pricing_and_Arbitrage_Across_80_Cryptocurrency_Exchanges.pdf): _We explore variations in cryptocurrency pricing across 80 cryptocurrency exchanges worldwide. Arbitrage spreads are higher in non-US domiciled exchanges, decentralized exchanges, non-trustworthy, and relatively illiquid exchanges. Stablecoins exhibit smaller arbitrage spreads than other tokens._
 - [Front-running Game Between Miners and Traders in Blockchain](https://github.com/ronming1303/Ruming-Liu-PDF-Document/blob/main/Front_running_Game_in_Blockchain.pdf): _We discussed the equlibrium model of a game in DPoS. We form a signalling game between the miners (validators) and traders (voters). We analyze some situations in which the DPoS blockchain may fail. We discuss in some situations, blockchain can work under the collaboration._
 - [The Thoughts on the Internationalization of Chinese RMB(EN)](https://github.com/ronming1303/Ruming-Liu-PDF-Document/blob/main/Toughts%20on%20the%20Internationalization%20of%20Chinese%20RMB%20%7C%20Ruming%20Liu.pdf): 
 _The dissertation of my Bachelor's Degree. It compares the development of RMB with other international currencies and forecasts the future of RMB from macro-economics and politics point of view._
@@ -45,12 +45,12 @@ _Time Series and Econometrics course project. It applies cointegration method an
 - [Binomial Tree Model[2](CN)](https://zhuanlan.zhihu.com/p/81267253)
 - [Binomial Tree Model[1](CN)](https://zhuanlan.zhihu.com/p/81228344)
 
-2. Corporate Finance Seminar Slides (EN)
-- [For Better or Worse? The Economic Implications of Paid Sick Leave Mandates](https://github.com/ronming1303/Ruming-Liu-PDF-Document/blob/main/Paid_Sick_Leave_Mandates_Review.pdf)
-- [Buy, Invent or Both?](https://github.com/ronming1303/Ruming-Liu-PDF-Document/blob/main/Buy__Invent_or_Both_.pdf)
-- [Does Social Media Reduce Corporate Misconduct?](https://github.com/ronming1303/Ruming-Liu-PDF-Document/blob/main/Does_Social_Media_Reduce_Misconduct_.pdf)
-- [Owner Culture and Pay Inequality within Firms](https://github.com/ronming1303/Ruming-Liu-PDF-Document/blob/main/Owner_Culture_and_Pay_Inequality_within_Firms.pdf)
-- [The Ownership Structure of U.S. Corporations](https://github.com/ronming1303/Ruming-Liu-PDF-Document/blob/main/The_Ownership_Structure_of_U_S__corporations.pdf)
+2. Corporate Finance Seminar Slides
+- [For Better or Worse? The Economic Implications of Paid Sick Leave Mandates(EN)](https://github.com/ronming1303/Ruming-Liu-PDF-Document/blob/main/Paid_Sick_Leave_Mandates_Review.pdf)
+- [Buy, Invent or Both?(EN)](https://github.com/ronming1303/Ruming-Liu-PDF-Document/blob/main/Buy__Invent_or_Both_.pdf)
+- [Does Social Media Reduce Corporate Misconduct?(EN)](https://github.com/ronming1303/Ruming-Liu-PDF-Document/blob/main/Does_Social_Media_Reduce_Misconduct_.pdf)
+- [Owner Culture and Pay Inequality within Firms(EN)](https://github.com/ronming1303/Ruming-Liu-PDF-Document/blob/main/Owner_Culture_and_Pay_Inequality_within_Firms.pdf)
+- [The Ownership Structure of U.S. Corporations(EN)](https://github.com/ronming1303/Ruming-Liu-PDF-Document/blob/main/The_Ownership_Structure_of_U_S__corporations.pdf)
 
 3. Game Theory
 - [Equilibrium Refinements in Game Theory(EN)](https://github.com/ronming1303/Ruming-Liu-PDF-Document/blob/main/GameTheoryNote.pdf)
