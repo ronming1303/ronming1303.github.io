@@ -12,7 +12,7 @@ During my undergraduate study, I attended some internship programs at China Inte
 I am quite interested in quantitaive investment, quantitative risk management and decentralized finance topics. I wrote some articles (Including Financial Mathematics, Statistics, Probability, Defi, Simulation, etc) during the past few years, some of them are wrote in Chinese and published on [Zhihu](https://www.zhihu.com/people/liu-ru-ming-8/posts), the rest are wrote in English and can be found in my [Github repository](https://github.com/ronming1303/Ruming-Liu-PDF-Document). I also did some academic projects during my University study. These projects and articles can also be found below. 
 
 ### Researches and Projects
-- [Sentiment in the Cross Section of Cryptocurrency Returns(EN)](https://github.com/ronming1303/Ruming-Liu-PDF-Document/blob/main/Sentiment_in_the_Cross_Section_of_Cryptocurrency_Returns.pdf): _We find an anomoly associated with the cryptocurrency market sentiment. Our findings indicate that cryptos with high sensitivities to sentiment tend to yield lower returns in the following period. We introduce a sentiment factor to explain the sentiment-related anomoly._ 
+- [Sentiment in the Cross Section of Cryptocurrency Returns(EN)](https://papers.ssrn.com/sol3/papers.cfm?abstract_id=4941032): _We find an anomoly associated with the cryptocurrency market sentiment. Our findings indicate that cryptos with high sensitivities to sentiment tend to yield lower returns in the following period. We introduce a sentiment factor to explain the sentiment-related anomoly._ 
 
 1. Qualified for Best Paper Award at 2024 International Conference of Taiwan Finance Association \(declined by authors due to adherence to publication restrictions\)
 
@@ -24,10 +24,10 @@ _The dissertation of my Bachelor's Degree. It compares the development of RMB wi
 _Directed Research of my Master's program. It finds a new possible way to search stock pairs which exist arbitrage opportunity and uses dynamic programming method to make trading strategy._
 - [Cointegration Method of Statistical Arbitrage(EN)](https://github.com/ronming1303/Ruming-Liu-PDF-Document/blob/main/Cointegration%20Method%20of%20Pairs%20Trading.pdf):
 _Time Series and Econometrics course project. It applies cointegration method and ARMA-GARCH model to analyze spread in stock market, and forecasts the convergence situation of the spread._
-- [Portfolio Demo](https://github.com/ronming1303/Ruming-crypotocurrency-demo): _Still developing the algorithm and system, only have demo now._
+<!-- - [Portfolio Demo](https://github.com/ronming1303/Ruming-crypotocurrency-demo): _Still developing the algorithm and system, only have demo now._ -->
 - [Predator Project](https://github.com/ronming1303/Predator): _Decentralized Exchange Flash Loan Arbitrage Project._
-- [Tesla Sentiment Analysis](https://github.com/ronming1303/Ruming-Liu-PDF-Document/blob/main/tsla_sentiment_research.pdf): _On working._
-- [S&P 500 Diversification](https://github.com/ronming1303/S-P500-diversification-project): _S&P 500 index is known as a good indicator of the whole market performance and usually are regarded as a well diversified portfolio. We use network approach to refine the portfolio so that we can use less components to achieve diversification._
+<!-- - [Tesla Sentiment Analysis](https://github.com/ronming1303/Ruming-Liu-PDF-Document/blob/main/tsla_sentiment_research.pdf): _On working._
+- [S&P 500 Diversification](https://github.com/ronming1303/S-P500-diversification-project): _S&P 500 index is known as a good indicator of the whole market performance and usually are regarded as a well diversified portfolio. We use network approach to refine the portfolio so that we can use less components to achieve diversification._ -->
 
 ### Articles
 1. Financial Mathematics
