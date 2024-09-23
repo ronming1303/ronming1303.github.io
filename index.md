@@ -24,12 +24,8 @@ _The dissertation of my Bachelor's Degree. It compares the development of RMB wi
 _Directed Research of my Master's program. It finds a new possible way to search stock pairs which exist arbitrage opportunity and uses dynamic programming method to make trading strategy._
 - [Cointegration Method of Statistical Arbitrage(EN)](https://github.com/ronming1303/Ruming-Liu-PDF-Document/blob/main/Cointegration%20Method%20of%20Pairs%20Trading.pdf):
 _Time Series and Econometrics course project. It applies cointegration method and ARMA-GARCH model to analyze spread in stock market, and forecasts the convergence situation of the spread._
-<!-- - [Portfolio Demo](https://github.com/ronming1303/Ruming-crypotocurrency-demo): _Still developing the algorithm and system, only have demo now._ -->
 - [Predator Project](https://github.com/ronming1303/Predator): _Decentralized Exchange Flash Loan Arbitrage Project._
-<!-- - [Tesla Sentiment Analysis](https://github.com/ronming1303/Ruming-Liu-PDF-Document/blob/main/tsla_sentiment_research.pdf): _On working._
-- [S&P 500 Diversification](https://github.com/ronming1303/S-P500-diversification-project): _S&P 500 index is known as a good indicator of the whole market performance and usually are regarded as a well diversified portfolio. We use network approach to refine the portfolio so that we can use less components to achieve diversification._ -->
 
-### Articles
 1. Financial Mathematics
 - [Interest Rate Term Structure Notes(EN)](https://github.com/ronming1303/Ruming-Liu-PDF-Document/blob/main/interest%20rate%20term-structure.pdf)
 - [Short Rate Model(EN)](https://zhuanlan.zhihu.com/p/110055526)
