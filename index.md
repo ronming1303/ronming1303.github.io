@@ -1,6 +1,6 @@
 ## Ruming Liu
 
-My name is Ruming Liu (刘入铭), I am currently a Finance Ph.D. student at Stevens Institute of Technology([SIT](https://www.stevens.edu)), my research interests are Blockchain, Cryptocurrency and Fintech.([Resume](https://github.com/ronming1303/Ruming-Liu-PDF-Document/blob/main/021924Ruming_Liu_Resume.pdf))
+My name is Ruming Liu (刘入铭), I am currently a Finance Ph.D. candidate at Stevens Institute of Technology([SIT](https://www.stevens.edu)), my research interests are Blockchain, Cryptocurrency and Fintech.([Resume](https://github.com/ronming1303/Ruming-Liu-PDF-Document/blob/main/021924Ruming_Liu_Resume.pdf))
 
 Before SIT, I was a Financial Engineering Client Service Specialist at Moody's Analytics([MA](https://www.moodysanalytics.com)) in San Francisco. I supported some Credit Risk Products and Credit Rating data of Moody's: CreditEdge, RiskCalc, RiskFrontier and Moody's Investor Service(MIS) rating data. 
 
@@ -44,18 +44,20 @@ _Time Series and Econometrics course project. It applies cointegration method an
 - [Binomial Tree Model[2](CN)](https://zhuanlan.zhihu.com/p/81267253)
 - [Binomial Tree Model[1](CN)](https://zhuanlan.zhihu.com/p/81228344)
 
-2. Corporate Finance Seminar Slides
+2. Game Theory
+- [Glosten-Milgrom(1985) Bid Ask Spread](https://github.com/ronming1303/Ruming-Liu-PDF-Document/blob/main/Glosten_Milgrom_1985_.pdf)
+- [Equilibrium Refinements in Game Theory(EN)](https://github.com/ronming1303/Ruming-Liu-PDF-Document/blob/main/GameTheoryNote.pdf)
+- [Repeated Game(EN)](https://github.com/ronming1303/Ruming-Liu-PDF-Document/blob/main/GameTheoryNote2.pdf)
+- [Front Running Game in blockchain(EN)](https://github.com/ronming1303/Ruming-Liu-PDF-Document/blob/main/Front_running_Game_in_Blockchain.pdf)
+- [A Sequential Signalling Model of Convertible Debt Call Policy(EN)](https://github.com/ronming1303/Ruming-Liu-PDF-Document/blob/main/A_Sequential_Signaling_Model_of_Convertible_Debt_Call_Policy.pdf)
+
+3. Corporate Finance Seminar Slides
 - [For Better or Worse? The Economic Implications of Paid Sick Leave Mandates(EN)](https://github.com/ronming1303/Ruming-Liu-PDF-Document/blob/main/Paid_Sick_Leave_Mandates_Review.pdf)
 - [Buy, Invent or Both?(EN)](https://github.com/ronming1303/Ruming-Liu-PDF-Document/blob/main/Buy__Invent_or_Both_.pdf)
 - [Does Social Media Reduce Corporate Misconduct?(EN)](https://github.com/ronming1303/Ruming-Liu-PDF-Document/blob/main/Does_Social_Media_Reduce_Misconduct_.pdf)
 - [Owner Culture and Pay Inequality within Firms(EN)](https://github.com/ronming1303/Ruming-Liu-PDF-Document/blob/main/Owner_Culture_and_Pay_Inequality_within_Firms.pdf)
 - [The Ownership Structure of U.S. Corporations(EN)](https://github.com/ronming1303/Ruming-Liu-PDF-Document/blob/main/The_Ownership_Structure_of_U_S__corporations.pdf)
 
-3. Game Theory
-- [Equilibrium Refinements in Game Theory(EN)](https://github.com/ronming1303/Ruming-Liu-PDF-Document/blob/main/GameTheoryNote.pdf)
-- [Repeated Game(EN)](https://github.com/ronming1303/Ruming-Liu-PDF-Document/blob/main/GameTheoryNote2.pdf)
-- [Front Running Game in blockchain(EN)](https://github.com/ronming1303/Ruming-Liu-PDF-Document/blob/main/Front_running_Game_in_Blockchain.pdf)
-- [A Sequential Signalling Model of Convertible Debt Call Policy(EN)](https://github.com/ronming1303/Ruming-Liu-PDF-Document/blob/main/A_Sequential_Signaling_Model_of_Convertible_Debt_Call_Policy.pdf)
 
 4. Probability and Statistics
 - [Probability Convergence Concepts(EN)](https://zhuanlan.zhihu.com/p/164667409)
