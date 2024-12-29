@@ -45,7 +45,7 @@ _Time Series and Econometrics course project. It applies cointegration method an
 - [Binomial Tree Model[1](CN)](https://zhuanlan.zhihu.com/p/81228344)
 
 2. Game Theory
-- [Glosten-Milgrom(1985) Bid Ask Spread](https://github.com/ronming1303/Ruming-Liu-PDF-Document/blob/main/Glosten_Milgrom_1985_.pdf)
+- [Glosten-Milgrom(1985) Bid Ask Spread(EN)](https://github.com/ronming1303/Ruming-Liu-PDF-Document/blob/main/Glosten_Milgrom_1985_.pdf)
 - [Equilibrium Refinements in Game Theory(EN)](https://github.com/ronming1303/Ruming-Liu-PDF-Document/blob/main/GameTheoryNote.pdf)
 - [Repeated Game(EN)](https://github.com/ronming1303/Ruming-Liu-PDF-Document/blob/main/GameTheoryNote2.pdf)
 - [Front Running Game in blockchain(EN)](https://github.com/ronming1303/Ruming-Liu-PDF-Document/blob/main/Front_running_Game_in_Blockchain.pdf)
