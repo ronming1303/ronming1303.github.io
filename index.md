@@ -44,8 +44,9 @@ _Time Series and Econometrics course project. It applies cointegration method an
 - [Binomial Tree Model[2](CN)](https://zhuanlan.zhihu.com/p/81267253)
 - [Binomial Tree Model[1](CN)](https://zhuanlan.zhihu.com/p/81228344)
 
-2. Game Theory
-- [Grosman(1976) Rational Expectation Equilibrium Price(EN)](https://github.com/ronming1303/Ruming-Liu-PDF-Document/blob/main/Grossman_1976_.pdf)
+2. Game Theory and Equilibrium
+- [Hellwig(1980), Grossman-Stiglitz Paradox(1980), CARA-Gaussian Rational Expectation Equilibrium Price(EN)](Rational Expectation Equilibrium Price)
+- [Grossman(1976) Rational Expectation Equilibrium Price(EN)](https://github.com/ronming1303/Ruming-Liu-PDF-Document/blob/main/Grossman_1976_.pdf)
 - [Glosten-Milgrom(1985) Bid Ask Spread(EN)](https://github.com/ronming1303/Ruming-Liu-PDF-Document/blob/main/Glosten_Milgrom_1985_.pdf)
 - [Equilibrium Refinements in Game Theory(EN)](https://github.com/ronming1303/Ruming-Liu-PDF-Document/blob/main/GameTheoryNote.pdf)
 - [Repeated Game(EN)](https://github.com/ronming1303/Ruming-Liu-PDF-Document/blob/main/GameTheoryNote2.pdf)
