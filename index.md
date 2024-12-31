@@ -45,10 +45,11 @@ _Time Series and Econometrics course project. It applies cointegration method an
 - [Binomial Tree Model[1](CN)](https://zhuanlan.zhihu.com/p/81228344)
 
 2. Game Theory and Equilibrium
-- [Hellwig(1980), Grossman-Stiglitz Paradox(1980), CARA-Gaussian Rational Expectation Equilibrium Price(EN)](https://github.com/ronming1303/Ruming-Liu-PDF-Document/blob/main/Grossman_Stiglitz_1980_.pdf)
 - [Grossman(1976) Rational Expectation Equilibrium Price(EN)](https://github.com/ronming1303/Ruming-Liu-PDF-Document/blob/main/Grossman_1976_.pdf)
+- [Hellwig(1980), Grossman-Stiglitz Paradox(1980), CARA-Gaussian Rational Expectation Equilibrium Price(EN)](https://github.com/ronming1303/Ruming-Liu-PDF-Document/blob/main/Grossman_Stiglitz_1980_.pdf)
 - [Glosten-Milgrom(1985) Bid Ask Spread(EN)](https://github.com/ronming1303/Ruming-Liu-PDF-Document/blob/main/Glosten_Milgrom_1985_.pdf)
 - [Arrow-Debreu Security(1954)](https://github.com/ronming1303/Ruming-Liu-PDF-Document/blob/main/Arrow_Debreu_Market.pdf)
+- [Lucas Tree Model(1978)](https://github.com/ronming1303/Ruming-Liu-PDF-Document/blob/main/LucasAssetPrice.pdf)
 - [Equilibrium Refinements in Game Theory(EN)](https://github.com/ronming1303/Ruming-Liu-PDF-Document/blob/main/GameTheoryNote.pdf)
 - [Repeated Game(EN)](https://github.com/ronming1303/Ruming-Liu-PDF-Document/blob/main/GameTheoryNote2.pdf)
 - [Front Running Game in blockchain(EN)](https://github.com/ronming1303/Ruming-Liu-PDF-Document/blob/main/Front_running_Game_in_Blockchain.pdf)
