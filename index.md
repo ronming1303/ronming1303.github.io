@@ -27,6 +27,7 @@ _Time Series and Econometrics course project. It applies cointegration method an
 - [Predator Project](https://github.com/ronming1303/Predator): _Decentralized Exchange Flash Loan Arbitrage Project._
 
 1. Financial Mathematics
+- [Stochastic Discount Factor and Risk Neutral Measure(EN)](https://github.com/ronming1303/Ruming-Liu-PDF-Document/blob/main/Stochastic_Discount_Factor___Risk_Neutral_Measure.pdf)
 - [Interest Rate Term Structure Notes(EN)](https://github.com/ronming1303/Ruming-Liu-PDF-Document/blob/main/interest%20rate%20term-structure.pdf)
 - [Short Rate Model(EN)](https://zhuanlan.zhihu.com/p/110055526)
 - [Heath-Jarrow-Morton Framework(CN)](https://zhuanlan.zhihu.com/p/112844939)
