@@ -18,7 +18,7 @@ I am quite interested in quantitaive investment, quantitative risk management an
 
 - [Pricing and Arbitrage Across 80 Cryptocurrency Exchanges(EN)](https://papers.ssrn.com/sol3/papers.cfm?abstract_id=4816710#paper-references-widget): _We explore variations in cryptocurrency pricing across 80 cryptocurrency exchanges worldwide. Arbitrage spreads are higher in non-US domiciled exchanges, decentralized exchanges, non-trustworthy, and relatively illiquid exchanges. Stablecoins exhibit smaller arbitrage spreads than other tokens._
 
-1. [Paper Presentation Slide](https://github.com/ronming1303/Ruming-Liu-PDF-Document/blob/main/CryptoExchange_FMA2024.pdf)
+<!-- 1. [Paper Presentation Slide](https://github.com/ronming1303/Ruming-Liu-PDF-Document/blob/main/CryptoExchange_FMA2024.pdf) -->
 
 - [Front-running Game Between Miners and Traders in Blockchain(EN)](https://github.com/ronming1303/Ruming-Liu-PDF-Document/blob/main/Front_running_Game_in_Blockchain.pdf): _We discussed the equlibrium model of a game in DPoS. We form a signalling game between the miners (validators) and traders (voters). We analyze some situations in which the DPoS blockchain may fail. We discuss in some situations, blockchain can work under the collaboration._
 - [The Thoughts on the Internationalization of Chinese RMB(EN)](https://github.com/ronming1303/Ruming-Liu-PDF-Document/blob/main/Toughts%20on%20the%20Internationalization%20of%20Chinese%20RMB%20%7C%20Ruming%20Liu.pdf): 
@@ -30,6 +30,7 @@ _Time Series and Econometrics course project. It applies cointegration method an
 - [Predator Project](https://github.com/ronming1303/Predator): _Decentralized Exchange Flash Loan Arbitrage Project._
 
 1. Financial Mathematics
+- [Stochastic Discount Factor, CCAPM, CAPM, and Black Scholes PDE(EN)](https://github.com/ronming1303/Ruming-Liu-PDF-Document/blob/main/Link_of_Stochastic_Discount_Factor__Black_Scholes__CAPM_and_CCAPM.pdf)
 - [Stochastic Discount Factor and Risk Neutral Measure(EN)](https://github.com/ronming1303/Ruming-Liu-PDF-Document/blob/main/Stochastic_Discount_Factor___Risk_Neutral_Measure.pdf)
 - [Interest Rate Term Structure Notes(EN)](https://github.com/ronming1303/Ruming-Liu-PDF-Document/blob/main/interest%20rate%20term-structure.pdf)
 - [Short Rate Model(EN)](https://zhuanlan.zhihu.com/p/110055526)
