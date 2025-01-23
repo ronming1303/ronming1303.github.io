@@ -1,8 +1,8 @@
 ## Ruming Liu
 
-My name is Ruming Liu (刘入铭), I am currently a Finance Ph.D. candidate at Stevens Institute of Technology([SIT](https://www.stevens.edu)), my research interests are Blockchain, Cryptocurrency and Fintech.([Resume](https://github.com/ronming1303/Ruming-Liu-PDF-Document/blob/main/090124Ruming_Liu_Resume.pdf))
+My name is Ruming Liu (刘入铭), I am currently a Finance Ph.D. candidate at Stevens Institute of Technology([SIT](https://www.stevens.edu)), my research interests are Blockchain, Cryptocurrency and Fintech.([Resume](https://github.com/ronming1303/Ruming-Liu-PDF-Document/blob/main/090124Ruming_Liu_Resume.pdf)). I'm also a co-founder of social media [ideaGround LLC](https://ideaground.github.io), we are actively hiring talented blockchain scientists and seeking pre-seed and seed round funding. If you're interested in joining our team or supporting our vision, please don’t hesitate to get in touch!
 
-Before SIT, I was a Financial Engineering Client Service Specialist at Moody's Analytics([MA](https://www.moodysanalytics.com)) in San Francisco. I supported some Credit Risk Products and Credit Rating data of Moody's: CreditEdge, RiskCalc, RiskFrontier and Moody's Investor Service(MIS) rating data. 
+Previously, I was a Financial Engineering Client Service Specialist at Moody's Analytics([MA](https://www.moodysanalytics.com)) in San Francisco. I supported some Credit Risk Products and Credit Rating data of Moody's: CreditEdge, RiskCalc, RiskFrontier and Moody's Investor Service(MIS) rating data. 
 
 I got my Master's degree of Mathematical Finance at University of Southern California([USC](https://www.usc.edu)) in 2021 in the United States and got my Bachelor's degree of Finance at Jiangxi University of Finance and Economics([JUFE](http://english.jxufe.edu.cn)) in 2019 in China. I also attended the Extension Program of Statistics at University of California, San Diego([UCSD](https://ucsd.edu)) in 2018 in the United States.
 
@@ -19,7 +19,7 @@ I am quite interested in quantitaive investment, quantitative risk management an
 - [Pricing and Arbitrage Across 80 Cryptocurrency Exchanges(EN)](https://papers.ssrn.com/sol3/papers.cfm?abstract_id=4816710#paper-references-widget): _We explore variations in cryptocurrency pricing across 80 cryptocurrency exchanges worldwide. Arbitrage spreads are higher in non-US domiciled exchanges, decentralized exchanges, non-trustworthy, and relatively illiquid exchanges. Stablecoins exhibit smaller arbitrage spreads than other tokens._
 
 <!-- 1. [Paper Presentation Slide](https://github.com/ronming1303/Ruming-Liu-PDF-Document/blob/main/CryptoExchange_FMA2024.pdf) -->
-
+- [IdeaGround Social Media Economics(EN)](https://papers.ssrn.com/sol3/papers.cfm?abstract_id=4900702): _White paper of ideaGround LLC. We introduce the next generation of social media ecosystem._
 - [Front-running Game Between Miners and Traders in Blockchain(EN)](https://github.com/ronming1303/Ruming-Liu-PDF-Document/blob/main/Front_running_Game_in_Blockchain.pdf): _We discussed the equlibrium model of a game in DPoS. We form a signalling game between the miners (validators) and traders (voters). We analyze some situations in which the DPoS blockchain may fail. We discuss in some situations, blockchain can work under the collaboration._
 - [The Thoughts on the Internationalization of Chinese RMB(EN)](https://github.com/ronming1303/Ruming-Liu-PDF-Document/blob/main/Toughts%20on%20the%20Internationalization%20of%20Chinese%20RMB%20%7C%20Ruming%20Liu.pdf): 
 _The dissertation of my Bachelor's Degree. It compares the development of RMB with other international currencies and forecasts the future of RMB from macro-economics and politics point of view._
