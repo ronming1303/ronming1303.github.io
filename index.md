@@ -13,11 +13,8 @@ I am quite interested in quantitaive investment, quantitative risk management an
 
 ### Researches and Projects
 - [Sentiment in the Cross Section of Cryptocurrency Returns(EN)](https://papers.ssrn.com/sol3/papers.cfm?abstract_id=4941032): _We find an anomoly associated with the cryptocurrency market sentiment. Our findings indicate that cryptos with high sensitivities to sentiment tend to yield lower returns in the following period. We introduce a sentiment factor to explain the sentiment-related anomoly._ 
-
 1. Qualified for Best Paper Award at 2024 International Conference of Taiwan Finance Association \(declined by authors due to adherence to publication restrictions\)
-
 - [Pricing and Arbitrage Across 80 Cryptocurrency Exchanges(EN)](https://papers.ssrn.com/sol3/papers.cfm?abstract_id=4816710#paper-references-widget): _We explore variations in cryptocurrency pricing across 80 cryptocurrency exchanges worldwide. Arbitrage spreads are higher in non-US domiciled exchanges, decentralized exchanges, non-trustworthy, and relatively illiquid exchanges. Stablecoins exhibit smaller arbitrage spreads than other tokens._
-
 <!-- 1. [Paper Presentation Slide](https://github.com/ronming1303/Ruming-Liu-PDF-Document/blob/main/CryptoExchange_FMA2024.pdf) -->
 - [IdeaGround Social Media Economics(EN)](https://papers.ssrn.com/sol3/papers.cfm?abstract_id=4900702): _White paper of ideaGround LLC. We introduce the next generation of social media ecosystem._
 - [Front-running Game Between Miners and Traders in Blockchain(EN)](https://github.com/ronming1303/Ruming-Liu-PDF-Document/blob/main/Front_running_Game_in_Blockchain.pdf): _We discussed the equlibrium model of a game in DPoS. We form a signalling game between the miners (validators) and traders (voters). We analyze some situations in which the DPoS blockchain may fail. We discuss in some situations, blockchain can work under the collaboration._
