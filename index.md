@@ -28,6 +28,7 @@ _Time Series and Econometrics course project. It applies cointegration method an
 
 1. Financial Mathematics
 - [Stochastic Discount Factor, CCAPM, CAPM, and Black Scholes PDE(EN)](https://github.com/ronming1303/Ruming-Liu-PDF-Document/blob/main/Link_of_Stochastic_Discount_Factor__Black_Scholes__CAPM_and_CCAPM.pdf)
+- [Investment Based CAPM: q-Factor Model(EN)](https://github.com/ronming1303/Ruming-Liu-PDF-Document/blob/main/Investment_based_CAPM__q_Factor_Model.pdf)
 - [Arbitrage Pricing Theory, and Multi-Factor Models(EN)](https://github.com/ronming1303/Ruming-Liu-PDF-Document/blob/main/Arbitrage_Pricing_Theory_and_Muti_Factor_Model.pdf)
 - [Linear Stochastic Discount Factor, and Factor Models(EN)](https://github.com/ronming1303/Ruming-Liu-PDF-Document/blob/main/Factor_Model_and_Linear_Stochastic_Discount_Factor.pdf)
 - [Stochastic Discount Factor and Risk Neutral Measure(EN)](https://github.com/ronming1303/Ruming-Liu-PDF-Document/blob/main/Stochastic_Discount_Factor___Risk_Neutral_Measure.pdf)
