@@ -1,4 +1,4 @@
-## Ruming Liu
+## About Me
 
 My name is Ruming Liu (刘入铭), I am currently a Finance Ph.D. candidate at Stevens Institute of Technology ([SIT](https://www.stevens.edu)), my research interests are Blockchain, Cryptocurrency and Fintech ([Resume](https://github.com/ronming1303/Ruming-Liu-PDF-Document/blob/main/090124Ruming_Liu_Resume.pdf)). I'm also a co-founder of social media [ideaGround LLC](https://ideaground.github.io), we are actively hiring talented blockchain scientists and seeking pre-seed and seed round funding. If you're interested in joining our team or supporting our vision, please don’t hesitate to get in touch!
 
