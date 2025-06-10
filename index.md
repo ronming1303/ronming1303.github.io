@@ -13,7 +13,6 @@ I am quite interested in quantitaive investment, quantitative risk management an
 
 ## Research Papers
 - [Sentiment in the Cross Section of Cryptocurrency Returns(EN)](https://papers.ssrn.com/sol3/papers.cfm?abstract_id=4941032)
-
 _We find an anomoly associated with the cryptocurrency market sentiment. Our findings indicate that cryptos with high sensitivities to sentiment tend to yield lower returns in the following period. We introduce a sentiment factor to explain the sentiment-related anomoly._ [<span style="color: red"><u>Keynote Here</u></span>](https://github.com/ronming1303/Ruming-Liu-PDF-Document/blob/main/CryptoSentiment_FMA2024.pdf)
 <!-- 1. Qualified for Best Paper Award at 2024 International Conference of Taiwan Finance Association \(declined by authors due to adherence to publication restrictions\) -->
 - [Pricing and Arbitrage Across 80 Cryptocurrency Exchanges(EN)](https://papers.ssrn.com/sol3/papers.cfm?abstract_id=4816710#paper-references-widget)
