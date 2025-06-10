@@ -8,10 +8,10 @@ I earned my Master's degree of Mathematical Finance at University of Southern Ca
 
 During my undergraduate study, I attended some internship programs at China International Capital Corporation ([CICC](https://en.cicc.com)) as Derivative Analyst, China Merchant Bank ([CMB](https://english.cmbchina.com)) as Financial Data Analyst, China International Trust and Investment Corporation ([CITIC](https://www.citic.com/en/#Businesses)) as Stock Trading Assistant. 
  
-## Projects and Articles
-I am quite interested in quantitaive investment, quantitative risk management and decentralized finance topics. I wrote some articles (Including Financial Mathematics, Statistics, Probability, Defi, Simulation, etc) during the past few years, some of them are wrote in Chinese and published on [Zhihu](https://www.zhihu.com/people/liu-ru-ming-8/posts), the rest are wrote in English and can be found in my [Github repository](https://github.com/ronming1303/Ruming-Liu-PDF-Document). I also did some academic projects during my University study. These projects and articles can also be found below. 
+<!-- ## Projects and Articles
+I am quite interested in quantitaive investment, quantitative risk management and decentralized finance topics. I wrote some articles (Including Financial Mathematics, Statistics, Probability, Defi, Simulation, etc) during the past few years, some of them are wrote in Chinese and published on [Zhihu](https://www.zhihu.com/people/liu-ru-ming-8/posts), the rest are wrote in English and can be found in my [Github repository](https://github.com/ronming1303/Ruming-Liu-PDF-Document). I also did some academic projects during my University study. These projects and articles can also be found below.  -->
 
-### Researches and Projects
+## Research Papers
 - [Sentiment in the Cross Section of Cryptocurrency Returns(EN)](https://papers.ssrn.com/sol3/papers.cfm?abstract_id=4941032)
 
 _We find an anomoly associated with the cryptocurrency market sentiment. Our findings indicate that cryptos with high sensitivities to sentiment tend to yield lower returns in the following period. We introduce a sentiment factor to explain the sentiment-related anomoly._ [<span style="color: red"><u>Keynote Here</u></span>](https://github.com/ronming1303/Ruming-Liu-PDF-Document/blob/main/CryptoSentiment_FMA2024.pdf)
@@ -25,7 +25,8 @@ _We find an anomoly associated with the cryptocurrency market sentiment. Our fin
 - [IdeaGround Social Media Economics(EN)](https://papers.ssrn.com/sol3/papers.cfm?abstract_id=4900702)
 
  _White paper of ideaGround LLC. We introduce the next generation of social media ecosystem based on a novel distribution system named social media economics._ [<span style="color: red"><u>Keynote Here</u></span>](https://github.com/ronming1303/Ruming-Liu-PDF-Document/blob/main/ideaGround%20Slide.pdf)
- 
+
+## Projects
 - [Front-running Game Between Miners and Traders in Blockchain(EN)](https://github.com/ronming1303/Ruming-Liu-PDF-Document/blob/main/Front_running_Game_in_Blockchain.pdf): _We discussed the equlibrium model of a game in DPoS. We form a signalling game between the miners (validators) and traders (voters). We analyze some situations in which the DPoS blockchain may fail. We discuss in some situations, blockchain can work under the collaboration._
 - [The Thoughts on the Internationalization of Chinese RMB(EN)](https://github.com/ronming1303/Ruming-Liu-PDF-Document/blob/main/Toughts%20on%20the%20Internationalization%20of%20Chinese%20RMB%20%7C%20Ruming%20Liu.pdf): 
 _The dissertation of my Bachelor's Degree. It compares the development of RMB with other international currencies and forecasts the future of RMB from macro-economics and politics point of view._
@@ -35,6 +36,7 @@ _Directed Research of my Master's program. It finds a new possible way to search
 _Time Series and Econometrics course project. It applies cointegration method and ARMA-GARCH model to analyze spread in stock market, and forecasts the convergence situation of the spread._
 - [Predator Project](https://github.com/ronming1303/Predator): _Decentralized Exchange Flash Loan Arbitrage Project._
 
+## Technical Notes
 1. Financial Mathematics
 - [Stochastic Discount Factor, CCAPM, CAPM, and Black Scholes PDE(EN)](https://github.com/ronming1303/Ruming-Liu-PDF-Document/blob/main/Link_of_Stochastic_Discount_Factor__Black_Scholes__CAPM_and_CCAPM.pdf)
 - [Barra Pure Factor Portfolio(EN)](https://github.com/ronming1303/Ruming-Liu-PDF-Document/blob/main/Barra_Pure_Factor_Portfolio.pdf)
