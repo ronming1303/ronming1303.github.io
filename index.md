@@ -12,18 +12,15 @@ During my undergraduate study, I attended some internship programs at China Inte
 I am quite interested in quantitaive investment, quantitative risk management and decentralized finance topics. I wrote some articles (Including Financial Mathematics, Statistics, Probability, Defi, Simulation, etc) during the past few years, some of them are wrote in Chinese and published on [Zhihu](https://www.zhihu.com/people/liu-ru-ming-8/posts), the rest are wrote in English and can be found in my [Github repository](https://github.com/ronming1303/Ruming-Liu-PDF-Document). I also did some academic projects during my University study. These projects and articles can also be found below.  -->
 
 ## Research Papers
-- [Sentiment in the Cross Section of Cryptocurrency Returns(EN)](https://papers.ssrn.com/sol3/papers.cfm?abstract_id=4941032)
-_We find an anomoly associated with the cryptocurrency market sentiment. Our findings indicate that cryptos with high sensitivities to sentiment tend to yield lower returns in the following period. We introduce a sentiment factor to explain the sentiment-related anomoly._ [<span style="color: red"><u>Keynote Here</u></span>](https://github.com/ronming1303/Ruming-Liu-PDF-Document/blob/main/CryptoSentiment_FMA2024.pdf)
+1. [Sentiment in the Cross Section of Cryptocurrency Returns(EN)](https://papers.ssrn.com/sol3/papers.cfm?abstract_id=4941032)
+- _We find an anomoly associated with the cryptocurrency market sentiment. Our findings indicate that cryptos with high sensitivities to sentiment tend to yield lower returns in the following period. We introduce a sentiment factor to explain the sentiment-related anomoly._ [<span style="color: red"><u>Keynote Here</u></span>](https://github.com/ronming1303/Ruming-Liu-PDF-Document/blob/main/CryptoSentiment_FMA2024.pdf)
 <!-- 1. Qualified for Best Paper Award at 2024 International Conference of Taiwan Finance Association \(declined by authors due to adherence to publication restrictions\) -->
-- [Pricing and Arbitrage Across 80 Cryptocurrency Exchanges(EN)](https://papers.ssrn.com/sol3/papers.cfm?abstract_id=4816710#paper-references-widget)
-
- _We explore variations in cryptocurrency pricing across 80 cryptocurrency exchanges worldwide. Arbitrage spreads are higher in non-US domiciled exchanges, decentralized exchanges, non-trustworthy, and relatively illiquid exchanges. Stablecoins exhibit smaller arbitrage spreads than other tokens._ [<span style="color: red"><u>Keynote Here</u></span>](https://github.com/ronming1303/Ruming-Liu-PDF-Document/blob/main/CryptoExchangeArbitrage.pdf)
-- [Manipuation and Spoofing in Bitcoin Order Book(EN)]()
-
- _We find that order book imbalances significantly increase Bitcoin returns at minute and hourly levels. We introduce an innovative methodology for measuring the intensity of spoofing activities._ [<span style="color: red"><u>Keynote Here</u></span>](https://github.com/ronming1303/Ruming-Liu-PDF-Document/blob/main/CryptoSpoofing_slide.pdf)
-- [IdeaGround Social Media Economics(EN)](https://papers.ssrn.com/sol3/papers.cfm?abstract_id=4900702)
-
- _White paper of ideaGround LLC. We introduce the next generation of social media ecosystem based on a novel distribution system named social media economics._ [<span style="color: red"><u>Keynote Here</u></span>](https://github.com/ronming1303/Ruming-Liu-PDF-Document/blob/main/ideaGround%20Slide.pdf)
+2. [Pricing and Arbitrage Across 80 Cryptocurrency Exchanges(EN)](https://papers.ssrn.com/sol3/papers.cfm?abstract_id=4816710#paper-references-widget)
+- _We explore variations in cryptocurrency pricing across 80 cryptocurrency exchanges worldwide. Arbitrage spreads are higher in non-US domiciled exchanges, decentralized exchanges, non-trustworthy, and relatively illiquid exchanges. Stablecoins exhibit smaller arbitrage spreads than other tokens._ [<span style="color: red"><u>Keynote Here</u></span>](https://github.com/ronming1303/Ruming-Liu-PDF-Document/blob/main/CryptoExchangeArbitrage.pdf)
+3. [Manipuation and Spoofing in Bitcoin Order Book(EN)]()
+-_We find that order book imbalances significantly increase Bitcoin returns at minute and hourly levels. We introduce an innovative methodology for measuring the intensity of spoofing activities._ [<span style="color: red"><u>Keynote Here</u></span>](https://github.com/ronming1303/Ruming-Liu-PDF-Document/blob/main/CryptoSpoofing_slide.pdf)
+4. [IdeaGround Social Media Economics(EN)](https://papers.ssrn.com/sol3/papers.cfm?abstract_id=4900702)
+- _White paper of ideaGround LLC. We introduce the next generation of social media ecosystem based on a novel distribution system named social media economics._ [<span style="color: red"><u>Keynote Here</u></span>](https://github.com/ronming1303/Ruming-Liu-PDF-Document/blob/main/ideaGround%20Slide.pdf)
 
 ## Projects
 - [Front-running Game Between Miners and Traders in Blockchain(EN)](https://github.com/ronming1303/Ruming-Liu-PDF-Document/blob/main/Front_running_Game_in_Blockchain.pdf): _We discussed the equlibrium model of a game in DPoS. We form a signalling game between the miners (validators) and traders (voters). We analyze some situations in which the DPoS blockchain may fail. We discuss in some situations, blockchain can work under the collaboration._
