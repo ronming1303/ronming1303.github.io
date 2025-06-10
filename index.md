@@ -26,7 +26,7 @@ I am quite interested in quantitaive investment, quantitative risk management an
 
 ## Projects
 - [Bitcoin Technical Analysis by Convolutional Neural Network(EN)](https://github.com/ronming1303/Dacheng-Xiu-CNN): _I consider using convolution neural network for technical analysis in Bitcoin candlesticks pattern. I explore several structures of CNN, including a custom 5-layer CNN, VGG-based networks, and ResNet. Comparative experiments are conducted to evaluate the performance of each architecture in capturing relevant visual features and supporting predictive analysis in a volatile financial context._
-- [Autoencoder Asset Pricing(EN)](): _Replicate of Gu, S., Kelly, B. and Xiu, D., 2021. Autoencoder asset pricing models. Journal of Econometrics, 222(1), pp.429-450._
+- [Autoencoder Asset Pricing(EN)](): _Replication of Gu, S., Kelly, B. and Xiu, D., 2021. Autoencoder asset pricing models. Journal of Econometrics, 222(1), pp.429-450._
 - [Front-running Game Between Miners and Traders in Blockchain(EN)](https://github.com/ronming1303/Ruming-Liu-PDF-Document/blob/main/Front_running_Game_in_Blockchain.pdf): _I discuss the equlibrium model of a game in DPoS. I form a signalling game between the miners (validators) and traders (voters). I analyze some situations in which the DPoS blockchain may fail. But in some situations, blockchain can work under the collaboration._
 - [The Thoughts on the Internationalization of Chinese RMB(EN)](https://github.com/ronming1303/Ruming-Liu-PDF-Document/blob/main/Toughts%20on%20the%20Internationalization%20of%20Chinese%20RMB%20%7C%20Ruming%20Liu.pdf): 
 _The dissertation of my Bachelor's Degree. It compares the development of RMB with other international currencies and forecasts the future of RMB from macro-economics and politics point of view._
@@ -114,7 +114,7 @@ _Time Series and Econometrics course project. It applies cointegration method an
 ## Professional Skills
 Here are some practical tools I use in my work.
 
-Programming Languages: [Python](https://www.python.org), [Matlab](https://www.mathworks.com/products/matlab.html), [Rust](https://www.rust-lang.org), [JavaScript](), [Solidity](https://docs.soliditylang.org/en/v0.8.11/), [Broniew Framework](https://eth-brownie.readthedocs.io/en/stable/)
+Programming Languages: [Python](https://www.python.org), [Matlab](https://www.mathworks.com/products/matlab.html), [Rust](https://www.rust-lang.org), [JavaScript](), [Solidity](https://docs.soliditylang.org/en/v0.8.11/), [Broniew Framework](https://eth-brownie.readthedocs.io/en/stable/), [LangGraph Framework](https://www.langchain.com/?_gl=1*sqj3de*_gcl_au*MTUwNTQ5NTE2OC4xNzQ4OTE0OTE0*_ga*MjYyMjY2MTU3LjE3NDkzNDg1MDE.*_ga_47WX3HKKY2*czE3NDk1NzMyMzYkbzIkZzAkdDE3NDk1NzMyMzYkajYwJGwwJGgw)
 
 Statistical Softwares: [R](https://www.r-project.org), [SPSS](https://www.ibm.com/products/spss-statistics), [SAS](https://www.sas.com/en_us/home.html)
 
