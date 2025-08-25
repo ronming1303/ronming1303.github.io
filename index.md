@@ -1,6 +1,6 @@
 ## About Me
 
-My name is Ruming Liu (刘入铭), I am currently a Finance Ph.D. candidate at Stevens Institute of Technology ([SIT](https://www.stevens.edu)), my research interests are Blockchain, Cryptocurrency and Fintech ([Resume](https://github.com/ronming1303/Ruming-Liu-PDF-Document/blob/main/050125Ruming_Liu_Resume.pdf)). I'm also a co-founder of social media [ideaGround LLC](https://ideaground.github.io), we are actively hiring talented blockchain scientists and seeking pre-seed and seed round funding. If you're interested in joining our team or supporting our vision, please don’t hesitate to get in touch!
+My name is Ruming Liu (刘入铭), I am currently a Finance Ph.D. candidate at Stevens Institute of Technology ([SIT](https://www.stevens.edu)), my research interests are Blockchain, Cryptocurrency and Fintech ([Resume](https://github.com/ronming1303/Ruming-Liu-PDF-Document/blob/main/050125Ruming_Liu_Resume.pdf)). I'm also a co-founder of social media [ideaGround LLC](https://ideaground.wixstudio.com/ideaground), we are actively hiring talented blockchain scientists and seeking pre-seed and seed round funding. If you're interested in joining our team or supporting our vision, please don’t hesitate to get in touch!
 
 Previously, I was a Financial Engineering Client Service Specialist at Moody's Analytics ([MA](https://www.moodysanalytics.com)) in San Francisco. I supported some credit risk products and credit rating data of Moody's: CreditEdge, RiskCalc, RiskFrontier and Moody's Investor Service(MIS) rating data. 
 
@@ -22,7 +22,7 @@ I am quite interested in quantitaive investment, quantitative risk management an
 - _We find that order book imbalances significantly increase Bitcoin returns at minute and hourly levels. We introduce an innovative methodology for measuring the intensity of spoofing activities._ [<span style="color: red"><u>Keynote Here</u></span>](https://github.com/ronming1303/Ruming-Liu-PDF-Document/blob/main/CryptoSpoofing_slide.pdf)
 
 4. [IdeaGround Social Media Economics(EN)](https://papers.ssrn.com/sol3/papers.cfm?abstract_id=4900702)
-- _White paper of ideaGround LLC. We introduce the next generation of social media ecosystem based on a novel distribution system named social media economics._ [<span style="color: red"><u>Keynote Here</u></span>](https://github.com/ronming1303/Ruming-Liu-PDF-Document/blob/main/ideaGround%20Slide.pdf)
+- _White paper of ideaGround LLC. We introduce the next generation of social media ecosystem based on a novel distribution system named social media economics._ [<span style="color: red"><u>Keynote Here</u></span>](https://88b92f64-9b73-427f-9836-d3ea3e5bdf52.filesusr.com/ugd/733898_4131197b01064dc5b0e9523185cd9b41.pdf)
 
 ## Projects
 - [Bitcoin Technical Analysis by Convolutional Neural Network(EN)](https://github.com/ronming1303/Dacheng-Xiu-CNN): _I consider using convolution neural network for technical analysis in Bitcoin candlesticks pattern. I explore several structures of CNN, including a custom 5-layer CNN, VGG-based networks, and ResNet. Comparative experiments are conducted to evaluate the performance of each architecture in capturing relevant visual features and supporting predictive analysis in a volatile financial context._
