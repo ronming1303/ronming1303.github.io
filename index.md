@@ -1,6 +1,7 @@
 ## About Me
 
-My name is Ruming Liu (刘入铭), I am currently a Finance Ph.D. candidate at Stevens Institute of Technology ([SIT](https://www.stevens.edu)), my research interests are Blockchain, Cryptocurrency and Fintech ([Resume](https://github.com/ronming1303/Ruming-Liu-PDF-Document/blob/main/050125Ruming_Liu_Resume.pdf)). I'm also a co-founder of social media [ideaGround LLC](https://ideaground.wixstudio.com/ideaground), we are actively hiring talented blockchain scientists and seeking pre-seed and seed round funding. If you're interested in joining our team or supporting our vision, please don’t hesitate to get in touch!
+My name is Ruming Liu (刘入铭), I am currently a Finance Ph.D. candidate at Stevens Institute of Technology ([SIT](https://www.stevens.edu)), my research interests are Blockchain, Cryptocurrency and Fintech ([Resume](https://github.com/ronming1303/Ruming-Liu-PDF-Document/blob/main/050125Ruming_Liu_Resume.pdf)). I am very fortunate to be advised by Prof. [Jingrui Li](https://sites.google.com/view/jvictoriali/home).
+I'm also a co-founder of social media [ideaGround LLC](https://ideaground.wixstudio.com/ideaground), we are actively hiring talented blockchain scientists and seeking pre-seed and seed round funding. If you're interested in joining our team or supporting our vision, please don’t hesitate to get in touch!
 
 Previously, I was a Financial Engineering Client Service Specialist at Moody's Analytics ([MA](https://www.moodysanalytics.com)) in San Francisco. I supported some credit risk products and credit rating data of Moody's: CreditEdge, RiskCalc, RiskFrontier and Moody's Investor Service(MIS) rating data. 
 
@@ -18,7 +19,7 @@ I am quite interested in quantitaive investment, quantitative risk management an
 2. [Pricing and Arbitrage Across 80 Cryptocurrency Exchanges(EN)](https://papers.ssrn.com/sol3/papers.cfm?abstract_id=4816710#paper-references-widget)
 - _We explore variations in cryptocurrency pricing across 80 cryptocurrency exchanges worldwide. Arbitrage spreads are higher in non-US domiciled exchanges, decentralized exchanges, non-trustworthy, and relatively illiquid exchanges. Stablecoins exhibit smaller arbitrage spreads than other tokens._ [<span style="color: red"><u>Keynote Here</u></span>](https://github.com/ronming1303/Ruming-Liu-PDF-Document/blob/main/CryptoExchangeArbitrage.pdf)
 
-3. [Manipuation and Spoofing in Bitcoin Order Book(EN)]()
+3. [Manipuation and Spoofing in Bitcoin Order Book(EN)](https://papers.ssrn.com/sol3/papers.cfm?abstract_id=5771502)
 - _We find that order book imbalances significantly increase Bitcoin returns at minute and hourly levels. We introduce an innovative methodology for measuring the intensity of spoofing activities._ [<span style="color: red"><u>Keynote Here</u></span>](https://github.com/ronming1303/Ruming-Liu-PDF-Document/blob/main/CryptoSpoofing_slide.pdf)
 
 4. [IdeaGround Social Media Economics(EN)](https://papers.ssrn.com/sol3/papers.cfm?abstract_id=4900702)
@@ -26,7 +27,7 @@ I am quite interested in quantitaive investment, quantitative risk management an
 
 ## Projects
 - [Bitcoin Technical Analysis by Convolutional Neural Network(EN)](https://github.com/ronming1303/Dacheng-Xiu-CNN): _I consider using convolution neural network for technical analysis in Bitcoin candlesticks pattern. I explore several structures of CNN, including a custom 5-layer CNN, VGG-based networks, and ResNet. Comparative experiments are conducted to evaluate the performance of each architecture in capturing relevant visual features and supporting predictive analysis in a volatile financial context._
-- [Autoencoder Asset Pricing(EN)](): _Replication of Gu, S., Kelly, B. and Xiu, D., 2021. Autoencoder asset pricing models. Journal of Econometrics, 222(1), pp.429-450._
+- [Autoencoder Asset Pricing(EN)](https://github.com/ronming1303/LLM/commit/a8512c8af2853cbf6c4a336dd40471a15fbb1149): _Replication of Gu, S., Kelly, B. and Xiu, D., 2021. Autoencoder asset pricing models. Journal of Econometrics, 222(1), pp.429-450._
 - [Front-running Game Between Miners and Traders in Blockchain(EN)](https://github.com/ronming1303/Ruming-Liu-PDF-Document/blob/main/Front_running_Game_in_Blockchain.pdf): _I discuss the equlibrium model of a game in DPoS. I form a signalling game between the miners (validators) and traders (voters). I analyze some situations in which the DPoS blockchain may fail. But in some situations, blockchain can work under the collaboration._
 - [The Thoughts on the Internationalization of Chinese RMB(EN)](https://github.com/ronming1303/Ruming-Liu-PDF-Document/blob/main/Toughts%20on%20the%20Internationalization%20of%20Chinese%20RMB%20%7C%20Ruming%20Liu.pdf): 
 _The dissertation of my Bachelor's Degree. It compares the development of RMB with other international currencies and forecasts the future of RMB from macro-economics and politics point of view._
