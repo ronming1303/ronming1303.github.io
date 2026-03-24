@@ -1,9 +1,9 @@
 ## About Me
 
 My name is Ruming Liu (刘入铭), I am currently a Finance Ph.D. candidate at Stevens Institute of Technology ([SIT](https://www.stevens.edu)), my research interests are Blockchain, Cryptocurrency and Fintech ([Resume](https://github.com/ronming1303/Ruming-Liu-PDF-Document/blob/main/050125Ruming_Liu_Resume.pdf)). I am very fortunate to be advised by Prof. [Jingrui Li](https://sites.google.com/view/jvictoriali/home).
-I'm also a co-founder of social media [ideaGround LLC](https://ideaground.wixstudio.com/ideaground), we are actively hiring talented blockchain scientists and seeking pre-seed and seed round funding. If you're interested in joining our team or supporting our vision, please don’t hesitate to get in touch!
+I'm also a co-founder of social media [ideaGround LLC](https://ideaground.net), we are actively hiring talented blockchain scientists and seeking pre-seed and seed round funding. If you're interested in joining our team or supporting our vision, please don’t hesitate to get in touch!
 
-Previously, I was a Financial Engineering Client Service Specialist at Moody's Analytics ([MA](https://www.moodysanalytics.com)) in San Francisco. I supported some credit risk products and credit rating data of Moody's: CreditEdge, RiskCalc, RiskFrontier and Moody's Investor Service(MIS) rating data. 
+Previously, I was a Financial Engineering Client Service Specialist at Moody's Analytics ([MA](https://www.moodysanalytics.com)) in San Francisco. I supported some credit risk products and credit rating data of Moody's: CreditEdge, RiskCalc, RiskFrontier and Moody's Investor Service (MIS) rating data. 
 
 I earned my Master's degree of Mathematical Finance at University of Southern California ([USC](https://www.usc.edu)) in 2021 in the United States and earned my Bachelor's degree of Finance at Jiangxi University of Finance and Economics ([JUFE](http://english.jxufe.edu.cn)) in 2019 in China. I also attended the Extension Program of Statistics at University of California, San Diego ([UCSD](https://ucsd.edu)) in 2018 in the United States.
 
