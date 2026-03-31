@@ -29,28 +29,28 @@ I am quite interested in quantitaive investment, quantitative risk management an
 - _White paper of ideaGround LLC. We introduce the next generation of social media ecosystem based on a novel distribution system named social media economics._ [<span style="color: red"><u>Pitch Here</u></span>](https://github.com/ronming1303/Ruming-Liu-PDF-Document/blob/main/Pitch%20Deck%207_22_25.pdf)
 
 ## Projects
-- [Bitcoin Technical Analysis by Convolutional Neural Network(EN)](https://github.com/ronming1303/Dacheng-Xiu-CNN): _I consider using convolution neural network for technical analysis in Bitcoin candlesticks pattern. I explore several structures of CNN, including a custom 5-layer CNN, VGG-based networks, and ResNet. Comparative experiments are conducted to evaluate the performance of each architecture in capturing relevant visual features and supporting predictive analysis in a volatile financial context._
-- [Autoencoder Asset Pricing(EN)](https://github.com/ronming1303/LLM/commit/a8512c8af2853cbf6c4a336dd40471a15fbb1149): _Replication of Gu, S., Kelly, B. and Xiu, D., 2021. Autoencoder asset pricing models. Journal of Econometrics, 222(1), pp.429-450._
-- [Front-running Game Between Miners and Traders in Blockchain(EN)](https://github.com/ronming1303/Ruming-Liu-PDF-Document/blob/main/Front_running_Game_in_Blockchain.pdf): _I discuss the equlibrium model of a game in DPoS. I form a signalling game between the miners (validators) and traders (voters). I analyze some situations in which the DPoS blockchain may fail. But in some situations, blockchain can work under the collaboration._
-- [The Thoughts on the Internationalization of Chinese RMB(EN)](https://github.com/ronming1303/Ruming-Liu-PDF-Document/blob/main/Toughts%20on%20the%20Internationalization%20of%20Chinese%20RMB%20%7C%20Ruming%20Liu.pdf): 
+- [Bitcoin Technical Analysis by Convolutional Neural Network](https://github.com/ronming1303/Dacheng-Xiu-CNN): _I consider using convolution neural network for technical analysis in Bitcoin candlesticks pattern. I explore several structures of CNN, including a custom 5-layer CNN, VGG-based networks, and ResNet. Comparative experiments are conducted to evaluate the performance of each architecture in capturing relevant visual features and supporting predictive analysis in a volatile financial context._
+- [Autoencoder Asset Pricing](https://github.com/ronming1303/LLM/commit/a8512c8af2853cbf6c4a336dd40471a15fbb1149): _Replication of Gu, S., Kelly, B. and Xiu, D., 2021. Autoencoder asset pricing models. Journal of Econometrics, 222(1), pp.429-450._
+- [Front-running Game Between Miners and Traders in Blockchain](https://github.com/ronming1303/Ruming-Liu-PDF-Document/blob/main/Front_running_Game_in_Blockchain.pdf): _I discuss the equlibrium model of a game in DPoS. I form a signalling game between the miners (validators) and traders (voters). I analyze some situations in which the DPoS blockchain may fail. But in some situations, blockchain can work under the collaboration._
+- [The Thoughts on the Internationalization of Chinese RMB](https://github.com/ronming1303/Ruming-Liu-PDF-Document/blob/main/Toughts%20on%20the%20Internationalization%20of%20Chinese%20RMB%20%7C%20Ruming%20Liu.pdf): 
 _The dissertation of my Bachelor's Degree. It compares the development of RMB with other international currencies and forecasts the future of RMB from macro-economics and politics point of view._
-- [A Possible Way to Search Pairs Trading Arbitrage(EN)](https://github.com/ronming1303/Ruming-Liu-PDF-Document/blob/main/A%20Possible%20Way%20to%20Search%20Pairs%20Trading%20Arbitrage.pdf):
+- [A Possible Way to Search Pairs Trading Arbitrage](https://github.com/ronming1303/Ruming-Liu-PDF-Document/blob/main/A%20Possible%20Way%20to%20Search%20Pairs%20Trading%20Arbitrage.pdf):
 _Directed Research of my Master's program. It finds a new possible way to search stock pairs which exist arbitrage opportunity and uses dynamic programming method to make trading strategy._
-- [Cointegration Method of Statistical Arbitrage(EN)](https://github.com/ronming1303/Ruming-Liu-PDF-Document/blob/main/Cointegration%20Method%20of%20Pairs%20Trading.pdf):
+- [Cointegration Method of Statistical Arbitrage](https://github.com/ronming1303/Ruming-Liu-PDF-Document/blob/main/Cointegration%20Method%20of%20Pairs%20Trading.pdf):
 _Time Series and Econometrics course project. It applies cointegration method and ARMA-GARCH model to analyze spread in stock market, and forecasts the convergence situation of the spread._
 - [Predator Project](https://github.com/ronming1303/Predator): _Decentralized Exchange Flash Loan Arbitrage Project._
 
 ## Technical Notes
 1. Financial Mathematics
-- [Stochastic Discount Factor, CCAPM, CAPM, and Black Scholes PDE(EN)](https://github.com/ronming1303/Ruming-Liu-PDF-Document/blob/main/Link_of_Stochastic_Discount_Factor__Black_Scholes__CAPM_and_CCAPM.pdf)
-- [Barra Pure Factor Portfolio(EN)](https://github.com/ronming1303/Ruming-Liu-PDF-Document/blob/main/Barra_Pure_Factor_Portfolio.pdf)
-- [Investment Based CAPM: q-Factor Model(EN)](https://github.com/ronming1303/Ruming-Liu-PDF-Document/blob/main/Investment_based_CAPM__q_Factor_Model.pdf)
-- [Arbitrage Pricing Theory, and Multi-Factor Models(EN)](https://github.com/ronming1303/Ruming-Liu-PDF-Document/blob/main/Arbitrage_Pricing_Theory_and_Muti_Factor_Model.pdf)
-- [Linear Stochastic Discount Factor, and Factor Models(EN)](https://github.com/ronming1303/Ruming-Liu-PDF-Document/blob/main/Factor_Model_and_Linear_Stochastic_Discount_Factor.pdf)
-- [Stochastic Discount Factor and Risk Neutral Measure(EN)](https://github.com/ronming1303/Ruming-Liu-PDF-Document/blob/main/Stochastic_Discount_Factor___Risk_Neutral_Measure.pdf)
-- [Generalized Method of Moments(EN)](https://github.com/ronming1303/Ruming-Liu-PDF-Document/blob/main/Generalized_Method_of_Moments.pdf)
-- [Interest Rate Term Structure Notes(EN)](https://github.com/ronming1303/Ruming-Liu-PDF-Document/blob/main/interest%20rate%20term-structure.pdf)
-- [Short Rate Model(EN)](https://zhuanlan.zhihu.com/p/110055526)
+- [Stochastic Discount Factor, CCAPM, CAPM, and Black Scholes PDE](https://github.com/ronming1303/Ruming-Liu-PDF-Document/blob/main/Link_of_Stochastic_Discount_Factor__Black_Scholes__CAPM_and_CCAPM.pdf)
+- [Barra Pure Factor Portfolio](https://github.com/ronming1303/Ruming-Liu-PDF-Document/blob/main/Barra_Pure_Factor_Portfolio.pdf)
+- [Investment Based CAPM: q-Factor Model](https://github.com/ronming1303/Ruming-Liu-PDF-Document/blob/main/Investment_based_CAPM__q_Factor_Model.pdf)
+- [Arbitrage Pricing Theory, and Multi-Factor Models](https://github.com/ronming1303/Ruming-Liu-PDF-Document/blob/main/Arbitrage_Pricing_Theory_and_Muti_Factor_Model.pdf)
+- [Linear Stochastic Discount Factor, and Factor Models](https://github.com/ronming1303/Ruming-Liu-PDF-Document/blob/main/Factor_Model_and_Linear_Stochastic_Discount_Factor.pdf)
+- [Stochastic Discount Factor and Risk Neutral Measure](https://github.com/ronming1303/Ruming-Liu-PDF-Document/blob/main/Stochastic_Discount_Factor___Risk_Neutral_Measure.pdf)
+- [Generalized Method of Moments](https://github.com/ronming1303/Ruming-Liu-PDF-Document/blob/main/Generalized_Method_of_Moments.pdf)
+- [Interest Rate Term Structure Notes](https://github.com/ronming1303/Ruming-Liu-PDF-Document/blob/main/interest%20rate%20term-structure.pdf)
+- [Short Rate Model](https://zhuanlan.zhihu.com/p/110055526)
 - [Heath-Jarrow-Morton Framework(CN)](https://zhuanlan.zhihu.com/p/112844939)
 - [Option Pricing of Stock with Dividend(CN)](https://zhuanlan.zhihu.com/p/107332780)
 - [Fundamental Theorems of Asset Pricing(CN)](https://zhuanlan.zhihu.com/p/106374643)
@@ -67,27 +67,27 @@ _Time Series and Econometrics course project. It applies cointegration method an
 - [Binomial Tree Model[1](CN)](https://zhuanlan.zhihu.com/p/81228344)
 
 1. Game Theory and Equilibrium
-- [Grossman(1976) Rational Expectation Equilibrium Price(EN)](https://github.com/ronming1303/Ruming-Liu-PDF-Document/blob/main/Grossman_1976_.pdf)
-- [Hellwig(1980), Grossman-Stiglitz Paradox(1980), CARA-Gaussian Rational Expectation Equilibrium Price(EN)](https://github.com/ronming1303/Ruming-Liu-PDF-Document/blob/main/Grossman_Stiglitz_1980_.pdf)
-- [Glosten-Milgrom(1985) Bid Ask Spread(EN)](https://github.com/ronming1303/Ruming-Liu-PDF-Document/blob/main/Glosten_Milgrom_1985_.pdf)
-- [Kyle(1985) Insider Trading(EN)](https://github.com/ronming1303/Ruming-Liu-PDF-Document/blob/main/Kyle_1985_.pdf)
-- [Arrow-Debreu Security(1954)(EN)](https://github.com/ronming1303/Ruming-Liu-PDF-Document/blob/main/Arrow_Debreu_Market.pdf)
-- [Lucas Tree Model(1978)(EN)](https://github.com/ronming1303/Ruming-Liu-PDF-Document/blob/main/LucasAssetPrice.pdf)
-- [Equilibrium Refinements in Game Theory(EN)](https://github.com/ronming1303/Ruming-Liu-PDF-Document/blob/main/GameTheoryNote.pdf)
-- [Repeated Game(EN)](https://github.com/ronming1303/Ruming-Liu-PDF-Document/blob/main/GameTheoryNote2.pdf)
-- [Front Running Game in blockchain(EN)](https://github.com/ronming1303/Ruming-Liu-PDF-Document/blob/main/Front_running_Game_in_Blockchain.pdf)
-- [A Sequential Signalling Model of Convertible Debt Call Policy(EN)](https://github.com/ronming1303/Ruming-Liu-PDF-Document/blob/main/A_Sequential_Signaling_Model_of_Convertible_Debt_Call_Policy.pdf)
+- [Grossman(1976) Rational Expectation Equilibrium Price](https://github.com/ronming1303/Ruming-Liu-PDF-Document/blob/main/Grossman_1976_.pdf)
+- [Hellwig(1980), Grossman-Stiglitz Paradox(1980), CARA-Gaussian Rational Expectation Equilibrium Price](https://github.com/ronming1303/Ruming-Liu-PDF-Document/blob/main/Grossman_Stiglitz_1980_.pdf)
+- [Glosten-Milgrom(1985) Bid Ask Spread](https://github.com/ronming1303/Ruming-Liu-PDF-Document/blob/main/Glosten_Milgrom_1985_.pdf)
+- [Kyle(1985) Insider Trading](https://github.com/ronming1303/Ruming-Liu-PDF-Document/blob/main/Kyle_1985_.pdf)
+- [Arrow-Debreu Security(1954)](https://github.com/ronming1303/Ruming-Liu-PDF-Document/blob/main/Arrow_Debreu_Market.pdf)
+- [Lucas Tree Model(1978)](https://github.com/ronming1303/Ruming-Liu-PDF-Document/blob/main/LucasAssetPrice.pdf)
+- [Equilibrium Refinements in Game Theory](https://github.com/ronming1303/Ruming-Liu-PDF-Document/blob/main/GameTheoryNote.pdf)
+- [Repeated Game](https://github.com/ronming1303/Ruming-Liu-PDF-Document/blob/main/GameTheoryNote2.pdf)
+- [Front Running Game in blockchain](https://github.com/ronming1303/Ruming-Liu-PDF-Document/blob/main/Front_running_Game_in_Blockchain.pdf)
+- [A Sequential Signalling Model of Convertible Debt Call Policy](https://github.com/ronming1303/Ruming-Liu-PDF-Document/blob/main/A_Sequential_Signaling_Model_of_Convertible_Debt_Call_Policy.pdf)
 
 1. Corporate Finance Seminar Slides
-- [For Better or Worse? The Economic Implications of Paid Sick Leave Mandates(EN)](https://github.com/ronming1303/Ruming-Liu-PDF-Document/blob/main/Paid_Sick_Leave_Mandates_Review.pdf)
-- [Buy, Invent or Both?(EN)](https://github.com/ronming1303/Ruming-Liu-PDF-Document/blob/main/Buy__Invent_or_Both_.pdf)
-- [Does Social Media Reduce Corporate Misconduct?(EN)](https://github.com/ronming1303/Ruming-Liu-PDF-Document/blob/main/Does_Social_Media_Reduce_Misconduct_.pdf)
-- [Owner Culture and Pay Inequality within Firms(EN)](https://github.com/ronming1303/Ruming-Liu-PDF-Document/blob/main/Owner_Culture_and_Pay_Inequality_within_Firms.pdf)
-- [The Ownership Structure of U.S. Corporations(EN)](https://github.com/ronming1303/Ruming-Liu-PDF-Document/blob/main/The_Ownership_Structure_of_U_S__corporations.pdf)
+- [For Better or Worse? The Economic Implications of Paid Sick Leave Mandates](https://github.com/ronming1303/Ruming-Liu-PDF-Document/blob/main/Paid_Sick_Leave_Mandates_Review.pdf)
+- [Buy, Invent or Both?](https://github.com/ronming1303/Ruming-Liu-PDF-Document/blob/main/Buy__Invent_or_Both_.pdf)
+- [Does Social Media Reduce Corporate Misconduct?](https://github.com/ronming1303/Ruming-Liu-PDF-Document/blob/main/Does_Social_Media_Reduce_Misconduct_.pdf)
+- [Owner Culture and Pay Inequality within Firms](https://github.com/ronming1303/Ruming-Liu-PDF-Document/blob/main/Owner_Culture_and_Pay_Inequality_within_Firms.pdf)
+- [The Ownership Structure of U.S. Corporations](https://github.com/ronming1303/Ruming-Liu-PDF-Document/blob/main/The_Ownership_Structure_of_U_S__corporations.pdf)
 
 
 4. Probability and Statistics
-- [Probability Convergence Concepts(EN)](https://zhuanlan.zhihu.com/p/164667409)
+- [Probability Convergence Concepts](https://zhuanlan.zhihu.com/p/164667409)
 - [Lebesugue Measure(CN)](https://zhuanlan.zhihu.com/p/338600430)
 - [Abstract Measure(CN)](https://zhuanlan.zhihu.com/p/340521567)
 - [Convergence Theorem(CN)](https://zhuanlan.zhihu.com/p/345848527)
@@ -97,22 +97,22 @@ _Time Series and Econometrics course project. It applies cointegration method an
 - [Asymptotic Theory(CN)](https://zhuanlan.zhihu.com/p/408169919)
 
 5. Dencentralized Finance / Financial Technology
-- [Blockchain Literature Review(EN)](https://github.com/ronming1303/Ruming-Liu-PDF-Document/blob/main/blockchain_review.pdf)
-- [Blockchain Litereture Review Slide(EN)](https://github.com/ronming1303/Ruming-Liu-PDF-Document/blob/main/critical_research.pdf)
-- [Sex Drugs and Bitcoin How Much Illegal Activity Is Financed through Cryptocurrencies(EN)](https://github.com/ronming1303/Ruming-Liu-PDF-Document/blob/main/Sex__Drugs__and_Bitcoin__How_Much_Illegal_Activity_Is_Financed_through_Cryptocurrencies.pdf)
+- [Blockchain Literature Review](https://github.com/ronming1303/Ruming-Liu-PDF-Document/blob/main/blockchain_review.pdf)
+- [Blockchain Litereture Review Slide](https://github.com/ronming1303/Ruming-Liu-PDF-Document/blob/main/critical_research.pdf)
+- [Sex Drugs and Bitcoin How Much Illegal Activity Is Financed through Cryptocurrencies](https://github.com/ronming1303/Ruming-Liu-PDF-Document/blob/main/Sex__Drugs__and_Bitcoin__How_Much_Illegal_Activity_Is_Financed_through_Cryptocurrencies.pdf)
 - [The Mechanics of Curve Leverage AMM(CN)](https://zhuanlan.zhihu.com/p/407655879)
 - [The Mechanics of Balancer Index Fund AMM(CN)](https://zhuanlan.zhihu.com/p/165444323)
 - [The Mechanics of Uniswap-V3 AMM(CN)](https://zhuanlan.zhihu.com/p/87243177)
 - [Some Ideas on Cryptocurrency Market(CN)](https://zhuanlan.zhihu.com/p/383499265)
 
 6. Financial Simulation
-- [Variance Reducation Techniques(EN)](https://github.com/ronming1303/Ruming-Liu-PDF-Document/blob/main/Variance_Reduction_Techniques.pdf)
+- [Variance Reducation Techniques](https://github.com/ronming1303/Ruming-Liu-PDF-Document/blob/main/Variance_Reduction_Techniques.pdf)
 - [Simulation of Short Rate Model and Forward Rate under H-J-M framework(CN)](https://github.com/ronming1303/Ruming-Liu-PDF-Document/blob/main/Short%20Rate%20Simulation.pdf)
 
 
 7. Miscellaneous
-- [Maximum Likelihood Estimation for ARMA-GARCH(EN)](https://zhuanlan.zhihu.com/p/266329597)
-- [Referee Report for th Paper A Bias of Screen(EN)](https://github.com/ronming1303/Ruming-Liu-PDF-Document/blob/main/Referee%20of%20Econ504%20Paper%20Ruming%20Liu_2848262948.pdf)
+- [Maximum Likelihood Estimation for ARMA-GARCH](https://zhuanlan.zhihu.com/p/266329597)
+- [Referee Report for th Paper A Bias of Screen](https://github.com/ronming1303/Ruming-Liu-PDF-Document/blob/main/Referee%20of%20Econ504%20Paper%20Ruming%20Liu_2848262948.pdf)
 - [Brief History of Fannie Mae, Freddie Mac and Ginnie Mae(CN)](https://zhuanlan.zhihu.com/p/80399531) 
 
 ## Professional Skills
