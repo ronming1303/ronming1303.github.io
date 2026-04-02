@@ -17,10 +17,13 @@ I am quite interested in quantitaive investment, quantitative risk management an
 - _We find an anomoly associated with the cryptocurrency market sentiment. Our findings indicate that cryptos with high sensitivities to sentiment tend to yield lower returns in the following period. We introduce a sentiment factor to explain the sentiment-related anomoly._ [<span style="color: red"><u>Keynote Here</u></span>](https://github.com/ronming1303/Ruming-Liu-PDF-Document/blob/main/CryptoSentiment_FMA2024.pdf)
 - Qualified for Best Paper Award at 2024 International Conference of Taiwan Finance Association.
 
-<a href="cryptosent.html" target="_blank" style="text-decoration: none;">
+<div style="margin: 20px 0;">
+<a href="cryptosent.html" target="_blank" style="text-decoration: none; display: block;">
 <iframe src="cryptosent.html" width="100%" height="350" style="border: 1px solid #d0d7de; border-radius: 6px; pointer-events: none;"></iframe>
 <p style="text-align: center; color: #0969da; margin-top: 8px;">Click to view full CryptoSent Dashboard →</p>
 </a>
+</div>
+
 2. [Pricing and Arbitrage Across 80 Cryptocurrency Exchanges](https://papers.ssrn.com/sol3/papers.cfm?abstract_id=4816710#paper-references-widget)
 - _We explore variations in cryptocurrency pricing across 80 cryptocurrency exchanges worldwide. Arbitrage spreads are higher in non-US domiciled exchanges, decentralized exchanges, non-trustworthy, and relatively illiquid exchanges. Stablecoins exhibit smaller arbitrage spreads than other tokens._ [<span style="color: red"><u>Keynote Here</u></span>](https://github.com/ronming1303/Ruming-Liu-PDF-Document/blob/main/CryptoExchangeArbitrage.pdf)
 
