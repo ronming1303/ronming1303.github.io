@@ -243,7 +243,12 @@
 
         async function init() {
             try {
-                const data = await fetchData();
+                let data = await fetchData();
+
+                // Filter to last 365 days
+                const oneYearAgo = new Date();
+                oneYearAgo.setFullYear(oneYearAgo.getFullYear() - 1);
+                data = data.filter(d => new Date(d.date) >= oneYearAgo);
 
                 document.getElementById('loading').style.display = 'none';
                 document.getElementById('content').style.display = 'block';
