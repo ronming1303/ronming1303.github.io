@@ -18,7 +18,7 @@ I am quite interested in quantitaive investment, quantitative risk management an
 - Qualified for Best Paper Award at 2024 International Conference of Taiwan Finance Association.
 
 <div style="margin: 20px 0;">
-<a href="cryptosent.html" target="_blank" style="text-decoration: none; display: block;">
+<a href="cryptosent.html" style="text-decoration: none; display: block;">
 <iframe src="cryptosent-embed.html" width="100%" height="320" style="border: 1px solid #d0d7de; border-radius: 6px; pointer-events: none;"></iframe>
 <p style="text-align: center; color: #0969da; margin-top: 8px;">Click to view full dashboard →</p>
 </a>
