@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CryptoSent Dashboard - Ruming Liu</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chartjs-adapter-date-fns"></script>
+    <script src="https://cdn.jsdelivr.net/npm/papaparse@5.4.1/papaparse.min.js"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+            background: #ffffff;
+            color: #24292f;
+            padding: 20px;
+            min-height: 100vh;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        header {
+            margin-bottom: 30px;
+            border-bottom: 1px solid #d0d7de;
+            padding-bottom: 20px;
+        }
+        h1 {
+            color: #0969da;
+            font-size: 1.8em;
+            margin-bottom: 10px;
+        }
+        .subtitle {
+            color: #57606a;
+            font-size: 0.95em;
+        }
+        .back-link {
+            color: #0969da;
+            text-decoration: none;
+            font-size: 0.9em;
+        }
+        .back-link:hover {
+            text-decoration: underline;
+        }
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+            margin-bottom: 30px;
+        }
+        .stat-card {
+            background: #f6f8fa;
+            border: 1px solid #d0d7de;
+            border-radius: 6px;
+            padding: 16px;
+        }
+        .stat-label {
+            color: #57606a;
+            font-size: 0.85em;
+            margin-bottom: 5px;
+        }
+        .stat-value {
+            font-size: 1.5em;
+            font-weight: 600;
+            color: #24292f;
+        }
+        .stat-value.positive { color: #1a7f37; }
+        .stat-value.negative { color: #cf222e; }
+        .chart-container {
+            background: #f6f8fa;
+            border: 1px solid #d0d7de;
+            border-radius: 6px;
+            padding: 20px;
+            margin-bottom: 20px;
+        }
+        .chart-title {
+            color: #24292f;
+            font-size: 1.1em;
+            margin-bottom: 15px;
+        }
+        .chart-wrapper {
+            position: relative;
+            height: 400px;
+        }
+        .loading {
+            text-align: center;
+            padding: 50px;
+            color: #57606a;
+        }
+        .error {
+            background: #ffebe9;
+            border: 1px solid #cf222e;
+            color: #cf222e;
+            padding: 15px;
+            border-radius: 6px;
+            margin-bottom: 20px;
+        }
+        .update-time {
+            color: #57606a;
+            font-size: 0.85em;
+            text-align: right;
+            margin-top: 20px;
+        }
+        footer {
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px solid #d0d7de;
+            color: #57606a;
+            font-size: 0.85em;
+        }
+        footer a {
+            color: #0969da;
+            text-decoration: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <a href="/" class="back-link">&larr; Back to Home</a>
+            <h1>CryptoSent Dashboard</h1>
+            <p class="subtitle">Real-time cryptocurrency sentiment analysis from my research pipeline</p>
+        </header>
+
+        <div id="loading" class="loading">Loading data from GitHub...</div>
+        <div id="error" class="error" style="display: none;"></div>
+
+        <div id="content" style="display: none;">
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <div class="stat-label">Latest CryptoSent</div>
+                    <div class="stat-value" id="latest-cryptosent">-</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-label">Delta Sentiment</div>
+                    <div class="stat-value" id="latest-delta">-</div>
+                </div>
+            </div>
+
+            <div class="chart-container">
+                <div class="chart-title">CryptoSent Index Over Time</div>
+                <div class="chart-wrapper">
+                    <canvas id="sentimentChart"></canvas>
+                </div>
+            </div>
+
+            <p class="update-time" id="update-time"></p>
+        </div>
+
+        <footer>
+            <p>Cite our paper: <a href="https://papers.ssrn.com/sol3/papers.cfm?abstract_id=4941032" target="_blank">Sentiment in the Cross Section of Cryptocurrency Returns</a></p>
+        </footer>
+    </div>
+
+    <script>
+        const CSV_URL = 'https://raw.githubusercontent.com/ronming1303/CryptoSent_Pipeline/master/data/processed/cryptosent.csv';
+
+        async function fetchData() {
+            try {
+                const response = await fetch(CSV_URL);
+                if (!response.ok) throw new Error('Failed to fetch data');
+                const csvText = await response.text();
+
+                const result = Papa.parse(csvText, {
+                    header: true,
+                    dynamicTyping: true,
+                    skipEmptyLines: true
+                });
+
+                return result.data;
+            } catch (error) {
+                throw new Error(`Error fetching data: ${error.message}`);
+            }
+        }
+
+        function updateStats(data) {
+            const latest = data[data.length - 1];
+
+            document.getElementById('latest-cryptosent').textContent =
+                latest.CryptoSent?.toFixed(2) || '-';
+
+            const deltaEl = document.getElementById('latest-delta');
+            const delta = latest.DeltaCryptoSent;
+            if (delta !== null && delta !== undefined) {
+                deltaEl.textContent = (delta >= 0 ? '+' : '') + delta.toFixed(2);
+                deltaEl.className = 'stat-value ' + (delta >= 0 ? 'positive' : 'negative');
+            }
+        }
+
+        function createChart(data) {
+            const labels = data.map(d => d.date);
+
+            new Chart(document.getElementById('sentimentChart'), {
+                type: 'line',
+                data: {
+                    labels: labels,
+                    datasets: [{
+                        label: 'CryptoSent',
+                        data: data.map(d => ({ x: d.date, y: d.CryptoSent })),
+                        borderColor: '#0969da',
+                        backgroundColor: 'rgba(9, 105, 218, 0.1)',
+                        fill: true,
+                        tension: 0.3
+                    }, {
+                        label: 'Delta CryptoSent',
+                        data: data.map(d => ({ x: d.date, y: d.DeltaCryptoSent })),
+                        borderColor: '#cf222e',
+                        backgroundColor: 'transparent',
+                        tension: 0.3
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    interaction: {
+                        mode: 'index',
+                        intersect: false,
+                    },
+                    plugins: {
+                        legend: {
+                            labels: { color: '#24292f' }
+                        }
+                    },
+                    scales: {
+                        x: {
+                            type: 'time',
+                            time: { unit: 'month' },
+                            ticks: { color: '#57606a' },
+                            grid: { color: '#d0d7de' }
+                        },
+                        y: {
+                            ticks: { color: '#57606a' },
+                            grid: { color: '#d0d7de' }
+                        }
+                    }
+                }
+            });
+        }
+
+        async function init() {
+            try {
+                const data = await fetchData();
+
+                document.getElementById('loading').style.display = 'none';
+                document.getElementById('content').style.display = 'block';
+
+                updateStats(data);
+                createChart(data);
+
+                document.getElementById('update-time').textContent =
+                    `Data updated: ${new Date().toLocaleString()} | Latest data point: ${data[data.length - 1].date}`;
+
+            } catch (error) {
+                document.getElementById('loading').style.display = 'none';
+                document.getElementById('error').style.display = 'block';
+                document.getElementById('error').textContent = error.message;
+            }
+        }
+
+        init();
+    </script>
+</body>
+</html>
