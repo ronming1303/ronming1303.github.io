@@ -13,9 +13,9 @@ During my undergraduate study, I attended some internship programs at China Inte
 I am quite interested in quantitaive investment, quantitative risk management and decentralized finance topics. I wrote some articles (Including Financial Mathematics, Statistics, Probability, Defi, Simulation, etc) during the past few years, some of them are wrote in Chinese and published on [Zhihu](https://www.zhihu.com/people/liu-ru-ming-8/posts), the rest are wrote in English and can be found in my [Github repository](https://github.com/ronming1303/Ruming-Liu-PDF-Document). I also did some academic projects during my University study. These projects and articles can also be found below.  -->
 
 ## Research Papers
-1. [Sentiment in the Cross Section of Cryptocurrency Returns](https://papers.ssrn.com/sol3/papers.cfm?abstract_id=4941032)
-- _We find an anomoly associated with the cryptocurrency market sentiment. Our findings indicate that cryptos with high sensitivities to sentiment tend to yield lower returns in the following period. We introduce a sentiment factor to explain the sentiment-related anomoly._ [<span style="color: red"><u>Keynote Here</u></span>](https://github.com/ronming1303/Ruming-Liu-PDF-Document/blob/main/CryptoSentiment_FMA2024.pdf)
-- Qualified for Best Paper Award at 2024 International Conference of Taiwan Finance Association.
+- [Sentiment in the Cross Section of Cryptocurrency Returns](https://papers.ssrn.com/sol3/papers.cfm?abstract_id=4941032)
+  - _We find an anomoly associated with the cryptocurrency market sentiment. Our findings indicate that cryptos with high sensitivities to sentiment tend to yield lower returns in the following period. We introduce a sentiment factor to explain the sentiment-related anomoly._ [<span style="color: red"><u>Keynote Here</u></span>](https://github.com/ronming1303/Ruming-Liu-PDF-Document/blob/main/CryptoSentiment_FMA2024.pdf)
+  - Qualified for Best Paper Award at 2024 International Conference of Taiwan Finance Association.
 
 <div style="margin: 20px 0;">
 <a href="cryptosent.html" style="text-decoration: none; display: block;">
@@ -24,17 +24,17 @@ I am quite interested in quantitaive investment, quantitative risk management an
 </a>
 </div>
 
-2. [Pricing and Arbitrage Across 80 Cryptocurrency Exchanges](https://papers.ssrn.com/sol3/papers.cfm?abstract_id=4816710#paper-references-widget)
-- _We explore variations in cryptocurrency pricing across 80 cryptocurrency exchanges worldwide. Arbitrage spreads are higher in non-US domiciled exchanges, decentralized exchanges, non-trustworthy, and relatively illiquid exchanges. Stablecoins exhibit smaller arbitrage spreads than other tokens._ [<span style="color: red"><u>Keynote Here</u></span>](https://github.com/ronming1303/Ruming-Liu-PDF-Document/blob/main/CryptoExchangeArbitrage.pdf)
+- [Pricing and Arbitrage Across 80 Cryptocurrency Exchanges](https://papers.ssrn.com/sol3/papers.cfm?abstract_id=4816710#paper-references-widget)
+  - _We explore variations in cryptocurrency pricing across 80 cryptocurrency exchanges worldwide. Arbitrage spreads are higher in non-US domiciled exchanges, decentralized exchanges, non-trustworthy, and relatively illiquid exchanges. Stablecoins exhibit smaller arbitrage spreads than other tokens._ [<span style="color: red"><u>Keynote Here</u></span>](https://github.com/ronming1303/Ruming-Liu-PDF-Document/blob/main/CryptoExchangeArbitrage.pdf)
 
-3. [The Impact of Spoofing on Bitcoin Market Microstructure](https://papers.ssrn.com/sol3/papers.cfm?abstract_id=5771502)
-- _We find that order book imbalances significantly increase Bitcoin returns at minute and hourly levels. We introduce an innovative methodology for measuring the intensity of spoofing activities._ [<span style="color: red"><u>Poster Here</u></span>](https://github.com/ronming1303/Ruming-Liu-PDF-Document/blob/main/spoofing_poster.pdf)
+- [The Impact of Spoofing on Bitcoin Market Microstructure](https://papers.ssrn.com/sol3/papers.cfm?abstract_id=5771502)
+  - _We find that order book imbalances significantly increase Bitcoin returns at minute and hourly levels. We introduce an innovative methodology for measuring the intensity of spoofing activities._ [<span style="color: red"><u>Poster Here</u></span>](https://github.com/ronming1303/Ruming-Liu-PDF-Document/blob/main/spoofing_poster.pdf)
 
-4. [Cryptocurrency Mutual Fund]()
-- _Coming soon..._
+- [Cryptocurrency Mutual Fund]()
+  - _Coming soon..._
 
-5. [IdeaGround Social Media Economics](https://papers.ssrn.com/sol3/papers.cfm?abstract_id=4900702)
-- _White paper of ideaGround LLC. We introduce the next generation of social media ecosystem based on a novel distribution system named social media economics._ [<span style="color: red"><u>Pitch Here</u></span>](https://github.com/ronming1303/Ruming-Liu-PDF-Document/blob/main/Pitch%20Deck%207_22_25.pdf)
+- [IdeaGround Social Media Economics](https://papers.ssrn.com/sol3/papers.cfm?abstract_id=4900702)
+  - _White paper of ideaGround LLC. We introduce the next generation of social media ecosystem based on a novel distribution system named social media economics._ [<span style="color: red"><u>Pitch Here</u></span>](https://github.com/ronming1303/Ruming-Liu-PDF-Document/blob/main/Pitch%20Deck%207_22_25.pdf)
 
 ## Projects
 - [Bitcoin Technical Analysis by Convolutional Neural Network](https://github.com/ronming1303/Dacheng-Xiu-CNN): _I consider using convolution neural network for technical analysis in Bitcoin candlesticks pattern. I explore several structures of CNN, including a custom 5-layer CNN, VGG-based networks, and ResNet. Comparative experiments are conducted to evaluate the performance of each architecture in capturing relevant visual features and supporting predictive analysis in a volatile financial context._
