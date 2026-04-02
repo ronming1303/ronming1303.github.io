@@ -42,10 +42,10 @@
                 const csvText = await response.text();
                 const result = Papa.parse(csvText, { header: true, dynamicTyping: true, skipEmptyLines: true });
 
-                // Filter to last 365 days
-                const oneYearAgo = new Date();
-                oneYearAgo.setFullYear(oneYearAgo.getFullYear() - 1);
-                const data = result.data.filter(d => new Date(d.date) >= oneYearAgo);
+                // Filter to last 6 months
+                const sixMonthsAgo = new Date();
+                sixMonthsAgo.setMonth(sixMonthsAgo.getMonth() - 6);
+                const data = result.data.filter(d => new Date(d.date) >= sixMonthsAgo);
 
                 document.getElementById('loading').style.display = 'none';
                 document.getElementById('content').style.display = 'block';
