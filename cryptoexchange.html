@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Crypto Exchange Price Dashboard</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chartjs-adapter-date-fns"></script>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+            background: #f6f8fa;
+            padding: 24px;
+            color: #24292f;
+        }
+        h2 {
+            font-size: 18px;
+            font-weight: 600;
+            margin-bottom: 4px;
+        }
+        .subtitle {
+            color: #57606a;
+            font-size: 13px;
+            margin-bottom: 20px;
+        }
+        .tabs {
+            display: flex;
+            gap: 4px;
+            margin-bottom: 16px;
+        }
+        .tab {
+            padding: 6px 16px;
+            border: 1px solid #d0d7de;
+            border-radius: 6px;
+            background: #fff;
+            cursor: pointer;
+            font-size: 13px;
+            font-weight: 500;
+            color: #24292f;
+        }
+        .tab.active {
+            background: #0969da;
+            border-color: #0969da;
+            color: #fff;
+        }
+        .card {
+            background: #fff;
+            border: 1px solid #d0d7de;
+            border-radius: 6px;
+            padding: 16px;
+            margin-bottom: 16px;
+        }
+        .card-title {
+            font-size: 13px;
+            font-weight: 600;
+            color: #57606a;
+            margin-bottom: 12px;
+        }
+        .chart-wrapper { position: relative; height: 300px; }
+        .loading { text-align: center; padding: 80px; color: #57606a; }
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 12px;
+            margin-bottom: 16px;
+        }
+        .stat-card {
+            background: #fff;
+            border: 1px solid #d0d7de;
+            border-radius: 6px;
+            padding: 12px 16px;
+        }
+        .stat-label { font-size: 11px; color: #57606a; margin-bottom: 4px; }
+        .stat-value { font-size: 18px; font-weight: 600; }
+        .stat-sub { font-size: 11px; color: #57606a; margin-top: 2px; }
+        #date-label { color: #57606a; font-size: 12px; margin-bottom: 16px; }
+    </style>
+</head>
+<body>
+    <h2>Crypto Exchange Price Dashboard</h2>
+    <p class="subtitle">Intraday BTC/ETH/SOL prices across Binance, Bybit, Coinbase, Kraken, OKX, Bitfinex</p>
+
+    <div id="loading" class="loading">Loading data...</div>
+
+    <div id="content" style="display: none;">
+        <div id="date-label"></div>
+
+        <div class="tabs">
+            <button class="tab active" onclick="switchPair('btc_usdt', this)">BTC/USDT</button>
+            <button class="tab" onclick="switchPair('eth_usdt', this)">ETH/USDT</button>
+            <button class="tab" onclick="switchPair('sol_usdt', this)">SOL/USDT</button>
+        </div>
+
+        <div class="stats-grid" id="stats-grid"></div>
+
+        <div class="card">
+            <div class="card-title">Price Across Exchanges</div>
+            <div class="chart-wrapper">
+                <canvas id="priceChart"></canvas>
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="card-title">Price Spread (Max − Min across exchanges)</div>
+            <div class="chart-wrapper">
+                <canvas id="spreadChart"></canvas>
+            </div>
+        </div>
+    </div>
+
+    <script type="module">
+        import { asyncBufferFromUrl, parquetRead } from 'https://esm.sh/hyparquet@1';
+
+        const EXCHANGES = ['binance', 'bybit', 'coinbase', 'kraken', 'okx', 'bitfinex'];
+        const COLORS = ['#F0B90B', '#F7A600', '#0052FF', '#5741D9', '#1a1a1a', '#16B157'];
+        const BASE_URL = 'https://raw.githubusercontent.com/ronming1303/CryptoExchange_Pipeline/main/data/raw';
+
+        let currentDate = null;
+        let priceChart = null;
+        let spreadChart = null;
+        let cache = {};
+
+        function getDateStr(daysBack = 0) {
+            const d = new Date();
+            d.setUTCDate(d.getUTCDate() - daysBack);
+            return d.toISOString().split('T')[0];
+        }
+
+        async function findLatestDate() {
+            for (let i = 0; i < 4; i++) {
+                const date = getDateStr(i);
+                const url = `${BASE_URL}/${date}/binance_btc_usdt.parquet`;
+                try {
+                    const resp = await fetch(url, { method: 'HEAD' });
+                    if (resp.ok) return date;
+                } catch (_) {}
+            }
+            return null;
+        }
+
+        async function readParquet(url) {
+            if (cache[url]) return cache[url];
+            const buf = await asyncBufferFromUrl(url);
+            const rows = await new Promise((resolve, reject) => {
+                parquetRead({
+                    file: buf,
+                    columns: ['timestamp', 'open', 'high', 'low', 'close', 'volume_to'],
+                    onComplete: resolve
+                }).catch(reject);
+            });
+            rows.sort((a, b) => new Date(a[0]) - new Date(b[0]));
+            cache[url] = rows;
+            return rows;
+        }
+
+        async function loadPair(pair) {
+            return Promise.all(
+                EXCHANGES.map(ex =>
+                    readParquet(`${BASE_URL}/${currentDate}/${ex}_${pair}.parquet`)
+                )
+            );
+        }
+
+        function renderStats(allRows, pair) {
+            const symbol = pair.split('_')[0].toUpperCase();
+            const grid = document.getElementById('stats-grid');
+            grid.innerHTML = '';
+
+            // Collect all latest prices
+            const latestPrices = allRows.map((rows, i) => ({
+                exchange: EXCHANGES[i],
+                price: rows[rows.length - 1]?.[4] ?? null,
+                color: COLORS[i]
+            })).filter(e => e.price !== null);
+
+            if (latestPrices.length === 0) return;
+
+            const prices = latestPrices.map(e => e.price);
+            const maxP = Math.max(...prices);
+            const minP = Math.min(...prices);
+            const spread = maxP - minP;
+            const spreadPct = (spread / minP * 100).toFixed(4);
+            const avgP = prices.reduce((a, b) => a + b, 0) / prices.length;
+
+            const stats = [
+                { label: `${symbol}/USDT Latest Avg`, value: '$' + avgP.toLocaleString(undefined, {maximumFractionDigits: 2}), sub: 'across exchanges' },
+                { label: 'Max Spread', value: '$' + spread.toFixed(2), sub: spreadPct + '%' },
+                { label: 'Exchanges', value: latestPrices.length, sub: 'monitored today' }
+            ];
+
+            stats.forEach(s => {
+                const div = document.createElement('div');
+                div.className = 'stat-card';
+                div.innerHTML = `<div class="stat-label">${s.label}</div><div class="stat-value">${s.value}</div><div class="stat-sub">${s.sub}</div>`;
+                grid.appendChild(div);
+            });
+        }
+
+        function renderCharts(allRows) {
+            const datasets = allRows.map((rows, i) => ({
+                label: EXCHANGES[i].charAt(0).toUpperCase() + EXCHANGES[i].slice(1),
+                data: rows.map(r => ({ x: new Date(r[0]), y: r[4] })), // close price
+                borderColor: COLORS[i],
+                backgroundColor: 'transparent',
+                tension: 0.3,
+                pointRadius: 0,
+                borderWidth: 1.8
+            }));
+
+            // Spread data: at each timestamp, max - min across exchanges
+            const timeMap = {};
+            allRows.forEach(rows => {
+                rows.forEach(r => {
+                    const t = new Date(r[0]).getTime();
+                    if (!timeMap[t]) timeMap[t] = [];
+                    timeMap[t].push(r[4]);
+                });
+            });
+            const spreadData = Object.entries(timeMap)
+                .sort((a, b) => a[0] - b[0])
+                .filter(([, prices]) => prices.length >= 2)
+                .map(([t, prices]) => ({
+                    x: new Date(parseInt(t)),
+                    y: Math.max(...prices) - Math.min(...prices)
+                }));
+
+            const chartOpts = {
+                responsive: true,
+                maintainAspectRatio: false,
+                interaction: { mode: 'index', intersect: false },
+                plugins: {
+                    legend: {
+                        display: true,
+                        position: 'top',
+                        labels: { boxWidth: 10, font: { size: 11 }, padding: 10 }
+                    }
+                },
+                scales: {
+                    x: {
+                        type: 'time',
+                        time: { unit: 'hour', displayFormats: { hour: 'HH:mm' } },
+                        ticks: { color: '#57606a', font: { size: 11 } },
+                        grid: { color: '#d0d7de' }
+                    },
+                    y: {
+                        ticks: {
+                            color: '#57606a',
+                            font: { size: 11 },
+                            callback: v => '$' + v.toLocaleString()
+                        },
+                        grid: { color: '#d0d7de' }
+                    }
+                }
+            };
+
+            if (priceChart) priceChart.destroy();
+            priceChart = new Chart(document.getElementById('priceChart'), {
+                type: 'line',
+                data: { datasets },
+                options: chartOpts
+            });
+
+            if (spreadChart) spreadChart.destroy();
+            spreadChart = new Chart(document.getElementById('spreadChart'), {
+                type: 'line',
+                data: {
+                    datasets: [{
+                        label: 'Spread (Max − Min)',
+                        data: spreadData,
+                        borderColor: '#0969da',
+                        backgroundColor: 'rgba(9, 105, 218, 0.1)',
+                        fill: true,
+                        tension: 0.3,
+                        pointRadius: 0,
+                        borderWidth: 1.8
+                    }]
+                },
+                options: {
+                    ...chartOpts,
+                    plugins: {
+                        ...chartOpts.plugins,
+                        legend: { display: false }
+                    },
+                    scales: {
+                        ...chartOpts.scales,
+                        y: {
+                            ticks: {
+                                color: '#57606a',
+                                font: { size: 11 },
+                                callback: v => '$' + v.toFixed(2)
+                            },
+                            grid: { color: '#d0d7de' }
+                        }
+                    }
+                }
+            });
+        }
+
+        window.switchPair = async function(pair, btn) {
+            document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+            btn.classList.add('active');
+            try {
+                const allRows = await loadPair(pair);
+                renderStats(allRows, pair);
+                renderCharts(allRows);
+            } catch (e) {
+                console.error(e);
+            }
+        };
+
+        async function init() {
+            try {
+                currentDate = await findLatestDate();
+                if (!currentDate) throw new Error('No data found');
+
+                document.getElementById('date-label').textContent = `Data: ${currentDate}`;
+
+                const allRows = await loadPair('btc_usdt');
+
+                document.getElementById('loading').style.display = 'none';
+                document.getElementById('content').style.display = 'block';
+
+                renderStats(allRows, 'btc_usdt');
+                renderCharts(allRows);
+            } catch (error) {
+                document.getElementById('loading').textContent = 'Failed to load data. ' + error.message;
+            }
+        }
+        init();
+    </script>
+</body>
+</html>
