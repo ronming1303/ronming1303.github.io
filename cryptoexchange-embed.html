@@ -14,19 +14,31 @@
             padding: 15px;
         }
         .chart-wrapper { position: relative; height: 260px; }
-        .loading { text-align: center; padding: 50px; color: #57606a; }
+        #status {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            color: #57606a;
+            font-size: 13px;
+            text-align: center;
+            pointer-events: none;
+        }
+        .wrapper { position: relative; }
     </style>
 </head>
 <body>
-    <div id="loading" class="loading">Loading...</div>
-    <div class="chart-wrapper">
-        <canvas id="priceChart"></canvas>
+    <div class="wrapper">
+        <div id="status">Loading...</div>
+        <div class="chart-wrapper">
+            <canvas id="priceChart"></canvas>
+        </div>
     </div>
     <script type="module">
         import { parquetRead } from 'https://esm.sh/hyparquet@1';
 
         const EXCHANGES = ['binance', 'bybit', 'coinbase', 'kraken', 'okx', 'bitfinex'];
-        const COLORS = ['#F0B90B', '#F7A600', '#0052FF', '#5741D9', '#1a1a1a', '#16B157'];
+        const COLORS = ['#F0B90B', '#F7A600', '#0052FF', '#5741D9', '#555', '#16B157'];
         const PAIR = 'btc_usdt';
         const BASE_URL = 'https://raw.githubusercontent.com/ronming1303/CryptoExchange_Pipeline/main/data/raw';
 
@@ -36,50 +48,48 @@
             return d.toISOString().split('T')[0];
         }
 
+        function toDate(ts) {
+            if (ts instanceof Date) return ts;
+            if (typeof ts === 'bigint') return new Date(Number(ts) / 1000);
+            return new Date(ts);
+        }
+
         async function findLatestDate() {
-            for (let i = 0; i < 4; i++) {
+            for (let i = 0; i < 5; i++) {
                 const date = getDateStr(i);
-                const url = `${BASE_URL}/${date}/binance_${PAIR}.parquet`;
                 try {
-                    const resp = await fetch(url);
-                    if (resp.ok) return date;
+                    const r = await fetch(`${BASE_URL}/${date}/binance_${PAIR}.parquet`, { method: 'HEAD' });
+                    if (r.ok) return date;
                 } catch (_) {}
             }
             return null;
         }
 
         async function readParquet(url) {
-            const arrayBuffer = await fetch(url).then(r => r.arrayBuffer());
+            const ab = await fetch(url).then(r => r.arrayBuffer());
             const file = {
-                byteLength: arrayBuffer.byteLength,
-                slice: (start, end) => Promise.resolve(arrayBuffer.slice(start, end))
+                byteLength: ab.byteLength,
+                slice: (s, e) => Promise.resolve(ab.slice(s, e))
             };
             return new Promise((resolve, reject) => {
-                parquetRead({
-                    file,
-                    rowFormat: 'object',
-                    onComplete: resolve
-                }).catch(reject);
+                parquetRead({ file, rowFormat: 'object', onComplete: resolve }).catch(reject);
             });
         }
 
         async function init() {
             try {
                 const date = await findLatestDate();
-                if (!date) throw new Error('No data found');
+                if (!date) throw new Error('no data');
 
-                const results = await Promise.all(
-                    EXCHANGES.map(ex =>
-                        readParquet(`${BASE_URL}/${date}/${ex}_${PAIR}.parquet`)
-                    )
+                const allRows = await Promise.all(
+                    EXCHANGES.map(ex => readParquet(`${BASE_URL}/${date}/${ex}_${PAIR}.parquet`))
                 );
 
-                const datasets = results.map((rows, i) => {
-                    rows.sort((a, b) => new Date(a.timestamp) - new Date(b.timestamp));
-                    const name = EXCHANGES[i];
+                const datasets = allRows.map((rows, i) => {
+                    rows.sort((a, b) => toDate(a.timestamp) - toDate(b.timestamp));
                     return {
-                        label: name.charAt(0).toUpperCase() + name.slice(1),
-                        data: rows.map(r => ({ x: new Date(r.timestamp), y: r.close })),
+                        label: EXCHANGES[i][0].toUpperCase() + EXCHANGES[i].slice(1),
+                        data: rows.map(r => ({ x: toDate(r.timestamp), y: r.close })),
                         borderColor: COLORS[i],
                         backgroundColor: 'transparent',
                         tension: 0.3,
@@ -88,7 +98,7 @@
                     };
                 });
 
-                document.getElementById('loading').style.display = 'none';
+                document.getElementById('status').style.display = 'none';
 
                 new Chart(document.getElementById('priceChart'), {
                     type: 'line',
@@ -127,8 +137,8 @@
                         }
                     }
                 });
-            } catch (error) {
-                document.getElementById('loading').textContent = 'Failed to load data: ' + error.message;
+            } catch (err) {
+                document.getElementById('status').textContent = 'Error: ' + err.message;
             }
         }
         init();
