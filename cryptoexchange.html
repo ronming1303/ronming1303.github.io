@@ -132,7 +132,7 @@
                 const date = getDateStr(i);
                 const url = `${BASE_URL}/${date}/binance_btc_usdt.parquet`;
                 try {
-                    const resp = await fetch(url, { method: 'HEAD' });
+                    const resp = await fetch(url);
                     if (resp.ok) return date;
                 } catch (_) {}
             }
@@ -149,11 +149,11 @@
             const rows = await new Promise((resolve, reject) => {
                 parquetRead({
                     file,
-                    columns: ['timestamp', 'open', 'high', 'low', 'close', 'volume_to'],
+                    rowFormat: 'object',
                     onComplete: resolve
                 }).catch(reject);
             });
-            rows.sort((a, b) => new Date(a[0]) - new Date(b[0]));
+            rows.sort((a, b) => new Date(a.timestamp) - new Date(b.timestamp));
             cache[url] = rows;
             return rows;
         }
@@ -174,7 +174,7 @@
             // Collect all latest prices
             const latestPrices = allRows.map((rows, i) => ({
                 exchange: EXCHANGES[i],
-                price: rows[rows.length - 1]?.[4] ?? null,
+                price: rows[rows.length - 1]?.close ?? null,
                 color: COLORS[i]
             })).filter(e => e.price !== null);
 
@@ -204,7 +204,7 @@
         function renderCharts(allRows) {
             const datasets = allRows.map((rows, i) => ({
                 label: EXCHANGES[i].charAt(0).toUpperCase() + EXCHANGES[i].slice(1),
-                data: rows.map(r => ({ x: new Date(r[0]), y: r[4] })), // close price
+                data: rows.map(r => ({ x: new Date(r.timestamp), y: r.close })),
                 borderColor: COLORS[i],
                 backgroundColor: 'transparent',
                 tension: 0.3,
@@ -216,9 +216,9 @@
             const timeMap = {};
             allRows.forEach(rows => {
                 rows.forEach(r => {
-                    const t = new Date(r[0]).getTime();
+                    const t = new Date(r.timestamp).getTime();
                     if (!timeMap[t]) timeMap[t] = [];
-                    timeMap[t].push(r[4]);
+                    timeMap[t].push(r.close);
                 });
             });
             const spreadData = Object.entries(timeMap)
@@ -326,7 +326,7 @@
                 document.getElementById('content').style.display = 'block';
 
                 renderStats(allRows, 'btc_usdt');
-                renderCharts(allRows);
+                requestAnimationFrame(() => renderCharts(allRows));
             } catch (error) {
                 document.getElementById('loading').textContent = 'Failed to load data. ' + error.message;
             }

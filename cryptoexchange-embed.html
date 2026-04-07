@@ -19,10 +19,8 @@
 </head>
 <body>
     <div id="loading" class="loading">Loading...</div>
-    <div id="content" style="display: none;">
-        <div class="chart-wrapper">
-            <canvas id="priceChart"></canvas>
-        </div>
+    <div class="chart-wrapper">
+        <canvas id="priceChart"></canvas>
     </div>
     <script type="module">
         import { parquetRead } from 'https://esm.sh/hyparquet@1';
@@ -43,7 +41,7 @@
                 const date = getDateStr(i);
                 const url = `${BASE_URL}/${date}/binance_${PAIR}.parquet`;
                 try {
-                    const resp = await fetch(url, { method: 'HEAD' });
+                    const resp = await fetch(url);
                     if (resp.ok) return date;
                 } catch (_) {}
             }
@@ -59,7 +57,7 @@
             return new Promise((resolve, reject) => {
                 parquetRead({
                     file,
-                    columns: ['timestamp', 'close'],
+                    rowFormat: 'object',
                     onComplete: resolve
                 }).catch(reject);
             });
@@ -77,11 +75,11 @@
                 );
 
                 const datasets = results.map((rows, i) => {
-                    rows.sort((a, b) => new Date(a[0]) - new Date(b[0]));
+                    rows.sort((a, b) => new Date(a.timestamp) - new Date(b.timestamp));
                     const name = EXCHANGES[i];
                     return {
                         label: name.charAt(0).toUpperCase() + name.slice(1),
-                        data: rows.map(r => ({ x: new Date(r[0]), y: r[1] })),
+                        data: rows.map(r => ({ x: new Date(r.timestamp), y: r.close })),
                         borderColor: COLORS[i],
                         backgroundColor: 'transparent',
                         tension: 0.3,
@@ -91,7 +89,6 @@
                 });
 
                 document.getElementById('loading').style.display = 'none';
-                document.getElementById('content').style.display = 'block';
 
                 new Chart(document.getElementById('priceChart'), {
                     type: 'line',
@@ -131,7 +128,7 @@
                     }
                 });
             } catch (error) {
-                document.getElementById('loading').textContent = 'Failed to load data';
+                document.getElementById('loading').textContent = 'Failed to load data: ' + error.message;
             }
         }
         init();
