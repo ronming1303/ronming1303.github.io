@@ -48,11 +48,7 @@
             return d.toISOString().split('T')[0];
         }
 
-        function toDate(ts) {
-            if (ts instanceof Date) return ts;
-            if (typeof ts === 'bigint') return new Date(Number(ts) / 1000);
-            return new Date(ts);
-        }
+        const PARSERS = { timestampFromMilliseconds: ms => new Date(Number(ms)) };
 
         async function findLatestDate() {
             for (let i = 0; i < 5; i++) {
@@ -72,7 +68,7 @@
                 slice: (s, e) => Promise.resolve(ab.slice(s, e))
             };
             return new Promise((resolve, reject) => {
-                parquetRead({ file, rowFormat: 'object', onComplete: resolve }).catch(reject);
+                parquetRead({ file, rowFormat: 'object', parsers: PARSERS, onComplete: resolve }).catch(reject);
             });
         }
 
@@ -86,10 +82,10 @@
                 );
 
                 const datasets = allRows.map((rows, i) => {
-                    rows.sort((a, b) => toDate(a.timestamp) - toDate(b.timestamp));
+                    rows.sort((a, b) => a.timestamp - b.timestamp);
                     return {
                         label: EXCHANGES[i][0].toUpperCase() + EXCHANGES[i].slice(1),
-                        data: rows.map(r => ({ x: toDate(r.timestamp), y: r.close })),
+                        data: rows.map(r => ({ x: r.timestamp, y: Number(r.close) })),
                         borderColor: COLORS[i],
                         backgroundColor: 'transparent',
                         tension: 0.3,

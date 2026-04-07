@@ -96,11 +96,7 @@
             return d.toISOString().split('T')[0];
         }
 
-        function toDate(ts) {
-            if (ts instanceof Date) return ts;
-            if (typeof ts === 'bigint') return new Date(Number(ts) / 1000);
-            return new Date(ts);
-        }
+        const PARSERS = { timestampFromMilliseconds: ms => new Date(Number(ms)) };
 
         async function findLatestDate() {
             for (let i = 0; i < 5; i++) {
@@ -121,9 +117,9 @@
                 slice: (s, e) => Promise.resolve(ab.slice(s, e))
             };
             const rows = await new Promise((resolve, reject) => {
-                parquetRead({ file, rowFormat: 'object', onComplete: resolve }).catch(reject);
+                parquetRead({ file, rowFormat: 'object', parsers: PARSERS, onComplete: resolve }).catch(reject);
             });
-            rows.sort((a, b) => toDate(a.timestamp) - toDate(b.timestamp));
+            rows.sort((a, b) => a.timestamp - b.timestamp);
             cache[url] = rows;
             return rows;
         }
@@ -140,7 +136,7 @@
             grid.innerHTML = '';
 
             const latestPrices = allRows
-                .map((rows, i) => ({ exchange: EXCHANGES[i], price: rows[rows.length - 1]?.close ?? null }))
+                .map((rows, i) => ({ exchange: EXCHANGES[i], price: rows.length ? Number(rows[rows.length - 1].close) : null }))
                 .filter(e => e.price !== null);
 
             if (!latestPrices.length) return;
@@ -166,7 +162,7 @@
         function renderCharts(allRows) {
             const priceDatasets = allRows.map((rows, i) => ({
                 label: EXCHANGES[i][0].toUpperCase() + EXCHANGES[i].slice(1),
-                data: rows.map(r => ({ x: toDate(r.timestamp), y: r.close })),
+                data: rows.map(r => ({ x: r.timestamp, y: Number(r.close) })),
                 borderColor: COLORS[i],
                 backgroundColor: 'transparent',
                 tension: 0.3,
@@ -177,9 +173,9 @@
             const timeMap = {};
             allRows.forEach(rows => {
                 rows.forEach(r => {
-                    const t = toDate(r.timestamp).getTime();
+                    const t = r.timestamp.getTime();
                     if (!timeMap[t]) timeMap[t] = [];
-                    timeMap[t].push(r.close);
+                    timeMap[t].push(Number(r.close));
                 });
             });
             const spreadData = Object.entries(timeMap)
