@@ -110,7 +110,7 @@
     </div>
 
     <script type="module">
-        import { asyncBufferFromUrl, parquetRead } from 'https://esm.sh/hyparquet@1';
+        import { parquetRead } from 'https://esm.sh/hyparquet@1';
 
         const EXCHANGES = ['binance', 'bybit', 'coinbase', 'kraken', 'okx', 'bitfinex'];
         const COLORS = ['#F0B90B', '#F7A600', '#0052FF', '#5741D9', '#1a1a1a', '#16B157'];
@@ -141,10 +141,14 @@
 
         async function readParquet(url) {
             if (cache[url]) return cache[url];
-            const buf = await asyncBufferFromUrl(url);
+            const arrayBuffer = await fetch(url).then(r => r.arrayBuffer());
+            const file = {
+                byteLength: arrayBuffer.byteLength,
+                slice: (start, end) => Promise.resolve(arrayBuffer.slice(start, end))
+            };
             const rows = await new Promise((resolve, reject) => {
                 parquetRead({
-                    file: buf,
+                    file,
                     columns: ['timestamp', 'open', 'high', 'low', 'close', 'volume_to'],
                     onComplete: resolve
                 }).catch(reject);
