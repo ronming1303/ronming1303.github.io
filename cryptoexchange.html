@@ -43,6 +43,10 @@
         .stat-label { font-size: 11px; color: #57606a; margin-bottom: 4px; }
         .stat-value { font-size: 18px; font-weight: 600; }
         .stat-sub { font-size: 11px; color: #57606a; margin-top: 2px; }
+        .back-link { color: #0969da; text-decoration: none; font-size: 0.9em; }
+        .back-link:hover { text-decoration: underline; }
+        footer { margin-top: 40px; padding-top: 20px; border-top: 1px solid #d0d7de; color: #57606a; font-size: 0.85em; }
+        footer a { color: #0969da; text-decoration: none; }
         #overlay {
             position: fixed; inset: 0;
             background: rgba(246,248,250,0.85);
@@ -56,6 +60,7 @@
 <body>
     <div id="overlay">Loading data...</div>
 
+    <a href="/" class="back-link">&larr; Back to Home</a>
     <h2>Crypto Exchange Price Dashboard</h2>
     <p class="subtitle">Intraday BTC / ETH / SOL prices across Binance, Bybit, Coinbase, Kraken, OKX, Bitfinex</p>
     <div id="date-label"></div>
@@ -77,6 +82,10 @@
         <div class="card-title">Price Spread (Max − Min across exchanges)</div>
         <div class="chart-wrapper"><canvas id="spreadChart"></canvas></div>
     </div>
+
+    <footer>
+        <p>Cite our paper: <a href="https://papers.ssrn.com/sol3/papers.cfm?abstract_id=4816710" target="_blank">Pricing and Arbitrage Across 80 Cryptocurrency Exchanges</a></p>
+    </footer>
 
     <script type="module">
         import { parquetRead } from 'https://esm.sh/hyparquet@1';
