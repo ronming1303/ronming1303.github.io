@@ -31,7 +31,7 @@ I am quite interested in quantitaive investment, quantitative risk management an
 
 <div style="margin: 20px 0;">
 <a href="cryptoexchange.html" style="text-decoration: none; display: block;">
-<iframe src="cryptoexchange-embed.html" width="100%" height="320" style="border: 1px solid #d0d7de; border-radius: 6px; pointer-events: none;"></iframe>
+<iframe src="cryptoexchange-embed.html?v=4" width="100%" height="320" style="border: 1px solid #d0d7de; border-radius: 6px; pointer-events: none;"></iframe>
 <p style="text-align: center; color: #0969da; margin-top: 8px;">Click to view full dashboard →</p>
 </a>
 </div>
