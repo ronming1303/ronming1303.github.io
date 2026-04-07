@@ -48,7 +48,10 @@
             return d.toISOString().split('T')[0];
         }
 
-        const PARSERS = { timestampFromMicroseconds: us => new Date(Number(us) / 1000) };
+        const PARSERS = {
+            timestampFromMicroseconds: us => new Date(Number(us) / 1000),
+            stringFromBytes: bytes => new TextDecoder().decode(bytes)
+        };
 
         async function findLatestDate() {
             for (let i = 0; i < 5; i++) {
