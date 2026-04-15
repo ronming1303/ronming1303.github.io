@@ -136,7 +136,28 @@
                 }
             }
 
-            if (allPoints.length === 0) throw new Error('No data');
+            if (allPoints.length === 0) {
+                console.log('Debug: total lines:', lines.length);
+                console.log('Debug: headers length:', headers.length);
+                console.log('Debug: timeIndex:', timeIndex, 'bidsIndex:', bidsJsonIndex, 'asksIndex:', asksJsonIndex);
+                if (lines.length > 1) {
+                    const testLine = lines[1];
+                    const testFields = [];
+                    let current = '';
+                    let inQuotes = false;
+                    for (let j = 0; j < testLine.length; j++) {
+                        const char = testLine[j];
+                        if (char === '"') inQuotes = !inQuotes;
+                        else if (char === ',' && !inQuotes) { testFields.push(current); current = ''; }
+                        else current += char;
+                    }
+                    testFields.push(current);
+                    console.log('Debug: first data line fields:', testFields.length);
+                    console.log('Debug: time field:', testFields[timeIndex]);
+                    console.log('Debug: bids field (first 100):', testFields[bidsJsonIndex].substring(0, 100));
+                }
+                throw new Error('No data - debug info in console');
+            }
 
             const points = allPoints.slice(-60);
             const latest = points[points.length - 1];
