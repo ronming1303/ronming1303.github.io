@@ -205,79 +205,113 @@
             const ctx = document.getElementById('imbalanceChart').getContext('2d');
             if (chart) chart.destroy();
 
-            // Draw heatmap with rectangles
+            // Draw heatmap with rectangles for each depth level
             const canvas = document.getElementById('imbalanceChart');
             canvas.width = canvas.offsetWidth;
             canvas.height = canvas.offsetHeight;
             
-            const rect = canvas.getBoundingClientRect();
-            const padding = { top: 40, bottom: 40, left: 60, right: 20 };
+            const padding = { top: 40, bottom: 40, left: 80, right: 20 };
             const graphWidth = canvas.width - padding.left - padding.right;
             const graphHeight = canvas.height - padding.top - padding.bottom;
             
-            // Find price range
-            const allPrices = [];
+            // Calculate max size for normalization (separate for bid and ask)
+            let maxBidSize = 0, maxAskSize = 0;
             points.forEach(p => {
-                p.bids.forEach(b => allPrices.push(b.price));
-                p.asks.forEach(a => allPrices.push(a.price));
+                p.bids.forEach(b => maxBidSize = Math.max(maxBidSize, b.size));
+                p.asks.forEach(a => maxAskSize = Math.max(maxAskSize, a.size));
             });
-            const minPrice = Math.floor(Math.min(...allPrices) * 100) / 100;
-            const maxPrice = Math.ceil(Math.max(...allPrices) * 100) / 100;
-            const priceRange = maxPrice - minPrice;
             
-            // Calculate max size for normalization
-            const allSizes = [];
-            points.forEach(p => {
-                p.bids.forEach(b => allSizes.push(b.size));
-                p.asks.forEach(a => allSizes.push(a.size));
-            });
-            const maxSize = Math.max(...allSizes);
+            const DEPTH_LEVELS = 10;
+            const rectWidth = graphWidth / points.length;
+            const rectHeight = graphHeight / (DEPTH_LEVELS * 2); // 10 bids + 10 asks
             
             // Draw background
             ctx.fillStyle = '#f6f8fa';
             ctx.fillRect(padding.left, padding.top, graphWidth, graphHeight);
             
-            // Draw grid lines
+            // Draw grid
             ctx.strokeStyle = '#e1e4e8';
             ctx.lineWidth = 1;
-            for (let i = 0; i <= 10; i++) {
-                const price = minPrice + (priceRange / 10) * i;
-                const y = padding.top + graphHeight - ((price - minPrice) / priceRange) * graphHeight;
+            for (let i = 0; i <= DEPTH_LEVELS * 2; i++) {
+                const y = padding.top + i * rectHeight;
                 ctx.beginPath();
                 ctx.moveTo(padding.left, y);
                 ctx.lineTo(padding.left + graphWidth, y);
                 ctx.stroke();
             }
             
-            // Draw rectangles for each order
-            const rectWidth = graphWidth / points.length;
-            const levelHeight = graphHeight / 10;
-            
+            // Draw rectangles
             points.forEach((p, timeIdx) => {
                 const x0 = padding.left + timeIdx * rectWidth;
                 
-                // Draw bids (blue)
+                // Draw Bids (top half, levels 1-10)
                 p.bids.forEach((bid, bidIdx) => {
-                    const normalized = bid.size / maxSize;
-                    const y = padding.top + graphHeight - ((bid.price - minPrice) / priceRange) * graphHeight;
-                    const rectH = levelHeight * Math.min(normalized + 0.1, 1);
-                    const alpha = Math.min(0.3 + normalized * 0.7, 1);
+                    const y = padding.top + bidIdx * rectHeight;
+                    const normalized = Math.min(bid.size / maxBidSize, 1);
+                    const alpha = Math.max(0.1 + normalized * 0.9, 0.1);
                     
                     ctx.fillStyle = `rgba(9, 105, 218, ${alpha})`;
-                    ctx.fillRect(x0, y - rectH / 2, rectWidth - 1, rectH);
+                    ctx.fillRect(x0, y, rectWidth - 0.5, rectHeight - 0.5);
                 });
                 
-                // Draw asks (red)
+                // Draw Asks (bottom half, levels 1-10)
                 p.asks.forEach((ask, askIdx) => {
-                    const normalized = ask.size / maxSize;
-                    const y = padding.top + graphHeight - ((ask.price - minPrice) / priceRange) * graphHeight;
-                    const rectH = levelHeight * Math.min(normalized + 0.1, 1);
-                    const alpha = Math.min(0.3 + normalized * 0.7, 1);
+                    const y = padding.top + (DEPTH_LEVELS + askIdx) * rectHeight;
+                    const normalized = Math.min(ask.size / maxAskSize, 1);
+                    const alpha = Math.max(0.1 + normalized * 0.9, 0.1);
                     
                     ctx.fillStyle = `rgba(220, 53, 69, ${alpha})`;
-                    ctx.fillRect(x0, y - rectH / 2, rectWidth - 1, rectH);
+                    ctx.fillRect(x0, y, rectWidth - 0.5, rectHeight - 0.5);
                 });
             });
+            
+            // Draw axes
+            ctx.strokeStyle = '#24292f';
+            ctx.lineWidth = 2;
+            ctx.beginPath();
+            ctx.moveTo(padding.left, padding.top);
+            ctx.lineTo(padding.left, padding.top + graphHeight);
+            ctx.lineTo(padding.left + graphWidth, padding.top + graphHeight);
+            ctx.stroke();
+            
+            // Draw depth level labels
+            ctx.fillStyle = '#57606a';
+            ctx.font = '10px -apple-system, BlinkMacSystemFont, "Segoe UI"';
+            ctx.textAlign = 'right';
+            
+            // Bid labels
+            ctx.fillStyle = '#0969da';
+            for (let i = 0; i < DEPTH_LEVELS; i++) {
+                const y = padding.top + (i + 0.5) * rectHeight;
+                ctx.fillText(`L${i + 1}`, padding.left - 40, y + 3);
+            }
+            
+            // Ask labels
+            ctx.fillStyle = '#dc3545';
+            for (let i = 0; i < DEPTH_LEVELS; i++) {
+                const y = padding.top + (DEPTH_LEVELS + i + 0.5) * rectHeight;
+                ctx.fillText(`L${i + 1}`, padding.left - 40, y + 3);
+            }
+            
+            // Time labels (every ~10 minutes)
+            ctx.fillStyle = '#57606a';
+            ctx.font = '10px -apple-system, BlinkMacSystemFont, "Segoe UI"';
+            ctx.textAlign = 'center';
+            const labelInterval = Math.ceil(points.length / 8);
+            for (let i = 0; i < points.length; i += labelInterval) {
+                const x = padding.left + (i + 0.5) * rectWidth;
+                const timeStr = points[i].time.toLocaleTimeString('en-US', { hour: '2-digit', minute: '2-digit' });
+                ctx.fillText(timeStr, x, canvas.height - 10);
+            }
+            
+            // Labels on left
+            ctx.textAlign = 'right';
+            ctx.fillStyle = '#0969da';
+            ctx.font = 'bold 12px -apple-system, BlinkMacSystemFont, "Segoe UI"';
+            ctx.fillText('BIDS', padding.left - 45, padding.top - 10);
+            
+            ctx.fillStyle = '#dc3545';
+            ctx.fillText('ASKS', padding.left - 45, padding.top + graphHeight / 2 + 5);
             
             // Draw axes
             ctx.strokeStyle = '#24292f';

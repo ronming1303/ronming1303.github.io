@@ -127,59 +127,56 @@
             canvas.width = canvas.offsetWidth;
             canvas.height = canvas.offsetHeight;
             
-            const padding = { top: 30, bottom: 30, left: 50, right: 10 };
+            const padding = { top: 30, bottom: 30, left: 70, right: 10 };
             const graphWidth = canvas.width - padding.left - padding.right;
             const graphHeight = canvas.height - padding.top - padding.bottom;
             
-            // Find price range
-            const allPrices = [];
+            // Calculate max size for normalization (separate for bid and ask)
+            let maxBidSize = 0, maxAskSize = 0;
             points.forEach(p => {
-                p.bids.forEach(b => allPrices.push(b.price));
-                p.asks.forEach(a => allPrices.push(a.price));
+                p.bids.forEach(b => maxBidSize = Math.max(maxBidSize, b.size));
+                p.asks.forEach(a => maxAskSize = Math.max(maxAskSize, a.size));
             });
-            const minPrice = Math.floor(Math.min(...allPrices) * 100) / 100;
-            const maxPrice = Math.ceil(Math.max(...allPrices) * 100) / 100;
-            const priceRange = maxPrice - minPrice;
             
-            // Calculate max size for normalization
-            const allSizes = [];
-            points.forEach(p => {
-                p.bids.forEach(b => allSizes.push(b.size));
-                p.asks.forEach(a => allSizes.push(a.size));
-            });
-            const maxSize = Math.max(...allSizes);
+            const DEPTH_LEVELS = 10;
+            const rectWidth = graphWidth / points.length;
+            const rectHeight = graphHeight / (DEPTH_LEVELS * 2);
             
             // Draw background
             ctx.fillStyle = '#f6f8fa';
             ctx.fillRect(padding.left, padding.top, graphWidth, graphHeight);
             
-            // Draw rectangles for each order
-            const rectWidth = graphWidth / points.length;
-            const levelHeight = graphHeight / 10;
+            // Draw grid
+            ctx.strokeStyle = '#e1e4e8';
+            ctx.lineWidth = 1;
+            for (let i = 0; i <= DEPTH_LEVELS * 2; i++) {
+                const y = padding.top + i * rectHeight;
+                ctx.beginPath();
+                ctx.moveTo(padding.left, y);
+                ctx.lineTo(padding.left + graphWidth, y);
+                ctx.stroke();
+            }
             
+            // Draw rectangles
             points.forEach((p, timeIdx) => {
                 const x0 = padding.left + timeIdx * rectWidth;
                 
-                // Draw bids (blue)
-                p.bids.forEach(bid => {
-                    const normalized = bid.size / maxSize;
-                    const y = padding.top + graphHeight - ((bid.price - minPrice) / priceRange) * graphHeight;
-                    const rectH = levelHeight * Math.min(normalized + 0.1, 1);
-                    const alpha = Math.min(0.3 + normalized * 0.7, 1);
-                    
+                // Draw Bids
+                p.bids.forEach((bid, bidIdx) => {
+                    const y = padding.top + bidIdx * rectHeight;
+                    const normalized = Math.min(bid.size / maxBidSize, 1);
+                    const alpha = Math.max(0.1 + normalized * 0.9, 0.1);
                     ctx.fillStyle = `rgba(9, 105, 218, ${alpha})`;
-                    ctx.fillRect(x0, y - rectH / 2, rectWidth - 1, rectH);
+                    ctx.fillRect(x0, y, rectWidth - 0.5, rectHeight - 0.5);
                 });
                 
-                // Draw asks (red)
-                p.asks.forEach(ask => {
-                    const normalized = ask.size / maxSize;
-                    const y = padding.top + graphHeight - ((ask.price - minPrice) / priceRange) * graphHeight;
-                    const rectH = levelHeight * Math.min(normalized + 0.1, 1);
-                    const alpha = Math.min(0.3 + normalized * 0.7, 1);
-                    
+                // Draw Asks
+                p.asks.forEach((ask, askIdx) => {
+                    const y = padding.top + (DEPTH_LEVELS + askIdx) * rectHeight;
+                    const normalized = Math.min(ask.size / maxAskSize, 1);
+                    const alpha = Math.max(0.1 + normalized * 0.9, 0.1);
                     ctx.fillStyle = `rgba(220, 53, 69, ${alpha})`;
-                    ctx.fillRect(x0, y - rectH / 2, rectWidth - 1, rectH);
+                    ctx.fillRect(x0, y, rectWidth - 0.5, rectHeight - 0.5);
                 });
             });
             
@@ -192,14 +189,19 @@
             ctx.lineTo(padding.left + graphWidth, padding.top + graphHeight);
             ctx.stroke();
             
-            // Draw Y-axis labels
-            ctx.fillStyle = '#57606a';
-            ctx.font = '10px -apple-system, BlinkMacSystemFont, "Segoe UI"';
+            // Draw depth labels
+            ctx.fillStyle = '#0969da';
+            ctx.font = '9px -apple-system, BlinkMacSystemFont, "Segoe UI"';
             ctx.textAlign = 'right';
-            for (let i = 0; i <= 5; i++) {
-                const price = minPrice + (priceRange / 5) * i;
-                const y = padding.top + graphHeight - ((price - minPrice) / priceRange) * graphHeight;
-                ctx.fillText(`$${price.toFixed(0)}`, padding.left - 5, y + 3);
+            for (let i = 0; i < DEPTH_LEVELS; i++) {
+                const y = padding.top + (i + 0.5) * rectHeight;
+                ctx.fillText(`B${i + 1}`, padding.left - 5, y + 2);
+            }
+            
+            ctx.fillStyle = '#dc3545';
+            for (let i = 0; i < DEPTH_LEVELS; i++) {
+                const y = padding.top + (DEPTH_LEVELS + i + 0.5) * rectHeight;
+                ctx.fillText(`A${i + 1}`, padding.left - 5, y + 2);
             }
                         y: {
                             ticks: { color: '#57606a', font: { size: 9 } },
