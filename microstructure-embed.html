@@ -46,7 +46,7 @@
             
             if (lines.length < 2) throw new Error('No data');
 
-            const headerLine = lines[0];
+            const headerLine = lines[0].trim();
             const headers = [];
             let current = '';
             let inQuotes = false;
@@ -56,7 +56,7 @@
                 else if (char === ',' && !inQuotes) { headers.push(current); current = ''; }
                 else current += char;
             }
-            headers.push(current);
+            headers.push(current.trim());
             
             const timeIndex = headers.findIndex(h => h.includes('collected_at_utc'));
             const bidsJsonIndex = headers.findIndex(h => h.includes('bids_json'));
@@ -82,12 +82,9 @@
                 if (fields.length > Math.max(timeIndex, bidsJsonIndex, asksJsonIndex)) {
                     const time = new Date(fields[timeIndex].trim());
                     try {
-                        // Handle CSV-escaped quotes: "" -> "
-                        let bidsStr = fields[bidsJsonIndex].trim().slice(1, -1).replace(/""/g, '"');
-                        let asksStr = fields[asksJsonIndex].trim().slice(1, -1).replace(/""/g, '"');
-                        
-                        const bidsJson = JSON.parse(bidsStr);
-                        const asksJson = JSON.parse(asksStr);
+                        // CSV parser (quote-aware split) already gives us clean fields
+                        const bidsJson = JSON.parse(fields[bidsJsonIndex]);
+                        const asksJson = JSON.parse(fields[asksJsonIndex]);
                         
                         if (Array.isArray(bidsJson) && Array.isArray(asksJson) && bidsJson.length > 0 && asksJson.length > 0) {
                             allPoints.push({ 
