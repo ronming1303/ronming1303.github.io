@@ -93,7 +93,7 @@
                 throw new Error('CSV file is empty');
             }
 
-            // Parse CSV
+            // Parse CSV using proper quoted field handling
             const points = [];
             const headers = lines[0].split(',');
             const timeIndex = headers.indexOf('collected_at_utc');
@@ -104,10 +104,28 @@
             }
             
             for (let i = 1; i < lines.length; i++) {
-                const values = lines[i].split(',');
-                if (values.length > Math.max(timeIndex, imbalanceIndex)) {
-                    const time = new Date(values[timeIndex]);
-                    const imbalance = parseFloat(values[imbalanceIndex]);
+                const line = lines[i];
+                // Simple CSV parser that handles quoted fields
+                const fields = [];
+                let current = '';
+                let inQuotes = false;
+                
+                for (let j = 0; j < line.length; j++) {
+                    const char = line[j];
+                    if (char === '"') {
+                        inQuotes = !inQuotes;
+                    } else if (char === ',' && !inQuotes) {
+                        fields.push(current);
+                        current = '';
+                    } else {
+                        current += char;
+                    }
+                }
+                fields.push(current);
+                
+                if (fields.length > Math.max(timeIndex, imbalanceIndex)) {
+                    const time = new Date(fields[timeIndex]);
+                    const imbalance = parseFloat(fields[imbalanceIndex]);
                     if (!isNaN(imbalance) && !isNaN(time.getTime())) {
                         points.push({ time, imbalance });
                     }
