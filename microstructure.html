@@ -322,17 +322,23 @@
             ctx.lineTo(padding.left + graphWidth, padding.top + graphHeight);
             ctx.stroke();
             
-            // Draw labels
-            ctx.fillStyle = '#57606a';
+            // Draw depth labels
+            ctx.fillStyle = '#0969da';
             ctx.font = '12px -apple-system, BlinkMacSystemFont, "Segoe UI"';
             ctx.textAlign = 'right';
-            for (let i = 0; i <= 10; i++) {
-                const price = minPrice + (priceRange / 10) * i;
-                const y = padding.top + graphHeight - ((price - minPrice) / priceRange) * graphHeight;
-                ctx.fillText(`$${price.toFixed(2)}`, padding.left - 10, y + 4);
+            for (let i = 0; i < DEPTH_LEVELS; i++) {
+                const y = padding.top + (i + 0.5) * rectHeight;
+                ctx.fillText(`B${i + 1}`, padding.left - 10, y + 4);
+            }
+            
+            ctx.fillStyle = '#dc3545';
+            for (let i = 0; i < DEPTH_LEVELS; i++) {
+                const y = padding.top + (DEPTH_LEVELS + i + 0.5) * rectHeight;
+                ctx.fillText(`A${i + 1}`, padding.left - 10, y + 4);
             }
             
             // Time labels
+            ctx.fillStyle = '#57606a';
             ctx.textAlign = 'center';
             for (let i = 0; i < points.length; i += Math.ceil(points.length / 8)) {
                 const x = padding.left + i * rectWidth + rectWidth / 2;
