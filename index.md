@@ -16,7 +16,7 @@ I am quite interested in quantitaive investment, quantitative risk management an
 - [Sentiment in the Cross Section of Cryptocurrency Returns](https://papers.ssrn.com/sol3/papers.cfm?abstract_id=4941032)
   - _We find an anomoly associated with the cryptocurrency market sentiment. Our findings indicate that cryptos with high sensitivities to sentiment tend to yield lower returns in the following period. We introduce a sentiment factor to explain the sentiment-related anomoly._ [<span style="color: red"><u>Keynote Here</u></span>](https://github.com/ronming1303/Ruming-Liu-PDF-Document/blob/main/CryptoSentiment_FMA2024.pdf)
   - Qualified for Best Paper Award at 2024 International Conference of Taiwan Finance Association.
-  - CryptoSent Index (last 6 Months):
+  - CryptoSent Index (Last 6 Months):
 
 <div style="margin: 20px 0;">
 <a href="cryptosent.html" style="text-decoration: none; display: block;">
@@ -38,7 +38,7 @@ I am quite interested in quantitaive investment, quantitative risk management an
 
 - [The Impact of Spoofing on Bitcoin Market Microstructure](https://papers.ssrn.com/sol3/papers.cfm?abstract_id=5771502)
   - _We find that order book imbalances significantly increase Bitcoin returns at minute and hourly levels. We introduce an innovative methodology for measuring the intensity of spoofing activities._ [<span style="color: red"><u>Poster Here</u></span>](https://github.com/ronming1303/Ruming-Liu-PDF-Document/blob/main/spoofing_poster.pdf)
-  - Bitcoin Order Book Imbalance (Last 24 Hours):
+  - Bitcoin Order Book Imbalance (Last 60 Mins):
 
 <div style="margin: 20px 0;">
 <a href="microstructure.html" style="text-decoration: none; display: block;">
