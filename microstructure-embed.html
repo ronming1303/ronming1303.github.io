@@ -48,14 +48,10 @@
 
             const headers = lines[0].split(',');
             const timeIndex = headers.indexOf('collected_at_utc');
-            const bidVolumeIndex = headers.indexOf('bid_volume');
-            const askVolumeIndex = headers.indexOf('ask_volume');
-            const imbalanceIndex = headers.indexOf('imbalance');
-            const bestBidIndex = headers.indexOf('best_bid');
-            const bestAskIndex = headers.indexOf('best_ask');
-            const midPriceIndex = headers.indexOf('mid_price');
+            const bidsJsonIndex = headers.indexOf('bids_json');
+            const asksJsonIndex = headers.indexOf('asks_json');
             
-            if (timeIndex === -1 || imbalanceIndex === -1 || bidVolumeIndex === -1) throw new Error('Missing columns');
+            if (timeIndex === -1 || bidsJsonIndex === -1 || asksJsonIndex === -1) throw new Error('Missing columns');
 
             const allPoints = [];
             for (let i = 1; i < lines.length; i++) {
@@ -72,17 +68,21 @@
                 }
                 fields.push(current);
                 
-                if (fields.length > Math.max(timeIndex, imbalanceIndex, bidVolumeIndex, askVolumeIndex, bestBidIndex, bestAskIndex)) {
+                if (fields.length > Math.max(timeIndex, bidsJsonIndex, asksJsonIndex)) {
                     const time = new Date(fields[timeIndex].trim());
-                    const bidVol = parseFloat(fields[bidVolumeIndex].trim());
-                    const askVol = parseFloat(fields[askVolumeIndex].trim());
-                    const imbalance = parseFloat(fields[imbalanceIndex].trim());
-                    const bestBid = parseFloat(fields[bestBidIndex].trim());
-                    const bestAsk = parseFloat(fields[bestAskIndex].trim());
-                    const midPrice = parseFloat(fields[midPriceIndex].trim());
-                    
-                    if (!isNaN(imbalance) && !isNaN(time.getTime())) {
-                        allPoints.push({ time, bidVol, askVol, imbalance, bestBid, bestAsk, midPrice });
+                    try {
+                        const bidsJson = JSON.parse(fields[bidsJsonIndex].trim());
+                        const asksJson = JSON.parse(fields[asksJsonIndex].trim());
+                        
+                        if (Array.isArray(bidsJson) && Array.isArray(asksJson) && bidsJson.length > 0 && asksJson.length > 0) {
+                            allPoints.push({ 
+                                time, 
+                                bids: bidsJson.slice(0, 10),
+                                asks: asksJson.slice(0, 10)
+                            });
+                        }
+                    } catch (e) {
+                        // Skip malformed JSON
                     }
                 }
             }
@@ -95,56 +95,52 @@
             document.getElementById('content').style.display = 'block';
 
             new Chart(document.getElementById('imbalanceChart'), {
-                type: 'bar',
+                type: 'bubble',
                 data: {
-                    labels: points.map(p => p.time),
                     datasets: [
                         {
-                            label: 'Bid Volume',
-                            data: points.map(p => p.bidVol),
-                            type: 'bar',
-                            backgroundColor: 'rgba(40, 167, 69, 0.4)',
-                            borderWidth: 0,
-                            barThickness: 4,
-                            yAxisID: 'y1'
+                            label: 'Bid Orders',
+                            data: (() => {
+                                const bidData = [];
+                                points.forEach(p => {
+                                    p.bids.forEach(bid => {
+                                        bidData.push({
+                                            x: p.time,
+                                            y: bid.price,
+                                            r: Math.sqrt(bid.size) * 6
+                                        });
+                                    });
+                                });
+                                return bidData;
+                            })(),
+                            backgroundColor: 'rgba(40, 167, 69, 0.5)',
+                            borderColor: 'rgba(40, 167, 69, 0.8)',
+                            borderWidth: 1
                         },
                         {
-                            label: 'Ask Volume',
-                            data: points.map(p => p.askVol),
-                            type: 'bar',
-                            backgroundColor: 'rgba(220, 53, 69, 0.4)',
-                            borderWidth: 0,
-                            barThickness: 4,
-                            yAxisID: 'y1'
-                        },
-                        {
-                            label: 'Best Bid',
-                            data: points.map(p => p.bestBid),
-                            type: 'line',
-                            borderColor: '#28a745',
-                            borderWidth: 1.5,
-                            pointRadius: 0,
-                            fill: false,
-                            tension: 0.2,
-                            yAxisID: 'y'
-                        },
-                        {
-                            label: 'Best Ask',
-                            data: points.map(p => p.bestAsk),
-                            type: 'line',
-                            borderColor: '#dc3545',
-                            borderWidth: 1.5,
-                            pointRadius: 0,
-                            fill: false,
-                            tension: 0.2,
-                            yAxisID: 'y'
+                            label: 'Ask Orders',
+                            data: (() => {
+                                const askData = [];
+                                points.forEach(p => {
+                                    p.asks.forEach(ask => {
+                                        askData.push({
+                                            x: p.time,
+                                            y: ask.price,
+                                            r: Math.sqrt(ask.size) * 6
+                                        });
+                                    });
+                                });
+                                return askData;
+                            })(),
+                            backgroundColor: 'rgba(220, 53, 69, 0.5)',
+                            borderColor: 'rgba(220, 53, 69, 0.8)',
+                            borderWidth: 1
                         }
                     ]
                 },
                 options: {
                     responsive: true,
                     maintainAspectRatio: false,
-                    interaction: { mode: 'index', intersect: false },
                     plugins: {
                         legend: { display: true, position: 'bottom', labels: { font: { size: 10 } } }
                     },
@@ -156,16 +152,8 @@
                             grid: { color: '#d0d7de' }
                         },
                         y: {
-                            type: 'linear',
-                            position: 'left',
                             ticks: { color: '#57606a', font: { size: 9 } },
                             grid: { color: '#d0d7de' }
-                        },
-                        y1: {
-                            type: 'linear',
-                            position: 'right',
-                            ticks: { color: '#57606a', font: { size: 9 } },
-                            grid: { drawOnChartArea: false }
                         }
                     }
                 }

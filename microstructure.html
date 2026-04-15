@@ -28,7 +28,7 @@
         .stat-sub { font-size: 11px; color: #57606a; margin-top: 4px; }
         .card { background: #fff; border: 1px solid #d0d7de; border-radius: 6px; padding: 16px; margin-bottom: 16px; }
         .card-title { font-size: 13px; font-weight: 600; color: #57606a; margin-bottom: 12px; }
-        .chart-wrapper { position: relative; height: 350px; }
+        .chart-wrapper { position: relative; height: 500px; }
         .error { color: #d1242f; background: #FFEBE9; padding: 12px; border-radius: 6px; margin: 20px 0; }
         footer { margin-top: 40px; padding-top: 20px; border-top: 1px solid #d0d7de; color: #57606a; font-size: 0.85em; }
         footer a { color: #0969da; text-decoration: none; }
@@ -47,7 +47,7 @@
     </div>
 
     <div class="card">
-        <div class="card-title">Order Book Metrics (Last 60 Minutes)</div>
+        <div class="card-title">Order Book Depth - Bids vs Asks (Last 60 Minutes)</div>
         <div class="chart-wrapper">
             <canvas id="imbalanceChart"></canvas>
         </div>
@@ -78,17 +78,12 @@
 
             const headers = lines[0].split(',');
             const timeIndex = headers.indexOf('collected_at_utc');
-            const bidVolumeIndex = headers.indexOf('bid_volume');
-            const askVolumeIndex = headers.indexOf('ask_volume');
-            const imbalanceIndex = headers.indexOf('imbalance');
+            const bidsJsonIndex = headers.indexOf('bids_json');
+            const asksJsonIndex = headers.indexOf('asks_json');
             const bestBidIndex = headers.indexOf('best_bid');
             const bestAskIndex = headers.indexOf('best_ask');
-            const midPriceIndex = headers.indexOf('mid_price');
-            const spreadIndex = headers.indexOf('spread');
-            const spreadBpsIndex = headers.indexOf('spread_bps');
             
-            if (timeIndex === -1 || imbalanceIndex === -1 || bidVolumeIndex === -1 || askVolumeIndex === -1 || 
-                bestBidIndex === -1 || bestAskIndex === -1 || midPriceIndex === -1) throw new Error('Missing columns');
+            if (timeIndex === -1 || bidsJsonIndex === -1 || asksJsonIndex === -1) throw new Error('Missing columns');
 
             const allPoints = [];
             for (let i = 1; i < lines.length; i++) {
@@ -105,19 +100,23 @@
                 }
                 fields.push(current);
                 
-                if (fields.length > Math.max(timeIndex, imbalanceIndex, bidVolumeIndex, askVolumeIndex, bestBidIndex, bestAskIndex, midPriceIndex)) {
+                if (fields.length > Math.max(timeIndex, bidsJsonIndex, asksJsonIndex)) {
                     const time = new Date(fields[timeIndex].trim());
-                    const bidVol = parseFloat(fields[bidVolumeIndex].trim());
-                    const askVol = parseFloat(fields[askVolumeIndex].trim());
-                    const imbalance = parseFloat(fields[imbalanceIndex].trim());
-                    const bestBid = parseFloat(fields[bestBidIndex].trim());
-                    const bestAsk = parseFloat(fields[bestAskIndex].trim());
-                    const midPrice = parseFloat(fields[midPriceIndex].trim());
-                    const spread = spreadIndex !== -1 ? parseFloat(fields[spreadIndex].trim()) : bestAsk - bestBid;
-                    const spreadBps = spreadBpsIndex !== -1 ? parseFloat(fields[spreadBpsIndex].trim()) : 0;
-                    
-                    if (!isNaN(imbalance) && !isNaN(time.getTime()) && !isNaN(bidVol) && !isNaN(askVol) && !isNaN(bestBid) && !isNaN(bestAsk)) {
-                        allPoints.push({ time, bidVol, askVol, imbalance, bestBid, bestAsk, midPrice, spread, spreadBps });
+                    try {
+                        const bidsJson = JSON.parse(fields[bidsJsonIndex].trim());
+                        const asksJson = JSON.parse(fields[asksJsonIndex].trim());
+                        
+                        if (Array.isArray(bidsJson) && Array.isArray(asksJson) && bidsJson.length > 0 && asksJson.length > 0) {
+                            allPoints.push({ 
+                                time, 
+                                bids: bidsJson.slice(0, 10),
+                                asks: asksJson.slice(0, 10),
+                                bestBid: parseFloat(fields[bestBidIndex] || bidsJson[0].price),
+                                bestAsk: parseFloat(fields[bestAskIndex] || asksJson[0].price)
+                            });
+                        }
+                    } catch (e) {
+                        // Skip malformed JSON
                     }
                 }
             }
@@ -127,21 +126,27 @@
             const points = allPoints.slice(-60);
             const latest = points[points.length - 1];
             
-            const imbalances = points.map(p => p.imbalance);
-            const bidVols = points.map(p => p.bidVol);
-            const askVols = points.map(p => p.askVol);
-            const spreads = points.map(p => p.spread);
+            // Extract all bid/ask levels for stats
+            const allBidPrices = [];
+            const allAskPrices = [];
+            const allBidSizes = [];
+            const allAskSizes = [];
             
-            const mean = imbalances.reduce((a, b) => a + b, 0) / imbalances.length;
-            const sorted = [...imbalances].sort((a, b) => a - b);
-            const median = sorted.length % 2 === 0 ? (sorted[sorted.length / 2 - 1] + sorted[sorted.length / 2]) / 2 : sorted[Math.floor(sorted.length / 2)];
+            points.forEach(p => {
+                p.bids.forEach(b => { allBidPrices.push(b.price); allBidSizes.push(b.size); });
+                p.asks.forEach(a => { allAskPrices.push(a.price); allAskSizes.push(a.size); });
+            });
+            
+            const latestBidSize = latest.bids.reduce((a, b) => a + b.size, 0);
+            const latestAskSize = latest.asks.reduce((a, b) => a + b.size, 0);
+            const spread = latest.bestAsk - latest.bestBid;
 
             document.getElementById('stats-grid').innerHTML = `
-                <div class="stat-card"><div class="stat-label">Latest Imbalance</div><div class="stat-value">${latest.imbalance.toFixed(4)}</div><div class="stat-sub">Mean: ${mean.toFixed(4)}</div></div>
-                <div class="stat-card"><div class="stat-label">Bid Volume</div><div class="stat-value">${latest.bidVol.toFixed(4)}</div><div class="stat-sub">Ask: ${latest.askVol.toFixed(4)}</div></div>
-                <div class="stat-card"><div class="stat-label">Mid Price</div><div class="stat-value">$${latest.midPrice.toFixed(2)}</div><div class="stat-sub">Spread: ${latest.spread.toFixed(4)}</div></div>
-                <div class="stat-card"><div class="stat-label">Best Bid</div><div class="stat-value">$${latest.bestBid.toFixed(2)}</div><div class="stat-sub">Ask: $${latest.bestAsk.toFixed(2)}</div></div>
-                <div class="stat-card"><div class="stat-label">Spread bps</div><div class="stat-value">${(latest.spreadBps * 10000).toFixed(1)}</div><div class="stat-sub">Range: ${Math.min(...spreads).toFixed(4)} ~ ${Math.max(...spreads).toFixed(4)}</div></div>
+                <div class="stat-card"><div class="stat-label">Best Bid</div><div class="stat-value">$${latest.bestBid.toFixed(2)}</div><div class="stat-sub">Size: ${latestBidSize.toFixed(4)}</div></div>
+                <div class="stat-card"><div class="stat-label">Best Ask</div><div class="stat-value">$${latest.bestAsk.toFixed(2)}</div><div class="stat-sub">Size: ${latestAskSize.toFixed(4)}</div></div>
+                <div class="stat-card"><div class="stat-label">Spread</div><div class="stat-value">$${spread.toFixed(4)}</div><div class="stat-sub">bps: ${(spread / latest.bestBid * 10000).toFixed(1)}</div></div>
+                <div class="stat-card"><div class="stat-label">Imbalance</div><div class="stat-value">${((latestBidSize - latestAskSize) / (latestBidSize + latestAskSize)).toFixed(4)}</div><div class="stat-sub">Ratio: ${(latestBidSize / latestAskSize).toFixed(2)}</div></div>
+                <div class="stat-card"><div class="stat-label">Bid Depth</div><div class="stat-value">${latestBidSize.toFixed(3)}</div><div class="stat-sub">Ask: ${latestAskSize.toFixed(3)}</div></div>
                 <div class="stat-card"><div class="stat-label">Updated</div><div class="stat-value" style="font-size: 14px;">${latest.time.toLocaleTimeString()}</div><div class="stat-sub">${latest.time.toLocaleDateString()}</div></div>
             `;
             document.getElementById('last-update').textContent = latest.time.toLocaleString();
@@ -150,103 +155,76 @@
             if (chart) chart.destroy();
 
             chart = new Chart(ctx, {
-                type: 'bar',
+                type: 'bubble',
                 data: {
-                    labels: points.map(p => p.time),
                     datasets: [
                         {
-                            label: 'Bid Volume',
-                            data: points.map(p => p.bidVol),
-                            type: 'bar',
-                            backgroundColor: 'rgba(40, 167, 69, 0.4)',
+                            label: 'Bid Orders',
+                            data: (() => {
+                                const bidData = [];
+                                points.forEach(p => {
+                                    p.bids.forEach(bid => {
+                                        bidData.push({
+                                            x: p.time,
+                                            y: bid.price,
+                                            r: Math.sqrt(bid.size) * 8,
+                                            size: bid.size
+                                        });
+                                    });
+                                });
+                                return bidData;
+                            })(),
+                            backgroundColor: 'rgba(40, 167, 69, 0.5)',
                             borderColor: 'rgba(40, 167, 69, 0.8)',
-                            borderWidth: 0,
-                            barThickness: 6,
-                            yAxisID: 'y1'
+                            borderWidth: 1
                         },
                         {
-                            label: 'Ask Volume',
-                            data: points.map(p => p.askVol),
-                            type: 'bar',
-                            backgroundColor: 'rgba(220, 53, 69, 0.4)',
+                            label: 'Ask Orders',
+                            data: (() => {
+                                const askData = [];
+                                points.forEach(p => {
+                                    p.asks.forEach(ask => {
+                                        askData.push({
+                                            x: p.time,
+                                            y: ask.price,
+                                            r: Math.sqrt(ask.size) * 8,
+                                            size: ask.size
+                                        });
+                                    });
+                                });
+                                return askData;
+                            })(),
+                            backgroundColor: 'rgba(220, 53, 69, 0.5)',
                             borderColor: 'rgba(220, 53, 69, 0.8)',
-                            borderWidth: 0,
-                            barThickness: 6,
-                            yAxisID: 'y1'
-                        },
-                        {
-                            label: 'Imbalance',
-                            data: points.map(p => p.imbalance),
-                            type: 'line',
-                            borderColor: '#0969da',
-                            backgroundColor: 'rgba(9, 105, 218, 0.1)',
-                            borderWidth: 2,
-                            pointRadius: 0,
-                            fill: false,
-                            tension: 0.2,
-                            yAxisID: 'y1'
-                        },
-                        {
-                            label: 'Best Bid',
-                            data: points.map(p => p.bestBid),
-                            type: 'line',
-                            borderColor: '#28a745',
-                            borderWidth: 2,
-                            pointRadius: 0,
-                            fill: false,
-                            tension: 0.2,
-                            yAxisID: 'y'
-                        },
-                        {
-                            label: 'Best Ask',
-                            data: points.map(p => p.bestAsk),
-                            type: 'line',
-                            borderColor: '#dc3545',
-                            borderWidth: 2,
-                            pointRadius: 0,
-                            fill: false,
-                            tension: 0.2,
-                            yAxisID: 'y'
-                        },
-                        {
-                            label: 'Mid Price',
-                            data: points.map(p => p.midPrice),
-                            type: 'line',
-                            borderColor: '#6f42c1',
-                            borderWidth: 2,
-                            pointRadius: 0,
-                            fill: false,
-                            tension: 0.2,
-                            yAxisID: 'y'
+                            borderWidth: 1
                         }
                     ]
                 },
                 options: {
                     responsive: true,
                     maintainAspectRatio: false,
-                    interaction: { mode: 'index', intersect: false },
-                    plugins: { legend: { display: true, position: 'top' } },
+                    plugins: {
+                        legend: { display: true, position: 'top' },
+                        tooltip: {
+                            callbacks: {
+                                label: function(context) {
+                                    return `Price: $${context.raw.y.toFixed(2)}, Size: ${context.raw.size.toFixed(6)}`;
+                                }
+                            }
+                        }
+                    },
                     scales: {
-                        x: { 
-                            type: 'time', 
+                        x: {
+                            type: 'time',
                             time: { unit: 'minute', displayFormats: { minute: 'HH:mm' } },
-                            grid: { display: true, drawBorder: true }
+                            title: { display: true, text: 'Time' },
+                            ticks: { color: '#57606a' },
+                            grid: { color: '#d0d7de' }
                         },
                         y: {
-                            type: 'linear',
-                            display: true,
-                            position: 'left',
                             title: { display: true, text: 'Price ($)' },
-                            grid: { color: '#d0d7de' },
-                            ticks: { color: '#57606a' }
-                        },
-                        y1: {
-                            type: 'linear',
-                            display: true,
-                            position: 'right',
-                            title: { display: true, text: 'Volume / Imbalance' },
-                            grid: { drawOnChartArea: false },
-                            ticks: { color: '#57606a' }
+                            ticks: { color: '#57606a' },
+                            grid: { color: '#d0d7de' }
                         }
                     }
                 }
