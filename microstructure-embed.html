@@ -3,9 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Bitcoin Imbalance Chart</title>
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/chartjs-adapter-date-fns"></script>
+    <title>Bitcoin Microstructure Heatmap</title>
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
         body {
@@ -15,7 +13,8 @@
         }
         .chart-wrapper {
             position: relative;
-            height: 280px;
+            width: 100%;
+            height: 500px;
         }
         .loading {
             text-align: center;
@@ -79,11 +78,9 @@
                     
                     if (char === '"') {
                         if (inQuotes && nextChar === '"') {
-                            // "" is an escaped quote - add single " and skip next
                             current += '"';
                             j++;
                         } else {
-                            // Toggle quote state
                             inQuotes = !inQuotes;
                         }
                     } else if (char === ',' && !inQuotes) {
@@ -121,17 +118,17 @@
             document.getElementById('loading').style.display = 'none';
             document.getElementById('content').style.display = 'block';
 
-            // Draw heatmap with rectangles
+            // Draw heatmap
             const canvas = document.getElementById('imbalanceChart');
             const ctx = canvas.getContext('2d');
             canvas.width = canvas.offsetWidth;
             canvas.height = canvas.offsetHeight;
             
-            const padding = { top: 30, bottom: 30, left: 70, right: 10 };
+            const padding = { top: 40, bottom: 30, left: 80, right: 20 };
             const graphWidth = canvas.width - padding.left - padding.right;
             const graphHeight = canvas.height - padding.top - padding.bottom;
             
-            // Calculate max size for normalization (separate for bid and ask)
+            // Calculate max size for normalization
             let maxBidSize = 0, maxAskSize = 0;
             points.forEach(p => {
                 p.bids.forEach(b => maxBidSize = Math.max(maxBidSize, b.size));
@@ -182,36 +179,43 @@
             
             // Draw axes
             ctx.strokeStyle = '#24292f';
-            ctx.lineWidth = 1;
+            ctx.lineWidth = 2;
             ctx.beginPath();
             ctx.moveTo(padding.left, padding.top);
             ctx.lineTo(padding.left, padding.top + graphHeight);
             ctx.lineTo(padding.left + graphWidth, padding.top + graphHeight);
             ctx.stroke();
             
-            // Draw depth labels
+            // Draw depth labels and title
             ctx.fillStyle = '#0969da';
-            ctx.font = '9px -apple-system, BlinkMacSystemFont, "Segoe UI"';
+            ctx.font = 'bold 11px -apple-system, BlinkMacSystemFont, "Segoe UI"';
+            ctx.textAlign = 'center';
+            ctx.fillText('BIDS', padding.left / 2, padding.top / 2 - 5);
+            
+            ctx.fillStyle = '#dc3545';
+            ctx.fillText('ASKS', padding.left / 2, padding.top + graphHeight / 2);
+            
+            ctx.fillStyle = '#0969da';
+            ctx.font = '10px -apple-system, BlinkMacSystemFont, "Segoe UI"';
             ctx.textAlign = 'right';
             for (let i = 0; i < DEPTH_LEVELS; i++) {
                 const y = padding.top + (i + 0.5) * rectHeight;
-                ctx.fillText(`B${i + 1}`, padding.left - 5, y + 2);
+                ctx.fillText(`L${i + 1}`, padding.left - 10, y + 4);
             }
             
             ctx.fillStyle = '#dc3545';
             for (let i = 0; i < DEPTH_LEVELS; i++) {
                 const y = padding.top + (DEPTH_LEVELS + i + 0.5) * rectHeight;
-                ctx.fillText(`A${i + 1}`, padding.left - 5, y + 2);
+                ctx.fillText(`L${i + 1}`, padding.left - 10, y + 4);
             }
-                        y: {
-                            ticks: { color: '#57606a', font: { size: 9 } },
-                            grid: { color: '#d0d7de' }
-                        }
-                    }
-                }
-            });
+            
+            // Draw title
+            ctx.fillStyle = '#24292f';
+            ctx.font = 'bold 14px -apple-system, BlinkMacSystemFont, "Segoe UI"';
+            ctx.textAlign = 'left';
+            ctx.fillText('Order Book Heatmap (Last 60 minutes)', padding.left, 20);
         } catch (error) {
-            document.getElementById('loading').textContent = 'Failed to load data';
+            document.getElementById('loading').textContent = 'Error: ' + error.message;
         }
     }
     init();
