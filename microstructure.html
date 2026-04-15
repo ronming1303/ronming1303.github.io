@@ -213,41 +213,47 @@
                             label: 'Bid Orders',
                             data: (() => {
                                 const bidData = [];
+                                const maxSize = Math.max(...allBidSizes, ...allAskSizes);
                                 points.forEach(p => {
                                     p.bids.forEach(bid => {
+                                        const normalized = Math.min(bid.size / maxSize, 1);
                                         bidData.push({
                                             x: p.time,
                                             y: bid.price,
-                                            r: Math.sqrt(bid.size) * 8,
-                                            size: bid.size
+                                            r: 5,
+                                            size: bid.size,
+                                            normalized: normalized
                                         });
                                     });
                                 });
                                 return bidData;
                             })(),
-                            backgroundColor: 'rgba(40, 167, 69, 0.5)',
-                            borderColor: 'rgba(40, 167, 69, 0.8)',
-                            borderWidth: 1
+                            backgroundColor: points => `rgba(40, 167, 69, ${0.2 + (points.raw.size / Math.max(...allBidSizes, ...allAskSizes)) * 0.8})`,
+                            borderColor: 'rgba(40, 167, 69, 0.3)',
+                            borderWidth: 0
                         },
                         {
                             label: 'Ask Orders',
                             data: (() => {
                                 const askData = [];
+                                const maxSize = Math.max(...allBidSizes, ...allAskSizes);
                                 points.forEach(p => {
                                     p.asks.forEach(ask => {
+                                        const normalized = Math.min(ask.size / maxSize, 1);
                                         askData.push({
                                             x: p.time,
                                             y: ask.price,
-                                            r: Math.sqrt(ask.size) * 8,
-                                            size: ask.size
+                                            r: 5,
+                                            size: ask.size,
+                                            normalized: normalized
                                         });
                                     });
                                 });
                                 return askData;
                             })(),
-                            backgroundColor: 'rgba(220, 53, 69, 0.5)',
-                            borderColor: 'rgba(220, 53, 69, 0.8)',
-                            borderWidth: 1
+                            backgroundColor: points => `rgba(220, 53, 69, ${0.2 + (points.raw.size / Math.max(...allBidSizes, ...allAskSizes)) * 0.8})`,
+                            borderColor: 'rgba(220, 53, 69, 0.3)',
+                            borderWidth: 0
                         }
                     ]
                 },

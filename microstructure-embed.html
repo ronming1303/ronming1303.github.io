@@ -121,6 +121,14 @@
             document.getElementById('loading').style.display = 'none';
             document.getElementById('content').style.display = 'block';
 
+            const allBidSizes = [];
+            const allAskSizes = [];
+            points.forEach(p => {
+                p.bids.forEach(b => allBidSizes.push(b.size));
+                p.asks.forEach(a => allAskSizes.push(a.size));
+            });
+            const maxSize = Math.max(...allBidSizes, ...allAskSizes);
+
             new Chart(document.getElementById('imbalanceChart'), {
                 type: 'bubble',
                 data: {
@@ -134,15 +142,16 @@
                                         bidData.push({
                                             x: p.time,
                                             y: bid.price,
-                                            r: Math.sqrt(bid.size) * 6
+                                            r: 4,
+                                            size: bid.size
                                         });
                                     });
                                 });
                                 return bidData;
                             })(),
-                            backgroundColor: 'rgba(40, 167, 69, 0.5)',
-                            borderColor: 'rgba(40, 167, 69, 0.8)',
-                            borderWidth: 1
+                            backgroundColor: data => `rgba(40, 167, 69, ${0.2 + (data.size / maxSize) * 0.8})`,
+                            borderColor: 'rgba(40, 167, 69, 0.2)',
+                            borderWidth: 0
                         },
                         {
                             label: 'Ask Orders',
@@ -153,15 +162,16 @@
                                         askData.push({
                                             x: p.time,
                                             y: ask.price,
-                                            r: Math.sqrt(ask.size) * 6
+                                            r: 4,
+                                            size: ask.size
                                         });
                                     });
                                 });
                                 return askData;
                             })(),
-                            backgroundColor: 'rgba(220, 53, 69, 0.5)',
-                            borderColor: 'rgba(220, 53, 69, 0.8)',
-                            borderWidth: 1
+                            backgroundColor: data => `rgba(220, 53, 69, ${0.2 + (data.size / maxSize) * 0.8})`,
+                            borderColor: 'rgba(220, 53, 69, 0.2)',
+                            borderWidth: 0
                         }
                     ]
                 },
@@ -178,6 +188,13 @@
                             ticks: { color: '#57606a', font: { size: 9 } },
                             grid: { color: '#d0d7de' }
                         },
+                        y: {
+                            ticks: { color: '#57606a', font: { size: 9 } },
+                            grid: { color: '#d0d7de' }
+                        }
+                    }
+                }
+            });
                         y: {
                             ticks: { color: '#57606a', font: { size: 9 } },
                             grid: { color: '#d0d7de' }
