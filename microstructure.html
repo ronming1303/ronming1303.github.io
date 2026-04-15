@@ -110,32 +110,31 @@
                 
                 for (let j = 0; j < line.length; j++) {
                     const char = line[j];
-                    if (char === '"') inQuotes = !inQuotes;
-                    else if (char === ',' && !inQuotes) { 
-                        fields.push(current); 
-                        current = ''; 
+                    const nextChar = line[j + 1];
+                    
+                    if (char === '"') {
+                        if (inQuotes && nextChar === '"') {
+                            // "" is an escaped quote - add single " and skip next
+                            current += '"';
+                            j++;
+                        } else {
+                            // Toggle quote state
+                            inQuotes = !inQuotes;
+                        }
+                    } else if (char === ',' && !inQuotes) {
+                        fields.push(current);
+                        current = '';
+                    } else {
+                        current += char;
                     }
-                    else current += char;
                 }
                 fields.push(current);
                 
                 if (fields.length > Math.max(timeIndex, bidsJsonIndex, asksJsonIndex)) {
                     const time = new Date(fields[timeIndex].trim());
                     try {
-                        // If field starts and ends with quotes, it was quoted in CSV
-                        // Remove outer quotes and unescape internal "" to "
-                        let bidsField = fields[bidsJsonIndex].trim();
-                        let asksField = fields[asksJsonIndex].trim();
-                        
-                        if (bidsField.startsWith('"') && bidsField.endsWith('"')) {
-                            bidsField = bidsField.slice(1, -1).replace(/""/g, '"');
-                        }
-                        if (asksField.startsWith('"') && asksField.endsWith('"')) {
-                            asksField = asksField.slice(1, -1).replace(/""/g, '"');
-                        }
-                        
-                        const bidsJson = JSON.parse(bidsField);
-                        const asksJson = JSON.parse(asksField);
+                        const bidsJson = JSON.parse(fields[bidsJsonIndex]);
+                        const asksJson = JSON.parse(fields[asksJsonIndex]);
                         
                         if (Array.isArray(bidsJson) && Array.isArray(asksJson) && bidsJson.length > 0 && asksJson.length > 0) {
                             allPoints.push({ 
