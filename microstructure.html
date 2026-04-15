@@ -181,7 +181,7 @@
                 });
             }
 
-            // Prepare order book chart - aggregate volumes at each price level
+            // Prepare order book chart
             const bidDatasets = [];
             const askDatasets = [];
             const maxDepth = 5;
@@ -205,6 +205,7 @@
                     fill: true,
                     tension: 0.3,
                     pointRadius: 0,
+                    pointHoverRadius: 4,
                     borderWidth: 1.5
                 });
                 
@@ -216,13 +217,13 @@
                     fill: true,
                     tension: 0.3,
                     pointRadius: 0,
+                    pointHoverRadius: 4,
                     borderWidth: 1.5
                 });
             }
 
             const xScale = {
                 type: 'time',
-                time: { unit: 'minute', displayFormats: { minute: 'HH:mm' } },
                 ticks: { color: '#57606a', font: { size: 11 } },
                 grid: { color: '#d0d7de' }
             };
@@ -258,12 +259,14 @@
                         fill: true,
                         tension: 0.3,
                         pointRadius: 0,
+                        pointHoverRadius: 5,
                         borderWidth: 1.8
                     }]
                 },
                 options: {
                     responsive: true,
                     maintainAspectRatio: false,
+                    interaction: { mode: 'index', intersect: false },
                     plugins: { legend: { display: true, position: 'top', labels: { boxWidth: 10, font: { size: 11 }, padding: 10 } } },
                     scales: {
                         x: xScale,
