@@ -88,6 +88,7 @@
             if (!csvText) throw new Error('No minute data files found');
             
             const lines = csvText.trim().split('\n');
+            console.log('CSV lines:', lines.length);
             
             if (lines.length < 2) {
                 throw new Error('CSV file is empty');
@@ -99,8 +100,10 @@
             const timeIndex = headers.indexOf('collected_at_utc');
             const imbalanceIndex = headers.indexOf('imbalance');
             
+            console.log('Headers:', headers.length, 'timeIndex:', timeIndex, 'imbalanceIndex:', imbalanceIndex);
+            
             if (timeIndex === -1 || imbalanceIndex === -1) {
-                throw new Error('Missing required columns in CSV');
+                throw new Error('Missing required columns in CSV: timeIndex=' + timeIndex + ', imbalanceIndex=' + imbalanceIndex);
             }
             
             for (let i = 1; i < lines.length; i++) {
@@ -124,13 +127,18 @@
                 fields.push(current);
                 
                 if (fields.length > Math.max(timeIndex, imbalanceIndex)) {
-                    const time = new Date(fields[timeIndex]);
-                    const imbalance = parseFloat(fields[imbalanceIndex]);
+                    const timeStr = fields[timeIndex];
+                    const imbalanceStr = fields[imbalanceIndex];
+                    const time = new Date(timeStr);
+                    const imbalance = parseFloat(imbalanceStr);
+                    
                     if (!isNaN(imbalance) && !isNaN(time.getTime())) {
                         points.push({ time, imbalance });
                     }
                 }
             }
+            
+            console.log('Parsed points:', points.length);
             
             if (points.length === 0) {
                 throw new Error('No valid data points');
