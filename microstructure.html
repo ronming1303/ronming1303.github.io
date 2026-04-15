@@ -28,9 +28,7 @@
         .stat-sub { font-size: 10px; color: #57606a; margin-top: 2px; }
         .card { background: #fff; border: 1px solid #d0d7de; border-radius: 6px; padding: 16px; margin-bottom: 16px; }
         .card-title { font-size: 13px; font-weight: 600; color: #57606a; margin-bottom: 12px; }
-        .charts-grid { display: grid; grid-template-columns: 2fr 1fr; gap: 16px; margin-bottom: 16px; }
         .chart-wrapper { position: relative; height: 400px; }
-        .error { color: #d1242f; background: #FFEBE9; padding: 12px; border-radius: 6px; margin: 20px 0; }
         footer { margin-top: 40px; padding-top: 20px; border-top: 1px solid #d0d7de; color: #57606a; font-size: 0.85em; }
         footer a { color: #0969da; text-decoration: none; }
     </style>
@@ -40,27 +38,24 @@
     <header>
         <a href="/" class="back-link">&larr; Back to Home</a>
         <h1>Bitcoin Order Book Imbalance</h1>
-        <p class="subtitle">Last 60 minutes of order book dynamics and sentiment</p>
+        <p class="subtitle">Last 60 minutes of order book depth and sentiment</p>
     </header>
 
     <div id="stats-grid" class="stats-grid"></div>
 
-    <div class="charts-grid">
-        <div class="card">
-            <div class="card-title">Order Book Depth Evolution (Last 60 Minutes)</div>
-            <div class="chart-wrapper">
-                <canvas id="orderBookChart"></canvas>
-            </div>
-        </div>
-        <div class="card">
-            <div class="card-title">Bid-Ask Imbalance</div>
-            <div class="chart-wrapper">
-                <canvas id="imbalanceChart"></canvas>
-            </div>
+    <div class="card">
+        <div class="card-title">Order Book Depth - Bid & Ask Pressure (Last 60 Minutes)</div>
+        <div class="chart-wrapper">
+            <canvas id="orderBookChart"></canvas>
         </div>
     </div>
 
-    <div id="error" class="error" style="display: none;"></div>
+    <div class="card">
+        <div class="card-title">Bid-Ask Imbalance Sentiment</div>
+        <div class="chart-wrapper">
+            <canvas id="imbalanceChart"></canvas>
+        </div>
+    </div>
 
     <footer>
         <p>Data source: <a href="https://github.com/ronming1303/Microstructure_Pipeline" target="_blank">Microstructure Pipeline</a></p>
@@ -71,6 +66,9 @@
     function formatPrice(price) {
         return '$' + Math.round(price).toLocaleString();
     }
+
+    const BID_COLORS = ['#0969da', '#0860c2', '#0859b8', '#0851ae', '#0749a4'];
+    const ASK_COLORS = ['#dc3545', '#d02a3b', '#c42231', '#b81927', '#ac111d'];
 
     async function init() {
         try {
@@ -104,7 +102,7 @@
             const bestAskIndex = headers.findIndex(h => h.includes('best_ask'));
             const imbalanceIndex = headers.findIndex(h => h.includes('imbalance'));
             
-            if (timeIndex === -1 || bidsJsonIndex === -1 || asksJsonIndex === -1) throw new Error('Missing required columns');
+            if (timeIndex === -1 || bidsJsonIndex === -1 || asksJsonIndex === -1) throw new Error('Missing columns');
 
             const allPoints = [];
             for (let i = 1; i < lines.length; i++) {
@@ -183,75 +181,67 @@
                 });
             }
 
-            // Prepare data for order book chart
+            // Prepare order book chart - aggregate volumes at each price level
             const bidDatasets = [];
             const askDatasets = [];
-            const maxDepth = 10;
+            const maxDepth = 5;
             
             for (let depth = 0; depth < maxDepth; depth++) {
-                const bidData = points.map((p, idx) => ({
+                const bidData = points.map(p => ({
                     x: p.time,
-                    y: p.bids[depth]?.price || null,
-                    r: (p.bids[depth]?.size || 0) * 100
-                })).filter(d => d.y !== null);
+                    y: p.bids[depth]?.size || 0
+                }));
                 
-                const askData = points.map((p, idx) => ({
+                const askData = points.map(p => ({
                     x: p.time,
-                    y: p.asks[depth]?.price || null,
-                    r: (p.asks[depth]?.size || 0) * 100
-                })).filter(d => d.y !== null);
+                    y: p.asks[depth]?.size || 0
+                }));
                 
-                if (bidData.length > 0) {
-                    bidDatasets.push({
-                        label: `Bid L${depth + 1}`,
-                        data: bidData,
-                        backgroundColor: `rgba(9, 105, 218, ${0.3 + depth * 0.05})`,
-                        borderColor: `rgba(9, 105, 218, 1)`,
-                        borderWidth: 0,
-                        pointRadius: 0
-                    });
-                }
+                bidDatasets.push({
+                    label: `Bid L${depth + 1}`,
+                    data: bidData,
+                    borderColor: BID_COLORS[depth],
+                    backgroundColor: BID_COLORS[depth].replace(')', ', 0.1)').replace('rgb', 'rgba'),
+                    fill: true,
+                    tension: 0.3,
+                    pointRadius: 0,
+                    borderWidth: 1.5
+                });
                 
-                if (askData.length > 0) {
-                    askDatasets.push({
-                        label: `Ask L${depth + 1}`,
-                        data: askData,
-                        backgroundColor: `rgba(220, 53, 69, ${0.3 + depth * 0.05})`,
-                        borderColor: `rgba(220, 53, 69, 1)`,
-                        borderWidth: 0,
-                        pointRadius: 0
-                    });
-                }
+                askDatasets.push({
+                    label: `Ask L${depth + 1}`,
+                    data: askData,
+                    borderColor: ASK_COLORS[depth],
+                    backgroundColor: ASK_COLORS[depth].replace(')', ', 0.1)').replace('rgb', 'rgba'),
+                    fill: true,
+                    tension: 0.3,
+                    pointRadius: 0,
+                    borderWidth: 1.5
+                });
             }
+
+            const xScale = {
+                type: 'time',
+                time: { unit: 'minute', displayFormats: { minute: 'HH:mm' } },
+                ticks: { color: '#57606a', font: { size: 11 } },
+                grid: { color: '#d0d7de' }
+            };
 
             // Order book chart
             new Chart(document.getElementById('orderBookChart'), {
-                type: 'bubble',
-                data: {
-                    datasets: [...bidDatasets, ...askDatasets]
-                },
+                type: 'line',
+                data: { datasets: [...bidDatasets, ...askDatasets] },
                 options: {
                     responsive: true,
                     maintainAspectRatio: false,
+                    interaction: { mode: 'index', intersect: false },
                     plugins: {
-                        legend: { display: true, position: 'top', labels: { boxWidth: 6, font: { size: 10 }, padding: 8, usePointStyle: true } },
-                        tooltip: {
-                            callbacks: {
-                                label: ctx => `${ctx.dataset.label}: $${ctx.parsed.y.toFixed(2)} (${ctx.raw.r.toFixed(2)})`
-                            }
-                        }
+                        legend: { display: true, position: 'top', labels: { boxWidth: 10, font: { size: 11 }, padding: 10 } },
+                        tooltip: { callbacks: { label: ctx => `${ctx.dataset.label}: ${ctx.parsed.y.toFixed(4)}` } }
                     },
                     scales: {
-                        x: {
-                            type: 'time',
-                            time: { unit: 'minute', displayFormats: { minute: 'HH:mm' } },
-                            ticks: { color: '#57606a', font: { size: 10 } },
-                            grid: { color: '#d0d7de' }
-                        },
-                        y: {
-                            ticks: { color: '#57606a', font: { size: 10 }, callback: v => formatPrice(v) },
-                            grid: { color: '#d0d7de' }
-                        }
+                        x: xScale,
+                        y: { ticks: { color: '#57606a', font: { size: 11 } }, grid: { color: '#d0d7de' } }
                     }
                 }
             });
@@ -260,44 +250,30 @@
             new Chart(document.getElementById('imbalanceChart'), {
                 type: 'line',
                 data: {
-                    labels: points.map(p => p.time),
                     datasets: [{
-                        label: 'Order Book Imbalance',
-                        data: points.map(p => p.imbalance),
+                        label: 'Imbalance',
+                        data: points.map(p => ({ x: p.time, y: p.imbalance })),
                         borderColor: '#6366f1',
                         backgroundColor: 'rgba(99, 102, 241, 0.1)',
                         fill: true,
                         tension: 0.3,
                         pointRadius: 0,
-                        borderWidth: 2
+                        borderWidth: 1.8
                     }]
                 },
                 options: {
                     responsive: true,
                     maintainAspectRatio: false,
-                    plugins: {
-                        legend: { display: false },
-                        tooltip: { callbacks: { label: ctx => `Imbalance: ${ctx.parsed.y.toFixed(4)}` } }
-                    },
+                    plugins: { legend: { display: true, position: 'top', labels: { boxWidth: 10, font: { size: 11 }, padding: 10 } } },
                     scales: {
-                        x: {
-                            type: 'time',
-                            time: { unit: 'minute', displayFormats: { minute: 'HH:mm' } },
-                            ticks: { color: '#57606a', font: { size: 10 } },
-                            grid: { color: '#d0d7de' }
-                        },
-                        y: {
-                            ticks: { color: '#57606a', font: { size: 10 } },
-                            grid: { color: '#d0d7de' }
-                        }
+                        x: xScale,
+                        y: { ticks: { color: '#57606a', font: { size: 11 } }, grid: { color: '#d0d7de' } }
                     }
                 }
             });
             
         } catch (error) {
-            const errorDiv = document.getElementById('error');
-            errorDiv.textContent = 'Error: ' + error.message;
-            errorDiv.style.display = 'block';
+            console.error('Error:', error);
         }
     }
     init();
