@@ -21,7 +21,7 @@
         .subtitle { color: #57606a; font-size: 0.95em; }
         .back-link { color: #0969da; text-decoration: none; font-size: 0.9em; margin-top: 10px; display: inline-block; }
         .back-link:hover { text-decoration: underline; }
-        .stats-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; margin-bottom: 20px; }
+        .stats-grid { display: grid; grid-template-columns: repeat(6, 1fr); gap: 12px; margin-bottom: 20px; }
         .stat-card { background: #fff; border: 1px solid #d0d7de; border-radius: 6px; padding: 16px; }
         .stat-label { font-size: 12px; color: #57606a; margin-bottom: 6px; font-weight: 500; }
         .stat-value { font-size: 20px; font-weight: 600; color: #0969da; }
@@ -47,7 +47,7 @@
     </div>
 
     <div class="card">
-        <div class="card-title">Order Book Imbalance Over Time (Last 60 Minutes)</div>
+        <div class="card-title">Order Book Metrics (Last 60 Minutes)</div>
         <div class="chart-wrapper">
             <canvas id="imbalanceChart"></canvas>
         </div>
@@ -78,9 +78,17 @@
 
             const headers = lines[0].split(',');
             const timeIndex = headers.indexOf('collected_at_utc');
+            const bidVolumeIndex = headers.indexOf('bid_volume');
+            const askVolumeIndex = headers.indexOf('ask_volume');
             const imbalanceIndex = headers.indexOf('imbalance');
+            const bestBidIndex = headers.indexOf('best_bid');
+            const bestAskIndex = headers.indexOf('best_ask');
+            const midPriceIndex = headers.indexOf('mid_price');
+            const spreadIndex = headers.indexOf('spread');
+            const spreadBpsIndex = headers.indexOf('spread_bps');
             
-            if (timeIndex === -1 || imbalanceIndex === -1) throw new Error('Missing columns');
+            if (timeIndex === -1 || imbalanceIndex === -1 || bidVolumeIndex === -1 || askVolumeIndex === -1 || 
+                bestBidIndex === -1 || bestAskIndex === -1 || midPriceIndex === -1) throw new Error('Missing columns');
 
             const allPoints = [];
             for (let i = 1; i < lines.length; i++) {
@@ -97,11 +105,19 @@
                 }
                 fields.push(current);
                 
-                if (fields.length > Math.max(timeIndex, imbalanceIndex)) {
+                if (fields.length > Math.max(timeIndex, imbalanceIndex, bidVolumeIndex, askVolumeIndex, bestBidIndex, bestAskIndex, midPriceIndex)) {
                     const time = new Date(fields[timeIndex].trim());
+                    const bidVol = parseFloat(fields[bidVolumeIndex].trim());
+                    const askVol = parseFloat(fields[askVolumeIndex].trim());
                     const imbalance = parseFloat(fields[imbalanceIndex].trim());
-                    if (!isNaN(imbalance) && !isNaN(time.getTime())) {
-                        allPoints.push({ time, imbalance });
+                    const bestBid = parseFloat(fields[bestBidIndex].trim());
+                    const bestAsk = parseFloat(fields[bestAskIndex].trim());
+                    const midPrice = parseFloat(fields[midPriceIndex].trim());
+                    const spread = spreadIndex !== -1 ? parseFloat(fields[spreadIndex].trim()) : bestAsk - bestBid;
+                    const spreadBps = spreadBpsIndex !== -1 ? parseFloat(fields[spreadBpsIndex].trim()) : 0;
+                    
+                    if (!isNaN(imbalance) && !isNaN(time.getTime()) && !isNaN(bidVol) && !isNaN(askVol) && !isNaN(bestBid) && !isNaN(bestAsk)) {
+                        allPoints.push({ time, bidVol, askVol, imbalance, bestBid, bestAsk, midPrice, spread, spreadBps });
                     }
                 }
             }
@@ -110,15 +126,22 @@
 
             const points = allPoints.slice(-60);
             const latest = points[points.length - 1];
+            
             const imbalances = points.map(p => p.imbalance);
+            const bidVols = points.map(p => p.bidVol);
+            const askVols = points.map(p => p.askVol);
+            const spreads = points.map(p => p.spread);
+            
             const mean = imbalances.reduce((a, b) => a + b, 0) / imbalances.length;
             const sorted = [...imbalances].sort((a, b) => a - b);
             const median = sorted.length % 2 === 0 ? (sorted[sorted.length / 2 - 1] + sorted[sorted.length / 2]) / 2 : sorted[Math.floor(sorted.length / 2)];
 
             document.getElementById('stats-grid').innerHTML = `
-                <div class="stat-card"><div class="stat-label">Latest</div><div class="stat-value">${latest.imbalance.toFixed(4)}</div><div class="stat-sub">Mean: ${mean.toFixed(4)}</div></div>
-                <div class="stat-card"><div class="stat-label">Max</div><div class="stat-value">${Math.max(...imbalances).toFixed(4)}</div><div class="stat-sub">Min: ${Math.min(...imbalances).toFixed(4)}</div></div>
-                <div class="stat-card"><div class="stat-label">Median</div><div class="stat-value">${median.toFixed(4)}</div><div class="stat-sub">Points: ${points.length}</div></div>
+                <div class="stat-card"><div class="stat-label">Latest Imbalance</div><div class="stat-value">${latest.imbalance.toFixed(4)}</div><div class="stat-sub">Mean: ${mean.toFixed(4)}</div></div>
+                <div class="stat-card"><div class="stat-label">Bid Volume</div><div class="stat-value">${latest.bidVol.toFixed(4)}</div><div class="stat-sub">Ask: ${latest.askVol.toFixed(4)}</div></div>
+                <div class="stat-card"><div class="stat-label">Mid Price</div><div class="stat-value">$${latest.midPrice.toFixed(2)}</div><div class="stat-sub">Spread: ${latest.spread.toFixed(4)}</div></div>
+                <div class="stat-card"><div class="stat-label">Best Bid</div><div class="stat-value">$${latest.bestBid.toFixed(2)}</div><div class="stat-sub">Ask: $${latest.bestAsk.toFixed(2)}</div></div>
+                <div class="stat-card"><div class="stat-label">Spread bps</div><div class="stat-value">${(latest.spreadBps * 10000).toFixed(1)}</div><div class="stat-sub">Range: ${Math.min(...spreads).toFixed(4)} ~ ${Math.max(...spreads).toFixed(4)}</div></div>
                 <div class="stat-card"><div class="stat-label">Updated</div><div class="stat-value" style="font-size: 14px;">${latest.time.toLocaleTimeString()}</div><div class="stat-sub">${latest.time.toLocaleDateString()}</div></div>
             `;
             document.getElementById('last-update').textContent = latest.time.toLocaleString();
@@ -127,28 +150,104 @@
             if (chart) chart.destroy();
 
             chart = new Chart(ctx, {
-                type: 'line',
+                type: 'bar',
                 data: {
                     labels: points.map(p => p.time),
-                    datasets: [{
-                        label: 'Imbalance',
-                        data: points.map(p => p.imbalance),
-                        borderColor: '#0969da',
-                        backgroundColor: 'rgba(9, 105, 218, 0.1)',
-                        tension: 0.2,
-                        fill: true,
-                        pointRadius: 3,
-                        pointHoverRadius: 5,
-                        borderWidth: 2
-                    }]
+                    datasets: [
+                        {
+                            label: 'Bid Volume',
+                            data: points.map(p => p.bidVol),
+                            type: 'bar',
+                            backgroundColor: 'rgba(40, 167, 69, 0.4)',
+                            borderColor: 'rgba(40, 167, 69, 0.8)',
+                            borderWidth: 0,
+                            barThickness: 6,
+                            yAxisID: 'y1'
+                        },
+                        {
+                            label: 'Ask Volume',
+                            data: points.map(p => p.askVol),
+                            type: 'bar',
+                            backgroundColor: 'rgba(220, 53, 69, 0.4)',
+                            borderColor: 'rgba(220, 53, 69, 0.8)',
+                            borderWidth: 0,
+                            barThickness: 6,
+                            yAxisID: 'y1'
+                        },
+                        {
+                            label: 'Imbalance',
+                            data: points.map(p => p.imbalance),
+                            type: 'line',
+                            borderColor: '#0969da',
+                            backgroundColor: 'rgba(9, 105, 218, 0.1)',
+                            borderWidth: 2,
+                            pointRadius: 0,
+                            fill: false,
+                            tension: 0.2,
+                            yAxisID: 'y1'
+                        },
+                        {
+                            label: 'Best Bid',
+                            data: points.map(p => p.bestBid),
+                            type: 'line',
+                            borderColor: '#28a745',
+                            borderWidth: 2,
+                            pointRadius: 0,
+                            fill: false,
+                            tension: 0.2,
+                            yAxisID: 'y'
+                        },
+                        {
+                            label: 'Best Ask',
+                            data: points.map(p => p.bestAsk),
+                            type: 'line',
+                            borderColor: '#dc3545',
+                            borderWidth: 2,
+                            pointRadius: 0,
+                            fill: false,
+                            tension: 0.2,
+                            yAxisID: 'y'
+                        },
+                        {
+                            label: 'Mid Price',
+                            data: points.map(p => p.midPrice),
+                            type: 'line',
+                            borderColor: '#6f42c1',
+                            borderWidth: 2,
+                            pointRadius: 0,
+                            fill: false,
+                            tension: 0.2,
+                            yAxisID: 'y'
+                        }
+                    ]
                 },
                 options: {
                     responsive: true,
                     maintainAspectRatio: false,
+                    interaction: { mode: 'index', intersect: false },
                     plugins: { legend: { display: true, position: 'top' } },
                     scales: {
-                        x: { type: 'time', time: { unit: 'minute', displayFormats: { minute: 'HH:mm' } } },
-                        y: { title: { display: true, text: 'Imbalance Index' } }
+                        x: { 
+                            type: 'time', 
+                            time: { unit: 'minute', displayFormats: { minute: 'HH:mm' } },
+                            grid: { display: true, drawBorder: true }
+                        },
+                        y: {
+                            type: 'linear',
+                            display: true,
+                            position: 'left',
+                            title: { display: true, text: 'Price ($)' },
+                            grid: { color: '#d0d7de' },
+                            ticks: { color: '#57606a' }
+                        },
+                        y1: {
+                            type: 'linear',
+                            display: true,
+                            position: 'right',
+                            title: { display: true, text: 'Volume / Imbalance' },
+                            grid: { drawOnChartArea: false },
+                            ticks: { color: '#57606a' }
+                        }
                     }
                 }
             });
