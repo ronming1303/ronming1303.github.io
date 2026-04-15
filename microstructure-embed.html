@@ -3,39 +3,50 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Bitcoin Microstructure Heatmap</title>
+    <title>Bitcoin Microstructure Dashboard</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chartjs-adapter-date-fns"></script>
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
         body {
             font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
-            background: #ffffff;
-            padding: 0;
-            margin: 0;
+            background: #f6f8fa;
+            padding: 24px;
         }
-        .chart-wrapper {
-            position: relative;
-            width: 100%;
-            height: 100vh;
-        }
-        canvas {
-            width: 100% !important;
-            height: 100% !important;
-            display: block;
-        }
-        .loading {
-            text-align: center;
-            padding: 50px;
-            color: #57606a;
-        }
+        .container { max-width: 1200px; margin: 0 auto; }
+        h2 { font-size: 18px; font-weight: 600; margin-bottom: 4px; }
+        .subtitle { color: #57606a; font-size: 13px; margin-bottom: 20px; }
+        .stats-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; margin-bottom: 20px; }
+        .stat-card { background: #fff; border: 1px solid #d0d7de; border-radius: 6px; padding: 12px 16px; }
+        .stat-label { font-size: 11px; color: #57606a; margin-bottom: 4px; }
+        .stat-value { font-size: 18px; font-weight: 600; }
+        .stat-sub { font-size: 10px; color: #57606a; margin-top: 2px; }
+        .card { background: #fff; border: 1px solid #d0d7de; border-radius: 6px; padding: 16px; margin-bottom: 16px; }
+        .card-title { font-size: 13px; font-weight: 600; color: #57606a; margin-bottom: 12px; }
+        .chart-wrapper { position: relative; height: 350px; }
     </style>
 </head>
 <body>
-    <div id="loading" class="loading">Loading...</div>
-    <div id="content" style="display: none;">
+<div class="container">
+    <h2>Bitcoin Order Book Imbalance</h2>
+    <p class="subtitle">Last 60 minutes of order book dynamics</p>
+    
+    <div id="stats-grid" class="stats-grid"></div>
+
+    <div class="card">
+        <div class="card-title">Order Book Depth Evolution</div>
+        <div class="chart-wrapper">
+            <canvas id="orderBookChart"></canvas>
+        </div>
+    </div>
+
+    <div class="card">
+        <div class="card-title">Bid-Ask Imbalance</div>
         <div class="chart-wrapper">
             <canvas id="imbalanceChart"></canvas>
         </div>
     </div>
+</div>
 
 <script>
     function formatPrice(price) {
@@ -70,6 +81,8 @@
             const timeIndex = headers.findIndex(h => h.includes('collected_at_utc'));
             const bidsJsonIndex = headers.findIndex(h => h.includes('bids_json'));
             const asksJsonIndex = headers.findIndex(h => h.includes('asks_json'));
+            const bestBidIndex = headers.findIndex(h => h.includes('best_bid'));
+            const bestAskIndex = headers.findIndex(h => h.includes('best_ask'));
             const imbalanceIndex = headers.findIndex(h => h.includes('imbalance'));
             
             if (timeIndex === -1 || bidsJsonIndex === -1 || asksJsonIndex === -1) throw new Error('Missing columns');
@@ -108,6 +121,8 @@
                     try {
                         const bidsJson = JSON.parse(fields[bidsJsonIndex]);
                         const asksJson = JSON.parse(fields[asksJsonIndex]);
+                        const bestBid = parseFloat(fields[bestBidIndex]);
+                        const bestAsk = parseFloat(fields[bestAskIndex]);
                         const imbalance = parseFloat(fields[imbalanceIndex]) || 0;
                         
                         if (Array.isArray(bidsJson) && Array.isArray(asksJson) && bidsJson.length > 0 && asksJson.length > 0) {
@@ -115,163 +130,137 @@
                                 time, 
                                 bids: bidsJson,
                                 asks: asksJson,
+                                bestBid,
+                                bestAsk,
                                 imbalance
                             });
                         }
-                    } catch (e) {
-                        // Skip malformed JSON
-                    }
+                    } catch (e) {}
                 }
             }
 
             if (allPoints.length === 0) throw new Error('No valid data');
 
             const points = allPoints.slice(-60);
-
-            document.getElementById('loading').style.display = 'none';
-            document.getElementById('content').style.display = 'block';
-
-            // Draw heatmap
-            const canvas = document.getElementById('imbalanceChart');
-            const ctx = canvas.getContext('2d');
-            canvas.width = canvas.offsetWidth;
-            canvas.height = canvas.offsetHeight;
             
-            // Find price range
-            const allPrices = [];
-            points.forEach(p => {
-                p.bids.forEach(b => allPrices.push(b.price));
-                p.asks.forEach(a => allPrices.push(a.price));
-            });
-            const minPrice = Math.min(...allPrices);
-            const maxPrice = Math.max(...allPrices);
-            const priceRange = maxPrice - minPrice;
-            
-            // Find imbalance range
-            const imbalances = points.map(p => p.imbalance);
-            const maxImbalance = Math.max(...imbalances.map(Math.abs));
-            
-            const padding = { top: 30, bottom: 60, left: 80, right: 100 };
-            const graphWidth = canvas.width - padding.left - padding.right;
-            const graphHeight = canvas.height - padding.top - padding.bottom;
-            
-            // Draw background
-            ctx.fillStyle = '#f6f8fa';
-            ctx.fillRect(padding.left, padding.top, graphWidth, graphHeight);
-            
-            // Calculate max size for normalization
-            let maxSize = 0;
-            points.forEach(p => {
-                p.bids.forEach(b => maxSize = Math.max(maxSize, b.size));
-                p.asks.forEach(a => maxSize = Math.max(maxSize, a.size));
-            });
-            
-            const colWidth = graphWidth / points.length;
-            
-            // Draw heatmap cells
-            points.forEach((p, timeIdx) => {
-                const x0 = padding.left + timeIdx * colWidth;
+            // Render stats
+            if (points.length > 0) {
+                const latest = points[points.length - 1];
+                const statCards = [
+                    { label: 'Best Bid', value: formatPrice(latest.bestBid), sub: 'highest buy' },
+                    { label: 'Best Ask', value: formatPrice(latest.bestAsk), sub: 'lowest sell' },
+                    { label: 'Imbalance', value: latest.imbalance.toFixed(4), sub: 'latest' }
+                ];
                 
-                // Draw Bids (blue)
-                p.bids.forEach(bid => {
-                    const y = padding.top + graphHeight * (maxPrice - bid.price) / priceRange;
-                    const normalized = Math.min(bid.size / maxSize, 1);
-                    const alpha = 0.15 + normalized * 0.85;
-                    ctx.fillStyle = `rgba(9, 105, 218, ${alpha})`;
-                    ctx.fillRect(x0, y, colWidth - 0.5, 1);
+                const grid = document.getElementById('stats-grid');
+                statCards.forEach(stat => {
+                    const div = document.createElement('div');
+                    div.className = 'stat-card';
+                    div.innerHTML = `<div class="stat-label">${stat.label}</div><div class="stat-value">${stat.value}</div><div class="stat-sub">${stat.sub}</div>`;
+                    grid.appendChild(div);
                 });
-                
-                // Draw Asks (red)
-                p.asks.forEach(ask => {
-                    const y = padding.top + graphHeight * (maxPrice - ask.price) / priceRange;
-                    const normalized = Math.min(ask.size / maxSize, 1);
-                    const alpha = 0.15 + normalized * 0.85;
-                    ctx.fillStyle = `rgba(220, 53, 69, ${alpha})`;
-                    ctx.fillRect(x0, y, colWidth - 0.5, 1);
-                });
-            });
-            
-            // Draw axes
-            ctx.strokeStyle = '#24292f';
-            ctx.lineWidth = 2;
-            ctx.beginPath();
-            ctx.moveTo(padding.left, padding.top);
-            ctx.lineTo(padding.left, padding.top + graphHeight);
-            ctx.lineTo(padding.left + graphWidth, padding.top + graphHeight);
-            ctx.stroke();
-            
-            // Right axis for imbalance
-            ctx.beginPath();
-            ctx.moveTo(padding.left + graphWidth, padding.top);
-            ctx.lineTo(padding.left + graphWidth, padding.top + graphHeight);
-            ctx.stroke();
-            
-            // Draw Y-axis labels (prices) - left side
-            ctx.fillStyle = '#57606a';
-            ctx.font = '11px -apple-system, BlinkMacSystemFont, "Segoe UI"';
-            ctx.textAlign = 'right';
-            for (let i = 0; i <= 10; i++) {
-                const price = minPrice + (priceRange / 10) * i;
-                const y = padding.top + graphHeight * (maxPrice - price) / priceRange;
-                ctx.fillText(formatPrice(price), padding.left - 10, y + 4);
-                
-                // Grid lines
-                ctx.strokeStyle = '#e1e4e8';
-                ctx.lineWidth = 0.5;
-                ctx.beginPath();
-                ctx.moveTo(padding.left, y);
-                ctx.lineTo(padding.left + graphWidth, y);
-                ctx.stroke();
             }
+
+            // Prepare data for order book chart
+            const bidDatasets = [];
+            const askDatasets = [];
+            const maxDepth = 10;
             
-            // Draw imbalance axis - right side
-            ctx.fillStyle = '#6366f1';
-            ctx.font = '11px -apple-system, BlinkMacSystemFont, "Segoe UI"';
-            ctx.textAlign = 'left';
-            const imbalanceStep = maxImbalance / 5;
-            for (let i = -5; i <= 5; i++) {
-                const imbalanceVal = i * imbalanceStep;
-                const y = padding.top + graphHeight / 2 - (imbalanceVal / maxImbalance) * (graphHeight / 2);
-                ctx.fillText(imbalanceVal.toFixed(2), padding.left + graphWidth + 10, y + 4);
+            for (let depth = 0; depth < maxDepth; depth++) {
+                const bidData = points.map(p => ({
+                    x: p.time,
+                    y: p.bids[depth]?.price || null,
+                    r: (p.bids[depth]?.size || 0) * 100
+                })).filter(d => d.y !== null);
+                
+                const askData = points.map(p => ({
+                    x: p.time,
+                    y: p.asks[depth]?.price || null,
+                    r: (p.asks[depth]?.size || 0) * 100
+                })).filter(d => d.y !== null);
+                
+                if (bidData.length > 0) {
+                    bidDatasets.push({
+                        label: `Bid L${depth + 1}`,
+                        data: bidData,
+                        backgroundColor: `rgba(9, 105, 218, ${0.3 + depth * 0.05})`,
+                        borderColor: `rgba(9, 105, 218, 1)`,
+                        borderWidth: 0,
+                        pointRadius: 0
+                    });
+                }
+                
+                if (askData.length > 0) {
+                    askDatasets.push({
+                        label: `Ask L${depth + 1}`,
+                        data: askData,
+                        backgroundColor: `rgba(220, 53, 69, ${0.3 + depth * 0.05})`,
+                        borderColor: `rgba(220, 53, 69, 1)`,
+                        borderWidth: 0,
+                        pointRadius: 0
+                    });
+                }
             }
-            
-            // Draw imbalance line - right side
-            ctx.strokeStyle = '#6366f1';
-            ctx.lineWidth = 2;
-            ctx.beginPath();
-            points.forEach((p, idx) => {
-                const x = padding.left + idx * colWidth + colWidth / 2;
-                const y = padding.top + graphHeight / 2 - (p.imbalance / maxImbalance) * (graphHeight / 2);
-                if (idx === 0) {
-                    ctx.moveTo(x, y);
-                } else {
-                    ctx.lineTo(x, y);
+
+            new Chart(document.getElementById('orderBookChart'), {
+                type: 'bubble',
+                data: { datasets: [...bidDatasets, ...askDatasets] },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        legend: { display: true, position: 'top', labels: { boxWidth: 6, font: { size: 9 }, padding: 6, usePointStyle: true } }
+                    },
+                    scales: {
+                        x: {
+                            type: 'time',
+                            time: { unit: 'minute', displayFormats: { minute: 'HH:mm' } },
+                            ticks: { color: '#57606a', font: { size: 9 } },
+                            grid: { color: '#d0d7de' }
+                        },
+                        y: {
+                            ticks: { color: '#57606a', font: { size: 9 }, callback: v => formatPrice(v) },
+                            grid: { color: '#d0d7de' }
+                        }
+                    }
                 }
             });
-            ctx.stroke();
-            
-            // Zero line for imbalance (middle)
-            ctx.strokeStyle = '#e5e7eb';
-            ctx.lineWidth = 1;
-            ctx.setLineDash([4, 4]);
-            ctx.beginPath();
-            ctx.moveTo(padding.left + graphWidth, padding.top + graphHeight / 2);
-            ctx.lineTo(padding.left + graphWidth + padding.right - 10, padding.top + graphHeight / 2);
-            ctx.stroke();
-            ctx.setLineDash([]);
-            
-            // X-axis labels (time) - sparse
-            ctx.fillStyle = '#57606a';
-            ctx.font = '11px -apple-system, BlinkMacSystemFont, "Segoe UI"';
-            ctx.textAlign = 'center';
-            const timeStep = Math.ceil(points.length / 8);
-            for (let i = 0; i < points.length; i += timeStep) {
-                const x = padding.left + i * colWidth + colWidth / 2;
-                const timeStr = points[i].time.toLocaleTimeString('en-US', { hour: '2-digit', minute: '2-digit' });
-                ctx.fillText(timeStr, x, canvas.height - 20);
-            }
+
+            new Chart(document.getElementById('imbalanceChart'), {
+                type: 'line',
+                data: {
+                    labels: points.map(p => p.time),
+                    datasets: [{
+                        label: 'Imbalance',
+                        data: points.map(p => p.imbalance),
+                        borderColor: '#6366f1',
+                        backgroundColor: 'rgba(99, 102, 241, 0.1)',
+                        fill: true,
+                        tension: 0.3,
+                        pointRadius: 0,
+                        borderWidth: 2
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: { legend: { display: false } },
+                    scales: {
+                        x: {
+                            type: 'time',
+                            time: { unit: 'minute', displayFormats: { minute: 'HH:mm' } },
+                            ticks: { color: '#57606a', font: { size: 9 } },
+                            grid: { color: '#d0d7de' }
+                        },
+                        y: {
+                            ticks: { color: '#57606a', font: { size: 9 } },
+                            grid: { color: '#d0d7de' }
+                        }
+                    }
+                }
+            });
         } catch (error) {
-            document.getElementById('loading').textContent = 'Error: ' + error.message;
+            console.error('Error:', error);
         }
     }
     init();
