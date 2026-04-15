@@ -66,7 +66,9 @@
 
             const allPoints = [];
             for (let i = 1; i < lines.length; i++) {
-                const line = lines[i];
+                const line = lines[i].trim();
+                if (!line) continue;
+                
                 const fields = [];
                 let current = '';
                 let inQuotes = false;
@@ -74,7 +76,10 @@
                 for (let j = 0; j < line.length; j++) {
                     const char = line[j];
                     if (char === '"') inQuotes = !inQuotes;
-                    else if (char === ',' && !inQuotes) { fields.push(current); current = ''; }
+                    else if (char === ',' && !inQuotes) { 
+                        fields.push(current); 
+                        current = ''; 
+                    }
                     else current += char;
                 }
                 fields.push(current);
@@ -82,9 +87,20 @@
                 if (fields.length > Math.max(timeIndex, bidsJsonIndex, asksJsonIndex)) {
                     const time = new Date(fields[timeIndex].trim());
                     try {
-                        // CSV parser (quote-aware split) already gives us clean fields
-                        const bidsJson = JSON.parse(fields[bidsJsonIndex]);
-                        const asksJson = JSON.parse(fields[asksJsonIndex]);
+                        // If field starts and ends with quotes, it was quoted in CSV
+                        // Remove outer quotes and unescape internal "" to "
+                        let bidsField = fields[bidsJsonIndex].trim();
+                        let asksField = fields[asksJsonIndex].trim();
+                        
+                        if (bidsField.startsWith('"') && bidsField.endsWith('"')) {
+                            bidsField = bidsField.slice(1, -1).replace(/""/g, '"');
+                        }
+                        if (asksField.startsWith('"') && asksField.endsWith('"')) {
+                            asksField = asksField.slice(1, -1).replace(/""/g, '"');
+                        }
+                        
+                        const bidsJson = JSON.parse(bidsField);
+                        const asksJson = JSON.parse(asksField);
                         
                         if (Array.isArray(bidsJson) && Array.isArray(asksJson) && bidsJson.length > 0 && asksJson.length > 0) {
                             allPoints.push({ 
