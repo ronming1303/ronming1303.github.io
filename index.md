@@ -38,6 +38,14 @@ I am quite interested in quantitaive investment, quantitative risk management an
 
 - [The Impact of Spoofing on Bitcoin Market Microstructure](https://papers.ssrn.com/sol3/papers.cfm?abstract_id=5771502)
   - _We find that order book imbalances significantly increase Bitcoin returns at minute and hourly levels. We introduce an innovative methodology for measuring the intensity of spoofing activities._ [<span style="color: red"><u>Poster Here</u></span>](https://github.com/ronming1303/Ruming-Liu-PDF-Document/blob/main/spoofing_poster.pdf)
+  - Bitcoin Order Book Imbalance (Last 24 Hours):
+
+<div style="margin: 20px 0;">
+<a href="microstructure.html" style="text-decoration: none; display: block;">
+<iframe src="microstructure-embed.html" width="100%" height="320" style="border: 1px solid #d0d7de; border-radius: 6px; pointer-events: none;"></iframe>
+<p style="text-align: center; color: #0969da; margin-top: 8px;">Click to view full dashboard →</p>
+</a>
+</div>
 
 - [Cryptocurrency Mutual Fund]()
   - _Coming soon..._
