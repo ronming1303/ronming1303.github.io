@@ -38,6 +38,10 @@
     </div>
 
 <script>
+    function formatPrice(price) {
+        return '$' + Math.round(price).toLocaleString();
+    }
+
     async function init() {
         try {
             const today = new Date().toISOString().split('T')[0];
@@ -66,6 +70,7 @@
             const timeIndex = headers.findIndex(h => h.includes('collected_at_utc'));
             const bidsJsonIndex = headers.findIndex(h => h.includes('bids_json'));
             const asksJsonIndex = headers.findIndex(h => h.includes('asks_json'));
+            const imbalanceIndex = headers.findIndex(h => h.includes('imbalance'));
             
             if (timeIndex === -1 || bidsJsonIndex === -1 || asksJsonIndex === -1) throw new Error('Missing columns');
 
@@ -103,12 +108,14 @@
                     try {
                         const bidsJson = JSON.parse(fields[bidsJsonIndex]);
                         const asksJson = JSON.parse(fields[asksJsonIndex]);
+                        const imbalance = parseFloat(fields[imbalanceIndex]) || 0;
                         
                         if (Array.isArray(bidsJson) && Array.isArray(asksJson) && bidsJson.length > 0 && asksJson.length > 0) {
                             allPoints.push({ 
                                 time, 
                                 bids: bidsJson,
-                                asks: asksJson
+                                asks: asksJson,
+                                imbalance
                             });
                         }
                     } catch (e) {
@@ -140,7 +147,11 @@
             const maxPrice = Math.max(...allPrices);
             const priceRange = maxPrice - minPrice;
             
-            const padding = { top: 30, bottom: 60, left: 80, right: 20 };
+            // Find imbalance range
+            const imbalances = points.map(p => p.imbalance);
+            const maxImbalance = Math.max(...imbalances.map(Math.abs));
+            
+            const padding = { top: 30, bottom: 60, left: 80, right: 100 };
             const graphWidth = canvas.width - padding.left - padding.right;
             const graphHeight = canvas.height - padding.top - padding.bottom;
             
@@ -189,14 +200,20 @@
             ctx.lineTo(padding.left + graphWidth, padding.top + graphHeight);
             ctx.stroke();
             
-            // Draw Y-axis labels (prices)
+            // Right axis for imbalance
+            ctx.beginPath();
+            ctx.moveTo(padding.left + graphWidth, padding.top);
+            ctx.lineTo(padding.left + graphWidth, padding.top + graphHeight);
+            ctx.stroke();
+            
+            // Draw Y-axis labels (prices) - left side
             ctx.fillStyle = '#57606a';
             ctx.font = '11px -apple-system, BlinkMacSystemFont, "Segoe UI"';
             ctx.textAlign = 'right';
             for (let i = 0; i <= 10; i++) {
                 const price = minPrice + (priceRange / 10) * i;
                 const y = padding.top + graphHeight * (maxPrice - price) / priceRange;
-                ctx.fillText(`$${price.toFixed(2)}`, padding.left - 10, y + 4);
+                ctx.fillText(formatPrice(price), padding.left - 10, y + 4);
                 
                 // Grid lines
                 ctx.strokeStyle = '#e1e4e8';
@@ -207,7 +224,43 @@
                 ctx.stroke();
             }
             
-            // Draw X-axis labels (time) - sparse
+            // Draw imbalance axis - right side
+            ctx.fillStyle = '#6366f1';
+            ctx.font = '11px -apple-system, BlinkMacSystemFont, "Segoe UI"';
+            ctx.textAlign = 'left';
+            const imbalanceStep = maxImbalance / 5;
+            for (let i = -5; i <= 5; i++) {
+                const imbalanceVal = i * imbalanceStep;
+                const y = padding.top + graphHeight / 2 - (imbalanceVal / maxImbalance) * (graphHeight / 2);
+                ctx.fillText(imbalanceVal.toFixed(2), padding.left + graphWidth + 10, y + 4);
+            }
+            
+            // Draw imbalance line - right side
+            ctx.strokeStyle = '#6366f1';
+            ctx.lineWidth = 2;
+            ctx.beginPath();
+            points.forEach((p, idx) => {
+                const x = padding.left + idx * colWidth + colWidth / 2;
+                const y = padding.top + graphHeight / 2 - (p.imbalance / maxImbalance) * (graphHeight / 2);
+                if (idx === 0) {
+                    ctx.moveTo(x, y);
+                } else {
+                    ctx.lineTo(x, y);
+                }
+            });
+            ctx.stroke();
+            
+            // Zero line for imbalance (middle)
+            ctx.strokeStyle = '#e5e7eb';
+            ctx.lineWidth = 1;
+            ctx.setLineDash([4, 4]);
+            ctx.beginPath();
+            ctx.moveTo(padding.left + graphWidth, padding.top + graphHeight / 2);
+            ctx.lineTo(padding.left + graphWidth + padding.right - 10, padding.top + graphHeight / 2);
+            ctx.stroke();
+            ctx.setLineDash([]);
+            
+            // X-axis labels (time) - sparse
             ctx.fillStyle = '#57606a';
             ctx.font = '11px -apple-system, BlinkMacSystemFont, "Segoe UI"';
             ctx.textAlign = 'center';
