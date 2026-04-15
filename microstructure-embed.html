@@ -82,8 +82,12 @@
                 if (fields.length > Math.max(timeIndex, bidsJsonIndex, asksJsonIndex)) {
                     const time = new Date(fields[timeIndex].trim());
                     try {
-                        const bidsJson = JSON.parse(fields[bidsJsonIndex].trim());
-                        const asksJson = JSON.parse(fields[asksJsonIndex].trim());
+                        // Handle CSV-escaped quotes: "" -> "
+                        let bidsStr = fields[bidsJsonIndex].trim().slice(1, -1).replace(/""/g, '"');
+                        let asksStr = fields[asksJsonIndex].trim().slice(1, -1).replace(/""/g, '"');
+                        
+                        const bidsJson = JSON.parse(bidsStr);
+                        const asksJson = JSON.parse(asksStr);
                         
                         if (Array.isArray(bidsJson) && Array.isArray(asksJson) && bidsJson.length > 0 && asksJson.length > 0) {
                             allPoints.push({ 
