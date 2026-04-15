@@ -175,13 +175,19 @@
                 const dateStr = date.toISOString().split('T')[0];
                 const csvUrl = `https://raw.githubusercontent.com/ronming1303/Microstructure_Pipeline/main/data/minute/${dateStr}_btc_usd_d10.csv`;
                 
+                console.log(`Trying to fetch: ${csvUrl}`);
                 try {
                     const response = await fetch(csvUrl);
+                    console.log(`Response status: ${response.status}`);
                     if (response.ok) {
                         csvText = await response.text();
+                        console.log(`Successfully fetched ${csvText.length} bytes`);
                         break;
+                    } else {
+                        console.log(`Response not ok: ${response.status} ${response.statusText}`);
                     }
                 } catch (e) {
+                    console.log(`Fetch error for ${dateStr}: ${e.message}`);
                     // Try next date
                     continue;
                 }
