@@ -47,7 +47,7 @@
     </div>
 
     <div class="card">
-        <div class="card-title">Order Book Depth - Bids vs Asks (Last 60 Minutes)</div>
+        <div class="card-title">Order Book Heatmap - Bids vs Asks (Last 60 Minutes)</div>
         <div class="chart-wrapper">
             <canvas id="imbalanceChart"></canvas>
         </div>
@@ -205,87 +205,123 @@
             const ctx = document.getElementById('imbalanceChart').getContext('2d');
             if (chart) chart.destroy();
 
-            chart = new Chart(ctx, {
-                type: 'bubble',
-                data: {
-                    datasets: [
-                        {
-                            label: 'Bid Orders',
-                            data: (() => {
-                                const bidData = [];
-                                const maxSize = Math.max(...allBidSizes, ...allAskSizes);
-                                points.forEach(p => {
-                                    p.bids.forEach(bid => {
-                                        const normalized = Math.min(bid.size / maxSize, 1);
-                                        bidData.push({
-                                            x: p.time,
-                                            y: bid.price,
-                                            r: 5,
-                                            size: bid.size,
-                                            normalized: normalized
-                                        });
-                                    });
-                                });
-                                return bidData;
-                            })(),
-                            backgroundColor: points => `rgba(40, 167, 69, ${0.2 + (points.raw.size / Math.max(...allBidSizes, ...allAskSizes)) * 0.8})`,
-                            borderColor: 'rgba(40, 167, 69, 0.3)',
-                            borderWidth: 0
-                        },
-                        {
-                            label: 'Ask Orders',
-                            data: (() => {
-                                const askData = [];
-                                const maxSize = Math.max(...allBidSizes, ...allAskSizes);
-                                points.forEach(p => {
-                                    p.asks.forEach(ask => {
-                                        const normalized = Math.min(ask.size / maxSize, 1);
-                                        askData.push({
-                                            x: p.time,
-                                            y: ask.price,
-                                            r: 5,
-                                            size: ask.size,
-                                            normalized: normalized
-                                        });
-                                    });
-                                });
-                                return askData;
-                            })(),
-                            backgroundColor: points => `rgba(220, 53, 69, ${0.2 + (points.raw.size / Math.max(...allBidSizes, ...allAskSizes)) * 0.8})`,
-                            borderColor: 'rgba(220, 53, 69, 0.3)',
-                            borderWidth: 0
-                        }
-                    ]
-                },
-                options: {
-                    responsive: true,
-                    maintainAspectRatio: false,
-                    plugins: {
-                        legend: { display: true, position: 'top' },
-                        tooltip: {
-                            callbacks: {
-                                label: function(context) {
-                                    return `Price: $${context.raw.y.toFixed(2)}, Size: ${context.raw.size.toFixed(6)}`;
-                                }
-                            }
-                        }
-                    },
-                    scales: {
-                        x: {
-                            type: 'time',
-                            time: { unit: 'minute', displayFormats: { minute: 'HH:mm' } },
-                            title: { display: true, text: 'Time' },
-                            ticks: { color: '#57606a' },
-                            grid: { color: '#d0d7de' }
-                        },
-                        y: {
-                            title: { display: true, text: 'Price ($)' },
-                            ticks: { color: '#57606a' },
-                            grid: { color: '#d0d7de' }
-                        }
-                    }
-                }
+            // Draw heatmap with rectangles
+            const canvas = document.getElementById('imbalanceChart');
+            canvas.width = canvas.offsetWidth;
+            canvas.height = canvas.offsetHeight;
+            
+            const rect = canvas.getBoundingClientRect();
+            const padding = { top: 40, bottom: 40, left: 60, right: 20 };
+            const graphWidth = canvas.width - padding.left - padding.right;
+            const graphHeight = canvas.height - padding.top - padding.bottom;
+            
+            // Find price range
+            const allPrices = [];
+            points.forEach(p => {
+                p.bids.forEach(b => allPrices.push(b.price));
+                p.asks.forEach(a => allPrices.push(a.price));
             });
+            const minPrice = Math.floor(Math.min(...allPrices) * 100) / 100;
+            const maxPrice = Math.ceil(Math.max(...allPrices) * 100) / 100;
+            const priceRange = maxPrice - minPrice;
+            
+            // Calculate max size for normalization
+            const allSizes = [];
+            points.forEach(p => {
+                p.bids.forEach(b => allSizes.push(b.size));
+                p.asks.forEach(a => allSizes.push(a.size));
+            });
+            const maxSize = Math.max(...allSizes);
+            
+            // Draw background
+            ctx.fillStyle = '#f6f8fa';
+            ctx.fillRect(padding.left, padding.top, graphWidth, graphHeight);
+            
+            // Draw grid lines
+            ctx.strokeStyle = '#e1e4e8';
+            ctx.lineWidth = 1;
+            for (let i = 0; i <= 10; i++) {
+                const price = minPrice + (priceRange / 10) * i;
+                const y = padding.top + graphHeight - ((price - minPrice) / priceRange) * graphHeight;
+                ctx.beginPath();
+                ctx.moveTo(padding.left, y);
+                ctx.lineTo(padding.left + graphWidth, y);
+                ctx.stroke();
+            }
+            
+            // Draw rectangles for each order
+            const rectWidth = graphWidth / points.length;
+            const levelHeight = graphHeight / 10;
+            
+            points.forEach((p, timeIdx) => {
+                const x0 = padding.left + timeIdx * rectWidth;
+                
+                // Draw bids (blue)
+                p.bids.forEach((bid, bidIdx) => {
+                    const normalized = bid.size / maxSize;
+                    const y = padding.top + graphHeight - ((bid.price - minPrice) / priceRange) * graphHeight;
+                    const rectH = levelHeight * Math.min(normalized + 0.1, 1);
+                    const alpha = Math.min(0.3 + normalized * 0.7, 1);
+                    
+                    ctx.fillStyle = `rgba(9, 105, 218, ${alpha})`;
+                    ctx.fillRect(x0, y - rectH / 2, rectWidth - 1, rectH);
+                });
+                
+                // Draw asks (red)
+                p.asks.forEach((ask, askIdx) => {
+                    const normalized = ask.size / maxSize;
+                    const y = padding.top + graphHeight - ((ask.price - minPrice) / priceRange) * graphHeight;
+                    const rectH = levelHeight * Math.min(normalized + 0.1, 1);
+                    const alpha = Math.min(0.3 + normalized * 0.7, 1);
+                    
+                    ctx.fillStyle = `rgba(220, 53, 69, ${alpha})`;
+                    ctx.fillRect(x0, y - rectH / 2, rectWidth - 1, rectH);
+                });
+            });
+            
+            // Draw axes
+            ctx.strokeStyle = '#24292f';
+            ctx.lineWidth = 2;
+            ctx.beginPath();
+            ctx.moveTo(padding.left, padding.top);
+            ctx.lineTo(padding.left, padding.top + graphHeight);
+            ctx.lineTo(padding.left + graphWidth, padding.top + graphHeight);
+            ctx.stroke();
+            
+            // Draw labels
+            ctx.fillStyle = '#57606a';
+            ctx.font = '12px -apple-system, BlinkMacSystemFont, "Segoe UI"';
+            ctx.textAlign = 'right';
+            for (let i = 0; i <= 10; i++) {
+                const price = minPrice + (priceRange / 10) * i;
+                const y = padding.top + graphHeight - ((price - minPrice) / priceRange) * graphHeight;
+                ctx.fillText(`$${price.toFixed(2)}`, padding.left - 10, y + 4);
+            }
+            
+            // Time labels
+            ctx.textAlign = 'center';
+            for (let i = 0; i < points.length; i += Math.ceil(points.length / 8)) {
+                const x = padding.left + i * rectWidth + rectWidth / 2;
+                ctx.fillText(points[i].time.toLocaleTimeString('en-US', { hour: '2-digit', minute: '2-digit' }), x, canvas.height - 10);
+            }
+            
+            // Title and legend
+            ctx.fillStyle = '#24292f';
+            ctx.font = 'bold 14px -apple-system, BlinkMacSystemFont, "Segoe UI"';
+            ctx.textAlign = 'left';
+            ctx.fillText('Order Book Heatmap', padding.left, 25);
+            
+            // Legend
+            ctx.fillStyle = 'rgba(9, 105, 218, 0.7)';
+            ctx.fillRect(padding.left, 35, 12, 12);
+            ctx.fillStyle = '#24292f';
+            ctx.font = '11px -apple-system, BlinkMacSystemFont, "Segoe UI"';
+            ctx.fillText('Bids', padding.left + 16, 43);
+            
+            ctx.fillStyle = 'rgba(220, 53, 69, 0.7)';
+            ctx.fillRect(padding.left + 80, 35, 12, 12);
+            ctx.fillStyle = '#24292f';
+            ctx.fillText('Asks', padding.left + 96, 43);
             
             document.getElementById('error').style.display = 'none';
 

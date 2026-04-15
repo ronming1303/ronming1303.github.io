@@ -121,80 +121,86 @@
             document.getElementById('loading').style.display = 'none';
             document.getElementById('content').style.display = 'block';
 
-            const allBidSizes = [];
-            const allAskSizes = [];
+            // Draw heatmap with rectangles
+            const canvas = document.getElementById('imbalanceChart');
+            const ctx = canvas.getContext('2d');
+            canvas.width = canvas.offsetWidth;
+            canvas.height = canvas.offsetHeight;
+            
+            const padding = { top: 30, bottom: 30, left: 50, right: 10 };
+            const graphWidth = canvas.width - padding.left - padding.right;
+            const graphHeight = canvas.height - padding.top - padding.bottom;
+            
+            // Find price range
+            const allPrices = [];
             points.forEach(p => {
-                p.bids.forEach(b => allBidSizes.push(b.size));
-                p.asks.forEach(a => allAskSizes.push(a.size));
+                p.bids.forEach(b => allPrices.push(b.price));
+                p.asks.forEach(a => allPrices.push(a.price));
             });
-            const maxSize = Math.max(...allBidSizes, ...allAskSizes);
-
-            new Chart(document.getElementById('imbalanceChart'), {
-                type: 'bubble',
-                data: {
-                    datasets: [
-                        {
-                            label: 'Bid Orders',
-                            data: (() => {
-                                const bidData = [];
-                                points.forEach(p => {
-                                    p.bids.forEach(bid => {
-                                        bidData.push({
-                                            x: p.time,
-                                            y: bid.price,
-                                            r: 4,
-                                            size: bid.size
-                                        });
-                                    });
-                                });
-                                return bidData;
-                            })(),
-                            backgroundColor: data => `rgba(40, 167, 69, ${0.2 + (data.size / maxSize) * 0.8})`,
-                            borderColor: 'rgba(40, 167, 69, 0.2)',
-                            borderWidth: 0
-                        },
-                        {
-                            label: 'Ask Orders',
-                            data: (() => {
-                                const askData = [];
-                                points.forEach(p => {
-                                    p.asks.forEach(ask => {
-                                        askData.push({
-                                            x: p.time,
-                                            y: ask.price,
-                                            r: 4,
-                                            size: ask.size
-                                        });
-                                    });
-                                });
-                                return askData;
-                            })(),
-                            backgroundColor: data => `rgba(220, 53, 69, ${0.2 + (data.size / maxSize) * 0.8})`,
-                            borderColor: 'rgba(220, 53, 69, 0.2)',
-                            borderWidth: 0
-                        }
-                    ]
-                },
-                options: {
-                    responsive: true,
-                    maintainAspectRatio: false,
-                    plugins: {
-                        legend: { display: true, position: 'bottom', labels: { font: { size: 10 } } }
-                    },
-                    scales: {
-                        x: {
-                            type: 'time',
-                            time: { unit: 'minute', displayFormats: { minute: 'HH:mm' } },
-                            ticks: { color: '#57606a', font: { size: 9 } },
-                            grid: { color: '#d0d7de' }
-                        },
-                        y: {
-                            ticks: { color: '#57606a', font: { size: 9 } },
-                            grid: { color: '#d0d7de' }
-                        }
-                    }
-                }
+            const minPrice = Math.floor(Math.min(...allPrices) * 100) / 100;
+            const maxPrice = Math.ceil(Math.max(...allPrices) * 100) / 100;
+            const priceRange = maxPrice - minPrice;
+            
+            // Calculate max size for normalization
+            const allSizes = [];
+            points.forEach(p => {
+                p.bids.forEach(b => allSizes.push(b.size));
+                p.asks.forEach(a => allSizes.push(a.size));
             });
+            const maxSize = Math.max(...allSizes);
+            
+            // Draw background
+            ctx.fillStyle = '#f6f8fa';
+            ctx.fillRect(padding.left, padding.top, graphWidth, graphHeight);
+            
+            // Draw rectangles for each order
+            const rectWidth = graphWidth / points.length;
+            const levelHeight = graphHeight / 10;
+            
+            points.forEach((p, timeIdx) => {
+                const x0 = padding.left + timeIdx * rectWidth;
+                
+                // Draw bids (blue)
+                p.bids.forEach(bid => {
+                    const normalized = bid.size / maxSize;
+                    const y = padding.top + graphHeight - ((bid.price - minPrice) / priceRange) * graphHeight;
+                    const rectH = levelHeight * Math.min(normalized + 0.1, 1);
+                    const alpha = Math.min(0.3 + normalized * 0.7, 1);
+                    
+                    ctx.fillStyle = `rgba(9, 105, 218, ${alpha})`;
+                    ctx.fillRect(x0, y - rectH / 2, rectWidth - 1, rectH);
+                });
+                
+                // Draw asks (red)
+                p.asks.forEach(ask => {
+                    const normalized = ask.size / maxSize;
+                    const y = padding.top + graphHeight - ((ask.price - minPrice) / priceRange) * graphHeight;
+                    const rectH = levelHeight * Math.min(normalized + 0.1, 1);
+                    const alpha = Math.min(0.3 + normalized * 0.7, 1);
+                    
+                    ctx.fillStyle = `rgba(220, 53, 69, ${alpha})`;
+                    ctx.fillRect(x0, y - rectH / 2, rectWidth - 1, rectH);
+                });
+            });
+            
+            // Draw axes
+            ctx.strokeStyle = '#24292f';
+            ctx.lineWidth = 1;
+            ctx.beginPath();
+            ctx.moveTo(padding.left, padding.top);
+            ctx.lineTo(padding.left, padding.top + graphHeight);
+            ctx.lineTo(padding.left + graphWidth, padding.top + graphHeight);
+            ctx.stroke();
+            
+            // Draw Y-axis labels
+            ctx.fillStyle = '#57606a';
+            ctx.font = '10px -apple-system, BlinkMacSystemFont, "Segoe UI"';
+            ctx.textAlign = 'right';
+            for (let i = 0; i <= 5; i++) {
+                const price = minPrice + (priceRange / 5) * i;
+                const y = padding.top + graphHeight - ((price - minPrice) / priceRange) * graphHeight;
+                ctx.fillText(`$${price.toFixed(0)}`, padding.left - 5, y + 3);
+            }
                         y: {
                             ticks: { color: '#57606a', font: { size: 9 } },
                             grid: { color: '#d0d7de' }
