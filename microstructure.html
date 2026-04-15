@@ -4,8 +4,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Bitcoin Order Book Imbalance Dashboard - Ruming Liu</title>
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/chartjs-adapter-date-fns"></script>
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
         body {
@@ -15,7 +13,7 @@
             padding: 20px;
             min-height: 100vh;
         }
-        .container { max-width: 1200px; margin: 0 auto; }
+        .container { max-width: 1400px; margin: 0 auto; }
         header { margin-bottom: 30px; border-bottom: 1px solid #d0d7de; padding-bottom: 20px; }
         h1 { color: #0969da; font-size: 1.8em; margin-bottom: 10px; }
         .subtitle { color: #57606a; font-size: 0.95em; }
@@ -28,7 +26,7 @@
         .stat-sub { font-size: 11px; color: #57606a; margin-top: 4px; }
         .card { background: #fff; border: 1px solid #d0d7de; border-radius: 6px; padding: 16px; margin-bottom: 16px; }
         .card-title { font-size: 13px; font-weight: 600; color: #57606a; margin-bottom: 12px; }
-        .chart-wrapper { position: relative; height: 500px; }
+        .chart-wrapper { position: relative; height: 600px; }
         canvas {
             width: 100% !important;
             height: 100% !important;
@@ -43,43 +41,39 @@
 <div class="container">
     <header>
         <h1>Bitcoin Order Book Imbalance</h1>
-        <p class="subtitle">Live minute-level order book depth imbalance data from Coinbase BTC/USD (top 10 levels)</p>
-        <a href="https://ronming1303.github.io" class="back-link">← Back to homepage</a>
+        <p class="subtitle">Last 60 minutes of order book depth visualization</p>
+        <a href="/" class="back-link">&larr; Back to Home</a>
     </header>
 
-    <div class="stats-grid" id="stats-grid">
-        <div style="grid-column: 1/-1; text-align: center; padding: 40px; color: #57606a;">Loading data...</div>
-    </div>
+    <div id="stats-grid" class="stats-grid"></div>
 
     <div class="card">
-        <div class="card-title">Order Book Heatmap - Bids vs Asks (Last 60 Minutes)</div>
+        <div class="card-title">Order Book Heatmap - Price vs Time (Last 60 Minutes)</div>
         <div class="chart-wrapper">
             <canvas id="imbalanceChart"></canvas>
         </div>
     </div>
 
-    <div class="error" id="error" style="display: none;"></div>
+    <div id="error" class="error" style="display: none;"></div>
 
     <footer>
-        <p>Data source: <a href="https://github.com/ronming1303/Microstructure_Pipeline" target="_blank">Microstructure Pipeline</a> | Last updated: <span id="last-update">--</span></p>
+        <p>Data source: <a href="https://github.com/ronming1303/Microstructure_Pipeline" target="_blank">Microstructure Pipeline</a></p>
     </footer>
 </div>
 
 <script>
-    let chart = null;
-
-    async function loadData() {
+    async function init() {
         try {
             const today = new Date().toISOString().split('T')[0];
             const csvUrl = `https://raw.githubusercontent.com/ronming1303/Microstructure_Pipeline/main/data/minute/${today}_btc_usd_d10.csv`;
             
             const response = await fetch(csvUrl);
-            if (!response.ok) throw new Error(`HTTP ${response.status}`);
+            if (!response.ok) throw new Error('Failed to fetch CSV data');
             
             const csvText = await response.text();
             const lines = csvText.trim().split('\n');
             
-            if (lines.length < 2) throw new Error('CSV empty');
+            if (lines.length < 2) throw new Error('No data');
 
             const headerLine = lines[0].trim();
             const headers = [];
@@ -88,7 +82,7 @@
             for (let j = 0; j < headerLine.length; j++) {
                 const char = headerLine[j];
                 if (char === '"') inQuotes = !inQuotes;
-                else if (char === ',' && !inQuotes) { headers.push(current.trim()); current = ''; }
+                else if (char === ',' && !inQuotes) { headers.push(current); current = ''; }
                 else current += char;
             }
             headers.push(current.trim());
@@ -98,11 +92,9 @@
             const asksJsonIndex = headers.findIndex(h => h.includes('asks_json'));
             const bestBidIndex = headers.findIndex(h => h.includes('best_bid'));
             const bestAskIndex = headers.findIndex(h => h.includes('best_ask'));
+            const imbalanceIndex = headers.findIndex(h => h.includes('imbalance'));
             
-            if (timeIndex === -1 || bidsJsonIndex === -1 || asksJsonIndex === -1) {
-                console.error('Headers:', headers);
-                throw new Error('Missing columns - found indices: time=' + timeIndex + ', bids=' + bidsJsonIndex + ', asks=' + asksJsonIndex);
-            }
+            if (timeIndex === -1 || bidsJsonIndex === -1 || asksJsonIndex === -1) throw new Error('Missing required columns');
 
             const allPoints = [];
             for (let i = 1; i < lines.length; i++) {
@@ -119,11 +111,9 @@
                     
                     if (char === '"') {
                         if (inQuotes && nextChar === '"') {
-                            // "" is an escaped quote - add single " and skip next
                             current += '"';
                             j++;
                         } else {
-                            // Toggle quote state
                             inQuotes = !inQuotes;
                         }
                     } else if (char === ',' && !inQuotes) {
@@ -136,18 +126,22 @@
                 fields.push(current);
                 
                 if (fields.length > Math.max(timeIndex, bidsJsonIndex, asksJsonIndex)) {
-                    const time = new Date(fields[timeIndex].trim());
                     try {
+                        const time = new Date(fields[timeIndex].trim());
                         const bidsJson = JSON.parse(fields[bidsJsonIndex]);
                         const asksJson = JSON.parse(fields[asksJsonIndex]);
+                        const bestBid = parseFloat(fields[bestBidIndex]);
+                        const bestAsk = parseFloat(fields[bestAskIndex]);
+                        const imbalance = parseFloat(fields[imbalanceIndex]) || 0;
                         
                         if (Array.isArray(bidsJson) && Array.isArray(asksJson) && bidsJson.length > 0 && asksJson.length > 0) {
                             allPoints.push({ 
                                 time, 
-                                bids: bidsJson.slice(0, 10),
-                                asks: asksJson.slice(0, 10),
-                                bestBid: parseFloat(fields[bestBidIndex] || bidsJson[0].price),
-                                bestAsk: parseFloat(fields[bestAskIndex] || asksJson[0].price)
+                                bids: bidsJson,
+                                asks: asksJson,
+                                bestBid,
+                                bestAsk,
+                                imbalance
                             });
                         }
                     } catch (e) {
@@ -156,229 +150,144 @@
                 }
             }
 
-            if (allPoints.length === 0) {
-                console.log('Debug: total lines:', lines.length);
-                console.log('Debug: headers length:', headers.length);
-                console.log('Debug: timeIndex:', timeIndex, 'bidsIndex:', bidsJsonIndex, 'asksIndex:', asksJsonIndex);
-                if (lines.length > 1) {
-                    const testLine = lines[1];
-                    const testFields = [];
-                    let current = '';
-                    let inQuotes = false;
-                    for (let j = 0; j < testLine.length; j++) {
-                        const char = testLine[j];
-                        if (char === '"') inQuotes = !inQuotes;
-                        else if (char === ',' && !inQuotes) { testFields.push(current); current = ''; }
-                        else current += char;
-                    }
-                    testFields.push(current);
-                    console.log('Debug: first data line fields:', testFields.length);
-                    console.log('Debug: time field:', testFields[timeIndex]);
-                    console.log('Debug: bids field (first 100):', testFields[bidsJsonIndex].substring(0, 100));
-                }
-                throw new Error('No data - debug info in console');
-            }
+            if (allPoints.length === 0) throw new Error('No valid data');
 
             const points = allPoints.slice(-60);
-            const latest = points[points.length - 1];
             
-            // Extract all bid/ask levels for stats
-            const allBidPrices = [];
-            const allAskPrices = [];
-            const allBidSizes = [];
-            const allAskSizes = [];
-            
-            points.forEach(p => {
-                p.bids.forEach(b => { allBidPrices.push(b.price); allBidSizes.push(b.size); });
-                p.asks.forEach(a => { allAskPrices.push(a.price); allAskSizes.push(a.size); });
-            });
-            
-            const latestBidSize = latest.bids.reduce((a, b) => a + b.size, 0);
-            const latestAskSize = latest.asks.reduce((a, b) => a + b.size, 0);
-            const spread = latest.bestAsk - latest.bestBid;
+            // Render stats
+            if (points.length > 0) {
+                const latest = points[points.length - 1];
+                const statCards = [
+                    { label: 'Best Bid', value: `$${latest.bestBid.toFixed(2)}`, sub: 'highest buy order' },
+                    { label: 'Best Ask', value: `$${latest.bestAsk.toFixed(2)}`, sub: 'lowest sell order' },
+                    { label: 'Spread', value: `$${(latest.bestAsk - latest.bestBid).toFixed(2)}`, sub: 'bid-ask spread' },
+                    { label: 'Imbalance', value: latest.imbalance.toFixed(4), sub: 'bid vs ask ratio' },
+                    { label: 'Bid Volume', value: latest.bids.reduce((a, b) => a + b.size, 0).toFixed(4), sub: 'total bid depth' },
+                    { label: 'Ask Volume', value: latest.asks.reduce((a, b) => a + b.size, 0).toFixed(4), sub: 'total ask depth' }
+                ];
+                
+                const grid = document.getElementById('stats-grid');
+                statCards.forEach(stat => {
+                    const div = document.createElement('div');
+                    div.className = 'stat-card';
+                    div.innerHTML = `<div class="stat-label">${stat.label}</div><div class="stat-value">${stat.value}</div><div class="stat-sub">${stat.sub}</div>`;
+                    grid.appendChild(div);
+                });
+            }
 
-            document.getElementById('stats-grid').innerHTML = `
-                <div class="stat-card"><div class="stat-label">Best Bid</div><div class="stat-value">$${latest.bestBid.toFixed(2)}</div><div class="stat-sub">Size: ${latestBidSize.toFixed(4)}</div></div>
-                <div class="stat-card"><div class="stat-label">Best Ask</div><div class="stat-value">$${latest.bestAsk.toFixed(2)}</div><div class="stat-sub">Size: ${latestAskSize.toFixed(4)}</div></div>
-                <div class="stat-card"><div class="stat-label">Spread</div><div class="stat-value">$${spread.toFixed(4)}</div><div class="stat-sub">bps: ${(spread / latest.bestBid * 10000).toFixed(1)}</div></div>
-                <div class="stat-card"><div class="stat-label">Imbalance</div><div class="stat-value">${((latestBidSize - latestAskSize) / (latestBidSize + latestAskSize)).toFixed(4)}</div><div class="stat-sub">Ratio: ${(latestBidSize / latestAskSize).toFixed(2)}</div></div>
-                <div class="stat-card"><div class="stat-label">Bid Depth</div><div class="stat-value">${latestBidSize.toFixed(3)}</div><div class="stat-sub">Ask: ${latestAskSize.toFixed(3)}</div></div>
-                <div class="stat-card"><div class="stat-label">Updated</div><div class="stat-value" style="font-size: 14px;">${latest.time.toLocaleTimeString()}</div><div class="stat-sub">${latest.time.toLocaleDateString()}</div></div>
-            `;
-            document.getElementById('last-update').textContent = latest.time.toLocaleString();
-
-            const ctx = document.getElementById('imbalanceChart').getContext('2d');
-            if (chart) chart.destroy();
-
-            // Draw heatmap with rectangles for each depth level
+            // Draw heatmap
             const canvas = document.getElementById('imbalanceChart');
+            const ctx = canvas.getContext('2d');
             canvas.width = canvas.offsetWidth;
             canvas.height = canvas.offsetHeight;
             
-            const padding = { top: 40, bottom: 40, left: 80, right: 20 };
+            // Find price range across all data
+            const allPrices = [];
+            points.forEach(p => {
+                p.bids.forEach(b => allPrices.push(b.price));
+                p.asks.forEach(a => allPrices.push(a.price));
+            });
+            const minPrice = Math.min(...allPrices);
+            const maxPrice = Math.max(...allPrices);
+            const midPrice = (minPrice + maxPrice) / 2;
+            const priceRange = maxPrice - minPrice;
+            
+            const padding = { top: 30, bottom: 60, left: 80, right: 20 };
             const graphWidth = canvas.width - padding.left - padding.right;
             const graphHeight = canvas.height - padding.top - padding.bottom;
-            
-            // Calculate max size for normalization (separate for bid and ask)
-            let maxBidSize = 0, maxAskSize = 0;
-            points.forEach(p => {
-                p.bids.forEach(b => maxBidSize = Math.max(maxBidSize, b.size));
-                p.asks.forEach(a => maxAskSize = Math.max(maxAskSize, a.size));
-            });
-            
-            const DEPTH_LEVELS = 10;
-            const rectWidth = graphWidth / points.length;
-            const rectHeight = graphHeight / (DEPTH_LEVELS * 2); // 10 bids + 10 asks
             
             // Draw background
             ctx.fillStyle = '#f6f8fa';
             ctx.fillRect(padding.left, padding.top, graphWidth, graphHeight);
             
-            // Draw grid
-            ctx.strokeStyle = '#e1e4e8';
+            // Draw mid-price line
+            const midY = padding.top + graphHeight * (maxPrice - midPrice) / priceRange;
+            ctx.strokeStyle = '#d0d7de';
             ctx.lineWidth = 1;
-            for (let i = 0; i <= DEPTH_LEVELS * 2; i++) {
-                const y = padding.top + i * rectHeight;
+            ctx.setLineDash([4, 4]);
+            ctx.beginPath();
+            ctx.moveTo(padding.left, midY);
+            ctx.lineTo(padding.left + graphWidth, midY);
+            ctx.stroke();
+            ctx.setLineDash([]);
+            
+            // Calculate size normalization
+            let maxSize = 0;
+            points.forEach(p => {
+                p.bids.forEach(b => maxSize = Math.max(maxSize, b.size));
+                p.asks.forEach(a => maxSize = Math.max(maxSize, a.size));
+            });
+            
+            const colWidth = graphWidth / points.length;
+            
+            // Draw heatmap cells
+            points.forEach((p, timeIdx) => {
+                const x0 = padding.left + timeIdx * colWidth;
+                
+                // Draw Bids (below mid-price)
+                p.bids.forEach(bid => {
+                    const y = padding.top + graphHeight * (maxPrice - bid.price) / priceRange;
+                    const normalized = Math.min(bid.size / maxSize, 1);
+                    const alpha = 0.15 + normalized * 0.85;
+                    ctx.fillStyle = `rgba(9, 105, 218, ${alpha})`;
+                    ctx.fillRect(x0, y, colWidth - 0.5, 1);
+                });
+                
+                // Draw Asks (above mid-price)
+                p.asks.forEach(ask => {
+                    const y = padding.top + graphHeight * (maxPrice - ask.price) / priceRange;
+                    const normalized = Math.min(ask.size / maxSize, 1);
+                    const alpha = 0.15 + normalized * 0.85;
+                    ctx.fillStyle = `rgba(220, 53, 69, ${alpha})`;
+                    ctx.fillRect(x0, y, colWidth - 0.5, 1);
+                });
+            });
+            
+            // Draw axes
+            ctx.strokeStyle = '#24292f';
+            ctx.lineWidth = 2;
+            ctx.beginPath();
+            ctx.moveTo(padding.left, padding.top);
+            ctx.lineTo(padding.left, padding.top + graphHeight);
+            ctx.lineTo(padding.left + graphWidth, padding.top + graphHeight);
+            ctx.stroke();
+            
+            // Draw Y-axis labels (prices)
+            ctx.fillStyle = '#57606a';
+            ctx.font = '11px -apple-system, BlinkMacSystemFont, "Segoe UI"';
+            ctx.textAlign = 'right';
+            for (let i = 0; i <= 10; i++) {
+                const price = minPrice + (priceRange / 10) * i;
+                const y = padding.top + graphHeight * (maxPrice - price) / priceRange;
+                ctx.fillText(`$${price.toFixed(2)}`, padding.left - 10, y + 4);
+                
+                // Grid lines
+                ctx.strokeStyle = '#e1e4e8';
+                ctx.lineWidth = 0.5;
                 ctx.beginPath();
                 ctx.moveTo(padding.left, y);
                 ctx.lineTo(padding.left + graphWidth, y);
                 ctx.stroke();
             }
             
-            // Draw rectangles
-            points.forEach((p, timeIdx) => {
-                const x0 = padding.left + timeIdx * rectWidth;
-                
-                // Draw Bids (top half, levels 1-10)
-                p.bids.forEach((bid, bidIdx) => {
-                    const y = padding.top + bidIdx * rectHeight;
-                    const normalized = Math.min(bid.size / maxBidSize, 1);
-                    const alpha = Math.max(0.1 + normalized * 0.9, 0.1);
-                    
-                    ctx.fillStyle = `rgba(9, 105, 218, ${alpha})`;
-                    ctx.fillRect(x0, y, rectWidth - 0.5, rectHeight - 0.5);
-                });
-                
-                // Draw Asks (bottom half, levels 1-10)
-                p.asks.forEach((ask, askIdx) => {
-                    const y = padding.top + (DEPTH_LEVELS + askIdx) * rectHeight;
-                    const normalized = Math.min(ask.size / maxAskSize, 1);
-                    const alpha = Math.max(0.1 + normalized * 0.9, 0.1);
-                    
-                    ctx.fillStyle = `rgba(220, 53, 69, ${alpha})`;
-                    ctx.fillRect(x0, y, rectWidth - 0.5, rectHeight - 0.5);
-                });
-            });
-            
-            // Draw axes
-            ctx.strokeStyle = '#24292f';
-            ctx.lineWidth = 2;
-            ctx.beginPath();
-            ctx.moveTo(padding.left, padding.top);
-            ctx.lineTo(padding.left, padding.top + graphHeight);
-            ctx.lineTo(padding.left + graphWidth, padding.top + graphHeight);
-            ctx.stroke();
-            
-            // Draw depth level labels
+            // Draw X-axis labels (time) - sparse to avoid overlap
             ctx.fillStyle = '#57606a';
-            ctx.font = '10px -apple-system, BlinkMacSystemFont, "Segoe UI"';
-            ctx.textAlign = 'right';
-            
-            // Bid labels
-            ctx.fillStyle = '#0969da';
-            for (let i = 0; i < DEPTH_LEVELS; i++) {
-                const y = padding.top + (i + 0.5) * rectHeight;
-                ctx.fillText(`L${i + 1}`, padding.left - 40, y + 3);
-            }
-            
-            // Ask labels
-            ctx.fillStyle = '#dc3545';
-            for (let i = 0; i < DEPTH_LEVELS; i++) {
-                const y = padding.top + (DEPTH_LEVELS + i + 0.5) * rectHeight;
-                ctx.fillText(`L${i + 1}`, padding.left - 40, y + 3);
-            }
-            
-            // Time labels (every ~10 minutes)
-            ctx.fillStyle = '#57606a';
-            ctx.font = '10px -apple-system, BlinkMacSystemFont, "Segoe UI"';
-            ctx.textAlign = 'center';
-            const labelInterval = Math.ceil(points.length / 8);
-            for (let i = 0; i < points.length; i += labelInterval) {
-                const x = padding.left + (i + 0.5) * rectWidth;
-                const timeStr = points[i].time.toLocaleTimeString('en-US', { hour: '2-digit', minute: '2-digit' });
-                ctx.fillText(timeStr, x, canvas.height - 10);
-            }
-            
-            // Labels on left
-            ctx.textAlign = 'right';
-            ctx.fillStyle = '#0969da';
-            ctx.font = 'bold 12px -apple-system, BlinkMacSystemFont, "Segoe UI"';
-            ctx.fillText('BIDS', padding.left - 45, padding.top - 10);
-            
-            ctx.fillStyle = '#dc3545';
-            ctx.fillText('ASKS', padding.left - 45, padding.top + graphHeight / 2 + 5);
-            
-            // Draw axes
-            ctx.strokeStyle = '#24292f';
-            ctx.lineWidth = 2;
-            ctx.beginPath();
-            ctx.moveTo(padding.left, padding.top);
-            ctx.lineTo(padding.left, padding.top + graphHeight);
-            ctx.lineTo(padding.left + graphWidth, padding.top + graphHeight);
-            ctx.stroke();
-            
-            // Draw depth labels
-            ctx.fillStyle = '#0969da';
-            ctx.font = '12px -apple-system, BlinkMacSystemFont, "Segoe UI"';
-            ctx.textAlign = 'right';
-            for (let i = 0; i < DEPTH_LEVELS; i++) {
-                const y = padding.top + (i + 0.5) * rectHeight;
-                ctx.fillText(`B${i + 1}`, padding.left - 10, y + 4);
-            }
-            
-            ctx.fillStyle = '#dc3545';
-            for (let i = 0; i < DEPTH_LEVELS; i++) {
-                const y = padding.top + (DEPTH_LEVELS + i + 0.5) * rectHeight;
-                ctx.fillText(`A${i + 1}`, padding.left - 10, y + 4);
-            }
-            
-            // Time labels
-            ctx.fillStyle = '#57606a';
-            ctx.textAlign = 'center';
-            for (let i = 0; i < points.length; i += Math.ceil(points.length / 8)) {
-                const x = padding.left + i * rectWidth + rectWidth / 2;
-                ctx.fillText(points[i].time.toLocaleTimeString('en-US', { hour: '2-digit', minute: '2-digit' }), x, canvas.height - 10);
-            }
-            
-            // Title and legend
-            ctx.fillStyle = '#24292f';
-            ctx.font = 'bold 14px -apple-system, BlinkMacSystemFont, "Segoe UI"';
-            ctx.textAlign = 'left';
-            ctx.fillText('Order Book Heatmap', padding.left, 25);
-            
-            // Legend
-            ctx.fillStyle = 'rgba(9, 105, 218, 0.7)';
-            ctx.fillRect(padding.left, 35, 12, 12);
-            ctx.fillStyle = '#24292f';
             ctx.font = '11px -apple-system, BlinkMacSystemFont, "Segoe UI"';
-            ctx.fillText('Bids', padding.left + 16, 43);
+            ctx.textAlign = 'center';
+            const timeStep = Math.ceil(points.length / 8);
+            for (let i = 0; i < points.length; i += timeStep) {
+                const x = padding.left + i * colWidth + colWidth / 2;
+                const timeStr = points[i].time.toLocaleTimeString('en-US', { hour: '2-digit', minute: '2-digit' });
+                ctx.fillText(timeStr, x, canvas.height - 20);
+            }
             
-            ctx.fillStyle = 'rgba(220, 53, 69, 0.7)';
-            ctx.fillRect(padding.left + 80, 35, 12, 12);
-            ctx.fillStyle = '#24292f';
-            ctx.fillText('Asks', padding.left + 96, 43);
-            
-            document.getElementById('error').style.display = 'none';
-
         } catch (error) {
-            document.getElementById('error').textContent = 'Error: ' + error.message;
-            document.getElementById('error').style.display = 'block';
-            document.getElementById('stats-grid').innerHTML = '<div style="color: #d1242f; grid-column: 1/-1;">Failed to load</div>';
+            const errorDiv = document.getElementById('error');
+            errorDiv.textContent = 'Error: ' + error.message;
+            errorDiv.style.display = 'block';
         }
     }
-
-    loadData();
-    setInterval(loadData, 60 * 1000);
+    init();
 </script>
 </body>
 </html>
