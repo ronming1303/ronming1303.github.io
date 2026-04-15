@@ -76,14 +76,28 @@
             
             if (lines.length < 2) throw new Error('CSV empty');
 
-            const headers = lines[0].split(',');
-            const timeIndex = headers.indexOf('collected_at_utc');
-            const bidsJsonIndex = headers.indexOf('bids_json');
-            const asksJsonIndex = headers.indexOf('asks_json');
-            const bestBidIndex = headers.indexOf('best_bid');
-            const bestAskIndex = headers.indexOf('best_ask');
+            const headerLine = lines[0];
+            const headers = [];
+            let current = '';
+            let inQuotes = false;
+            for (let j = 0; j < headerLine.length; j++) {
+                const char = headerLine[j];
+                if (char === '"') inQuotes = !inQuotes;
+                else if (char === ',' && !inQuotes) { headers.push(current); current = ''; }
+                else current += char;
+            }
+            headers.push(current);
             
-            if (timeIndex === -1 || bidsJsonIndex === -1 || asksJsonIndex === -1) throw new Error('Missing columns');
+            const timeIndex = headers.findIndex(h => h.includes('collected_at_utc'));
+            const bidsJsonIndex = headers.findIndex(h => h.includes('bids_json'));
+            const asksJsonIndex = headers.findIndex(h => h.includes('asks_json'));
+            const bestBidIndex = headers.findIndex(h => h.includes('best_bid'));
+            const bestAskIndex = headers.findIndex(h => h.includes('best_ask'));
+            
+            if (timeIndex === -1 || bidsJsonIndex === -1 || asksJsonIndex === -1) {
+                console.error('Headers:', headers);
+                throw new Error('Missing columns - found indices: time=' + timeIndex + ', bids=' + bidsJsonIndex + ', asks=' + asksJsonIndex);
+            }
 
             const allPoints = [];
             for (let i = 1; i < lines.length; i++) {
