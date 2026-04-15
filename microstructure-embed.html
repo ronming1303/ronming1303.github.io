@@ -3,21 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Bitcoin Order Book Imbalance Dashboard</title>
+    <title>Bitcoin Order Book Imbalance</title>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/chartjs-adapter-date-fns"></script>
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
-        body {
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
-            background: #f6f8fa;
-            padding: 24px;
-            color: #24292f;
-        }
-        .container {
-            max-width: 900px;
-            margin: 0 auto;
-        }
+        body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif; background: #f6f8fa; padding: 24px; color: #24292f; }
+        .container { max-width: 900px; margin: 0 auto; }
         h2 { font-size: 18px; font-weight: 600; margin-bottom: 4px; }
         .subtitle { color: #57606a; font-size: 13px; margin-bottom: 20px; }
         .stats-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; margin-bottom: 20px; }
@@ -25,16 +17,9 @@
         .stat-label { font-size: 12px; color: #57606a; margin-bottom: 6px; font-weight: 500; }
         .stat-value { font-size: 24px; font-weight: 600; color: #0969da; }
         .stat-sub { font-size: 11px; color: #57606a; margin-top: 4px; }
-        .card {
-            background: #fff;
-            border: 1px solid #d0d7de;
-            border-radius: 6px;
-            padding: 16px;
-            margin-bottom: 16px;
-        }
+        .card { background: #fff; border: 1px solid #d0d7de; border-radius: 6px; padding: 16px; margin-bottom: 16px; }
         .card-title { font-size: 13px; font-weight: 600; color: #57606a; margin-bottom: 12px; }
         .chart-wrapper { position: relative; height: 280px; }
-        .loading { text-align: center; padding: 40px; color: #57606a; }
         .error { color: #d1242f; background: #FFEBE9; padding: 12px; border-radius: 6px; margin: 20px 0; }
     </style>
 </head>
@@ -44,11 +29,11 @@
     <p class="subtitle">Live order book data from Coinbase BTC/USD (top 10 levels)</p>
     
     <div class="stats-grid" id="stats-grid">
-        <div class="loading">Loading data...</div>
+        <div style="grid-column: 1/-1; text-align: center; padding: 40px; color: #57606a;">Loading...</div>
     </div>
 
     <div class="card">
-        <div class="card-title">Imbalance Over Time (Today's Minutes)</div>
+        <div class="card-title">Imbalance Over Time (Last 60 Minutes)</div>
         <div class="chart-wrapper">
             <canvas id="imbalanceChart"></canvas>
         </div>
@@ -62,218 +47,97 @@
 
     async function loadData() {
         try {
-            // Try to fetch latest minute data
-            let csvText = null;
-            let today = new Date().toISOString().split('T')[0];
+            const today = new Date().toISOString().split('T')[0];
+            const csvUrl = `https://raw.githubusercontent.com/ronming1303/Microstructure_Pipeline/main/data/minute/${today}_btc_usd_d10.csv`;
             
-            // Try today's file first, then yesterday if today's doesn't exist
-            for (let daysBack = 0; daysBack < 3; daysBack++) {
-                const date = new Date();
-                date.setDate(date.getDate() - daysBack);
-                const dateStr = date.toISOString().split('T')[0];
-                const csvUrl = `https://raw.githubusercontent.com/ronming1303/Microstructure_Pipeline/main/data/minute/${dateStr}_btc_usd_d10.csv`;
-                
-                console.log(`Trying to fetch: ${csvUrl}`);
-                try {
-                    const response = await fetch(csvUrl);
-                    console.log(`Response status: ${response.status}`);
-                    if (response.ok) {
-                        csvText = await response.text();
-                        console.log(`Successfully fetched ${csvText.length} bytes`);
-                        break;
-                    } else {
-                        console.log(`Response not ok: ${response.status} ${response.statusText}`);
-                    }
-                } catch (e) {
-                    console.log(`Fetch error for ${dateStr}: ${e.message}`);
-                    // Try next date
-                    continue;
-                }
-            }
+            const response = await fetch(csvUrl);
+            if (!response.ok) throw new Error(`HTTP ${response.status}`);
             
-            if (!csvText) throw new Error('No minute data files found');
-            
+            const csvText = await response.text();
             const lines = csvText.trim().split('\n');
-            console.log('CSV lines:', lines.length);
             
-            if (lines.length < 2) {
-                throw new Error('CSV file is empty');
-            }
+            if (lines.length < 2) throw new Error('CSV empty');
 
-            // Parse CSV using proper quoted field handling
-            const points = [];
             const headers = lines[0].split(',');
             const timeIndex = headers.indexOf('collected_at_utc');
             const imbalanceIndex = headers.indexOf('imbalance');
             
-            console.log('Headers:', headers.length, 'timeIndex:', timeIndex, 'imbalanceIndex:', imbalanceIndex);
-            
-            if (timeIndex === -1 || imbalanceIndex === -1) {
-                throw new Error('Missing required columns in CSV: timeIndex=' + timeIndex + ', imbalanceIndex=' + imbalanceIndex);
-            }
-            
+            if (timeIndex === -1 || imbalanceIndex === -1) throw new Error('Missing columns');
+
+            const allPoints = [];
             for (let i = 1; i < lines.length; i++) {
                 const line = lines[i];
-                // Simple CSV parser that handles quoted fields
                 const fields = [];
                 let current = '';
                 let inQuotes = false;
                 
                 for (let j = 0; j < line.length; j++) {
                     const char = line[j];
-                    if (char === '"') {
-                        inQuotes = !inQuotes;
-                    } else if (char === ',' && !inQuotes) {
-                        fields.push(current);
-                        current = '';
-                    } else {
-                        current += char;
-                    }
+                    if (char === '"') inQuotes = !inQuotes;
+                    else if (char === ',' && !inQuotes) { fields.push(current); current = ''; }
+                    else current += char;
                 }
                 fields.push(current);
                 
                 if (fields.length > Math.max(timeIndex, imbalanceIndex)) {
-                    const timeStr = fields[timeIndex];
-                    const imbalanceStr = fields[imbalanceIndex];
-                    const time = new Date(timeStr);
-                    const imbalance = parseFloat(imbalanceStr);
-                    
+                    const time = new Date(fields[timeIndex].trim());
+                    const imbalance = parseFloat(fields[imbalanceIndex].trim());
                     if (!isNaN(imbalance) && !isNaN(time.getTime())) {
-                        points.push({ time, imbalance });
+                        allPoints.push({ time, imbalance });
                     }
                 }
             }
-            
-            console.log('Parsed points:', points.length);
-            
-            if (points.length === 0) {
-                throw new Error('No valid data points');
-            }
 
-            // Keep only last 60 minutes
-            const maxPoints = 60;
-            if (points.length > maxPoints) {
-                points = points.slice(-maxPoints);
-            }
+            if (allPoints.length === 0) throw new Error('No data');
 
-            // Get latest and statistics
+            const points = allPoints.slice(-60);
             const latest = points[points.length - 1];
             const imbalances = points.map(p => p.imbalance);
             const mean = imbalances.reduce((a, b) => a + b, 0) / imbalances.length;
-            const sorted = [...imbalances].sort((a, b) => a - b);
-            const median = sorted.length % 2 === 0 
-                ? (sorted[sorted.length / 2 - 1] + sorted[sorted.length / 2]) / 2 
-                : sorted[Math.floor(sorted.length / 2)];
-            const min = Math.min(...imbalances);
-            const max = Math.max(...imbalances);
-            
-            // Update stats
-            const statsHtml = `
-                <div class="stat-card">
-                    <div class="stat-label">Latest Imbalance</div>
-                    <div class="stat-value">${latest.imbalance.toFixed(4)}</div>
-                    <div class="stat-sub">Mean: ${mean.toFixed(4)}</div>
-                </div>
-                <div class="stat-card">
-                    <div class="stat-label">Imbalance Range</div>
-                    <div class="stat-value">${max.toFixed(4)}</div>
-                    <div class="stat-sub">Min: ${min.toFixed(4)}</div>
-                </div>
-                <div class="stat-card">
-                    <div class="stat-label">Samples</div>
-                    <div class="stat-value">${points.length}</div>
-                    <div class="stat-sub">Today's minutes</div>
-                </div>
-                <div class="stat-card">
-                    <div class="stat-label">Last Updated</div>
-                    <div class="stat-value" style="font-size: 14px;">${latest.time.toLocaleTimeString()}</div>
-                    <div class="stat-sub">${latest.time.toLocaleDateString()}</div>
-                </div>
+
+            document.getElementById('stats-grid').innerHTML = `
+                <div class="stat-card"><div class="stat-label">Latest</div><div class="stat-value">${latest.imbalance.toFixed(4)}</div><div class="stat-sub">Mean: ${mean.toFixed(4)}</div></div>
+                <div class="stat-card"><div class="stat-label">Range</div><div class="stat-value">${Math.max(...imbalances).toFixed(4)}</div><div class="stat-sub">Min: ${Math.min(...imbalances).toFixed(4)}</div></div>
             `;
-            document.getElementById('stats-grid').innerHTML = statsHtml;
 
-            // Prepare chart data
-            const labels = points.map(p => p.time);
-            const imbalanceData = points.map(p => p.imbalance);
-
-            // Create chart
             const ctx = document.getElementById('imbalanceChart').getContext('2d');
-            
-            if (chart) {
-                chart.destroy();
-            }
+            if (chart) chart.destroy();
 
             chart = new Chart(ctx, {
                 type: 'line',
                 data: {
-                    labels: labels,
-                    datasets: [
-                        {
-                            label: 'Minute-level Imbalance',
-                            data: imbalanceData,
-                            borderColor: '#0969da',
-                            backgroundColor: 'rgba(9, 105, 218, 0.1)',
-                            tension: 0.1,
-                            fill: true,
-                            pointRadius: 2,
-                            pointHoverRadius: 4,
-                            borderWidth: 1.5
-                        }
-                    ]
+                    labels: points.map(p => p.time),
+                    datasets: [{
+                        label: 'Imbalance',
+                        data: points.map(p => p.imbalance),
+                        borderColor: '#0969da',
+                        backgroundColor: 'rgba(9, 105, 218, 0.1)',
+                        tension: 0.2,
+                        fill: true,
+                        pointRadius: 2,
+                        pointHoverRadius: 4,
+                        borderWidth: 1.5
+                    }]
                 },
                 options: {
                     responsive: true,
                     maintainAspectRatio: false,
-                    plugins: {
-                        legend: {
-                            display: true,
-                            position: 'top',
-                            labels: {
-                                font: { size: 12 },
-                                padding: 15,
-                                boxWidth: 12
-                            }
-                        }
-                    },
+                    plugins: { legend: { display: false } },
                     scales: {
-                        x: {
-                            type: 'time',
-                            time: {
-                                unit: 'hour',
-                                displayFormats: {
-                                    hour: 'HH:mm'
-                                }
-                            },
-                            ticks: {
-                                font: { size: 11 }
-                            }
-                        },
-                        y: {
-                            title: {
-                                display: true,
-                                text: 'Imbalance Index',
-                                font: { size: 12 }
-                            },
-                            ticks: {
-                                font: { size: 11 }
-                            },
-                            grid: {
-                                color: 'rgba(0, 0, 0, 0.05)'
-                            }
-                        }
+                        x: { type: 'time', time: { unit: 'minute', displayFormats: { minute: 'HH:mm' } }, ticks: { font: { size: 11 } } },
+                        y: { ticks: { font: { size: 11 } } }
                     }
                 }
             });
+            
+            document.getElementById('error').style.display = 'none';
 
         } catch (error) {
-            console.error('Error loading data:', error);
-            document.getElementById('error').textContent = 'Error loading data: ' + error.message;
+            document.getElementById('error').textContent = 'Error: ' + error.message;
             document.getElementById('error').style.display = 'block';
-            document.getElementById('stats-grid').innerHTML = '<div style="color: #d1242f;">Failed to load data</div>';
         }
     }
 
-    // Load data on page load and refresh every minute
     loadData();
     setInterval(loadData, 60 * 1000);
 </script>
