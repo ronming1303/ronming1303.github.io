@@ -11,48 +11,22 @@
         body {
             font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
             background: #f6f8fa;
-            padding: 24px;
+            padding: 16px;
         }
-        .container { max-width: 1200px; margin: 0 auto; }
-        h2 { font-size: 18px; font-weight: 600; margin-bottom: 4px; }
-        .subtitle { color: #57606a; font-size: 13px; margin-bottom: 20px; }
-        .stats-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; margin-bottom: 20px; }
-        .stat-card { background: #fff; border: 1px solid #d0d7de; border-radius: 6px; padding: 12px 16px; }
-        .stat-label { font-size: 11px; color: #57606a; margin-bottom: 4px; }
-        .stat-value { font-size: 18px; font-weight: 600; }
-        .stat-sub { font-size: 10px; color: #57606a; margin-top: 2px; }
-        .card { background: #fff; border: 1px solid #d0d7de; border-radius: 6px; padding: 16px; margin-bottom: 16px; }
-        .card-title { font-size: 13px; font-weight: 600; color: #57606a; margin-bottom: 12px; }
-        .chart-wrapper { position: relative; height: 350px; }
+        .chart-wrapper { position: relative; height: 350px; margin-bottom: 16px; }
     </style>
 </head>
 <body>
-<div class="container">
-    <h2>Bitcoin Order Book Imbalance</h2>
-    <p class="subtitle">Last 60 minutes of order book dynamics and sentiment</p>
-    
-    <div id="stats-grid" class="stats-grid"></div>
 
-    <div class="card">
-        <div class="card-title">Order Book Depth - Bid & Ask Pressure</div>
-        <div class="chart-wrapper">
-            <canvas id="orderBookChart"></canvas>
-        </div>
-    </div>
+<div class="chart-wrapper">
+    <canvas id="orderBookChart"></canvas>
+</div>
 
-    <div class="card">
-        <div class="card-title">Bid-Ask Imbalance Sentiment</div>
-        <div class="chart-wrapper">
-            <canvas id="imbalanceChart"></canvas>
-        </div>
-    </div>
+<div class="chart-wrapper">
+    <canvas id="imbalanceChart"></canvas>
 </div>
 
 <script>
-    function formatPrice(price) {
-        return '$' + Math.round(price).toLocaleString();
-    }
-
     const BID_COLORS = ['#0969da', '#0860c2', '#0859b8', '#0851ae', '#0749a4'];
     const ASK_COLORS = ['#dc3545', '#d02a3b', '#c42231', '#b81927', '#ac111d'];
 
@@ -84,8 +58,6 @@
             const timeIndex = headers.findIndex(h => h.includes('collected_at_utc'));
             const bidsJsonIndex = headers.findIndex(h => h.includes('bids_json'));
             const asksJsonIndex = headers.findIndex(h => h.includes('asks_json'));
-            const bestBidIndex = headers.findIndex(h => h.includes('best_bid'));
-            const bestAskIndex = headers.findIndex(h => h.includes('best_ask'));
             const imbalanceIndex = headers.findIndex(h => h.includes('imbalance'));
             
             if (timeIndex === -1 || bidsJsonIndex === -1 || asksJsonIndex === -1) throw new Error('Missing');
@@ -124,8 +96,6 @@
                     try {
                         const bidsJson = JSON.parse(fields[bidsJsonIndex]);
                         const asksJson = JSON.parse(fields[asksJsonIndex]);
-                        const bestBid = parseFloat(fields[bestBidIndex]);
-                        const bestAsk = parseFloat(fields[bestAskIndex]);
                         const imbalance = parseFloat(fields[imbalanceIndex]) || 0;
                         
                         if (Array.isArray(bidsJson) && Array.isArray(asksJson) && bidsJson.length > 0 && asksJson.length > 0) {
@@ -133,8 +103,6 @@
                                 time, 
                                 bids: bidsJson,
                                 asks: asksJson,
-                                bestBid,
-                                bestAsk,
                                 imbalance
                             });
                         }
@@ -145,24 +113,6 @@
             if (allPoints.length === 0) throw new Error('No data');
 
             const points = allPoints.slice(-60);
-            
-            // Render stats
-            if (points.length > 0) {
-                const latest = points[points.length - 1];
-                const statCards = [
-                    { label: 'Best Bid', value: formatPrice(latest.bestBid), sub: 'highest buy' },
-                    { label: 'Best Ask', value: formatPrice(latest.bestAsk), sub: 'lowest sell' },
-                    { label: 'Imbalance', value: latest.imbalance.toFixed(4), sub: 'latest' }
-                ];
-                
-                const grid = document.getElementById('stats-grid');
-                statCards.forEach(stat => {
-                    const div = document.createElement('div');
-                    div.className = 'stat-card';
-                    div.innerHTML = `<div class="stat-label">${stat.label}</div><div class="stat-value">${stat.value}</div><div class="stat-sub">${stat.sub}</div>`;
-                    grid.appendChild(div);
-                });
-            }
 
             // Prepare datasets
             const bidDatasets = [];
