@@ -94,6 +94,12 @@
                 throw new Error('No valid data points');
             }
 
+            // Keep only last 60 minutes
+            const maxPoints = 60;
+            if (points.length > maxPoints) {
+                points = points.slice(-maxPoints);
+            }
+
             // Get latest and statistics
             const latest = points[points.length - 1];
             const imbalances = points.map(p => p.imbalance);
