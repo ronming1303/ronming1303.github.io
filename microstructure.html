@@ -165,18 +165,34 @@
 
     async function loadData() {
         try {
-            // Get today's date to fetch latest minute data
-            const today = new Date().toISOString().split('T')[0];
-            const csvUrl = `https://raw.githubusercontent.com/ronming1303/Microstructure_Pipeline/main/data/minute/${today}_btc_usd_d10.csv`;
+            // Try to fetch latest minute data
+            let csvText = null;
             
-            const response = await fetch(csvUrl);
-            if (!response.ok) throw new Error('Failed to fetch minute data');
+            // Try today's file first, then yesterday if today's doesn't exist
+            for (let daysBack = 0; daysBack < 3; daysBack++) {
+                const date = new Date();
+                date.setDate(date.getDate() - daysBack);
+                const dateStr = date.toISOString().split('T')[0];
+                const csvUrl = `https://raw.githubusercontent.com/ronming1303/Microstructure_Pipeline/main/data/minute/${dateStr}_btc_usd_d10.csv`;
+                
+                try {
+                    const response = await fetch(csvUrl);
+                    if (response.ok) {
+                        csvText = await response.text();
+                        break;
+                    }
+                } catch (e) {
+                    // Try next date
+                    continue;
+                }
+            }
             
-            const csvText = await response.text();
+            if (!csvText) throw new Error('No minute data files found');
+            
             const lines = csvText.trim().split('\n');
             
             if (lines.length < 2) {
-                throw new Error('No minute data available');
+                throw new Error('CSV file is empty');
             }
 
             // Parse CSV
@@ -185,12 +201,19 @@
             const timeIndex = headers.indexOf('collected_at_utc');
             const imbalanceIndex = headers.indexOf('imbalance');
             
+            if (timeIndex === -1 || imbalanceIndex === -1) {
+                throw new Error('Missing required columns in CSV');
+            }
+            
             for (let i = 1; i < lines.length; i++) {
                 const values = lines[i].split(',');
-                points.push({
-                    time: new Date(values[timeIndex]),
-                    imbalance: parseFloat(values[imbalanceIndex])
-                });
+                if (values.length > Math.max(timeIndex, imbalanceIndex)) {
+                    const time = new Date(values[timeIndex]);
+                    const imbalance = parseFloat(values[imbalanceIndex]);
+                    if (!isNaN(imbalance) && !isNaN(time.getTime())) {
+                        points.push({ time, imbalance });
+                    }
+                }
             }
             
             if (points.length === 0) {
