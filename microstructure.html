@@ -47,18 +47,9 @@
     </div>
 
     <div class="card">
-        <div class="card-title">Imbalance Over Time (Last 60 Minutes)</div>
+        <div class="card-title">Order Book Imbalance Over Time (Last 60 Minutes)</div>
         <div class="chart-wrapper">
             <canvas id="imbalanceChart"></canvas>
-        </div>
-    </div>
-
-    <div class="card">
-        <div class="card-title">About This Data</div>
-        <div style="color: #57606a; font-size: 13px; line-height: 1.6;">
-            <p style="margin-bottom: 10px;">This dashboard displays minute-level order book imbalance data collected from Coinbase's BTC/USD trading pair. The imbalance metric measures the relative volume difference between bid and ask sides at the top 10 levels.</p>
-            <p style="margin-bottom: 10px;"><strong>Imbalance Formula:</strong><br>I_t = (Σ V_bid(t) - Σ V_ask(t)) / (Σ V_bid(t) + Σ V_ask(t))</p>
-            <p><strong>Repository:</strong> <a href="https://github.com/ronming1303/Microstructure_Pipeline" target="_blank">Microstructure Pipeline</a></p>
         </div>
     </div>
 
