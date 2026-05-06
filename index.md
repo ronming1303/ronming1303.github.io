@@ -48,7 +48,7 @@ I am quite interested in quantitaive investment, quantitative risk management an
 </div>
 
 - [Cryptocurrency Mutual Fund]()
-  - _Coming soon..._
+  - [<span style="color: red"><u>Keynote Here</u></span>](https://github.com/ronming1303/Ruming-Liu-PDF-Document/blob/main/Crypto_Mutual_Fund_Slide.pdf)
 
 - [IdeaGround Social Media Economics](https://papers.ssrn.com/sol3/papers.cfm?abstract_id=4900702)
   - _White paper of ideaGround LLC. We introduce the next generation of social media ecosystem based on a novel distribution system named social media economics._ [<span style="color: red"><u>Pitch Here</u></span>](https://github.com/ronming1303/Ruming-Liu-PDF-Document/blob/main/Pitch%20Deck%207_22_25.pdf)
