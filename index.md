@@ -1,6 +1,6 @@
 ## About Me
 
-My name is Ruming Liu (刘入铭), I am currently a Finance Ph.D. candidate at Stevens Institute of Technology ([SIT](https://www.stevens.edu)), my research interests are Blockchain, Cryptocurrency and Fintech ([Resume](./resumes/041026_Ruming_Liu_Resume.pdf), [CV](./resumes/041026_Academic_CV_Ruming_Liu.pdf)). I am very fortunate to be advised by Prof. [Jingrui Li](https://sites.google.com/view/jvictoriali/home).
+My name is Ruming Liu (刘入铭), I am currently a Finance Ph.D. candidate at Stevens Institute of Technology ([SIT](https://www.stevens.edu)), my research interests are Blockchain, Cryptocurrency and Fintech ([Resume](./resumes/051926_Ruming_Liu_Resume.pdf), [CV](./resumes/041026_Academic_CV_Ruming_Liu.pdf)). I am very fortunate to be advised by Prof. [Jingrui Li](https://sites.google.com/view/jvictoriali/home).
 I'm also a co-founder of social media [ideaGround LLC](https://ideaground.net), we are actively hiring talented blockchain scientists and seeking pre-seed and seed round funding. If you're interested in joining our team or supporting our vision, please don’t hesitate to get in touch!
 
 Previously, I was a Financial Engineering Client Service Specialist at Moody's Analytics ([MA](https://www.moodysanalytics.com)) in San Francisco. I supported some credit risk products and credit rating data of Moody's: CreditEdge, RiskCalc, RiskFrontier and Moody's Investor Service (MIS) rating data. 
@@ -70,34 +70,34 @@ _Time Series and Econometrics course project. It applies cointegration method an
 - [Stochastic Discount Factor, CCAPM, CAPM, and Black Scholes PDE](./documents/Link_of_Stochastic_Discount_Factor__Black_Scholes__CAPM_and_CCAPM.pdf)
 - [Barra Pure Factor Portfolio](./documents/Barra_Pure_Factor_Portfolio.pdf)
 - [Investment Based CAPM: q-Factor Model](./documents/Investment_based_CAPM__q_Factor_Model.pdf)
-- [Arbitrage Pricing Theory, and Multi-Factor Models](./documents/Arbitrage_Pricing_Theory_and_Muti_Factor_Model.pdf)
+- [Arbitrage Pricing Theory and Multi-Factor Models](./documents/Arbitrage_Pricing_Theory_and_Muti_Factor_Model.pdf)
 - [Linear Stochastic Discount Factor, and Factor Models](./documents/Factor_Model_and_Linear_Stochastic_Discount_Factor.pdf)
 - [Stochastic Discount Factor and Risk Neutral Measure](./documents/Stochastic_Discount_Factor___Risk_Neutral_Measure.pdf)
 - [Generalized Method of Moments](./documents/Generalized_Method_of_Moments.pdf)
 - [Interest Rate Term Structure Notes](./documents/interest%20rate%20term-structure.pdf)
 - [Short Rate Model](https://zhuanlan.zhihu.com/p/110055526)
-- [Heath-Jarrow-Morton Framework(CN)](https://zhuanlan.zhihu.com/p/112844939)
-- [Option Pricing of Stock with Dividend(CN)](https://zhuanlan.zhihu.com/p/107332780)
-- [Fundamental Theorems of Asset Pricing(CN)](https://zhuanlan.zhihu.com/p/106374643)
-- [Risk Neutral and PDE method of American Option(CN)](https://zhuanlan.zhihu.com/p/105325456)
-- [Risk Neutral and PDE method of Black-Scholes model(CN)](https://zhuanlan.zhihu.com/p/96875039)
-- [Stochastic Calculus(CN)](https://zhuanlan.zhihu.com/p/96729991)
-- [Fundamental Arbitrage Theorems of Mathematica Finance(CN)](https://zhuanlan.zhihu.com/p/86038736)
-- [Hedging Strategy of American Option(CN)](https://zhuanlan.zhihu.com/p/85319326)
-- [American Option and Stopping Process(CN)](https://zhuanlan.zhihu.com/p/82860673)
-- [Optimal Stopping Time and Doob Meyer Decomposition(CN)](https://zhuanlan.zhihu.com/p/84907455)
-- [Martingale, Conditionnal Expectation and Binomial Tree(CN)](https://zhuanlan.zhihu.com/p/83833362)
-- [Filtration, Martingale and Conditionnal Expectation(CN)](https://zhuanlan.zhihu.com/p/83314877)
-- [Binomial Tree Model[2](CN)](https://zhuanlan.zhihu.com/p/81267253)
-- [Binomial Tree Model[1](CN)](https://zhuanlan.zhihu.com/p/81228344)
+- [Heath-Jarrow-Morton Framework (CN)](https://zhuanlan.zhihu.com/p/112844939)
+- [Option Pricing of Stock with Dividend (CN)](https://zhuanlan.zhihu.com/p/107332780)
+- [Fundamental Theorems of Asset Pricing (CN)](https://zhuanlan.zhihu.com/p/106374643)
+- [Risk Neutral and PDE method of American Option (CN)](https://zhuanlan.zhihu.com/p/105325456)
+- [Risk Neutral and PDE method of Black-Scholes model (CN)](https://zhuanlan.zhihu.com/p/96875039)
+- [Stochastic Calculus (CN)](https://zhuanlan.zhihu.com/p/96729991)
+- [Fundamental Arbitrage Theorems of Mathematica Finance (CN)](https://zhuanlan.zhihu.com/p/86038736)
+- [Hedging Strategy of American Option (CN)](https://zhuanlan.zhihu.com/p/85319326)
+- [American Option and Stopping Process (CN)](https://zhuanlan.zhihu.com/p/82860673)
+- [Optimal Stopping Time and Doob Meyer Decomposition (CN)](https://zhuanlan.zhihu.com/p/84907455)
+- [Martingale, Conditionnal Expectation and Binomial Tree (CN)](https://zhuanlan.zhihu.com/p/83833362)
+- [Filtration, Martingale and Conditionnal Expectation (CN)](https://zhuanlan.zhihu.com/p/83314877)
+- [Binomial Tree Model[2] (CN)](https://zhuanlan.zhihu.com/p/81267253)
+- [Binomial Tree Model[1] (CN)](https://zhuanlan.zhihu.com/p/81228344)
 
 1. Game Theory and Equilibrium
-- [Grossman(1976) Rational Expectation Equilibrium Price](./documents/Grossman_1976_.pdf)
-- [Hellwig(1980), Grossman-Stiglitz Paradox(1980), CARA-Gaussian Rational Expectation Equilibrium Price](./documents/Grossman_Stiglitz_1980_.pdf)
-- [Glosten-Milgrom(1985) Bid Ask Spread](./documents/Glosten_Milgrom_1985_.pdf)
-- [Kyle(1985) Insider Trading](./documents/Kyle_1985_.pdf)
-- [Arrow-Debreu Security(1954)](./documents/Arrow_Debreu_Market.pdf)
-- [Lucas Tree Model(1978)](./documents/LucasAssetPrice.pdf)
+- [Grossman (1976) Rational Expectation Equilibrium Price](./documents/Grossman_1976_.pdf)
+- [Hellwig (1980), Grossman-Stiglitz Paradox (1980), CARA-Gaussian Rational Expectation Equilibrium Price](./documents/Grossman_Stiglitz_1980_.pdf)
+- [Glosten-Milgrom (1985) Bid Ask Spread](./documents/Glosten_Milgrom_1985_.pdf)
+- [Kyle (1985) Insider Trading](./documents/Kyle_1985_.pdf)
+- [Arrow-Debreu Security (1954)](./documents/Arrow_Debreu_Market.pdf)
+- [Lucas Tree Model (1978)](./documents/LucasAssetPrice.pdf)
 - [Equilibrium Refinements in Game Theory](./documents/GameTheoryNote.pdf)
 - [Repeated Game](./documents/GameTheoryNote2.pdf)
 - [Front Running Game in blockchain](./documents/Front_running_Game_in_Blockchain.pdf)
@@ -113,32 +113,32 @@ _Time Series and Econometrics course project. It applies cointegration method an
 
 4. Probability and Statistics
 - [Probability Convergence Concepts](https://zhuanlan.zhihu.com/p/164667409)
-- [Lebesugue Measure(CN)](https://zhuanlan.zhihu.com/p/338600430)
-- [Abstract Measure(CN)](https://zhuanlan.zhihu.com/p/340521567)
-- [Convergence Theorem(CN)](https://zhuanlan.zhihu.com/p/345848527)
-- [Random Variables and Random Process(CN)](https://zhuanlan.zhihu.com/p/89399400)
-- [Sufficient Statistics(CN)](https://zhuanlan.zhihu.com/p/407004295)
-- [Point Estimation(CN)](https://zhuanlan.zhihu.com/p/407004295)
-- [Asymptotic Theory(CN)](https://zhuanlan.zhihu.com/p/408169919)
+- [Lebesugue Measure (CN)](https://zhuanlan.zhihu.com/p/338600430)
+- [Abstract Measure (CN)](https://zhuanlan.zhihu.com/p/340521567)
+- [Convergence Theorem (CN)](https://zhuanlan.zhihu.com/p/345848527)
+- [Random Variables and Random Process (CN)](https://zhuanlan.zhihu.com/p/89399400)
+- [Sufficient Statistics (CN)](https://zhuanlan.zhihu.com/p/407004295)
+- [Point Estimation (CN)](https://zhuanlan.zhihu.com/p/407004295)
+- [Asymptotic Theory (CN)](https://zhuanlan.zhihu.com/p/408169919)
 
 5. Dencentralized Finance / Financial Technology
 - [Blockchain Literature Review](./documents/blockchain_review.pdf)
 - [Blockchain Litereture Review Slide](./documents/critical_research.pdf)
 - [Sex Drugs and Bitcoin How Much Illegal Activity Is Financed through Cryptocurrencies](./documents/Sex__Drugs__and_Bitcoin__How_Much_Illegal_Activity_Is_Financed_through_Cryptocurrencies.pdf)
-- [The Mechanics of Curve Leverage AMM(CN)](https://zhuanlan.zhihu.com/p/407655879)
-- [The Mechanics of Balancer Index Fund AMM(CN)](https://zhuanlan.zhihu.com/p/165444323)
-- [The Mechanics of Uniswap-V3 AMM(CN)](https://zhuanlan.zhihu.com/p/87243177)
-- [Some Ideas on Cryptocurrency Market(CN)](https://zhuanlan.zhihu.com/p/383499265)
+- [The Mechanics of Curve Leverage AMM (CN)](https://zhuanlan.zhihu.com/p/407655879)
+- [The Mechanics of Balancer Index Fund AMM (CN)](https://zhuanlan.zhihu.com/p/165444323)
+- [The Mechanics of Uniswap-V3 AMM (CN)](https://zhuanlan.zhihu.com/p/87243177)
+- [Some Ideas on Cryptocurrency Market (CN)](https://zhuanlan.zhihu.com/p/383499265)
 
 6. Financial Simulation
 - [Variance Reducation Techniques](./documents/Variance_Reduction_Techniques.pdf)
-- [Simulation of Short Rate Model and Forward Rate under H-J-M framework(CN)](./documents/Short%20Rate%20Simulation.pdf)
+- [Simulation of Short Rate Model and Forward Rate under H-J-M framework (CN)](./documents/Short%20Rate%20Simulation.pdf)
 
 
 7. Miscellaneous
 - [Maximum Likelihood Estimation for ARMA-GARCH](https://zhuanlan.zhihu.com/p/266329597)
 - [Referee Report for th Paper A Bias of Screen](./documents/Referee%20of%20Econ504%20Paper%20Ruming%20Liu_2848262948.pdf)
-- [Brief History of Fannie Mae, Freddie Mac and Ginnie Mae(CN)](https://zhuanlan.zhihu.com/p/80399531) 
+- [Brief History of Fannie Mae, Freddie Mac and Ginnie Mae (CN)](https://zhuanlan.zhihu.com/p/80399531) 
 
 ## Professional Skills
 Here are some practical tools I use in my work.
@@ -147,6 +147,8 @@ Programming Languages: [Python](https://www.python.org), [Matlab](https://www.ma
 
 Statistical Softwares: [R](https://www.r-project.org), [SPSS](https://www.ibm.com/products/spss-statistics), [SAS](https://www.sas.com/en_us/home.html)
 
-Database: [MySQL](https://www.mysql.com)
+Database: [MySQL](https://www.mysql.com), [MongoDB](https://www.mongodb.com), [PostgreSQL](https://www.postgresql.org)
+
+AI Development Tools: [Claude Code](https://github.com/anthropics/claude-code), [Codex](https://openai.com/index/openai-codex/)
 
 Typesetting Softwares: [LaTeX](https://www.latex-project.org), [HTML](https://developer.mozilla.org/en-US/docs/Web/HTML), [Markdown](https://docs.github.com/en/github/writing-on-github/getting-started-with-writing-and-formatting-on-github/basic-writing-and-formatting-syntax)

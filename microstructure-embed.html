@@ -22,10 +22,6 @@
     <canvas id="orderBookChart"></canvas>
 </div>
 
-<div class="chart-wrapper">
-    <canvas id="imbalanceChart"></canvas>
-</div>
-
 <script>
     const BID_COLORS = ['#0969da', '#0860c2', '#0859b8', '#0851ae', '#0749a4'];
     const ASK_COLORS = ['#dc3545', '#d02a3b', '#c42231', '#b81927', '#ac111d'];
@@ -171,33 +167,6 @@
                     plugins: {
                         legend: { display: true, position: 'top', labels: { boxWidth: 10, font: { size: 11 }, padding: 10 } }
                     },
-                    scales: {
-                        x: xScale,
-                        y: { ticks: { color: '#57606a', font: { size: 11 } }, grid: { color: '#d0d7de' } }
-                    }
-                }
-            });
-
-            new Chart(document.getElementById('imbalanceChart'), {
-                type: 'line',
-                data: {
-                    datasets: [{
-                        label: 'Imbalance',
-                        data: points.map(p => ({ x: p.time, y: p.imbalance })),
-                        borderColor: '#6366f1',
-                        backgroundColor: 'rgba(99, 102, 241, 0.1)',
-                        fill: true,
-                        tension: 0.3,
-                        pointRadius: 0,
-                        pointHoverRadius: 5,
-                        borderWidth: 1.8
-                    }]
-                },
-                options: {
-                    responsive: true,
-                    maintainAspectRatio: false,
-                    interaction: { mode: 'index', intersect: false },
-                    plugins: { legend: { display: true, position: 'top', labels: { boxWidth: 10, font: { size: 11 }, padding: 10 } } },
                     scales: {
                         x: xScale,
                         y: { ticks: { color: '#57606a', font: { size: 11 } }, grid: { color: '#d0d7de' } }
