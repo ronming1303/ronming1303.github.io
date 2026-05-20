@@ -49,9 +49,11 @@ I am quite interested in quantitaive investment, quantitative risk management an
 
 - [Cryptocurrency Mutual Fund]()
   - [<span style="color: red"><u>Keynote Here</u></span>](./documents/Crypto_Mutual_Fund_Slide.pdf)
+  - [Digital Asset Treasury Holdings](https://defillama.com/digital-asset-treasuries)
 
 - [IdeaGround Social Media Economics](https://papers.ssrn.com/sol3/papers.cfm?abstract_id=4900702)
   - _White paper of ideaGround LLC. We introduce the next generation of social media ecosystem based on a novel distribution system named social media economics._ [<span style="color: red"><u>Pitch Here</u></span>](./documents/Pitch%20Deck%207_22_25.pdf)
+  - [Read All](./documents/ideaGround_whitepaper_022625.pdf)
 
 ## Projects
 - [Bitcoin Technical Analysis by Convolutional Neural Network](https://github.com/ronming1303/Dacheng-Xiu-CNN): _I consider using convolution neural network for technical analysis in Bitcoin candlesticks pattern. I explore several structures of CNN, including a custom 5-layer CNN, VGG-based networks, and ResNet. Comparative experiments are conducted to evaluate the performance of each architecture in capturing relevant visual features and supporting predictive analysis in a volatile financial context._
