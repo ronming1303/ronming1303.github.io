@@ -51,6 +51,9 @@ I am quite interested in quantitaive investment, quantitative risk management an
   - [<span style="color: red"><u>Keynote Here</u></span>](./documents/Crypto_Mutual_Fund_Slide.pdf)
   - [Digital Asset Treasury Holdings](https://defillama.com/digital-asset-treasuries)
 
+- [Deep Stochastic Discount Factor of Asset Pricing]()
+  <br><img src="./documents/attention.svg" alt="attention-based stochastic discount factor" style="max-width:100%;margin-top:8px;">
+
 - [IdeaGround Social Media Economics](https://papers.ssrn.com/sol3/papers.cfm?abstract_id=4900702)
   - _White paper of ideaGround LLC. We introduce the next generation of social media ecosystem based on a novel distribution system named social media economics._ [<span style="color: red"><u>Pitch Here</u></span>](./documents/Pitch%20Deck%207_22_25.pdf)
   - [Read All](./documents/ideaGround_whitepaper_022625.pdf)
