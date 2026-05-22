@@ -60,6 +60,7 @@ I am quite interested in quantitaive investment, quantitative risk management an
 
 ## Projects
 - [Bitcoin Technical Analysis by Convolutional Neural Network](https://github.com/ronming1303/Dacheng-Xiu-CNN): _I consider using convolution neural network for technical analysis in Bitcoin candlesticks pattern. I explore several structures of CNN, including a custom 5-layer CNN, VGG-based networks, and ResNet. Comparative experiments are conducted to evaluate the performance of each architecture in capturing relevant visual features and supporting predictive analysis in a volatile financial context._
+  <br><img src="./documents/resnet_diagram.svg" alt="ResNet architecture diagram" style="max-width:100%;margin-top:8px;">
 - [Autoencoder Asset Pricing](https://github.com/ronming1303/LLM/commit/a8512c8af2853cbf6c4a336dd40471a15fbb1149): _Replication of Gu, S., Kelly, B. and Xiu, D., 2021. Autoencoder asset pricing models. Journal of Econometrics, 222(1), pp.429-450._
   <br><img src="./documents/autoencoder_figure.svg" alt="Neural-network-based factor model with factor loadings and latent factors" style="max-width:100%;margin-top:8px;">
 - [Front-running Game Between Miners and Traders in Blockchain](./documents/Front_running_Game_in_Blockchain.pdf): _I discuss the equlibrium model of a game in DPoS. I form a signalling game between the miners (validators) and traders (voters). I analyze some situations in which the DPoS blockchain may fail. But in some situations, blockchain can work under the collaboration._
