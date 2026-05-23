@@ -65,6 +65,7 @@ I am quite interested in quantitaive investment, quantitative risk management an
 - [Autoencoder Asset Pricing](https://github.com/ronming1303/LLM/commit/a8512c8af2853cbf6c4a336dd40471a15fbb1149): _Replication of Gu, S., Kelly, B. and Xiu, D., 2021. Autoencoder asset pricing models. Journal of Econometrics, 222(1), pp.429-450._
   <br><img src="./documents/autoencoder_figure.svg" alt="Neural-network-based factor model with factor loadings and latent factors" style="max-width:100%;margin-top:8px;">
 - [Front-running Game Between Miners and Traders in Blockchain](./documents/Front_running_Game_in_Blockchain.pdf): _I discuss the equlibrium model of a game in DPoS. I form a signalling game between the miners (validators) and traders (voters). I analyze some situations in which the DPoS blockchain may fail. But in some situations, blockchain can work under the collaboration._
+  <br><img src="./documents/frontrunning_game_tree.svg" alt="Incomplete information game between Miner and Trader" style="max-width:100%;margin-top:8px;">
 - [The Thoughts on the Internationalization of Chinese RMB](./documents/Toughts%20on%20the%20Internationalization%20of%20Chinese%20RMB%20%7C%20Ruming%20Liu.pdf): 
 _The dissertation of my Bachelor's Degree. It compares the development of RMB with other international currencies and forecasts the future of RMB from macro-economics and politics point of view._
 - [A Possible Way to Search Pairs Trading Arbitrage](./documents/A%20Possible%20Way%20to%20Search%20Pairs%20Trading%20Arbitrage.pdf):
