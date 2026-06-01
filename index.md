@@ -60,6 +60,9 @@ I am quite interested in quantitaive investment, quantitative risk management an
   - [Read All](./documents/ideaGround_whitepaper_022625.pdf)
 
 ## Projects
+- [Reinforcement Learning Notes for Financial Studies](./documents/reinforcement_learning_notes_for_finance.pdf):_Notes of methodologies in reinforcement learning algorithms and the applications in financial studies._
+  <br><img src="./documents/figure1_RL.PNG" alt="FinRL Deep Reinforcement Learning Framework" style="max-width:100%;margin-top:8px;"> <details style="display:inline-block;vertical-align:top;margin-left:6px;margin-top:6px;"><summary style="cursor:pointer;list-style:none;color:#bbb;font-size:1em;" title="View source">ⓘ</summary><span style="font-size:0.82em;color:#666;"><em>Source: FinRL: Deep Reinforcement Learning Framework to Automate Trading in Quantitative Finance</em></span></details>
+
 - [Bitcoin Technical Analysis by Convolutional Neural Network](https://github.com/ronming1303/Dacheng-Xiu-CNN): _I consider using convolution neural network for technical analysis in Bitcoin candlesticks pattern. I explore several structures of CNN, including a custom 5-layer CNN, VGG-based networks, and ResNet. Comparative experiments are conducted to evaluate the performance of each architecture in capturing relevant visual features and supporting predictive analysis in a volatile financial context._
   <br><img src="./documents/resnet_diagram.svg" alt="ResNet architecture diagram" style="max-width:100%;margin-top:8px;">
 - [Autoencoder Asset Pricing](https://github.com/ronming1303/LLM/commit/a8512c8af2853cbf6c4a336dd40471a15fbb1149): _Replication of Gu, S., Kelly, B. and Xiu, D., 2021. Autoencoder asset pricing models. Journal of Econometrics, 222(1), pp.429-450._
