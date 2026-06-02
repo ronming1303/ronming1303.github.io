@@ -60,7 +60,7 @@ I am quite interested in quantitaive investment, quantitative risk management an
   - [Read All](./documents/ideaGround_whitepaper_022625.pdf)
 
 ## Projects
-- [Reinforcement Learning Notes for Financial Studies](./documents/reinforcement_learning_notes_for_finance.pdf):_Notes of methodologies in reinforcement learning algorithms and the applications in financial studies._
+- [Reinforcement Learning Notes for Financial Studies](./documents/reinforcement_learning_notes_for_finance.pdf): _Notes of methodologies in reinforcement learning algorithms and the applications in financial studies._
   <br><img src="./documents/figure1_RL.PNG" alt="FinRL Deep Reinforcement Learning Framework" style="max-width:100%;margin-top:8px;"> <sup onclick="this.nextElementSibling.hidden=!this.nextElementSibling.hidden" style="cursor:pointer;color:#bbb;font-size:0.9em;">ⓘ</sup><small hidden style="color:#888;font-style:italic;"> Source: FinRL: Deep Reinforcement Learning Framework to Automate Trading in Quantitative Finance</small>
 
 - [Bitcoin Technical Analysis by Convolutional Neural Network](https://github.com/ronming1303/Dacheng-Xiu-CNN): _I consider using convolution neural network for technical analysis in Bitcoin candlesticks pattern. I explore several structures of CNN, including a custom 5-layer CNN, VGG-based networks, and ResNet. Comparative experiments are conducted to evaluate the performance of each architecture in capturing relevant visual features and supporting predictive analysis in a volatile financial context._
