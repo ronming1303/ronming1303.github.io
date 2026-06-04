@@ -26,15 +26,20 @@
     const BID_COLORS = ['#0969da', '#0860c2', '#0859b8', '#0851ae', '#0749a4'];
     const ASK_COLORS = ['#dc3545', '#d02a3b', '#c42231', '#b81927', '#ac111d'];
 
+    async function fetchLatestCsv() {
+        const d = new Date();
+        for (let i = 0; i < 7; i++) {
+            const dateStr = new Date(d - i * 86400000).toISOString().split('T')[0];
+            const url = `https://raw.githubusercontent.com/ronming1303/Microstructure_Pipeline/main/data/minute/${dateStr}_btc_usd_d10.csv`;
+            const res = await fetch(url);
+            if (res.ok) return res.text();
+        }
+        throw new Error('No data available');
+    }
+
     async function init() {
         try {
-            const today = new Date().toISOString().split('T')[0];
-            const csvUrl = `https://raw.githubusercontent.com/ronming1303/Microstructure_Pipeline/main/data/minute/${today}_btc_usd_d10.csv`;
-            
-            const response = await fetch(csvUrl);
-            if (!response.ok) throw new Error('Failed to fetch');
-            
-            const csvText = await response.text();
+            const csvText = await fetchLatestCsv();
             const lines = csvText.trim().split('\n');
             
             if (lines.length < 2) throw new Error('No data');
