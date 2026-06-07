@@ -6,6 +6,7 @@
     <title>Crypto Exchange Price Dashboard</title>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/chartjs-adapter-date-fns"></script>
+    <link rel="modulepreload" crossorigin href="https://esm.sh/hyparquet@1">
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
         body {
@@ -88,7 +89,7 @@
     </footer>
 
     <script type="module">
-        import { parquetRead } from 'https://esm.sh/hyparquet@1';
+        let parquetRead;
 
         const EXCHANGES = ['binance', 'bybit', 'coinbase', 'kraken', 'okx', 'bitfinex'];
         const COLORS = ['#F0B90B', '#F7A600', '#0052FF', '#5741D9', '#555', '#16B157'];
@@ -255,8 +256,14 @@
             document.getElementById('overlay').style.display = 'none';
         };
 
-        async function init() {
+        async function init(attempt = 1) {
+            const MAX_ATTEMPTS = 3;
             try {
+                // Dynamic import to catch failures and retry — fixes Safari iframe ESM first-load issue
+                if (!parquetRead) {
+                    ({ parquetRead } = await import('https://esm.sh/hyparquet@1'));
+                }
+
                 currentDate = await findLatestDate();
                 if (!currentDate) throw new Error('No data found');
                 document.getElementById('date-label').textContent = `Data: ${currentDate}`;
@@ -267,7 +274,11 @@
                 renderCharts(allRows);
                 document.getElementById('overlay').style.display = 'none';
             } catch (err) {
-                document.getElementById('overlay').textContent = 'Error: ' + err.message;
+                if (attempt < MAX_ATTEMPTS) {
+                    setTimeout(() => init(attempt + 1), 1500 * attempt);
+                } else {
+                    document.getElementById('overlay').textContent = 'Error: ' + err.message;
+                }
             }
         }
         init();
