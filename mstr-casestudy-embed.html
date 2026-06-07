@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MSTR Bitcoin Treasury Case Study Preview</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html, body { height: 100%; overflow: hidden; background: #ffffff; }
+        #scale-wrap {
+            position: absolute;
+            width: 1300px;
+            height: 850px;
+            transform-origin: top left;
+        }
+        #scale-wrap iframe { display: block; width: 1300px; height: 850px; border: none; }
+    </style>
+</head>
+<body>
+<div id="scale-wrap">
+    <iframe src="mstr_casestudy_interactive.html" scrolling="no"></iframe>
+</div>
+<script>
+    function fit() {
+        var w = document.documentElement.clientWidth || 1300;
+        var h = document.documentElement.clientHeight || 850;
+        var scale = Math.min(w / 1300, h / 850);
+        var wrap = document.getElementById('scale-wrap');
+        wrap.style.transform = 'scale(' + scale + ')';
+        wrap.style.left = Math.round((w - 1300 * scale) / 2) + 'px';
+        wrap.style.top = Math.round((h - 850 * scale) / 2) + 'px';
+    }
+    window.addEventListener('resize', fit);
+    fit();
+</script>
+</body>
+</html>

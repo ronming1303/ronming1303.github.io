@@ -50,6 +50,14 @@ I am quite interested in quantitaive investment, quantitative risk management an
 - [Cryptocurrency Mutual Fund]()
   - [<span style="color: red"><u>Keynote Here</u></span>](./documents/Crypto_Mutual_Fund_Slide.pdf)
   - [Digital Asset Treasury Holdings](https://defillama.com/digital-asset-treasuries)
+  - Strategy (MSTR) Bitcoin Treasury Case Study (2023&ndash;present):
+
+<div style="margin: 20px 0;">
+<a href="mstr-casestudy.html" style="text-decoration: none; display: block;">
+<iframe src="mstr-casestudy-embed.html" width="100%" height="320" style="border: 1px solid #d0d7de; border-radius: 6px; pointer-events: none;"></iframe>
+<p style="text-align: center; color: #0969da; margin-top: 8px;">Click to view full case study →</p>
+</a>
+</div>
 
 - [Deep Stochastic Discount Factor of Asset Pricing]()
   <br><img src="./documents/attention.svg" alt="attention-based stochastic discount factor" style="max-width:100%;margin-top:8px;">

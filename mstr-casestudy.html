@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MSTR Bitcoin Treasury Case Study - Ruming Liu</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+            background: #f6f8fa;
+            color: #24292f;
+            padding: 24px;
+            min-height: 100vh;
+        }
+        .container { max-width: 1400px; margin: 0 auto; }
+        header { margin-bottom: 30px; }
+        h1 { color: #0969da; font-size: 1.8em; margin-bottom: 10px; }
+        .subtitle { color: #57606a; font-size: 0.95em; margin-bottom: 20px; }
+        .back-link { color: #0969da; text-decoration: none; font-size: 0.9em; display: inline-block; margin-bottom: 20px; }
+        .back-link:hover { text-decoration: underline; }
+        .card { background: #fff; border: 1px solid #d0d7de; border-radius: 6px; padding: 16px; margin-bottom: 16px; }
+        .card-title { font-size: 13px; font-weight: 600; color: #57606a; margin-bottom: 12px; }
+        #chart-wrap { position: relative; overflow: hidden; }
+        #scale-wrap { transform-origin: top left; width: 1300px; height: 850px; }
+        #scale-wrap iframe { display: block; width: 1300px; height: 850px; border: none; }
+        footer { margin-top: 40px; padding-top: 20px; border-top: 1px solid #d0d7de; color: #57606a; font-size: 0.85em; }
+        footer a { color: #0969da; text-decoration: none; }
+    </style>
+</head>
+<body>
+<div class="container">
+    <header>
+        <a href="/" class="back-link">&larr; Back to Home</a>
+        <h1>Strategy (MSTR) &mdash; Bitcoin Treasury Case Study</h1>
+        <p class="subtitle">Stock price, BTC holdings, mNAV premium, and financing activity (ATM equity, convertible bonds, preferred stock) since 2023</p>
+    </header>
+
+    <div class="card">
+        <div class="card-title">Strategy (MSTR) &mdash; Bitcoin Treasury (2023&ndash;present)</div>
+        <div id="chart-wrap">
+            <div id="scale-wrap">
+                <iframe src="mstr_casestudy_interactive.html" scrolling="no"></iframe>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <p>Related: <a href="https://defillama.com/digital-asset-treasuries" target="_blank">Digital Asset Treasury Holdings</a></p>
+    </footer>
+</div>
+
+<script>
+    function fit() {
+        var chartWrap = document.getElementById('chart-wrap');
+        var scale = chartWrap.clientWidth / 1300;
+        document.getElementById('scale-wrap').style.transform = 'scale(' + scale + ')';
+        chartWrap.style.height = Math.round(850 * scale) + 'px';
+    }
+    window.addEventListener('resize', fit);
+    fit();
+</script>
+</body>
+</html>
