@@ -23,12 +23,13 @@
 <script>
     function fit() {
         var w = document.documentElement.clientWidth || 1300;
-        var h = document.documentElement.clientHeight || 850;
-        var scale = Math.min(w / 1300, h / 850);
+        // Scale to fill the full width (crops the bottom rather than letterboxing the sides) —
+        // the click-through page shows the chart in full.
+        var scale = w / 1300;
         var wrap = document.getElementById('scale-wrap');
         wrap.style.transform = 'scale(' + scale + ')';
-        wrap.style.left = Math.round((w - 1300 * scale) / 2) + 'px';
-        wrap.style.top = Math.round((h - 850 * scale) / 2) + 'px';
+        wrap.style.left = '0px';
+        wrap.style.top = '0px';
     }
     window.addEventListener('resize', fit);
     fit();
