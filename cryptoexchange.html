@@ -6,7 +6,7 @@
     <title>Crypto Exchange Price Dashboard</title>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/chartjs-adapter-date-fns"></script>
-    <link rel="modulepreload" crossorigin href="https://esm.sh/hyparquet@1">
+    <link rel="modulepreload" crossorigin href="https://cdn.jsdelivr.net/npm/hyparquet@1/+esm">
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
         body {
@@ -110,6 +110,15 @@
             timestampFromMicroseconds: us => new Date(Number(us) / 1000),
             stringFromBytes: bytes => new TextDecoder().decode(bytes)
         };
+
+        // Safari can leave a dynamic import() pending forever instead of rejecting,
+        // which would otherwise stall init() before the retry logic ever runs.
+        function importWithTimeout(url, ms) {
+            return Promise.race([
+                import(url),
+                new Promise((_, reject) => setTimeout(() => reject(new Error('module load timed out')), ms))
+            ]);
+        }
 
         async function findLatestDate() {
             for (let i = 0; i < 5; i++) {
@@ -259,9 +268,10 @@
         async function init(attempt = 1) {
             const MAX_ATTEMPTS = 3;
             try {
-                // Dynamic import to catch failures and retry — fixes Safari iframe ESM first-load issue
+                // Dynamic import (single jsDelivr bundle, with timeout) to catch failures and retry —
+                // fixes Safari iframe ESM first-load issue where esm.sh's multi-file module graph hangs
                 if (!parquetRead) {
-                    ({ parquetRead } = await import('https://esm.sh/hyparquet@1'));
+                    ({ parquetRead } = await importWithTimeout('https://cdn.jsdelivr.net/npm/hyparquet@1/+esm', 8000));
                 }
 
                 currentDate = await findLatestDate();
