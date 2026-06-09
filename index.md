@@ -67,6 +67,16 @@ I am quite interested in quantitaive investment, quantitative risk management an
   - _White paper of ideaGround LLC. We introduce the next generation of social media ecosystem based on a novel distribution system named social media economics._ [<span style="color: red"><u>Pitch Here</u></span>](./documents/Pitch%20Deck%207_22_25.pdf)
   - [Read All](./documents/ideaGround_whitepaper_022625.pdf)
 
+## Tools
+- [askEd — SEC EDGAR Filing Timeline](asked.html): _Enter any stock ticker to explore its complete SEC filing history on an interactive timeline. Supports Forms 3/4/5 (insider trades), 10-K/10-Q (financials), 8-K (current reports), DEF 14A (proxy), 424B (offerings), Form 144 (sale notices), and Schedule 13D/G (large holders)._
+
+<div style="margin: 20px 0;">
+<a href="asked.html" style="text-decoration: none; display: block;">
+<iframe src="asked-embed.html" width="100%" height="320" style="border: 1px solid #d0d7de; border-radius: 6px; pointer-events: none;"></iframe>
+<p style="text-align: center; color: #0969da; margin-top: 8px;">Click to open askEd →</p>
+</a>
+</div>
+
 ## Projects
 - [Reinforcement Learning Notes for Financial Studies](./documents/reinforcement_learning_notes_for_finance.pdf): _Notes of methodologies in reinforcement learning algorithms and the applications in financial studies._
   <br><img src="./documents/figure1_RL.PNG" alt="FinRL Deep Reinforcement Learning Framework" style="max-width:100%;margin-top:8px;"> <sup onclick="this.nextElementSibling.hidden=!this.nextElementSibling.hidden" style="cursor:pointer;color:#bbb;font-size:0.9em;">ⓘ</sup><small hidden style="color:#888;font-style:italic;"> Source: FinRL: Deep Reinforcement Learning Framework to Automate Trading in Quantitative Finance</small>
