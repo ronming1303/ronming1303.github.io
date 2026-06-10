@@ -31,12 +31,17 @@
         border: 1px solid #e1e4e8;
         border-radius: 6px;
         text-align: left;
+        text-decoration: none !important;
+        transition: border-color 0.15s ease, background 0.15s ease;
+      }
+      .sidebar-tool:hover, .sidebar-tool:focus {
+        border-color: #3b6ef0;
+        background: #f6f9ff;
       }
       .sidebar-tool .sidebar-tool-title {
         flex: 0 0 auto;
         font-weight: 700;
         font-size: 13px;
-        text-decoration: none !important;
         background: linear-gradient(90deg, #f857a6, #ff5858, #ffb347, #2eaa55, #3b6ef0, #8250df, #f857a6);
         background-size: 300% auto;
         -webkit-background-clip: text;
@@ -87,10 +92,15 @@
 
         {% endif %}
 
-        <div class="sidebar-tool">
-          <a class="sidebar-tool-title" href="{{ "/asked.html" | relative_url }}">AskEd →</a>
+        <a class="sidebar-tool" href="{{ "/asked.html" | relative_url }}">
+          <div class="sidebar-tool-title">AskEd</div>
           <div class="sidebar-tool-desc" title="SEC EDGAR filing timeline by ticker">SEC EDGAR filing timeline by ticker</div>
-        </div>
+        </a>
+
+        <a class="sidebar-tool" href="https://ideaground.net">
+          <div class="sidebar-tool-title">ideaGround</div>
+          <div class="sidebar-tool-desc" title="Earning on social media">Earning on social media</div>
+        </a>
 
         {% if site.show_downloads %}
         <ul>
