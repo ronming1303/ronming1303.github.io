@@ -36,8 +36,8 @@
         </div>
     </div>
     <script type="module">
-        const EXCHANGES = ['binance', 'bybit', 'coinbase', 'kraken', 'okx', 'bitfinex'];
-        const COLORS = ['#F0B90B', '#F7A600', '#0052FF', '#5741D9', '#555', '#16B157'];
+        const EXCHANGES = ['coinbase', 'kraken', 'okx', 'bitfinex'];
+        const COLORS = ['#0052FF', '#5741D9', '#555', '#16B157'];
         const PAIR = 'btc_usdt';
         const BASE_URL = 'https://raw.githubusercontent.com/ronming1303/CryptoExchange_Pipeline/main/data/raw';
 
@@ -65,7 +65,7 @@
             for (let i = 0; i < 5; i++) {
                 const date = getDateStr(i);
                 try {
-                    const r = await fetch(`${BASE_URL}/${date}/binance_${PAIR}.parquet`, { method: 'HEAD' });
+                    const r = await fetch(`${BASE_URL}/${date}/coinbase_${PAIR}.parquet`, { method: 'HEAD' });
                     if (r.ok) return date;
                 } catch (_) {}
             }
