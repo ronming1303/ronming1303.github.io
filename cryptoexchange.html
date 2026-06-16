@@ -63,7 +63,7 @@
 
     <a href="/" class="back-link">&larr; Back to Home</a>
     <h2>Crypto Exchange Price Dashboard</h2>
-    <p class="subtitle">Intraday BTC / ETH / SOL prices across Binance, Bybit, Coinbase, Kraken, OKX, Bitfinex</p>
+    <p class="subtitle">Intraday BTC / ETH / SOL prices across Coinbase, Kraken, OKX, Bitfinex</p>
     <div id="date-label"></div>
 
     <div class="tabs">
@@ -91,8 +91,8 @@
     <script type="module">
         let parquetRead;
 
-        const EXCHANGES = ['binance', 'bybit', 'coinbase', 'kraken', 'okx', 'bitfinex'];
-        const COLORS = ['#F0B90B', '#F7A600', '#0052FF', '#5741D9', '#555', '#16B157'];
+        const EXCHANGES = ['coinbase', 'kraken', 'okx', 'bitfinex'];
+        const COLORS = ['#0052FF', '#5741D9', '#555', '#16B157'];
         const BASE_URL = 'https://raw.githubusercontent.com/ronming1303/CryptoExchange_Pipeline/main/data/raw';
 
         let currentDate = null;
@@ -124,7 +124,7 @@
             for (let i = 0; i < 5; i++) {
                 const date = getDateStr(i);
                 try {
-                    const r = await fetch(`${BASE_URL}/${date}/binance_btc_usdt.parquet`, { method: 'HEAD' });
+                    const r = await fetch(`${BASE_URL}/${date}/coinbase_btc_usdt.parquet`, { method: 'HEAD' });
                     if (r.ok) return date;
                 } catch (_) {}
             }
