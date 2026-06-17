@@ -63,9 +63,9 @@ I am quite interested in quantitaive investment, quantitative risk management an
   <br><img src="./documents/attention.svg" alt="attention-based stochastic discount factor" style="max-width:100%;margin-top:8px;">
 
 - [IdeaGround Social Media Economics](https://papers.ssrn.com/sol3/papers.cfm?abstract_id=4900702)
-  <br><img src="./documents/social_media_economics_framework.svg" alt="Social Media Economics Framework" style="max-width:100%;margin-top:8px;">
   - _White paper of ideaGround LLC. We introduce the next generation of social media ecosystem based on a novel distribution system named social media economics._ [<span style="color: red"><u>Pitch Here</u></span>](./documents/Pitch%20Deck%207_22_25.pdf)
   - [Read All](./documents/ideaGround_whitepaper_022625.pdf)
+  <br><img src="./documents/social_media_economics_framework.svg" alt="Social Media Economics Framework" style="max-width:100%;margin-top:8px;">
 
 ## Projects
 - [Reinforcement Learning Notes for Financial Studies](./documents/reinforcement_learning_notes_for_finance.pdf): _Notes of methodologies in reinforcement learning algorithms and the applications in financial studies._
