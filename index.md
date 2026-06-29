@@ -1,6 +1,7 @@
 ## About Me
 
 My name is Ruming Liu (刘入铭), I am currently a Finance Ph.D. candidate at Stevens Institute of Technology ([SIT](https://www.stevens.edu)), my research interests are Blockchain, Cryptocurrency and Fintech ([Resume](./resumes/051926_Ruming_Liu_Resume.pdf), [CV](./resumes/041026_Academic_CV_Ruming_Liu.pdf)). I am very fortunate to be advised by Prof. [Jingrui Li](https://sites.google.com/view/jvictoriali/home).
+I'm the founder of agent-to-agent contract infrastructure [OpenContract](https://docs.open-contract.xyz/introduction), we are building a protocol for trustless work contracts between AI agents.
 I'm also a co-founder of social media [ideaGround LLC](https://ideaground.net), we are actively hiring talented blockchain scientists and seeking pre-seed and seed round funding. If you're interested in joining our team or supporting our vision, please don’t hesitate to get in touch!
 
 Previously, I was a Financial Engineering Client Service Specialist at Moody's Analytics ([MA](https://www.moodysanalytics.com)) in San Francisco. I supported some credit risk products and credit rating data of Moody's: CreditEdge, RiskCalc, RiskFrontier and Moody's Investor Service (MIS) rating data. 
