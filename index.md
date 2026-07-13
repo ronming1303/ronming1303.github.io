@@ -16,7 +16,8 @@ I am quite interested in quantitaive investment, quantitative risk management an
 ## Research Papers
 - [Sentiment in the Cross Section of Cryptocurrency Returns](https://papers.ssrn.com/sol3/papers.cfm?abstract_id=4941032)
   - _We find an anomoly associated with the cryptocurrency market sentiment. Our findings indicate that cryptos with high sensitivities to sentiment tend to yield lower returns in the following period. We introduce a sentiment factor to explain the sentiment-related anomoly._ [<span style="color: red"><u>Keynote Here</u></span>](./documents/CryptoSentiment_FMA2024.pdf)
-  - Qualified for Best Paper Award at 2024 International Conference of Taiwan Finance Association.
+  - Presented on FMA (2024) Annual Meeting at Grapevine, TX
+  - Qualified for Best Paper Award at 2024 International Conference of Taiwan Finance Association
   - CryptoSent Index (Last 6 Months):
 
 <div style="margin: 20px 0;">
@@ -27,6 +28,7 @@ I am quite interested in quantitaive investment, quantitative risk management an
 </div>
 
 - [Pricing and Arbitrage Across 80 Cryptocurrency Exchanges](https://papers.ssrn.com/sol3/papers.cfm?abstract_id=4816710#paper-references-widget)
+  - Revise and Resubmit at Journal of Financial and Quantitative Analysis (JFQA) 
   - _We explore variations in cryptocurrency pricing across 80 cryptocurrency exchanges worldwide. Arbitrage spreads are higher in non-US domiciled exchanges, decentralized exchanges, non-trustworthy, and relatively illiquid exchanges. Stablecoins exhibit smaller arbitrage spreads than other tokens._ [<span style="color: red"><u>Keynote Here</u></span>](./documents/CryptoExchangeArbitrage.pdf)
   - Live Exchange Price Monitor (BTC/ETH/SOL intraday):
 
