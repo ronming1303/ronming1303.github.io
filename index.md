@@ -1,22 +1,22 @@
 ## About Me
 
-My name is Ruming Liu (刘入铭), I am currently a Finance Ph.D. candidate at Stevens Institute of Technology ([SIT](https://www.stevens.edu)), my research interests are Blockchain, Cryptocurrency and Fintech ([Resume](./resumes/051926_Ruming_Liu_Resume.pdf), [CV](./resumes/082726_Academic_CV_Ruming_Liu.pdf)). I am very fortunate to be advised by Prof. [Jingrui Li](https://sites.google.com/view/jvictoriali/home).
-I'm the founder of agent-to-agent contract infrastructure [OpenContract](https://docs.open-contract.xyz/introduction), we are building a protocol for trustless work contracts between AI agents.
-I'm also a co-founder of social media [ideaGround LLC](https://ideaground.net), we are actively hiring talented blockchain scientists and seeking pre-seed and seed round funding. If you're interested in joining our team or supporting our vision, please don’t hesitate to get in touch!
+My name is Ruming Liu (刘入铭). I am currently a Finance Ph.D. candidate at Stevens Institute of Technology ([SIT](https://www.stevens.edu)), and my research interests are Blockchain, Cryptocurrency, and FinTech ([Resume](./resumes/051926_Ruming_Liu_Resume.pdf), [CV](./resumes/082726_Academic_CV_Ruming_Liu.pdf)). I am very fortunate to be advised by Prof. [Jingrui Li](https://sites.google.com/view/jvictoriali/home).
+I'm the founder of agent-to-agent contract infrastructure [OpenContract](https://docs.open-contract.xyz/introduction), where we are building a protocol for trustless work contracts between AI agents.
+I'm also a co-founder of social media [ideaGround LLC](https://ideaground.net). We are actively hiring talented blockchain scientists and seeking pre-seed and seed round funding. If you're interested in joining our team or supporting our vision, please don’t hesitate to get in touch!
 
-Previously, I was a Financial Engineering Client Service Specialist at Moody's Analytics ([MA](https://www.moodysanalytics.com)) in San Francisco. I supported some credit risk products and credit rating data of Moody's: CreditEdge, RiskCalc, RiskFrontier and Moody's Investor Service (MIS) rating data. 
+Previously, I was a Financial Engineering Client Service Specialist at Moody's Analytics ([MA](https://www.moodysanalytics.com)) in San Francisco. I supported Moody's credit risk products and credit rating data: CreditEdge, RiskCalc, RiskFrontier, and Moody's Investors Service (MIS) rating data.
 
-I earned my Master's degree of Mathematical Finance at University of Southern California ([USC](https://www.usc.edu)) in 2021 in the United States and earned my Bachelor's degree of Finance at Jiangxi University of Finance and Economics ([JUFE](http://english.jxufe.edu.cn)) in 2019 in China. I also attended the Extension Program of Statistics at University of California, San Diego ([UCSD](https://ucsd.edu)) in 2018 in the United States.
+I earned my Master's degree in Mathematical Finance at the University of Southern California ([USC](https://www.usc.edu)) in 2021 in the United States and earned my Bachelor's degree in Finance at Jiangxi University of Finance and Economics ([JUFE](http://english.jxufe.edu.cn)) in 2019 in China. I also attended the Extension Program in Statistics at the University of California, San Diego ([UCSD](https://ucsd.edu)) in 2018 in the United States.
 
-During my undergraduate study, I attended some internship programs at China International Capital Corporation ([CICC](https://en.cicc.com)) as Derivative Analyst, China Merchant Bank ([CMB](https://english.cmbchina.com)) as Financial Data Analyst, China International Trust and Investment Corporation ([CITIC](https://www.citic.com/en/#Businesses)) as Stock Trading Assistant. 
+During my undergraduate study, I attended internship programs at China International Capital Corporation ([CICC](https://en.cicc.com)) as a Derivatives Analyst, China Merchants Bank ([CMB](https://english.cmbchina.com)) as a Financial Data Analyst, and China International Trust and Investment Corporation ([CITIC](https://www.citic.com/en/#Businesses)) as a Stock Trading Assistant.
  
 <!-- ## Projects and Articles
-I am quite interested in quantitaive investment, quantitative risk management and decentralized finance topics. I wrote some articles (Including Financial Mathematics, Statistics, Probability, Defi, Simulation, etc) during the past few years, some of them are wrote in Chinese and published on [Zhihu](https://www.zhihu.com/people/liu-ru-ming-8/posts), the rest are wrote in English and can be found in my [Github repository](https://github.com/ronming1303/Ruming-Liu-PDF-Document). I also did some academic projects during my University study. These projects and articles can also be found below.  -->
+I am quite interested in quantitative investment, quantitative risk management and decentralized finance topics. I wrote some articles (Including Financial Mathematics, Statistics, Probability, DeFi, Simulation, etc) during the past few years, some of them are written in Chinese and published on [Zhihu](https://www.zhihu.com/people/liu-ru-ming-8/posts), the rest are written in English and can be found in my [GitHub repository](https://github.com/ronming1303/Ruming-Liu-PDF-Document). I also did some academic projects during my University study. These projects and articles can also be found below.  -->
 
 ## Research Papers
 - [Sentiment in the Cross Section of Cryptocurrency Returns](https://papers.ssrn.com/sol3/papers.cfm?abstract_id=4941032)
-  - _We find an anomoly associated with the cryptocurrency market sentiment. Our findings indicate that cryptos with high sensitivities to sentiment tend to yield lower returns in the following period. We introduce a sentiment factor to explain the sentiment-related anomoly._ [<span style="color: red"><u>Keynote Here</u></span>](./documents/CryptoSentiment_FMA2024.pdf)
-  - Presented on FMA (2024) Annual Meeting at Grapevine, TX
+  - _We find an anomaly associated with cryptocurrency market sentiment. Our findings indicate that cryptos with high sensitivities to sentiment tend to yield lower returns in the following period. We introduce a sentiment factor to explain the sentiment-related anomaly._ [<span style="color: red"><u>Keynote Here</u></span>](./documents/CryptoSentiment_FMA2024.pdf)
+  - Presented at the FMA (2024) Annual Meeting in Grapevine, TX
   - Qualified for Best Paper Award at 2024 International Conference of Taiwan Finance Association
   - CryptoSent Index (Last 6 Months):
 
@@ -76,18 +76,18 @@ I am quite interested in quantitaive investment, quantitative risk management an
 - [Reinforcement Learning Notes for Financial Studies](./documents/reinforcement_learning_notes_for_finance.pdf): _Notes of methodologies in reinforcement learning algorithms and the applications in financial studies._
   <br><img src="./documents/figure1_RL.PNG" alt="FinRL Deep Reinforcement Learning Framework" style="max-width:100%;margin-top:8px;"> <sup onclick="this.nextElementSibling.hidden=!this.nextElementSibling.hidden" style="cursor:pointer;color:#bbb;font-size:0.9em;">ⓘ</sup><small hidden style="color:#888;font-style:italic;"> Source: FinRL: Deep Reinforcement Learning Framework to Automate Trading in Quantitative Finance</small>
 
-- [Bitcoin Technical Analysis by Convolutional Neural Network](https://github.com/ronming1303/Dacheng-Xiu-CNN): _I consider using convolution neural network for technical analysis in Bitcoin candlesticks pattern. I explore several structures of CNN, including a custom 5-layer CNN, VGG-based networks, and ResNet. Comparative experiments are conducted to evaluate the performance of each architecture in capturing relevant visual features and supporting predictive analysis in a volatile financial context._
+- [Bitcoin Technical Analysis by Convolutional Neural Network](https://github.com/ronming1303/Dacheng-Xiu-CNN): _I consider using convolutional neural networks for technical analysis of Bitcoin candlestick patterns. I explore several CNN structures, including a custom 5-layer CNN, VGG-based networks, and ResNet. Comparative experiments are conducted to evaluate the performance of each architecture in capturing relevant visual features and supporting predictive analysis in a volatile financial context._
   <br><img src="./documents/resnet_diagram.svg" alt="ResNet architecture diagram" style="max-width:100%;margin-top:8px;">
 - [Autoencoder Asset Pricing](https://github.com/ronming1303/LLM/commit/a8512c8af2853cbf6c4a336dd40471a15fbb1149): _Replication of Gu, S., Kelly, B. and Xiu, D., 2021. Autoencoder asset pricing models. Journal of Econometrics, 222(1), pp.429-450._
   <br><img src="./documents/autoencoder_figure.svg" alt="Neural-network-based factor model with factor loadings and latent factors" style="max-width:100%;margin-top:8px;">
-- [Front-running Game Between Miners and Traders in Blockchain](./documents/Front_running_Game_in_Blockchain.pdf): _I discuss the equlibrium model of a game in DPoS. I form a signalling game between the miners (validators) and traders (voters). I analyze some situations in which the DPoS blockchain may fail. But in some situations, blockchain can work under the collaboration._
+- [Front-running Game Between Miners and Traders in Blockchain](./documents/Front_running_Game_in_Blockchain.pdf): _I discuss the equilibrium model of a game in DPoS. I form a signalling game between the miners (validators) and traders (voters). I analyze some situations in which the DPoS blockchain may fail. But in some situations, blockchain can work through collaboration._
   <br><img src="./documents/frontrunning_game_tree.svg" alt="Incomplete information game between Miner and Trader" style="width:100%;max-width:100%;margin-top:8px;">
 - [The Thoughts on the Internationalization of Chinese RMB](./documents/Toughts%20on%20the%20Internationalization%20of%20Chinese%20RMB%20%7C%20Ruming%20Liu.pdf): 
-_The dissertation of my Bachelor's Degree. It compares the development of RMB with other international currencies and forecasts the future of RMB from macro-economics and politics point of view._
+_The dissertation of my Bachelor's degree. It compares the development of RMB with other international currencies and forecasts the future of RMB from macroeconomic and political points of view._
 - [A Possible Way to Search Pairs Trading Arbitrage](./documents/A%20Possible%20Way%20to%20Search%20Pairs%20Trading%20Arbitrage.pdf):
-_Directed Research of my Master's program. It finds a new possible way to search stock pairs which exist arbitrage opportunity and uses dynamic programming method to make trading strategy._
+_Directed research from my Master's program. It finds a new possible way to search for stock pairs that present arbitrage opportunities and uses a dynamic programming method to develop a trading strategy._
 - [Cointegration Method of Statistical Arbitrage](./documents/Cointegration%20Method%20of%20Pairs%20Trading.pdf):
-_Time Series and Econometrics course project. It applies cointegration method and ARMA-GARCH model to analyze spread in stock market, and forecasts the convergence situation of the spread._
+_Time Series and Econometrics course project. It applies the cointegration method and ARMA-GARCH model to analyze spreads in the stock market and forecasts the convergence of the spread._
 - [Predator Project](https://github.com/ronming1303/Predator): _Decentralized Exchange Flash Loan Arbitrage Project._
 
 ## Technical Notes
@@ -107,12 +107,12 @@ _Time Series and Econometrics course project. It applies cointegration method an
 - [Risk Neutral and PDE method of American Option (CN)](https://zhuanlan.zhihu.com/p/105325456)
 - [Risk Neutral and PDE method of Black-Scholes model (CN)](https://zhuanlan.zhihu.com/p/96875039)
 - [Stochastic Calculus (CN)](https://zhuanlan.zhihu.com/p/96729991)
-- [Fundamental Arbitrage Theorems of Mathematica Finance (CN)](https://zhuanlan.zhihu.com/p/86038736)
+- [Fundamental Arbitrage Theorems of Mathematical Finance (CN)](https://zhuanlan.zhihu.com/p/86038736)
 - [Hedging Strategy of American Option (CN)](https://zhuanlan.zhihu.com/p/85319326)
 - [American Option and Stopping Process (CN)](https://zhuanlan.zhihu.com/p/82860673)
 - [Optimal Stopping Time and Doob Meyer Decomposition (CN)](https://zhuanlan.zhihu.com/p/84907455)
-- [Martingale, Conditionnal Expectation and Binomial Tree (CN)](https://zhuanlan.zhihu.com/p/83833362)
-- [Filtration, Martingale and Conditionnal Expectation (CN)](https://zhuanlan.zhihu.com/p/83314877)
+- [Martingale, Conditional Expectation and Binomial Tree (CN)](https://zhuanlan.zhihu.com/p/83833362)
+- [Filtration, Martingale and Conditional Expectation (CN)](https://zhuanlan.zhihu.com/p/83314877)
 - [Binomial Tree Model[2] (CN)](https://zhuanlan.zhihu.com/p/81267253)
 - [Binomial Tree Model[1] (CN)](https://zhuanlan.zhihu.com/p/81228344)
 
@@ -138,7 +138,7 @@ _Time Series and Econometrics course project. It applies cointegration method an
 
 4. Probability and Statistics
 - [Probability Convergence Concepts](https://zhuanlan.zhihu.com/p/164667409)
-- [Lebesugue Measure (CN)](https://zhuanlan.zhihu.com/p/338600430)
+- [Lebesgue Measure (CN)](https://zhuanlan.zhihu.com/p/338600430)
 - [Abstract Measure (CN)](https://zhuanlan.zhihu.com/p/340521567)
 - [Convergence Theorem (CN)](https://zhuanlan.zhihu.com/p/345848527)
 - [Random Variables and Random Process (CN)](https://zhuanlan.zhihu.com/p/89399400)
@@ -146,9 +146,9 @@ _Time Series and Econometrics course project. It applies cointegration method an
 - [Point Estimation (CN)](https://zhuanlan.zhihu.com/p/407004295)
 - [Asymptotic Theory (CN)](https://zhuanlan.zhihu.com/p/408169919)
 
-5. Dencentralized Finance / Financial Technology
+5. Decentralized Finance / Financial Technology
 - [Blockchain Literature Review](./documents/blockchain_review.pdf)
-- [Blockchain Litereture Review Slide](./documents/critical_research.pdf)
+- [Blockchain Literature Review Slide](./documents/critical_research.pdf)
 - [Sex Drugs and Bitcoin How Much Illegal Activity Is Financed through Cryptocurrencies](./documents/Sex__Drugs__and_Bitcoin__How_Much_Illegal_Activity_Is_Financed_through_Cryptocurrencies.pdf)
 - [The Mechanics of Curve Leverage AMM (CN)](https://zhuanlan.zhihu.com/p/407655879)
 - [The Mechanics of Balancer Index Fund AMM (CN)](https://zhuanlan.zhihu.com/p/165444323)
@@ -156,24 +156,24 @@ _Time Series and Econometrics course project. It applies cointegration method an
 - [Some Ideas on Cryptocurrency Market (CN)](https://zhuanlan.zhihu.com/p/383499265)
 
 6. Financial Simulation
-- [Variance Reducation Techniques](./documents/Variance_Reduction_Techniques.pdf)
+- [Variance Reduction Techniques](./documents/Variance_Reduction_Techniques.pdf)
 - [Simulation of Short Rate Model and Forward Rate under H-J-M framework (CN)](./documents/Short%20Rate%20Simulation.pdf)
 
 
 7. Miscellaneous
 - [Maximum Likelihood Estimation for ARMA-GARCH](https://zhuanlan.zhihu.com/p/266329597)
-- [Referee Report for th Paper A Bias of Screen](./documents/Referee%20of%20Econ504%20Paper%20Ruming%20Liu_2848262948.pdf)
+- [Referee Report for the Paper A Bias of Screen](./documents/Referee%20of%20Econ504%20Paper%20Ruming%20Liu_2848262948.pdf)
 - [Brief History of Fannie Mae, Freddie Mac and Ginnie Mae (CN)](https://zhuanlan.zhihu.com/p/80399531) 
 
 ## Professional Skills
 Here are some practical tools I use in my work.
 
-Programming Languages: [Python](https://www.python.org), [Matlab](https://www.mathworks.com/products/matlab.html), [Rust](https://www.rust-lang.org), [JavaScript](), [Solidity](https://docs.soliditylang.org/en/v0.8.11/), [Broniew Framework](https://eth-brownie.readthedocs.io/en/stable/), [LangGraph Framework](https://www.langchain.com/?_gl=1*sqj3de*_gcl_au*MTUwNTQ5NTE2OC4xNzQ4OTE0OTE0*_ga*MjYyMjY2MTU3LjE3NDkzNDg1MDE.*_ga_47WX3HKKY2*czE3NDk1NzMyMzYkbzIkZzAkdDE3NDk1NzMyMzYkajYwJGwwJGgw)
+Programming Languages: [Python](https://www.python.org), [Matlab](https://www.mathworks.com/products/matlab.html), [Rust](https://www.rust-lang.org), [JavaScript](), [Solidity](https://docs.soliditylang.org/en/v0.8.11/), [Brownie Framework](https://eth-brownie.readthedocs.io/en/stable/), [LangGraph Framework](https://www.langchain.com/?_gl=1*sqj3de*_gcl_au*MTUwNTQ5NTE2OC4xNzQ4OTE0OTE0*_ga*MjYyMjY2MTU3LjE3NDkzNDg1MDE.*_ga_47WX3HKKY2*czE3NDk1NzMyMzYkbzIkZzAkdDE3NDk1NzMyMzYkajYwJGwwJGgw)
 
-Statistical Softwares: [R](https://www.r-project.org), [SPSS](https://www.ibm.com/products/spss-statistics), [SAS](https://www.sas.com/en_us/home.html)
+Statistical Software: [R](https://www.r-project.org), [SPSS](https://www.ibm.com/products/spss-statistics), [SAS](https://www.sas.com/en_us/home.html)
 
 Database: [MySQL](https://www.mysql.com), [MongoDB](https://www.mongodb.com), [PostgreSQL](https://www.postgresql.org)
 
 AI Development Tools: [Claude Code](https://github.com/anthropics/claude-code), [Codex](https://openai.com/index/openai-codex/)
 
-Typesetting Softwares: [LaTeX](https://www.latex-project.org), [HTML](https://developer.mozilla.org/en-US/docs/Web/HTML), [Markdown](https://docs.github.com/en/github/writing-on-github/getting-started-with-writing-and-formatting-on-github/basic-writing-and-formatting-syntax)
+Typesetting Software: [LaTeX](https://www.latex-project.org), [HTML](https://developer.mozilla.org/en-US/docs/Web/HTML), [Markdown](https://docs.github.com/en/github/writing-on-github/getting-started-with-writing-and-formatting-on-github/basic-writing-and-formatting-syntax)
