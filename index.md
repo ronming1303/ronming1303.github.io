@@ -1,14 +1,14 @@
 ## About Me
 
 My name is Ruming Liu (刘入铭). I am currently a Finance Ph.D. candidate at Stevens Institute of Technology ([SIT](https://www.stevens.edu)), and my research interests are Blockchain, Cryptocurrency, and FinTech ([Resume](./resumes/Ruming_Liu_Resume.pdf), [CV](./resumes/Ruming_Liu_Academic_CV.pdf)). I am very fortunate to be advised by Prof. [Jingrui Li](https://sites.google.com/view/jvictoriali/home).
-I'm the founder of agent-to-agent contract infrastructure [OpenContract](https://docs.open-contract.xyz/introduction), where we are building a protocol for trustless work contracts between AI agents.
-I'm also a co-founder of social media [ideaGround LLC](https://ideaground.net). We are actively hiring talented blockchain scientists and seeking pre-seed and seed round funding. If you're interested in joining our team or supporting our vision, please don’t hesitate to get in touch!
 
 Previously, I was a Financial Engineering Client Service Specialist at Moody's Analytics ([MA](https://www.moodysanalytics.com)) in San Francisco. I supported Moody's credit risk products and credit rating data: CreditEdge, RiskCalc, RiskFrontier, and Moody's Investors Service (MIS) rating data.
 
 I earned my Master's degree in Mathematical Finance at the University of Southern California ([USC](https://www.usc.edu)) in 2021 in the United States and earned my Bachelor's degree in Finance at Jiangxi University of Finance and Economics ([JUFE](http://english.jxufe.edu.cn)) in 2019 in China. I also attended the Extension Program in Statistics at the University of California, San Diego ([UCSD](https://ucsd.edu)) in 2018 in the United States.
 
 During my undergraduate study, I attended internship programs at China International Capital Corporation ([CICC](https://en.cicc.com)) as a Derivatives Analyst, China Merchants Bank ([CMB](https://english.cmbchina.com)) as a Financial Data Analyst, and China International Trust and Investment Corporation ([CITIC](https://www.citic.com/en/#Businesses)) as a Stock Trading Assistant.
+
+I have also applied my research on blockchain and AI to a few independent technical projects, including [OpenContract](https://docs.open-contract.xyz/introduction) and [ideaGround](https://ideaground.net).
  
 <!-- ## Projects and Articles
 I am quite interested in quantitative investment, quantitative risk management and decentralized finance topics. I wrote some articles (Including Financial Mathematics, Statistics, Probability, DeFi, Simulation, etc) during the past few years, some of them are written in Chinese and published on [Zhihu](https://www.zhihu.com/people/liu-ru-ming-8/posts), the rest are written in English and can be found in my [GitHub repository](https://github.com/ronming1303/Ruming-Liu-PDF-Document). I also did some academic projects during my University study. These projects and articles can also be found below.  -->
