@@ -1,0 +1,304 @@
+%-------------------------
+% Resume in Latex
+% Author : Jake Gutierrez
+% Based off of: https://github.com/sb2nov/resume
+% License : MIT
+%------------------------
+
+\documentclass[letterpaper,11pt]{article}
+
+\usepackage{latexsym}
+\usepackage[empty]{fullpage}
+\usepackage{titlesec}
+\usepackage{marvosym}
+\usepackage[usenames,dvipsnames]{color}
+\usepackage{verbatim}
+\usepackage{enumitem}
+\usepackage[hidelinks]{hyperref}
+\usepackage{fancyhdr}
+\usepackage[english]{babel}
+\usepackage{tabularx}
+\usepackage{fontawesome5}
+\usepackage{multicol}
+\setlength{\multicolsep}{-3.0pt}
+\setlength{\columnsep}{-1pt}
+\input{glyphtounicode}
+
+
+%----------FONT OPTIONS----------
+% sans-serif
+% \usepackage[sfdefault]{FiraSans}
+% \usepackage[sfdefault]{roboto}
+% \usepackage[sfdefault]{noto-sans}
+% \usepackage[default]{sourcesanspro}
+
+% serif
+% \usepackage{CormorantGaramond}
+% \usepackage{charter}
+
+
+\pagestyle{fancy}
+\fancyhf{} % clear all header and footer fields
+\fancyfoot{}
+\renewcommand{\headrulewidth}{0pt}
+\renewcommand{\footrulewidth}{0pt}
+
+% Adjust margins
+\addtolength{\oddsidemargin}{-0.6in}
+\addtolength{\evensidemargin}{-0.5in}
+\addtolength{\textwidth}{1.19in}
+\addtolength{\topmargin}{-.7in}
+\addtolength{\textheight}{1.4in}
+
+\urlstyle{same}
+
+\raggedbottom
+\raggedright
+\setlength{\tabcolsep}{0in}
+
+% Sections formatting
+\titleformat{\section}{
+  \vspace{-4pt}\scshape\raggedright\large\bfseries
+}{}{0em}{}[\color{black}\titlerule \vspace{-5pt}]
+
+% Ensure that generate pdf is machine readable/ATS parsable
+\pdfgentounicode=1
+
+%-------------------------
+% Custom commands
+\newcommand{\resumeItem}[1]{
+  \item\small{
+    {#1 \vspace{-2pt}}
+  }
+}
+
+\newcommand{\classesList}[4]{
+    \item\small{
+        {#1 #2 #3 #4 \vspace{-2pt}}
+  }
+}
+
+\newcommand{\resumeSubheading}[4]{
+  \vspace{-2pt}\item
+    \begin{tabular*}{1.0\textwidth}[t]{l@{\extracolsep{\fill}}r}
+      \textbf{#1} & \textbf{\small #2} \\
+      \textit{\small#3} & \textit{\small #4} \\
+    \end{tabular*}\vspace{-7pt}
+}
+
+\newcommand{\resumeSubSubheading}[2]{
+    \item
+    \begin{tabular*}{0.97\textwidth}{l@{\extracolsep{\fill}}r}
+      \textit{\small#1} & \textit{\small #2} \\
+    \end{tabular*}\vspace{-7pt}
+}
+
+\newcommand{\resumeProjectHeading}[2]{
+    \item
+    \begin{tabular*}{1.001\textwidth}{l@{\extracolsep{\fill}}r}
+      \small#1 & \textbf{\small #2}\\
+    \end{tabular*}\vspace{-7pt}
+}
+
+\newcommand{\resumeSubItem}[1]{\resumeItem{#1}\vspace{-4pt}}
+
+\renewcommand\labelitemi{$\vcenter{\hbox{\tiny$\bullet$}}$}
+\renewcommand\labelitemii{$\vcenter{\hbox{\tiny$\bullet$}}$}
+
+\newcommand{\resumeSubHeadingListStart}{\begin{itemize}[leftmargin=0.0in, label={}]}
+\newcommand{\resumeSubHeadingListEnd}{\end{itemize}}
+\newcommand{\resumeItemListStart}{\begin{itemize}}
+\newcommand{\resumeItemListEnd}{\end{itemize}\vspace{-5pt}}
+
+%-------------------------------------------
+%%%%%%  RESUME STARTS HERE  %%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+\begin{document}
+
+%----------HEADING----------
+% \begin{tabular*}{\textwidth}{l@{\extracolsep{\fill}}r}
+%   \textbf{\href{http://sourabhbajaj.com/}{\Large Sourabh Bajaj}} & Email : \href{mailto:sourabh@sourabhbajaj.com}{sourabh@sourabhbajaj.com}\\
+%   \href{http://sourabhbajaj.com/}{http://www.sourabhbajaj.com} & Mobile : +1-123-456-7890 \\
+% \end{tabular*}
+
+\begin{center}
+    {\Huge \scshape RUMING LIU} \\ \vspace{1pt}
+    Hoboken, NJ $|$ Ph.D. candidate, CPT in 2026; expected graduation May 2027 \\ \vspace{1pt}
+    \raisebox{-0.1\height}\faPhone\ +1 (571)-485-5233 ~ \href{mailto:rumingliu1303@gmail.com}{\raisebox{-0.2\height}\faEnvelope\  \textcolor{blue}{\underline{rumingliu1303@gmail.com}}} ~ 
+    % \href{www.linkedin.com/in/ruming-liu-609680176/}{\raisebox{-0.2\height}\faLinkedin\ \textcolor{blue}{\underline{https://www.linkedin.com/ruming-liu}}}  ~
+    \href{https://ronming1303.github.io}{\raisebox{-0.2\height}\faHome\ \textcolor{blue}{\underline{https://ronming1303.github.io}}}  ~
+    % \href{https://github.com/}{Homepage: \underline{https://ronming1303.github.io}}
+    \vspace{-8pt}
+\end{center}
+
+
+%-----------EDUCATION-----------
+\section{Education}
+  \resumeSubHeadingListStart
+    \resumeSubheading
+      {Stevens Institute of Technology}{Sep. 2022 -- May. 2027}
+      {Doctor of Philosophy, Finance (Researches: Cryptocurrency, Blockchain \& Quantitative Finance)}{Hoboken, NJ, U.S.A}
+    \resumeSubheading
+      {University of Southern California}{Sep. 2019 -- Jun. 2021}
+      {Master of Science, Mathematical Finance}{Los Angeles, CA, U.S.A}
+    \resumeSubheading
+      {Jiangxi University of Finance and Economics}{Sep. 2015 -- Jun. 2019}
+      {Bachelor of Economics, Finance}{Nanchang, Jiangxi, China}
+    \resumeSubheading
+      {University of California San Diego}{Mar. 2018 -- Jun. 2018}
+      {Extension Program, Statistics}{La Jolla, CA, U.S.A}
+  \resumeSubHeadingListEnd
+\vspace{-16pt}
+% %------RELEVANT COURSEWORK-------
+% \section{Relevant Coursework}
+%     %\resumeSubHeadingListStart
+%         \begin{multicols}{4}
+%             \begin{itemize}[itemsep=-5pt, parsep=3pt]
+%                 \item\small Data Structures
+%                 \item Software Methodology
+%                 \item Algorithms Analysis
+%                 \item Database Management
+%                 \item Artificial Intelligence
+%                 \item Internet Technology
+%                 \item Systems Programming
+%                 \item Computer Architecture
+%             \end{itemize}
+%         \end{multicols}
+%         \vspace*{2.0\multicolsep}
+%     %\resumeSubHeadingListEnd
+
+
+%-----------EXPERIENCE-----------
+\section{Work Experience}
+  \resumeSubHeadingListStart
+
+    \resumeSubheading
+      {Moody’s Analytics}{Sep. 2021 -- Sep. 2022}
+      {Financial Engineer Specialist}{San Francisco, CA, U.S.A}
+      \resumeItemListStart
+        \resumeItem{Provided thorough quantitative and conceptual solutions for default risk to clients.}
+        \resumeItem{Supported on products \textcolor{blue}{\href{https://www.moodysanalytics.com/product-list/riskcalc}{RiskCalc}}, \textcolor{blue}{\href{https://www.creditedge.com}{CreditEdge}}, \textcolor{blue}{\href{https://www.moodysanalytics.com/product-list/riskfrontier}{RiskFrontier}} and \textcolor{blue}{\href{https://ratings.moodys.io}{MIS rating}} via web, application, and API.}
+        \resumeItem{Worked on Moody’s credit model (Probability of Default, Expected Default Frequency, Loss Given
+Default, Distance to Default, Implied Rating, G-Correlation, Credit Migration, Risk Contribution, etc.)}
+
+      \resumeItemListEnd
+
+    \resumeSubheading
+      {China Investment Securities}{Dec. 2018 -- Mar. 2019}
+      {Derivatives Analyst}{Shenzhen, Canton, China}
+      \resumeItemListStart
+        \resumeItem{Designed, built and maintained tools used in dynamic hedge program and derivative portfolio management.}
+        \resumeItem{Assisted in developing option price forecasting model.}
+        \resumeItem{Developed a detailed knowledge of volatility arbitrage and market maker trading strategy.}
+        \resumeItem{Provided Front Office support for financial reporting and data mining.}
+    \resumeItemListEnd
+
+    \resumeSubheading
+      {China Merchants Bank}{Dec. 2017 -- Jan. 2018}
+      {Financial Data Analyst}{Shenzhen, Canton, China}
+      \resumeItemListStart
+        \resumeItem{Took part in Bitcoin market arbitrage analysis research, worked in trading strategy and algorithm part.}
+        \resumeItem{Worked with other programmer in financial products classification project by machine learning technique.}
+        \resumeItem{Involved in design, testing and implementation of new financial and managerial reports.}
+        \resumeItem{Wrote and published regular and ad hoc macro-economy reports.}
+    \resumeItemListEnd
+
+    % \resumeSubheading
+    %   {China International Trust and Investment Corporation}{Jun. 2017 -- Sep. 2017}
+    %   {Stock Trading Assistant}{Nanchang, Jiangxi, China}
+    %   \resumeItemListStart
+    %     \resumeItem{Under guidance, built algorithm for momentum and reversal trading strategy.}
+    %     \resumeItem{Assisted in creating Excel tools and models to help dealer systematize and improve their data visualization.}
+    %     \resumeItem{Wrote and published regular and ad hoc macro-economy reports.}
+    % \resumeItemListEnd
+    
+  \resumeSubHeadingListEnd
+\vspace{-16pt}
+
+%-----------PROJECTS-----------
+\section{Selected Researches}
+    \vspace{-5pt}
+    \resumeSubHeadingListStart
+      
+          % \resumeItemListStart
+          %   \resumeItem{Developed an automatic bot using Python and Google Cloud Console to register myself for a timeslot at my school gym.}
+          %   \resumeItem{Implemented Selenium to create an instance of Chrome in order to interact with the correct elements of the web page.}
+          %   \resumeItem{Created a Linux virtual machine to run on Google Cloud so that the program is able to run everyday from the cloud.}
+          %   \resumeItem{Used Cron to schedule the program to execute automatically at 11 AM every morning so a reservation is made for me.}
+          % \resumeItemListEnd
+          % \vspace{-30pt}
+          \resumeProjectHeading
+          {\textbf{Flow-Induced Momentum in Mutual Funds: Evidence from Crypto Exposure}
+           \textcolor{blue}{ (\href{https://ronming1303.github.io/documents/Crypto_Mutual_Fund_Slide.pdf}{Link})}}
+          {Apr. 2026}
+          \vspace{-30pt}
+          \resumeProjectHeading
+          {\textbf{Attention Based Large Factor Model }\textcolor{blue}{(\href{https://ronming1303.github.io/documents/reinforcement_learning_notes_for_finance.pdf}{Link})}}{Mar. 2026}
+          \vspace{-30pt}
+          \resumeProjectHeading
+          {\textbf{The Impact of Spoofing on Bitcoin Market Microstructure }\textcolor{blue}{(\href{https://papers.ssrn.com/sol3/papers.cfm?abstract_id=5771502}{Link})}}{Mar. 2025}
+          \vspace{-30pt}
+          \resumeProjectHeading
+          {\textbf{Price Discovery and Arbitrage across Cryptocurrency Exchanges}
+          \textcolor{blue}{(\href{https://papers.ssrn.com/sol3/papers.cfm?abstract_id=4816710}{Link})}}{Mar. 2024}
+          \vspace{-30pt}
+          \resumeProjectHeading
+          {\textbf{Sentiment in the Cross Section of Cryptocurrency Returns} \textcolor{blue}{(\href{https://papers.ssrn.com/sol3/papers.cfm?abstract_id=4941032}{Link})}}{Dec. 2023}
+          \vspace{-30pt}
+          \resumeProjectHeading
+          % {\textbf{Front-running Game in Blockchain}
+          % \textcolor{blue}{(\href{https://github.com/ronming1303/Ruming-Liu-PDF-Document/blob/main/Front_running_Game_in_Blockchain.pdf}{Link})}}{Dec. 2022}
+          % \vspace{-30pt}
+          % \resumeProjectHeading
+          % {\textbf{Cointegration Method in Statistical Arbitrage}
+          % \textcolor{blue}{(\href{https://github.com/ronming1303/Ruming-Liu-PDF-Document/blob/main/Cointegration\%20Method\%20of\%20Pairs\%20Trading.pdf}{Link})}}{May. 2022}
+          % \vspace{-30pt}
+          % \resumeProjectHeading
+          % {\textbf{A Possible Way to Search Pairs Trading Arbitrage}
+          % \textcolor{blue}{(\href{https://github.com/ronming1303/Ruming-Liu-PDF-Document/blob/main/A\%20Possible\%20Way\%20to\%20Search\%20Pairs\%20Trading\%20Arbitrage.pdf}{Link})}}{Oct. 2020}
+          % \vspace{-30pt}
+          % \resumeProjectHeading
+          % {\textbf{Thoughts on the Internationalization of Chinese RMB}
+          % \textcolor{blue}{(\href{https://github.com/ronming1303/Ruming-Liu-PDF-Document/blob/main/Toughts\%20on\%20the\%20Internationalization\%20of\%20Chinese\%20RMB\%20\%7C\%20Ruming\%20Liu.pdf}{Link})}}{May. 2019}
+          % \vspace{-30pt}
+          % \resumeProjectHeading
+          {\textbf{More on  homepage}
+          \textcolor{blue}{(\href{https://ronming1303.github.io/}{Link})}}{}
+          \vspace{0pt}
+    \resumeSubHeadingListEnd
+\vspace{-26pt}
+
+
+%
+%-----------PROGRAMMING SKILLS-----------
+\section{Technical Skills}
+ \begin{itemize}[leftmargin=0.15in, label={}]
+    \small{\item{Experienced with Blockchain technology: Bitcoin, Ethereum and other blockchain protocols.
+  Competent in Blockchain development (DApps) language Solidity, Brownie framework, Rust and Vyper.
+  Good at using statistical tools such as Matlab, SPSS, SAS and R to conduct quantitative research.
+  Familiar with statistical inference and machine learning by using Python.
+  Skilled in API and web mining. Have experience in MySQL, MongoDB, PostgreSQL and data mining.
+  Proficient in AI-assisted development tools including Claude Code and Codex.
+  Experienced with LangGraph framework for building AI agent applications.
+  Passed FRM examination Level I in 2017. 
+    }}
+ \end{itemize}
+ \emph{Last updated {\today}.}
+ \vspace{-16pt}
+
+
+%-----------INVOLVEMENT---------------
+% \section{Leadership / Extracurricular}
+%     \resumeSubHeadingListStart
+%         \resumeSubheading{Fraternity}{Spring 2020 -- Present}{President}{University Name}
+%             \resumeItemListStart
+%                 \resumeItem{Achieved a 4 star fraternity ranking by the Office of Fraternity and Sorority Affairs (highest possible ranking).}
+%                 \resumeItem{Managed executive board of 5 members and ran weekly meetings to oversee progress in essential parts of the chapter.}
+%                 \resumeItem{Led chapter of 30+ members to work towards goals that improve and promote community service, academics, and unity.}
+%             \resumeItemListEnd
+        
+%     \resumeSubHeadingListEnd
+
+
+\end{document}

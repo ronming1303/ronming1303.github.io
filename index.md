@@ -1,6 +1,6 @@
 ## About Me
 
-My name is Ruming Liu (刘入铭). I am currently a Finance Ph.D. candidate at Stevens Institute of Technology ([SIT](https://www.stevens.edu)), and my research interests are Blockchain, Cryptocurrency, and FinTech ([Resume](./resumes/051926_Ruming_Liu_Resume.pdf), [CV](./resumes/082726_Academic_CV_Ruming_Liu.pdf)). I am very fortunate to be advised by Prof. [Jingrui Li](https://sites.google.com/view/jvictoriali/home).
+My name is Ruming Liu (刘入铭). I am currently a Finance Ph.D. candidate at Stevens Institute of Technology ([SIT](https://www.stevens.edu)), and my research interests are Blockchain, Cryptocurrency, and FinTech ([Resume](./resumes/Ruming_Liu_Resume.pdf), [CV](./resumes/Ruming_Liu_Academic_CV.pdf)). I am very fortunate to be advised by Prof. [Jingrui Li](https://sites.google.com/view/jvictoriali/home).
 I'm the founder of agent-to-agent contract infrastructure [OpenContract](https://docs.open-contract.xyz/introduction), where we are building a protocol for trustless work contracts between AI agents.
 I'm also a co-founder of social media [ideaGround LLC](https://ideaground.net). We are actively hiring talented blockchain scientists and seeking pre-seed and seed round funding. If you're interested in joining our team or supporting our vision, please don’t hesitate to get in touch!
 
