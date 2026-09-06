@@ -26,8 +26,9 @@
 % \usepackage{libertine}
 \usepackage[libertine]{newtxmath}
 
-% Remove page numbering
-\pagenumbering{gobble}
+% Enable page numbering
+\pagenumbering{arabic}
+\pagestyle{plain}
 
 % Define font size and color for section headings
 \newcommand{\headingfont}{\Large\color{OliveGreen}}
@@ -46,6 +47,8 @@
 
 % Define settings for left-hand column in which dates are printed
 \newcolumntype{R}{>{\raggedleft}p{1in}}
+\setlength{\LTpre}{6pt}
+\setlength{\LTpost}{6pt}
 
 % Define 'SectionTable' environment
 \newenvironment{SectionTable}[1]{
@@ -79,6 +82,12 @@ $\;\boldsymbol{\cdot}\;$
 
 \begin{SectionTable}{\headingfont Research interests}
 & Cryptocurrency, Decentralized Finance, Blockchain, FinTech, and Asset Pricing.
+\end{SectionTable}
+
+% --- Section: Teaching interests ---
+
+\begin{SectionTable}{\headingfont Teaching Interests}
+& Investments; Asset Pricing; Financial Markets and Institutions; Financial Risk Management; Financial Technology; Financial Data Analytics.
 \end{SectionTable}
 
 % --- Section: Education ---
@@ -117,10 +126,6 @@ from Crypto Exposure}
 \href{https://ronming1303.github.io/documents/Crypto_Mutual_Fund_Slide.pdf}{[Slides]} \newline
 (with Jingrui Li, Si Cheng) \\
 
-2026 & 
-\textbf{Attention Based Large Factor Model} \newline
-(with Jingrui Li) \\
-
 2025 & 
 \textbf{The Impact of Spoofing on Bitcoin Market
 Microstructure}
@@ -128,8 +133,6 @@ Microstructure}
 \href{https://ronming1303.github.io/documents/CryptoSpoofSWUFE061626.pdf}{[Slides]}
 \href{https://ronming1303.github.io/documents/spoofing_poster.pdf}{[Poster]} \newline
 (with Kose John, Jingrui Li, Steve Yang) \newline
-Scheduled for presentation at 2nd INFORMS Conference on Financial Engineering and FinTech. \newline
-Presented at the SWUFE Seminar in Chengdu, China. \newline
 Media Coverage: Bitcoin's Volatility in 2026: Macro Stress, ETF Outflows, and Market Manipulation, AInvest.com. \\
 
 
@@ -148,10 +151,29 @@ Revise and Resubmit at Journal of Financial and Quantitative Analysis (JFQA). \\
 \href{https://ronming1303.github.io/documents/CryptoSentiment_FMA2024.pdf}{[Slides]}
 \href{https://github.com/ronming1303/CryptoSent/tree/main}{[Data]} \newline
 (with Kose John, Jingrui Li) \newline
-{Presented at FMA 2024 Annual Meetings and TFA 2024 Annual Meetings}. \newline
 {Qualified for Best Paper Award at 2024 International Conference of Taiwan Finance Association}. \newline
 {Media Coverage: Investor Sentiment Behind Crypto Gains and Losses--Is Next Bitcoin Crash Already Written?, CCN.com}.
 \end{SectionTable}
+
+% --- Section: Work in progress ---
+
+\begin{SectionTable}{\headingfont Work in Progress}
+2026 &
+\textbf{Attention Based Large Factor Model} \newline
+(with Jingrui Li)
+\end{SectionTable}
+
+% --- Section: Academic presentations ---
+
+\begin{SectionTableSingleSpace}{\headingfont Academic Presentations}
+& ``Flow-Induced Momentum in Mutual Funds: Evidence from Crypto Exposure,'' PhD Research Showcase, Stevens Institute of Technology, May 2026. \\
+
+& ``The Impact of Spoofing on Bitcoin Market Microstructure,'' Corporate Governance Luncheon, New York University, May 2026 (presented by Jingrui Li \& Kose John); Southwestern University of Finance and Economics (SWUFE) Seminar, June 2026 (presented by Jingrui Li); 7th Annual RCF-ECGI Corporate Finance and Governance Conference, October 2026 (accepted for presentation); 2nd INFORMS Conference on Financial Engineering and FinTech, November 2026 (scheduled). \\
+
+& ``Price Discovery and Arbitrage across Centralized and Decentralized Cryptocurrency Exchanges,'' Financial Engineering Seminar, Stevens Institute of Technology, 2025. \\
+
+& ``Sentiment in the Cross Section of Cryptocurrency Returns,'' Financial Management Association (FMA) Annual Meeting, 2024 (presented by Jingrui Li); Taiwan Finance Association (TFA) Annual Meeting, 2024 (presented by Jingrui Li).
+\end{SectionTableSingleSpace}
 
 % --- Section: Research experience ---
 
@@ -186,7 +208,7 @@ The course covers major financial markets and asset classes, including equities,
 
 \begin{SectionTableSingleSpace}{\headingfont Professional service}
 2026 &
-Scheduled discussant for ``Predicting Mutual Fund Returns from Images: A Machine Learning Approach,'' Financial Management Association (FMA) Annual Meeting.
+Discussant for ``Predicting Mutual Fund Returns from Images: A Machine Learning Approach,'' Financial Management Association (FMA) Annual Meeting (scheduled).
 \end{SectionTableSingleSpace}
 
 % --- Section: Industry experience ---
@@ -200,10 +222,9 @@ Supported some credit risk products and credit rating data of Moody's: CreditEdg
 
 % --- Section: Awards, scholarships, etc ---
 
-\begin{SectionTableSingleSpace}{\headingfont Honors and scholarships}
-% 2021 & 
-% Award 1 (Organization that gave you the award)\newline
-% \textit{Maybe this award needs a short description}. \\
+\begin{SectionTableSingleSpace}{\headingfont Honors, Scholarships \& Grants}
+2026 &
+Financial Management Association (FMA) Student Travel Grant \\
 
 2022 &
 Doctoral Fellowship (School of Business, Stevens Institute of Technology)
@@ -251,11 +272,14 @@ Doctoral Fellowship (School of Business, Stevens Institute of Technology)
 
 \begin{SectionTableSingleSpace}{\headingfont Technical skills}
 & \textbf{Programming languages} \newline
-Proficient in: Python, R, Matlab \newline
-Familiar with: JavaScript, Solidity \\
+Proficient in: Python, R, Matlab, Stata, SAS \newline
+Familiar with: JavaScript, HTML, Solidity \\
 
-& \textbf{Software} \newline
-\LaTeX, Git, PostgreSQL, Claude Code \\
+& \textbf{Software \& Systems} \newline
+Linux, \LaTeX, Git, PostgreSQL, MongoDB, AWS \\
+
+& \textbf{Blockchain \& AI Tools} \newline
+Brownie, Claude Code, Codex, LangGraph, OpenRouter \\
 
 & \textbf{Languages} \newline
 English (fluent), Mandarin (native)
@@ -263,10 +287,28 @@ English (fluent), Mandarin (native)
 
 % --- Section: Personal information ---
 
-\newpage
 \begin{SectionTableSingleSpace}{\headingfont Personal information}
 & Citizenship: China. Visa status: F-1 (OPT-eligible upon graduation); will require H-1B sponsorship for continued employment.
 \end{SectionTableSingleSpace}
+
+% --- Section: References ---
+
+\begin{SectionTable}{\headingfont References}
+& \textbf{Jingrui (Victoria) Li} \newline
+Assistant Professor \newline
+School of Business, Stevens Institute of Technology \newline
+\href{mailto:jli264@stevens.edu}{jli264@stevens.edu} \\
+
+& \textbf{Kose John} \newline
+Charles William Gerstenberg Professor of Banking and Finance \newline
+Leonard N. Stern School of Business, New York University \newline
+\href{mailto:kj1@stern.nyu.edu}{kj1@stern.nyu.edu} \\
+
+& \textbf{Steve Yang} \newline
+Associate Professor \newline
+School of Business, Stevens Institute of Technology \newline
+\href{mailto:syang14@stevens.edu}{syang14@stevens.edu}
+\end{SectionTable}
 
 % --- Section: Other interests/hobbies ---
 
