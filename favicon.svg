@@ -1,8 +1,8 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
   <defs>
     <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" stop-color="#155799"/>
-      <stop offset="100%" stop-color="#159957"/>
+      <stop offset="0%" stop-color="#8B6B4A"/>
+      <stop offset="100%" stop-color="#B08D57"/>
     </linearGradient>
     <style>
       @font-face {
@@ -14,6 +14,6 @@
     </style>
   </defs>
   <rect width="64" height="64" rx="14" fill="url(#bg)"/>
-  <text x="32" y="35" text-anchor="middle" dominant-baseline="central"
+  <text x="32" y="29" text-anchor="middle" dominant-baseline="central"
         font-size="44" font-weight="700" fill="#ffffff">劉</text>
 </svg>
