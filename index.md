@@ -27,7 +27,7 @@ I am quite interested in quantitative investment, quantitative risk management a
 </a>
 </div>
 
-- [Pricing and Arbitrage Across 80 Cryptocurrency Exchanges](https://papers.ssrn.com/sol3/papers.cfm?abstract_id=4816710#paper-references-widget)
+- [Price Dispersion under Arbitrage Frictions: Evidence from Centralized and Decentralized Cryptocurrency Exchanges](https://papers.ssrn.com/sol3/papers.cfm?abstract_id=4816710#paper-references-widget)
   - Revise and Resubmit at Journal of Financial and Quantitative Analysis (JFQA) 
   - _We explore variations in cryptocurrency pricing across 80 cryptocurrency exchanges worldwide. Arbitrage spreads are higher in non-US domiciled exchanges, decentralized exchanges, non-trustworthy, and relatively illiquid exchanges. Stablecoins exhibit smaller arbitrage spreads than other tokens._ [<span style="color: red"><u>Keynote Here</u></span>](./documents/CryptoExchangeArbitrage.pdf)
   - Live Exchange Price Monitor (BTC/ETH/SOL intraday):
