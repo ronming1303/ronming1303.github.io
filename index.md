@@ -1,3 +1,7 @@
+---
+title: Ruming Liu
+---
+
 ## About Me
 
 My name is Ruming Liu (刘入铭). I am currently a Finance Ph.D. candidate at Stevens Institute of Technology ([SIT](https://www.stevens.edu)), and my research interests are Blockchain, Cryptocurrency, and FinTech ([Resume](./resumes/Ruming_Liu_Resume.pdf), [CV](./resumes/Ruming_Liu_Academic_CV.pdf)). I am very fortunate to be advised by Prof. [Jingrui Li](https://sites.google.com/view/jvictoriali/home).
